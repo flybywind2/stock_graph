@@ -289,7 +289,7 @@
     const MAX_RENDER_EDGES = 1800;
     const MAX_OVERVIEW_RENDER_EDGES = 700;
     const MAX_FOCUS_RENDER_EDGES = 1200;
-    const MAX_PEER_RENDER_EDGES = 1800;
+    const MAX_PEER_RENDER_EDGES = 900;
     const MIN_ZOOM = 0.08;
     const MAX_ZOOM = 12;
     const FIT_MAX_ZOOM = 3.5;
@@ -386,12 +386,14 @@
     let searchRenderTimer = null;
     let cachedSeedRootsForSearch = { key: '', roots: [] };
     let lastRootLayoutKey = '';
+    let lastLayoutSignature = '';
     let is3dMode = false;
     const camera3d = { yaw: -0.42, pitch: 0.52, perspective: 720 };
     const pinnedPositions = new Map();
     const degreeById = new Map();
 
-    GRAPH_DATA.edges.forEach(edge => {
+    GRAPH_DATA.edges.forEach((edge, index) => {
+      edge._index = index;
       if (!neighbors.has(edge.source)) neighbors.set(edge.source, []);
       if (!neighbors.has(edge.target)) neighbors.set(edge.target, []);
       neighbors.get(edge.source).push({ id: edge.target, edge });
@@ -662,11 +664,27 @@
         + (touchesStock ? 120 : 0)
         + Number(edge.metadata?.score || 0);
     }
+    function edgeWorthConsidering(edge, rootSet) {
+      if (!rootSet.size) return true;
+      if (rootSet.has(edge.source) || rootSet.has(edge.target)) return true;
+      if (edge.type === 'related_stock' || edge.type.endsWith('_peer')) return true;
+      if (edgeImportance(edge.type) <= 10) return true;
+      return false;
+    }
     function prioritizedVisibleEdges(visibleIds, rootSet) {
       const limit = edgeRenderLimit(rootSet.size);
-      const candidates = GRAPH_DATA.edges.filter(edge => edgePassesFilters(edge) && visibleIds.has(edge.source) && visibleIds.has(edge.target));
+      const seen = new Set();
+      const candidates = [];
+      visibleIds.forEach(id => {
+        (neighbors.get(id) || []).forEach(item => {
+          const edge = item.edge;
+          if (seen.has(edge._index) || !visibleIds.has(edge.source) || !visibleIds.has(edge.target) || !edgeWorthConsidering(edge, rootSet) || !edgePassesFilters(edge)) return;
+          seen.add(edge._index);
+          candidates.push(edge);
+        });
+      });
       const ranked = candidates
-        .map((edge, index) => ({ edge, index, score: edgeRenderScore(edge, rootSet) }))
+        .map(edge => ({ edge, index: edge._index, score: edgeRenderScore(edge, rootSet) }))
         .sort((a, b) => b.score - a.score || a.index - b.index);
       return {
         edges: ranked.slice(0, limit).map(item => item.edge),
@@ -676,6 +694,9 @@
     }
     function nodeRadius(node) {
       return nodeVisualRadius(node);
+    }
+    function invalidateLayout() {
+      lastLayoutSignature = '';
     }
     function screenToGraphPoint(event) {
       const rect = svg.getBoundingClientRect();
@@ -694,6 +715,7 @@
     }
     function requestSearchRender() {
       didInitialFit = false;
+      invalidateLayout();
       window.clearTimeout(searchRenderTimer);
       searchRenderTimer = window.setTimeout(() => {
         render();
@@ -979,7 +1001,10 @@
       const movable = node => !pinnedPositions.has(node.id) && !rootSet.has(node.id);
       const multiRootMode = roots.length > 1;
       const affinities = multiRootMode ? visibleRootAffinities(nodes, edges, roots) : null;
-      const iterations = nodes.length > 650 ? 7 : nodes.length > 300 ? 12 : 20;
+      const multiRootTargets = multiRootMode
+        ? new Map(nodes.map(node => [node.id, multiRootTarget(node, roots, rootAnchors, affinities, cx, cy)]))
+        : null;
+      const iterations = nodes.length > 650 ? 4 : nodes.length > 300 ? 7 : 12;
       const edgeSubset = edges.slice(0, Math.min(edges.length, 1800));
       for (let step = 0; step < iterations; step++) {
         edgeSubset.forEach(edge => {
@@ -1017,7 +1042,7 @@
         nodes.forEach(node => {
           if (!movable(node)) return;
           if (multiRootMode) {
-            const target = multiRootTarget(node, roots, rootAnchors, affinities, cx, cy);
+            const target = multiRootTargets.get(node.id);
             if (!target) return;
             node.x += (target.x - node.x) * target.pull;
             node.y += (target.y - node.y) * target.pull;
@@ -1119,8 +1144,16 @@
       const visibleNodes = [...visibleIds].map(id => nodeById.get(id)).filter(Boolean);
       const edgeSelection = prioritizedVisibleEdges(visibleIds, rootSet);
       const visibleEdges = edgeSelection.edges;
-      resetLayoutForNewRoots(visibleNodes, roots);
-      layoutVisible(visibleNodes, visibleEdges, roots);
+      const layoutSignature = [
+        roots.join(','),
+        visibleNodes.map(node => node.id).join(','),
+        visibleEdges.map(edge => `${edge.source}>${edge.target}:${edge.type}`).join(',')
+      ].join('||');
+      if (!nodeDrag && layoutSignature !== lastLayoutSignature) {
+        resetLayoutForNewRoots(visibleNodes, roots);
+        layoutVisible(visibleNodes, visibleEdges, roots);
+        lastLayoutSignature = layoutSignature;
+      }
       lastVisibleNodes = visibleNodes;
       if (!didInitialFit) {
         fitToNodes(visibleNodes);
@@ -1264,12 +1297,14 @@
     function toggleNodeType(type) {
       enabledTypes.has(type) ? enabledTypes.delete(type) : enabledTypes.add(type);
       didInitialFit = false;
+      invalidateLayout();
       syncFilterControls();
       render();
     }
     function toggleEdgeType(type) {
       enabledEdges.has(type) ? enabledEdges.delete(type) : enabledEdges.add(type);
       didInitialFit = false;
+      invalidateLayout();
       syncFilterControls();
       render();
     }
@@ -1284,14 +1319,14 @@
       markets.forEach(market => {
         const label = document.createElement('label');
         label.innerHTML = `<input type="checkbox" checked data-market="${escapeHtml(market)}"> ${escapeHtml(market)}`;
-        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledMarkets.add(market) : enabledMarkets.delete(market); render(); });
+        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledMarkets.add(market) : enabledMarkets.delete(market); didInitialFit = false; invalidateLayout(); render(); });
         marketFilters.appendChild(label);
       });
       const nodeLegend = createLegendSection('노드');
       Object.entries(COLORS).forEach(([type, color]) => {
         const label = document.createElement('label');
         label.innerHTML = `<input type="checkbox" checked data-type="${escapeHtml(type)}"> ${escapeHtml(LABELS[type] || type)}`;
-        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledTypes.add(type) : enabledTypes.delete(type); didInitialFit = false; syncFilterControls(); render(); });
+        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledTypes.add(type) : enabledTypes.delete(type); didInitialFit = false; invalidateLayout(); syncFilterControls(); render(); });
         typeFilters.appendChild(label);
         const button = document.createElement('button');
         button.type = 'button';
@@ -1307,7 +1342,7 @@
       edgeTypes.forEach(type => {
         const label = document.createElement('label');
         label.innerHTML = `<input type="checkbox" checked data-edge="${escapeHtml(type)}"> ${escapeHtml(EDGE_LABELS[type] || type)}`;
-        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledEdges.add(type) : enabledEdges.delete(type); didInitialFit = false; syncFilterControls(); render(); });
+        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledEdges.add(type) : enabledEdges.delete(type); didInitialFit = false; invalidateLayout(); syncFilterControls(); render(); });
         edgeTypeFilters.appendChild(label);
         const button = document.createElement('button');
         button.type = 'button';
@@ -1321,11 +1356,11 @@
       });
       syncFilterControls();
       searchInput.addEventListener('input', requestSearchRender);
-      [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('input', () => { didInitialFit = false; render(); }));
-      [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('change', () => { didInitialFit = false; render(); }));
+      [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('input', () => { didInitialFit = false; invalidateLayout(); render(); }));
+      [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('change', () => { didInitialFit = false; invalidateLayout(); render(); }));
       document.getElementById('labelsButton').addEventListener('click', () => { showLabels = !showLabels; render(); });
       document.getElementById('fitButton').addEventListener('click', () => { fitToNodes(lastVisibleNodes); render(); });
-      document.getElementById('unpinButton').addEventListener('click', () => { pinnedPositions.clear(); render(); });
+      document.getElementById('unpinButton').addEventListener('click', () => { pinnedPositions.clear(); invalidateLayout(); render(); });
       document.getElementById('zoomInButton').addEventListener('click', () => { zoomAtCenter(1.18); render(); });
       document.getElementById('zoomOutButton').addEventListener('click', () => { zoomAtCenter(1 / 1.18); render(); });
       document.getElementById('mode3dButton').addEventListener('click', () => {
@@ -1344,6 +1379,7 @@
         pinnedPositions.clear();
         GRAPH_DATA.nodes.forEach(node => { delete node.x; delete node.y; });
         is3dMode = false; camera3d.yaw = -0.42; camera3d.pitch = 0.52; updateMode3dButton();
+        invalidateLayout();
         scale = 1; offsetX = 0; offsetY = 0; didInitialFit = false; render();
       });
       svg.addEventListener('wheel', event => {
@@ -1400,7 +1436,7 @@
     }
     setupControls();
     render();
-    window.addEventListener('resize', render);
+    window.addEventListener('resize', () => { invalidateLayout(); render(); });
   </script>
 </body>
 </html>
