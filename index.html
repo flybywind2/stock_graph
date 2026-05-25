@@ -205,6 +205,11 @@
       <div class="result-list" id="resultList"></div>
       <h2>View</h2>
       <div class="control-grid">
+        <select id="graphPresetSelect" aria-label="graph preset">
+          <option value="semantic" selected>의미 중심</option>
+          <option value="investment">투자지표 포함</option>
+          <option value="all">전체 보기</option>
+        </select>
         <select id="focusModeSelect" aria-label="focus mode">
           <option value="focus" selected>선택/검색 중심</option>
           <option value="peer">Peer 관계 포함</option>
@@ -298,6 +303,17 @@
     const SEARCH_RENDER_DELAY_MS = 120;
     const PEER_EDGE_TYPES = new Set(['theme_peer', 'industry_peer', 'group_peer', 'business_peer', 'business_family_peer', 'related_stock']);
     const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as']);
+    const SEMANTIC_NODE_TYPES = new Set(['stock', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme']);
+    const INVESTMENT_NODE_TYPES = new Set(['market_cap', 'investment_grade', 'valuation', 'dividend', 'financial_metric', 'disclosure', 'disclosure_category', 'dart_company']);
+    const SEMANTIC_EDGE_TYPES = new Set([
+      'related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer',
+      'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as',
+      'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as'
+    ]);
+    const INVESTMENT_EDGE_TYPES = new Set([
+      'market_cap_bucket', 'investment_grade_bucket', 'valuation_bucket', 'dividend_bucket',
+      'financial_bucket', 'stock_filed', 'filed', 'disclosure_categorized_as', 'mapped_to'
+    ]);
     const Z_AXIS_LABELS = {
       market_cap: '시가총액',
       traded_value: '거래대금',
@@ -349,6 +365,7 @@
     const relationSummary = document.getElementById('relationSummary');
     const searchHint = document.getElementById('searchHint');
     const searchInput = document.getElementById('searchInput');
+    const graphPresetSelect = document.getElementById('graphPresetSelect');
     const focusModeSelect = document.getElementById('focusModeSelect');
     const neighborDepthSelect = document.getElementById('neighborDepth');
     const maxVisibleSelect = document.getElementById('maxVisibleSelect');
@@ -366,8 +383,8 @@
     const nodeById = new Map(GRAPH_DATA.nodes.map(node => [node.id, node]));
     const stockNodes = GRAPH_DATA.nodes.filter(node => node.type === 'stock');
     const edgeTypes = [...new Set(GRAPH_DATA.edges.map(edge => edge.type))].sort();
-    const enabledTypes = new Set(Object.keys(COLORS));
-    const enabledEdges = new Set(edgeTypes);
+    const enabledTypes = new Set([...SEMANTIC_NODE_TYPES].filter(type => COLORS[type]));
+    const enabledEdges = new Set([...SEMANTIC_EDGE_TYPES].filter(type => edgeTypes.includes(type)));
     const markets = [...new Set(stockNodes.map(node => node.metadata?.market).filter(Boolean))].sort();
     const enabledMarkets = new Set(markets);
     const neighbors = new Map();
@@ -665,6 +682,7 @@
         + Number(edge.metadata?.score || 0);
     }
     function edgeWorthConsidering(edge, rootSet) {
+      if (graphPresetSelect.value !== 'semantic') return true;
       if (!rootSet.size) return true;
       if (rootSet.has(edge.source) || rootSet.has(edge.target)) return true;
       if (edge.type === 'related_stock' || edge.type.endsWith('_peer')) return true;
@@ -697,6 +715,33 @@
     }
     function invalidateLayout() {
       lastLayoutSignature = '';
+    }
+    function setEnabledSet(target, values, universe) {
+      target.clear();
+      values.forEach(value => {
+        if (universe.has(value)) target.add(value);
+      });
+    }
+    function presetNodeTypes(preset) {
+      const allTypes = new Set(Object.keys(COLORS));
+      if (preset === 'all') return allTypes;
+      const types = new Set(SEMANTIC_NODE_TYPES);
+      if (preset === 'investment') INVESTMENT_NODE_TYPES.forEach(type => types.add(type));
+      return types;
+    }
+    function presetEdgeTypes(preset) {
+      const allTypes = new Set(edgeTypes);
+      if (preset === 'all') return allTypes;
+      const types = new Set(SEMANTIC_EDGE_TYPES);
+      if (preset === 'investment') INVESTMENT_EDGE_TYPES.forEach(type => types.add(type));
+      return types;
+    }
+    function applyGraphPreset(preset) {
+      setEnabledSet(enabledTypes, presetNodeTypes(preset), new Set(Object.keys(COLORS)));
+      setEnabledSet(enabledEdges, presetEdgeTypes(preset), new Set(edgeTypes));
+      didInitialFit = false;
+      invalidateLayout();
+      syncFilterControls();
     }
     function screenToGraphPoint(event) {
       const rect = svg.getBoundingClientRect();
@@ -1325,14 +1370,14 @@
       const nodeLegend = createLegendSection('노드');
       Object.entries(COLORS).forEach(([type, color]) => {
         const label = document.createElement('label');
-        label.innerHTML = `<input type="checkbox" checked data-type="${escapeHtml(type)}"> ${escapeHtml(LABELS[type] || type)}`;
+        label.innerHTML = `<input type="checkbox" ${enabledTypes.has(type) ? 'checked' : ''} data-type="${escapeHtml(type)}"> ${escapeHtml(LABELS[type] || type)}`;
         label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledTypes.add(type) : enabledTypes.delete(type); didInitialFit = false; invalidateLayout(); syncFilterControls(); render(); });
         typeFilters.appendChild(label);
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'legend-item';
         button.dataset.legendType = type;
-        button.setAttribute('aria-pressed', 'true');
+        button.setAttribute('aria-pressed', enabledTypes.has(type) ? 'true' : 'false');
         button.title = `${LABELS[type] || type} 노드 켜기/끄기`;
         button.innerHTML = `<span class="swatch" style="background:${color}"></span><span class="legend-label">${escapeHtml(LABELS[type] || type)}</span>`;
         button.addEventListener('click', () => toggleNodeType(type));
@@ -1341,20 +1386,21 @@
       const edgeLegend = createLegendSection('엣지');
       edgeTypes.forEach(type => {
         const label = document.createElement('label');
-        label.innerHTML = `<input type="checkbox" checked data-edge="${escapeHtml(type)}"> ${escapeHtml(EDGE_LABELS[type] || type)}`;
+        label.innerHTML = `<input type="checkbox" ${enabledEdges.has(type) ? 'checked' : ''} data-edge="${escapeHtml(type)}"> ${escapeHtml(EDGE_LABELS[type] || type)}`;
         label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledEdges.add(type) : enabledEdges.delete(type); didInitialFit = false; invalidateLayout(); syncFilterControls(); render(); });
         edgeTypeFilters.appendChild(label);
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'legend-item';
         button.dataset.legendEdge = type;
-        button.setAttribute('aria-pressed', 'true');
+        button.setAttribute('aria-pressed', enabledEdges.has(type) ? 'true' : 'false');
         button.title = `${EDGE_LABELS[type] || type} 엣지 켜기/끄기`;
         button.innerHTML = `<span class="${edgeLegendClass(type)}"></span><span class="legend-label">${escapeHtml(EDGE_LABELS[type] || type)}</span>`;
         button.addEventListener('click', () => toggleEdgeType(type));
         edgeLegend.appendChild(button);
       });
       syncFilterControls();
+      graphPresetSelect.addEventListener('change', () => { applyGraphPreset(graphPresetSelect.value); render(); });
       searchInput.addEventListener('input', requestSearchRender);
       [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('input', () => { didInitialFit = false; invalidateLayout(); render(); }));
       [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('change', () => { didInitialFit = false; invalidateLayout(); render(); }));
@@ -1370,9 +1416,8 @@
       });
       document.getElementById('resetButton').addEventListener('click', () => {
         window.clearTimeout(searchRenderTimer);
-        selectedId = null; selectedIds.clear(); searchInput.value = ''; focusModeSelect.value = 'focus'; neighborDepthSelect.value = '1'; maxVisibleSelect.value = '250'; edgeRenderLimitSelect.value = 'auto'; zAxisSelect.value = 'relationship_strength'; minTradeValueSelect.value = '0'; priceMoveSelect.value = '';
-        enabledTypes.clear(); Object.keys(COLORS).forEach(type => enabledTypes.add(type));
-        enabledEdges.clear(); edgeTypes.forEach(type => enabledEdges.add(type));
+        selectedId = null; selectedIds.clear(); searchInput.value = ''; graphPresetSelect.value = 'semantic'; focusModeSelect.value = 'focus'; neighborDepthSelect.value = '1'; maxVisibleSelect.value = '250'; edgeRenderLimitSelect.value = 'auto'; zAxisSelect.value = 'relationship_strength'; minTradeValueSelect.value = '0'; priceMoveSelect.value = '';
+        applyGraphPreset('semantic');
         enabledMarkets.clear(); markets.forEach(market => enabledMarkets.add(market));
         document.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = true; });
         syncFilterControls();
