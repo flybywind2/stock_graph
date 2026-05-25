@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KR Stock Graph 20260521</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #fff;
+      --text: #18202f;
+      --muted: #647086;
+      --line: #d7dce7;
+      --accent: #2f62d6;
+      --market: #222b45;
+      --industry: #18856d;
+      --security-group: #6f7f44;
+      --index: #365f7a;
+      --product-market: #896445;
+      --etf: #597c8f;
+      --market-cap: #475467;
+      --investment-grade: #7a5af8;
+      --external-sector: #2f855a;
+      --external-industry: #0b7285;
+      --business-group: #7b5d16;
+      --business-activity: #0f766e;
+      --business-family: #24727a;
+      --theme: #9a5b13;
+      --stock: #3563d8;
+      --fsc-company: #3b7f72;
+      --identifier: #6a778f;
+      --dart: #8a4fb8;
+      --disclosure: #c76a2a;
+      --liquidity: #0f9f9a;
+      --move: #d43f57;
+      --valuation: #5f6caf;
+      --dividend: #607d3b;
+      --financial: #8a5a44;
+      --disclosure-category: #8f6b2c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr) 380px;
+      min-height: 100vh;
+    }
+    aside, .detail {
+      background: var(--panel);
+      border-color: var(--line);
+      border-style: solid;
+      overflow: auto;
+    }
+    aside { border-width: 0 1px 0 0; padding: 18px; }
+    .detail { border-width: 0 0 0 1px; padding: 18px; }
+    h1 { margin: 0 0 6px; font-size: 21px; line-height: 1.2; }
+    h2 { margin: 18px 0 9px; font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spacing: 0; }
+    .summary, .hint { color: var(--muted); font-size: 13px; line-height: 1.45; }
+    input, select {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 11px;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+    }
+    label { display: flex; align-items: center; gap: 8px; min-height: 28px; font-size: 13px; }
+    input[type="checkbox"] { width: 15px; height: 15px; }
+    button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 7px;
+      min-height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button:hover, .result-item:hover, .result-item.active { border-color: var(--accent); background: #f4f7ff; }
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .result-list, .relation-list { display: grid; gap: 6px; max-height: 260px; overflow: auto; }
+    .result-item {
+      display: grid;
+      gap: 2px;
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .result-title { font-size: 13px; font-weight: 700; line-height: 1.25; }
+    .result-meta { font-size: 12px; color: var(--muted); line-height: 1.35; }
+    .filter-list { display: grid; gap: 4px; max-height: 155px; overflow: auto; }
+    .legend { display: grid; gap: 10px; }
+    .legend-section { display: grid; gap: 5px; }
+    .legend-title { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0; }
+    .legend-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      padding: 2px 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .legend-item:hover { color: var(--text); }
+    .legend-item[aria-pressed="false"] { opacity: .36; }
+    .legend-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .swatch { width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
+    .edge-swatch { width: 18px; height: 0; border-top: 2px solid rgba(91, 103, 125, .75); flex: 0 0 auto; }
+    .edge-swatch.peer { border-top-color: rgba(154, 91, 19, .78); border-top-style: dashed; }
+    .edge-swatch.focus { border-top-color: rgba(47, 98, 214, .88); border-top-width: 3px; }
+    .graph-stage { min-width: 0; min-height: 100vh; }
+    #graph {
+      position: relative;
+      min-width: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      cursor: grab;
+      background:
+        linear-gradient(#edf0f5 1px, transparent 1px),
+        linear-gradient(90deg, #edf0f5 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    #graph.dragging { cursor: grabbing; }
+    #graph.node-dragging { cursor: move; }
+    svg { width: 100%; height: 100vh; display: block; }
+    .edge { stroke: rgba(91, 103, 125, .22); stroke-width: 1; }
+    .edge.peer { stroke: rgba(154, 91, 19, .18); stroke-dasharray: 4 3; }
+    .edge.focus { stroke: rgba(47, 98, 214, .82); stroke-width: 1.8; }
+    .node { stroke: #fff; stroke-width: 1.5; cursor: grab; transition: stroke-width .12s ease, filter .12s ease; }
+    .node:hover { filter: drop-shadow(0 2px 5px rgba(24, 32, 47, .25)); stroke-width: 2.4; }
+    .node.pinned { stroke: #101828; stroke-width: 2.3; }
+    .node.highlight { stroke: #101828; stroke-width: 3; }
+    .label { font-size: 11px; fill: #273244; pointer-events: none; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+    .toolbar {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .view-toggle {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      gap: 8px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .view-toggle button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    #graph.graph-3d {
+      background-size: 32px 32px;
+    }
+    .zoom-readout { min-width: 46px; align-self: center; color: var(--muted); font-size: 12px; text-align: center; }
+    .detail-title { font-size: 19px; font-weight: 750; margin-bottom: 6px; }
+    .detail-type { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; color: var(--muted); font-size: 12px; background: #fff; }
+    .kv { display: grid; grid-template-columns: 118px 1fr; gap: 7px; font-size: 13px; border-top: 1px solid var(--line); padding-top: 13px; }
+    .kv div:nth-child(odd) { color: var(--muted); }
+    .relation-group { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+    .relation-head { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .relation-count { color: var(--muted); font-weight: 500; }
+    @media (max-width: 1180px) { .app { grid-template-columns: 320px 1fr; } .detail { display: none; } }
+    @media (max-width: 760px) { .app { display: block; } aside { border-width: 0 0 1px 0; } .graph-stage, #graph, svg { height: 70vh; min-height: 70vh; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <h1>KR Stock Graph</h1>
+      <div class="summary" id="summary"></div>
+      <h2>Search</h2>
+      <input id="searchInput" type="search" placeholder="종목명, 코드, 테마, 업종, 공시">
+      <div class="hint" id="searchHint"></div>
+      <div class="result-list" id="resultList"></div>
+      <h2>View</h2>
+      <div class="control-grid">
+        <select id="focusModeSelect" aria-label="focus mode">
+          <option value="focus" selected>선택/검색 중심</option>
+          <option value="peer">Peer 관계 포함</option>
+          <option value="overview">상위 관찰 개요</option>
+        </select>
+        <select id="neighborDepth" aria-label="neighbor depth">
+          <option value="1" selected>1단계 관계</option>
+          <option value="2">2단계 관계</option>
+          <option value="3">3단계 관계</option>
+          <option value="0">선택만</option>
+        </select>
+        <select id="maxVisibleSelect" aria-label="maximum visible nodes">
+          <option value="250" selected>최대 250 노드</option>
+          <option value="500">최대 500 노드</option>
+          <option value="900">최대 900 노드</option>
+        </select>
+        <select id="edgeRenderLimitSelect" aria-label="rendered edge limit">
+          <option value="auto" selected>엣지 자동</option>
+          <option value="700">최대 700 엣지</option>
+          <option value="1200">최대 1,200 엣지</option>
+          <option value="1800">최대 1,800 엣지</option>
+          <option value="2800">최대 2,800 엣지</option>
+          <option value="4500">최대 4,500 엣지</option>
+        </select>
+        <select id="zAxisSelect" aria-label="3D z axis">
+          <option value="market_cap">Z축 시가총액</option>
+          <option value="traded_value">Z축 거래대금</option>
+          <option value="relationship_strength" selected>Z축 관계강도</option>
+          <option value="investment_score">Z축 투자점수</option>
+        </select>
+        <select id="minTradeValueSelect" aria-label="minimum trade value">
+          <option value="0">거래대금 전체</option>
+          <option value="1000000000">10억 이상</option>
+          <option value="10000000000">100억 이상</option>
+          <option value="100000000000">1000억 이상</option>
+        </select>
+        <select id="priceMoveSelect" aria-label="price move">
+          <option value="">등락 전체</option>
+          <option value="급등 +5% 이상">급등 +5% 이상</option>
+          <option value="상승 +1~5%">상승 +1~5%</option>
+          <option value="보합 -1~+1%">보합 -1~+1%</option>
+          <option value="하락 -1~-5%">하락 -1~-5%</option>
+          <option value="급락 -5% 이하">급락 -5% 이하</option>
+        </select>
+        <button id="resetButton" type="button">Reset</button>
+      </div>
+      <h2>Markets</h2>
+      <div class="filter-list" id="marketFilters"></div>
+      <h2>Relation Summary</h2>
+      <div id="relationSummary" class="relation-list"></div>
+      <h2>Types</h2>
+      <div class="filter-list" id="typeFilters"></div>
+      <h2>Edges</h2>
+      <div class="filter-list" id="edgeTypeFilters"></div>
+      <h2>Legend</h2>
+      <div class="legend" id="legend"></div>
+    </aside>
+    <main class="graph-stage">
+      <div id="graph">
+        <svg id="graphSvg" role="img" aria-label="KR stock relationship graph"></svg>
+        <div class="toolbar">
+          <button id="fitButton" type="button" title="보이는 노드에 맞춤">Fit</button>
+          <button id="labelsButton" type="button" title="라벨 표시 전환">Labels</button>
+          <button id="unpinButton" type="button" title="드래그로 고정한 노드 해제">Unpin</button>
+          <button id="zoomInButton" type="button" title="확대">+</button>
+          <button id="zoomOutButton" type="button" title="축소">-</button>
+          <span id="zoomReadout" class="zoom-readout">100%</span>
+        </div>
+        <div class="view-toggle">
+          <button id="mode3dButton" type="button" aria-pressed="false" title="3D 보기로 전환">3D</button>
+        </div>
+      </div>
+    </main>
+    <section class="detail" id="detail">
+      <div class="detail-title">검색하거나 종목을 선택하세요</div>
+      <div class="detail-type">기본 화면은 관찰 우선순위가 높은 종목만 가볍게 보여줍니다.</div>
+    </section>
+  </div>
+  <script src="graph_data.js"></script>
+  <script>
+    const GRAPH_DATA = window.GRAPH_DATA || { meta: {}, nodes: [], edges: [] };
+    const MAX_RENDER_EDGES = 1800;
+    const MAX_OVERVIEW_RENDER_EDGES = 700;
+    const MAX_FOCUS_RENDER_EDGES = 1200;
+    const MAX_PEER_RENDER_EDGES = 1800;
+    const MIN_ZOOM = 0.08;
+    const MAX_ZOOM = 12;
+    const FIT_MAX_ZOOM = 3.5;
+    const LABEL_ZOOM_THRESHOLD = 4.5;
+    const MIN_MULTI_ROOT_TERM_LENGTH = 2;
+    const SEARCH_RENDER_DELAY_MS = 120;
+    const PEER_EDGE_TYPES = new Set(['theme_peer', 'industry_peer', 'group_peer', 'business_peer', 'business_family_peer', 'related_stock']);
+    const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as']);
+    const Z_AXIS_LABELS = {
+      market_cap: '시가총액',
+      traded_value: '거래대금',
+      relationship_strength: '관계강도',
+      investment_score: '투자점수'
+    };
+    const COLORS = {
+      market: cssVar('--market'), industry: cssVar('--industry'), security_group: cssVar('--security-group'),
+      index: cssVar('--index'), index_family: cssVar('--index'), product_market: cssVar('--product-market'),
+      etf: cssVar('--etf'), market_cap: cssVar('--market-cap'),
+      investment_grade: cssVar('--investment-grade'), external_sector: cssVar('--external-sector'),
+      external_industry: cssVar('--external-industry'), business_group: cssVar('--business-group'),
+      business_activity: cssVar('--business-activity'), business_activity_family: cssVar('--business-family'),
+      theme: cssVar('--theme'), stock: cssVar('--stock'),
+      fsc_company: cssVar('--fsc-company'), isin: cssVar('--identifier'), corporate_registration: cssVar('--identifier'),
+      dart_company: cssVar('--dart'), disclosure: cssVar('--disclosure'),
+      valuation: cssVar('--valuation'), dividend: cssVar('--dividend'),
+      financial_metric: cssVar('--financial'),
+      disclosure_category: cssVar('--disclosure-category')
+    };
+    const LABELS = {
+      market: '시장', industry: 'KRX 업종', market_cap: '시가총액', investment_grade: '관찰등급',
+      security_group: '증권그룹', index: '지수', index_family: '지수군', product_market: '상품시장', etf: 'ETF',
+      external_sector: '외부 섹터', external_industry: 'FnGuide 업종', theme: 'Naver 테마',
+      business_group: '기업집단', business_activity: '참여업종', business_activity_family: '사업군', financial_metric: '재무 구간',
+      stock: '종목', fsc_company: '금융위 법인', isin: 'ISIN', corporate_registration: '법인등록번호',
+      dart_company: 'DART 기업', disclosure: '공시',
+      valuation: '밸류에이션', dividend: '배당', disclosure_category: '공시유형'
+    };
+    const EDGE_LABELS = {
+      listed_on: '시장', classified_as: 'KRX 업종', market_cap_bucket: '시가총액',
+      investment_grade_bucket: '관찰등급',
+      external_sector_classified_as: '외부 섹터', external_industry_classified_as: 'FnGuide 업종',
+      affiliated_with: '기업집단', business_activity_classified_as: '참여업종',
+      business_activity_family_classified_as: '사업군', financial_bucket: '재무 구간',
+      group_peer: '기업집단 Peer', business_peer: '참여업종 Peer', business_family_peer: '사업군 Peer',
+      theme_tagged_as: '테마', theme_peer: '테마 Peer', industry_peer: '업종 Peer', related_stock: '관련 종목',
+      valuation_bucket: '밸류에이션', dividend_bucket: '배당', mapped_to: 'DART',
+      identified_by: 'ISIN', public_data_mapped_to: '공공데이터 법인', registered_as: '법인등록번호',
+      security_grouped_as: '증권그룹', has_index_context: '지수 컨텍스트', traded_as_product: '상품시장',
+      filed: '공시', stock_filed: '종목공시', disclosure_categorized_as: '공시유형'
+    };
+
+    const svg = document.getElementById('graphSvg');
+    const graphEl = document.getElementById('graph');
+    const summary = document.getElementById('summary');
+    const detail = document.getElementById('detail');
+    const resultList = document.getElementById('resultList');
+    const relationSummary = document.getElementById('relationSummary');
+    const searchHint = document.getElementById('searchHint');
+    const searchInput = document.getElementById('searchInput');
+    const focusModeSelect = document.getElementById('focusModeSelect');
+    const neighborDepthSelect = document.getElementById('neighborDepth');
+    const maxVisibleSelect = document.getElementById('maxVisibleSelect');
+    const edgeRenderLimitSelect = document.getElementById('edgeRenderLimitSelect');
+    const zAxisSelect = document.getElementById('zAxisSelect');
+    const minTradeValueSelect = document.getElementById('minTradeValueSelect');
+    const priceMoveSelect = document.getElementById('priceMoveSelect');
+    const zoomReadout = document.getElementById('zoomReadout');
+    const typeFilters = document.getElementById('typeFilters');
+    const edgeTypeFilters = document.getElementById('edgeTypeFilters');
+    const marketFilters = document.getElementById('marketFilters');
+    const legend = document.getElementById('legend');
+
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const nodeById = new Map(GRAPH_DATA.nodes.map(node => [node.id, node]));
+    const stockNodes = GRAPH_DATA.nodes.filter(node => node.type === 'stock');
+    const edgeTypes = [...new Set(GRAPH_DATA.edges.map(edge => edge.type))].sort();
+    const enabledTypes = new Set(Object.keys(COLORS));
+    const enabledEdges = new Set(edgeTypes);
+    const markets = [...new Set(stockNodes.map(node => node.metadata?.market).filter(Boolean))].sort();
+    const enabledMarkets = new Set(markets);
+    const neighbors = new Map();
+    let selectedId = null;
+    const selectedIds = new Set();
+    let showLabels = false;
+    let scale = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+    let didInitialFit = false;
+    let lastVisibleNodes = [];
+    let nodeDrag = null;
+    let panDrag = null;
+    let renderPending = false;
+    let suppressNodeClick = null;
+    let searchRenderTimer = null;
+    let cachedSeedRootsForSearch = { key: '', roots: [] };
+    let lastRootLayoutKey = '';
+    let is3dMode = false;
+    const camera3d = { yaw: -0.42, pitch: 0.52, perspective: 720 };
+    const pinnedPositions = new Map();
+    const degreeById = new Map();
+
+    GRAPH_DATA.edges.forEach(edge => {
+      if (!neighbors.has(edge.source)) neighbors.set(edge.source, []);
+      if (!neighbors.has(edge.target)) neighbors.set(edge.target, []);
+      neighbors.get(edge.source).push({ id: edge.target, edge });
+      neighbors.get(edge.target).push({ id: edge.source, edge });
+      degreeById.set(edge.source, (degreeById.get(edge.source) || 0) + 1);
+      degreeById.set(edge.target, (degreeById.get(edge.target) || 0) + 1);
+    });
+
+    function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+    function priceMoveBucket(value) {
+      const n = Number(value || 0);
+      if (n >= 5) return '급등 +5% 이상';
+      if (n >= 1) return '상승 +1~5%';
+      if (n > -1) return '보합 -1~+1%';
+      if (n > -5) return '하락 -1~-5%';
+      return '급락 -5% 이하';
+    }
+    function stockRank(node) {
+      const m = node.metadata || {};
+      return Number(m.investment_score || 0) * 1e18 + Number(m.market_cap || 0) * 1e3 + Number(m.traded_value || 0);
+    }
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+    function edgeStrength(edge) {
+      const score = Number(edge.metadata?.score || 0);
+      if (edge.type === 'related_stock') return clamp(score / 100, 0.22, 1);
+      const weights = {
+        group_peer: 0.96,
+        business_peer: 0.9,
+        affiliated_with: 0.86,
+        business_activity_classified_as: 0.82,
+        business_family_peer: 0.74,
+        business_activity_family_classified_as: 0.7,
+        theme_peer: 0.66,
+        industry_peer: 0.6,
+        theme_tagged_as: 0.56,
+        external_industry_classified_as: 0.54,
+        external_sector_classified_as: 0.48,
+        financial_bucket: 0.34,
+        investment_grade_bucket: 0.28,
+        market_cap_bucket: 0.22,
+        valuation_bucket: 0.22,
+        dividend_bucket: 0.22,
+        stock_filed: 0.18,
+      };
+      return weights[edge.type] ?? 0.3;
+    }
+    function edgeDistance(edge) {
+      const strength = edgeStrength(edge);
+      return Math.round(150 - strength * 86);
+    }
+    function edgeStrokeWidth(edge) {
+      return (0.7 + edgeStrength(edge) * 2.8).toFixed(2);
+    }
+    function edgeOpacity(edge) {
+      return String(clamp(0.28 + edgeStrength(edge) * 0.62, 0.24, 0.92));
+    }
+    function nodeVisualRadius(node) {
+      if (node.type === 'stock') {
+        const marketCap = Number(node.metadata?.market_cap || 0);
+        if (!marketCap) return 4.6;
+        return clamp(4.2 + Math.log10(marketCap / 100_000_000_000 + 1) * 1.75, 4.6, 10.5);
+      }
+      if (node.type === 'market') return 14;
+      const degree = Number(degreeById.get(node.id) || 0);
+      const base = node.type === 'theme' || node.type === 'external_industry' || node.type === 'business_group' || node.type === 'business_activity' || node.type === 'business_activity_family' ? 7.4 : 6.2;
+      return clamp(base + Math.log10(degree + 1) * 1.2, base, base + 4);
+    }
+    function sortByUsefulness(a, b) {
+      const typeRank = { stock: 0, business_group: 1, business_activity: 2, business_activity_family: 3, theme: 4, external_industry: 5, investment_grade: 6, market_cap: 7, external_sector: 8, financial_metric: 9 };
+      return (typeRank[a.type] ?? 9) - (typeRank[b.type] ?? 9) || stockRank(b) - stockRank(a) || a.label.localeCompare(b.label, 'ko');
+    }
+    function nodeSearchText(node) {
+      const m = node.metadata || {};
+      return [node.label, node.id, m.code, m.market, m.industry, m.external_sector, m.external_industry, m.industry_system, m.business_group, m.business_activity, m.business_activity_code, m.business_activity_family, m.business_activity_family_code, m.family_code, m.representative_product, m.fsc_industry_name, m.fsc_main_business, m.themes, m.investment_grade, m.corp_code, m.report_name, m.category, m.bucket, m.metric]
+        .filter(Boolean).join(' ').toLowerCase();
+    }
+    const searchTextById = new Map(GRAPH_DATA.nodes.map(node => [node.id, nodeSearchText(node)]));
+
+    function nodePassesBaseFilters(node) {
+      if (!enabledTypes.has(node.type)) return false;
+      if (node.type !== 'stock') return true;
+      const m = node.metadata || {};
+      if (!enabledMarkets.has(m.market)) return false;
+      if (Number(m.traded_value || 0) < Number(minTradeValueSelect.value || 0)) return false;
+      if (priceMoveSelect.value && priceMoveBucket(m.change_rate) !== priceMoveSelect.value) return false;
+      return true;
+    }
+    function edgePassesFilters(edge) {
+      if (!enabledEdges.has(edge.type)) return false;
+      const source = nodeById.get(edge.source);
+      const target = nodeById.get(edge.target);
+      if (!source || !target || !nodePassesBaseFilters(source) || !nodePassesBaseFilters(target)) return false;
+      if (PEER_EDGE_TYPES.has(edge.type) && focusModeSelect.value !== 'peer') {
+        const manualRoots = manualRootsFromSelection();
+        const seedRoots = seedRootsFromSearch();
+        const roots = manualRoots.length ? manualRoots : seedRoots;
+        if (roots.length > 1) return roots.includes(edge.source) || roots.includes(edge.target);
+        return selectedId && (edge.source === selectedId || edge.target === selectedId);
+      }
+      return true;
+    }
+
+    function seedTermsFromSearch() {
+      return searchInput.value.split(/[,;\n]+/).map(term => term.trim()).filter(Boolean);
+    }
+    function manualRootsFromSelection() {
+      return [...selectedIds].filter(id => nodeById.has(id));
+    }
+    function seedRootsCacheKey() {
+      return [
+        searchInput.value,
+        [...enabledMarkets].sort().join(','),
+        [...enabledTypes].sort().join(','),
+        minTradeValueSelect.value,
+        priceMoveSelect.value
+      ].join('\u001f');
+    }
+    function bestStockForSeed(term) {
+      const normalized = term.toLowerCase();
+      const exact = stockNodes.find(node => nodePassesBaseFilters(node) && [node.label, node.metadata?.code].filter(Boolean).some(value => String(value).toLowerCase() === normalized));
+      if (exact) return exact;
+      if (normalized.length < MIN_MULTI_ROOT_TERM_LENGTH) return null;
+      return stockNodes
+        .filter(node => nodePassesBaseFilters(node) && searchTextById.get(node.id)?.includes(normalized))
+        .sort(sortByUsefulness)[0] || null;
+    }
+    function seedRootsFromSearch() {
+      const cacheKey = seedRootsCacheKey();
+      if (cachedSeedRootsForSearch.key === cacheKey) return cachedSeedRootsForSearch.roots;
+      const terms = seedTermsFromSearch();
+      if (terms.length < 2) {
+        cachedSeedRootsForSearch = { key: cacheKey, roots: [] };
+        return cachedSeedRootsForSearch.roots;
+      }
+      const roots = [];
+      const seen = new Set();
+      terms.forEach(term => {
+        const stock = bestStockForSeed(term);
+        if (stock && !seen.has(stock.id)) {
+          seen.add(stock.id);
+          roots.push(stock.id);
+        }
+      });
+      cachedSeedRootsForSearch = { key: cacheKey, roots: roots.slice(0, 8) };
+      return cachedSeedRootsForSearch.roots;
+    }
+    function matchingNodes() {
+      const query = searchInput.value.trim().toLowerCase();
+      const seedRoots = seedRootsFromSearch();
+      const base = seedRoots.length
+        ? seedRoots.map(id => nodeById.get(id)).filter(Boolean)
+        : query
+          ? GRAPH_DATA.nodes.filter(node => nodePassesBaseFilters(node) && query.split(/\s+/).every(term => searchTextById.get(node.id)?.includes(term)))
+          : stockNodes.filter(nodePassesBaseFilters);
+      return base.sort(sortByUsefulness).slice(0, 80);
+    }
+    function rootsFromSearch(matches) {
+      const manualRoots = manualRootsFromSelection();
+      if (manualRoots.length) return manualRoots;
+      const seedRoots = seedRootsFromSearch();
+      if (seedRoots.length) return seedRoots;
+      if (selectedId && nodeById.has(selectedId)) return [selectedId];
+      if (searchInput.value.trim()) return matches.slice(0, 10).map(node => node.id);
+      return [];
+    }
+    function defaultVisibleNodeIds() {
+      const limit = Number(maxVisibleSelect.value || 250);
+      const ids = new Set();
+      stockNodes.filter(nodePassesBaseFilters).sort((a, b) => stockRank(b) - stockRank(a)).slice(0, Math.min(limit, 160)).forEach(node => {
+        ids.add(node.id);
+        (neighbors.get(node.id) || []).forEach(item => {
+          if (IMPORTANT_OVERVIEW_EDGES.has(item.edge.type) && edgePassesFilters(item.edge)) ids.add(item.id);
+        });
+      });
+      return ids;
+    }
+    function visibleNodeIds(matches) {
+      if (focusModeSelect.value === 'overview') return defaultVisibleNodeIds();
+      const roots = rootsFromSearch(matches);
+      if (!roots.length) return defaultVisibleNodeIds();
+      const depth = Number(neighborDepthSelect.value || 1);
+      const visible = new Set(roots);
+      let frontier = [...roots];
+      for (let step = 0; step < depth; step++) {
+        const next = [];
+        frontier.forEach(id => {
+          (neighbors.get(id) || []).forEach(item => {
+            if (!edgePassesFilters(item.edge) || visible.has(item.id)) return;
+            visible.add(item.id);
+            next.push(item.id);
+          });
+        });
+        frontier = next;
+      }
+      return visible;
+    }
+    function trimVisibleNodes(ids) {
+      const limit = Number(maxVisibleSelect.value || 250);
+      const nodes = [...ids].map(id => nodeById.get(id)).filter(Boolean);
+      if (nodes.length <= limit) return new Set(nodes.map(node => node.id));
+      const roots = new Set(rootsFromSearch(matchingNodes()));
+      const sorted = nodes.sort((a, b) => (roots.has(b.id) - roots.has(a.id)) || sortByUsefulness(a, b));
+      return new Set(sorted.slice(0, limit).map(node => node.id));
+    }
+    function relationGroupsForNode(id) {
+      const groups = new Map();
+      (neighbors.get(id) || []).filter(item => edgePassesFilters(item.edge)).forEach(item => {
+        const type = item.edge.type;
+        if (!groups.has(type)) groups.set(type, []);
+        groups.get(type).push(item);
+      });
+      return [...groups.entries()].sort((a, b) => edgeImportance(a[0]) - edgeImportance(b[0]));
+    }
+    function directEdgesBetweenRoots(roots) {
+      const rootSet = new Set(roots);
+      return GRAPH_DATA.edges
+        .filter(edge => rootSet.has(edge.source) && rootSet.has(edge.target) && edgePassesFilters(edge))
+        .sort((a, b) => Number(b.metadata?.score || 0) - Number(a.metadata?.score || 0));
+    }
+    function sharedNodesForRoots(roots) {
+      const rootSet = new Set(roots);
+      const shared = new Map();
+      roots.forEach(root => {
+        (neighbors.get(root) || []).filter(item => edgePassesFilters(item.edge)).forEach(item => {
+          if (rootSet.has(item.id)) return;
+          const payload = shared.get(item.id) || { roots: new Set(), edgeTypes: new Set(), score: 0 };
+          payload.roots.add(root);
+          payload.edgeTypes.add(item.edge.type);
+          payload.score += Number(item.edge.metadata?.score || 0);
+          shared.set(item.id, payload);
+        });
+      });
+      return [...shared.entries()]
+        .filter(([, payload]) => payload.roots.size >= 2)
+        .map(([id, payload]) => ({ id, node: nodeById.get(id), roots: payload.roots, edgeTypes: payload.edgeTypes, score: payload.score }))
+        .filter(item => item.node)
+        .sort((a, b) => b.roots.size - a.roots.size || b.score - a.score || sortByUsefulness(a.node, b.node));
+    }
+    function edgeImportance(type) {
+      const order = ['related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
+      const index = order.indexOf(type);
+      return index === -1 ? 99 : index;
+    }
+    function edgeRenderLimit(rootCount) {
+      const manualLimit = Number(edgeRenderLimitSelect.value || 0);
+      if (edgeRenderLimitSelect.value !== 'auto' && Number.isFinite(manualLimit) && manualLimit > 0) return manualLimit;
+      if (focusModeSelect.value === 'overview') return Math.min(MAX_RENDER_EDGES, MAX_OVERVIEW_RENDER_EDGES);
+      if (rootCount > 1 || focusModeSelect.value === 'peer') return Math.min(MAX_RENDER_EDGES, MAX_PEER_RENDER_EDGES);
+      return Math.min(MAX_RENDER_EDGES, MAX_FOCUS_RENDER_EDGES);
+    }
+    function edgeRenderScore(edge, rootSet) {
+      const source = nodeById.get(edge.source);
+      const target = nodeById.get(edge.target);
+      const touchesRoot = rootSet.has(edge.source) || rootSet.has(edge.target);
+      const connectsRoots = rootSet.has(edge.source) && rootSet.has(edge.target);
+      const touchesStock = source?.type === 'stock' || target?.type === 'stock';
+      const directRelation = edge.type === 'related_stock' || edge.type.endsWith('_peer');
+      return (connectsRoots ? 10000 : 0)
+        + (touchesRoot ? 5200 : 0)
+        + (directRelation ? 900 : 0)
+        + Math.max(0, 100 - edgeImportance(edge.type)) * 70
+        + edgeStrength(edge) * 1000
+        + (touchesStock ? 120 : 0)
+        + Number(edge.metadata?.score || 0);
+    }
+    function prioritizedVisibleEdges(visibleIds, rootSet) {
+      const limit = edgeRenderLimit(rootSet.size);
+      const candidates = GRAPH_DATA.edges.filter(edge => edgePassesFilters(edge) && visibleIds.has(edge.source) && visibleIds.has(edge.target));
+      const ranked = candidates
+        .map((edge, index) => ({ edge, index, score: edgeRenderScore(edge, rootSet) }))
+        .sort((a, b) => b.score - a.score || a.index - b.index);
+      return {
+        edges: ranked.slice(0, limit).map(item => item.edge),
+        candidateCount: candidates.length,
+        limit
+      };
+    }
+    function nodeRadius(node) {
+      return nodeVisualRadius(node);
+    }
+    function screenToGraphPoint(event) {
+      const rect = svg.getBoundingClientRect();
+      return {
+        x: (event.clientX - rect.left - offsetX) / scale,
+        y: (event.clientY - rect.top - offsetY) / scale
+      };
+    }
+    function scheduleRender() {
+      if (renderPending) return;
+      renderPending = true;
+      requestAnimationFrame(() => {
+        renderPending = false;
+        render();
+      });
+    }
+    function requestSearchRender() {
+      didInitialFit = false;
+      window.clearTimeout(searchRenderTimer);
+      searchRenderTimer = window.setTimeout(() => {
+        render();
+      }, SEARCH_RENDER_DELAY_MS);
+    }
+    function fitToNodes(nodes) {
+      if (!nodes.length) return;
+      const bounds = svg.getBoundingClientRect();
+      const width = Math.max(bounds.width, 320);
+      const height = Math.max(bounds.height, 320);
+      const xs = nodes.map(node => node.x).filter(Number.isFinite);
+      const ys = nodes.map(node => node.y).filter(Number.isFinite);
+      if (!xs.length || !ys.length) return;
+      const minX = Math.min(...xs), maxX = Math.max(...xs);
+      const minY = Math.min(...ys), maxY = Math.max(...ys);
+      const graphWidth = Math.max(maxX - minX, 80);
+      const graphHeight = Math.max(maxY - minY, 80);
+      const nextScale = Math.max(MIN_ZOOM, Math.min(FIT_MAX_ZOOM, Math.min((width - 80) / graphWidth, (height - 80) / graphHeight)));
+      scale = nextScale;
+      offsetX = width / 2 - ((minX + maxX) / 2) * scale;
+      offsetY = height / 2 - ((minY + maxY) / 2) * scale;
+    }
+    function zoomAtClientPoint(clientX, clientY, factor) {
+      const rect = svg.getBoundingClientRect();
+      const graphX = (clientX - rect.left - offsetX) / scale;
+      const graphY = (clientY - rect.top - offsetY) / scale;
+      const nextScale = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, scale * factor));
+      offsetX = clientX - rect.left - graphX * nextScale;
+      offsetY = clientY - rect.top - graphY * nextScale;
+      scale = nextScale;
+    }
+    function zoomAtCenter(factor) {
+      const rect = svg.getBoundingClientRect();
+      zoomAtClientPoint(rect.left + rect.width / 2, rect.top + rect.height / 2, factor);
+    }
+
+    function renderResults(matches) {
+      const query = searchInput.value.trim();
+      searchHint.textContent = query ? `${matches.length.toLocaleString()}개 결과` : '검색 전에는 관찰 점수가 높은 종목을 우선 표시합니다.';
+      resultList.innerHTML = matches.slice(0, 60).map(node => {
+        const m = node.metadata || {};
+        const meta = [LABELS[node.type] || node.type, m.code, m.market, m.investment_grade, m.business_group, m.business_activity, m.business_activity_family, m.external_industry || m.bucket || m.category].filter(Boolean).join(' · ');
+        const active = selectedIds.has(node.id) || node.id === selectedId;
+        return `<button class="result-item${active ? ' active' : ''}" data-node-id="${escapeHtml(node.id)}" aria-pressed="${active ? 'true' : 'false'}" type="button"><span class="result-title">${escapeHtml(node.label)}</span><span class="result-meta">${escapeHtml(meta)}</span></button>`;
+      }).join('') || '<div class="summary">검색 결과 없음</div>';
+      resultList.querySelectorAll('[data-node-id]').forEach(button => button.addEventListener('click', event => selectNode(button.dataset.nodeId, { multi: event.ctrlKey || event.metaKey })));
+    }
+    function renderRelationSummary() {
+      const roots = rootsFromSearch(matchingNodes());
+      if (roots.length > 1) {
+        const direct = directEdgesBetweenRoots(roots);
+        const shared = sharedNodesForRoots(roots);
+        const directHtml = direct.slice(0, 4).map(edge => {
+          const left = nodeById.get(edge.source), right = nodeById.get(edge.target);
+          const score = edge.metadata?.score ? ` · ${edge.metadata.score}` : '';
+          return `<div class="result-meta">${escapeHtml(left?.label || edge.source)} ↔ ${escapeHtml(right?.label || edge.target)} · ${escapeHtml(EDGE_LABELS[edge.type] || edge.type)}${escapeHtml(score)}</div>`;
+        }).join('');
+        const sharedHtml = shared.slice(0, 8).map(item => {
+          const edgeLabels = [...item.edgeTypes].slice(0, 3).map(type => EDGE_LABELS[type] || type).join(', ');
+          return `<div class="relation-group"><div class="relation-head"><span>${escapeHtml(item.node.label)}</span><span class="relation-count">${item.roots.size}</span></div><div class="result-meta">${escapeHtml(LABELS[item.node.type] || item.node.type)} · ${escapeHtml(edgeLabels)}</div></div>`;
+        }).join('');
+        relationSummary.innerHTML = `<div class="relation-group"><div class="relation-head"><span>직접 연결</span><span class="relation-count">${direct.length}</span></div>${directHtml || '<div class="result-meta">기준 종목끼리 직접 엣지 없음</div>'}</div><div class="relation-group"><div class="relation-head"><span>공통 연결</span><span class="relation-count">${shared.length}</span></div>${sharedHtml || '<div class="result-meta">공통 1차 관계 없음</div>'}</div>`;
+        return;
+      }
+      if (!selectedId || !nodeById.has(selectedId)) {
+        relationSummary.innerHTML = '<div class="summary">종목을 선택하면 기업집단, 참여업종, 사업군, 테마 관계가 그룹으로 정리됩니다.</div>';
+        return;
+      }
+      relationSummary.innerHTML = relationGroupsForNode(selectedId).slice(0, 8).map(([type, items]) => {
+        const examples = items.slice(0, 4).map(item => nodeById.get(item.id)?.label).filter(Boolean).join(', ');
+        return `<div class="relation-group"><div class="relation-head"><span>${escapeHtml(EDGE_LABELS[type] || type)}</span><span class="relation-count">${items.length.toLocaleString()}</span></div><div class="result-meta">${escapeHtml(examples || '관련 노드 없음')}</div></div>`;
+      }).join('');
+    }
+    function relatedStockItemsForNode(id) {
+      return (neighbors.get(id) || [])
+        .filter(item => item.edge.type === 'related_stock' && nodeById.get(item.id)?.type === 'stock')
+        .sort((a, b) => Number(b.edge.metadata?.score || 0) - Number(a.edge.metadata?.score || 0));
+    }
+    function relatedReasonText(edge) {
+      const meta = edge.metadata || {};
+      return [meta.confidence ? `${meta.confidence}` : '', meta.reasons || '공유 관계'].filter(Boolean).join(' · ');
+    }
+    function renderMultiRootDetail(roots) {
+      const rootNodes = roots.map(id => nodeById.get(id)).filter(Boolean);
+      const direct = directEdgesBetweenRoots(roots);
+      const shared = sharedNodesForRoots(roots);
+      const rootButtons = rootNodes.map(node => `<button class="result-item" data-node-id="${escapeHtml(node.id)}" type="button"><span class="result-title">${escapeHtml(node.label)}</span><span class="result-meta">${escapeHtml(node.metadata?.code || '')} · ${escapeHtml(node.metadata?.market || '')}</span></button>`).join('');
+      const directHtml = direct.slice(0, 12).map(edge => {
+        const left = nodeById.get(edge.source), right = nodeById.get(edge.target);
+        return `<button class="result-item" data-node-id="${escapeHtml(edge.target)}" type="button"><span class="result-title">${escapeHtml(left?.label || edge.source)} ↔ ${escapeHtml(right?.label || edge.target)} <span class="relation-count">${escapeHtml(edge.metadata?.score || '')}</span></span><span class="result-meta">${escapeHtml(EDGE_LABELS[edge.type] || edge.type)} · ${escapeHtml(relatedReasonText(edge))}</span></button>`;
+      }).join('');
+      const sharedHtml = shared.slice(0, 20).map(item => {
+        const edgeLabels = [...item.edgeTypes].slice(0, 4).map(type => EDGE_LABELS[type] || type).join(', ');
+        return `<button class="result-item" data-node-id="${escapeHtml(item.id)}" type="button"><span class="result-title">${escapeHtml(item.node.label)} <span class="relation-count">${item.roots.size}</span></span><span class="result-meta">${escapeHtml(LABELS[item.node.type] || item.node.type)} · ${escapeHtml(edgeLabels)}</span></button>`;
+      }).join('');
+      detail.innerHTML = `<div class="detail-title">공동 관계: ${escapeHtml(rootNodes.map(node => node.label).join(' + '))}</div><div class="detail-type">기준 종목 ${rootNodes.length}개 · ${neighborDepthSelect.value}단계 탐색</div><h2>기준 종목</h2><div class="relation-list">${rootButtons}</div><h2>직접 연결</h2><div class="relation-list">${directHtml || '<div class="summary">기준 종목끼리 직접 연결된 엣지가 없습니다.</div>'}</div><h2>공통 연결</h2><div class="relation-list">${sharedHtml || '<div class="summary">현재 필터에서 공통 1차 연결이 없습니다.</div>'}</div>`;
+      detail.querySelectorAll('[data-node-id]').forEach(button => button.addEventListener('click', () => selectNode(button.dataset.nodeId)));
+    }
+    function renderDetail(node) {
+      const m = node.metadata || {};
+      const chips = [m.market, m.industry, m.business_group, m.business_activity, m.business_activity_family, m.fsc_industry_name, m.external_industry, m.themes, m.investment_grade, m.bucket, m.category].filter(Boolean).slice(0, 10).map(value => `<span class="chip">${escapeHtml(value)}</span>`).join('');
+      const rows = Object.entries(m).slice(0, 36).map(([key, value]) => {
+        const safe = String(value ?? '');
+        if (key === 'url' && safe.startsWith('http')) return `<div>${escapeHtml(key)}</div><div><a href="${escapeHtml(safe)}" target="_blank" rel="noreferrer">open</a></div>`;
+        return `<div>${escapeHtml(key)}</div><div>${escapeHtml(safe)}</div>`;
+      }).join('');
+      const groups = relationGroupsForNode(node.id).slice(0, 10).map(([type, items]) => {
+        const buttons = items.slice(0, 12).map(item => {
+          const target = nodeById.get(item.id);
+          if (!target) return '';
+          return `<button class="result-item" data-node-id="${escapeHtml(target.id)}" type="button"><span class="result-title">${escapeHtml(target.label)}</span><span class="result-meta">${escapeHtml(LABELS[target.type] || target.type)} · ${escapeHtml(item.edge.metadata?.shared_group || item.edge.metadata?.shared_activity || item.edge.metadata?.shared_family || item.edge.metadata?.shared_theme || item.edge.metadata?.shared_industry || '')}</span></button>`;
+        }).join('');
+        return `<div class="relation-group"><div class="relation-head"><span>${escapeHtml(EDGE_LABELS[type] || type)}</span><span class="relation-count">${items.length.toLocaleString()}</span></div><div class="relation-list">${buttons}</div></div>`;
+      }).join('');
+      const relatedStocks = node.type === 'stock'
+        ? relatedStockItemsForNode(node.id).slice(0, 30).map(item => {
+          const target = nodeById.get(item.id);
+          const score = Number(item.edge.metadata?.score || 0);
+          if (!target) return '';
+          return `<button class="result-item" data-node-id="${escapeHtml(target.id)}" type="button"><span class="result-title">${escapeHtml(target.label)} <span class="relation-count">${score}</span></span><span class="result-meta">${escapeHtml(relatedReasonText(item.edge))}</span></button>`;
+        }).join('')
+        : '';
+      detail.innerHTML = `<div class="detail-title">${escapeHtml(node.label)}</div><div class="detail-type">${escapeHtml(LABELS[node.type] || node.type)} · ${escapeHtml(node.id)}</div><div class="chips">${chips}</div><div class="kv">${rows || '<div>metadata</div><div>없음</div>'}</div><h2>Related Stocks Top 30</h2><div class="relation-list">${relatedStocks || '<div class="summary">현재 데이터에서 직접 점수화된 관련 종목이 없습니다.</div>'}</div><h2>Relations</h2>${groups || '<div class="summary">현재 필터에서 보이는 관계가 없습니다.</div>'}`;
+      detail.querySelectorAll('[data-node-id]').forEach(button => button.addEventListener('click', () => selectNode(button.dataset.nodeId)));
+    }
+    function resetLayoutForNewRoots(nodes, roots) {
+      const rootKey = roots.join('|');
+      if (rootKey === lastRootLayoutKey) return;
+      lastRootLayoutKey = rootKey;
+      const rootSet = new Set(roots);
+      nodes.forEach(node => {
+        if (pinnedPositions.has(node.id)) return;
+        delete node.x;
+        delete node.y;
+        if (rootSet.has(node.id)) node._placed = false;
+      });
+    }
+    function placeRootNodes(roots, cx, cy) {
+      const count = roots.length;
+      if (!count) return;
+      const ringRadius = count === 1 ? 0 : clamp(34 + count * 12, 52, 104);
+      roots.forEach((id, index) => {
+        const node = nodeById.get(id);
+        if (!node || pinnedPositions.has(id)) return;
+        const angle = count === 1 ? 0 : (index / count) * Math.PI * 2 - Math.PI / 2;
+        node.x = cx + Math.cos(angle) * ringRadius;
+        node.y = cy + Math.sin(angle) * ringRadius;
+        node._placed = true;
+      });
+    }
+    function layoutVisible(nodes, edges, roots) {
+      const bounds = svg.getBoundingClientRect();
+      const width = Math.max(bounds.width, 900);
+      const height = Math.max(bounds.height, 650);
+      const cx = width / 2;
+      const cy = height / 2;
+      const byType = {};
+      nodes.forEach(node => (byType[node.type] ||= []).push(node));
+      placeRootNodes(roots, cx, cy);
+      const radiusByType = { stock: 250, business_group: 105, business_activity: 155, business_activity_family: 185, theme: 170, external_industry: 195, investment_grade: 125, market_cap: 130, financial_metric: 225, valuation: 235, dividend: 250, disclosure: 310, dart_company: 290, etf: 255, index: 175, security_group: 130 };
+      Object.entries(byType).forEach(([type, items]) => {
+        items.sort(sortByUsefulness);
+        const radius = radiusByType[type] || 260;
+        items.forEach((node, index) => {
+          const pinned = pinnedPositions.get(node.id);
+          if (pinned) {
+            node.x = pinned.x;
+            node.y = pinned.y;
+            return;
+          }
+          if (node._placed) return;
+          if (Number.isFinite(node.x) && Number.isFinite(node.y)) return;
+          const angle = (index / Math.max(items.length, 1)) * Math.PI * 2 + (type.length * 0.19);
+          node.x = cx + Math.cos(angle) * radius;
+          node.y = cy + Math.sin(angle) * radius;
+        });
+      });
+      relaxVisibleLayout(nodes, edges, roots, cx, cy);
+      nodes.forEach(node => { delete node._placed; });
+    }
+    function relaxVisibleLayout(nodes, edges, roots, cx, cy) {
+      if (!nodes.length) return;
+      const ids = new Set(nodes.map(node => node.id));
+      const rootSet = new Set(roots);
+      const movable = node => !pinnedPositions.has(node.id) && !rootSet.has(node.id);
+      const iterations = nodes.length > 650 ? 5 : nodes.length > 300 ? 9 : 16;
+      const edgeSubset = edges.slice(0, Math.min(edges.length, 1800));
+      for (let step = 0; step < iterations; step++) {
+        edgeSubset.forEach(edge => {
+          const source = nodeById.get(edge.source);
+          const target = nodeById.get(edge.target);
+          if (!source || !target || !ids.has(source.id) || !ids.has(target.id)) return;
+          const dx = target.x - source.x;
+          const dy = target.y - source.y;
+          const distance = Math.max(1, Math.hypot(dx, dy));
+          const targetDistance = edgeDistance(edge);
+          const strength = edgeStrength(edge);
+          const force = Math.max(-10, Math.min(10, (distance - targetDistance) * (0.012 + strength * 0.018)));
+          const mx = (dx / distance) * force;
+          const my = (dy / distance) * force;
+          if (movable(source)) { source.x += mx; source.y += my; }
+          if (movable(target)) { target.x -= mx; target.y -= my; }
+        });
+        const sampleStep = nodes.length > 420 ? 3 : 1;
+        for (let i = 0; i < nodes.length; i += sampleStep) {
+          const a = nodes[i];
+          for (let j = i + sampleStep; j < nodes.length; j += sampleStep) {
+            const b = nodes[j];
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const distance = Math.max(1, Math.hypot(dx, dy));
+            const minDistance = nodeRadius(a) + nodeRadius(b) + 15;
+            if (distance >= minDistance) continue;
+            const push = (minDistance - distance) * 0.04;
+            const mx = (dx / distance) * push;
+            const my = (dy / distance) * push;
+            if (movable(a)) { a.x -= mx; a.y -= my; }
+            if (movable(b)) { b.x += mx; b.y += my; }
+          }
+        }
+        nodes.forEach(node => {
+          if (!movable(node)) return;
+          node.x += (cx - node.x) * 0.003;
+          node.y += (cy - node.y) * 0.003;
+        });
+      }
+    }
+    function transform(x, y) { return [x * scale + offsetX, y * scale + offsetY]; }
+    function metricDepth(value, base, multiplier, offset) {
+      const n = Number(value || 0);
+      if (!Number.isFinite(n) || n <= 0) return -110;
+      return clamp(Math.log10(n / base + 1) * multiplier + offset, -120, 150);
+    }
+    function relationshipDepth(node, rootSet) {
+      if (rootSet.has(node.id)) return 155;
+      const items = neighbors.get(node.id) || [];
+      const rootEdges = rootSet.size ? items.filter(item => rootSet.has(item.id)) : [];
+      const basis = rootEdges.length ? rootEdges : items;
+      const maxStrength = basis.reduce((max, item) => Math.max(max, edgeStrength(item.edge)), 0);
+      const degreeLift = Math.log10(Number(degreeById.get(node.id) || 0) + 1) * 14;
+      return clamp(maxStrength * 190 - 92 + degreeLift, -115, 150);
+    }
+    function nodeDepth(node, rootSet) {
+      if (rootSet.has(node.id)) return 140;
+      switch (zAxisSelect.value) {
+        case 'market_cap':
+          return node.type === 'stock' ? metricDepth(node.metadata?.market_cap, 100_000_000_000, 55, -70) : relationshipDepth(node, rootSet) * 0.45;
+        case 'traded_value':
+          return node.type === 'stock' ? metricDepth(node.metadata?.traded_value, 1_000_000_000, 45, -75) : relationshipDepth(node, rootSet) * 0.45;
+        case 'investment_score':
+          return node.type === 'stock' ? clamp(Number(node.metadata?.investment_score || 0) * 2.2 - 100, -110, 140) : relationshipDepth(node, rootSet) * 0.38;
+        case 'relationship_strength':
+        default:
+          return relationshipDepth(node, rootSet);
+      }
+    }
+    function projectNode3d(node, rootSet, viewport) {
+      const x = node.x - viewport.cx;
+      const y = node.y - viewport.cy;
+      const z = nodeDepth(node, rootSet);
+      const yawX = x * viewport.cosYaw - z * viewport.sinYaw;
+      const yawZ = x * viewport.sinYaw + z * viewport.cosYaw;
+      const pitchY = y * viewport.cosPitch - yawZ * viewport.sinPitch;
+      const pitchZ = y * viewport.sinPitch + yawZ * viewport.cosPitch;
+      const perspective = viewport.perspective / Math.max(180, viewport.perspective - pitchZ);
+      return {
+        x: (viewport.cx + yawX * perspective) * scale + offsetX,
+        y: (viewport.cy + pitchY * perspective) * scale + offsetY,
+        z: pitchZ,
+        depthScale: clamp(perspective, 0.56, 1.75)
+      };
+    }
+    function buildProjectionMap(nodes, rootSet) {
+      if (!is3dMode) {
+        return new Map(nodes.map(node => {
+          const [x, y] = transform(node.x, node.y);
+          return [node.id, { x, y, z: 0, depthScale: 1 }];
+        }));
+      }
+      const bounds = svg.getBoundingClientRect();
+      const viewport = {
+        cx: Math.max(bounds.width, 900) / 2,
+        cy: Math.max(bounds.height, 650) / 2,
+        sinYaw: Math.sin(camera3d.yaw),
+        cosYaw: Math.cos(camera3d.yaw),
+        sinPitch: Math.sin(camera3d.pitch),
+        cosPitch: Math.cos(camera3d.pitch),
+        perspective: camera3d.perspective
+      };
+      return new Map(nodes.map(node => [node.id, projectNode3d(node, rootSet, viewport)]));
+    }
+    function projectionOpacity(projection) {
+      if (!is3dMode) return '1';
+      return String(clamp(0.36 + projection.depthScale * 0.42, 0.34, 1));
+    }
+    function projectedRadius(node, projection) {
+      return nodeRadius(node) * (is3dMode ? clamp(projection.depthScale, 0.68, 1.45) : 1);
+    }
+    function edgeProjectionDepth(edge, projectionMap) {
+      const source = projectionMap.get(edge.source);
+      const target = projectionMap.get(edge.target);
+      return ((source?.z || 0) + (target?.z || 0)) / 2;
+    }
+    function updateMode3dButton() {
+      const mode3dButton = document.getElementById('mode3dButton');
+      mode3dButton.setAttribute('aria-pressed', String(is3dMode));
+      mode3dButton.title = is3dMode ? '2D 보기로 전환' : '3D 보기로 전환';
+      graphEl.classList.toggle('graph-3d', is3dMode);
+    }
+    function render() {
+      const matches = matchingNodes();
+      renderResults(matches);
+      const roots = rootsFromSearch(matches);
+      const rootSet = new Set(roots);
+      const visibleIds = trimVisibleNodes(visibleNodeIds(matches));
+      const visibleNodes = [...visibleIds].map(id => nodeById.get(id)).filter(Boolean);
+      const edgeSelection = prioritizedVisibleEdges(visibleIds, rootSet);
+      const visibleEdges = edgeSelection.edges;
+      resetLayoutForNewRoots(visibleNodes, roots);
+      layoutVisible(visibleNodes, visibleEdges, roots);
+      lastVisibleNodes = visibleNodes;
+      if (!didInitialFit) {
+        fitToNodes(visibleNodes);
+        didInitialFit = true;
+      }
+      svg.replaceChildren();
+      const edgeGroup = document.createElementNS(SVG_NS, 'g');
+      const nodeGroup = document.createElementNS(SVG_NS, 'g');
+      const labelGroup = document.createElementNS(SVG_NS, 'g');
+      svg.append(edgeGroup, nodeGroup, labelGroup);
+      const projectionMap = buildProjectionMap(visibleNodes, rootSet);
+      const edgesForPaint = is3dMode
+        ? [...visibleEdges].sort((a, b) => edgeProjectionDepth(a, projectionMap) - edgeProjectionDepth(b, projectionMap))
+        : visibleEdges;
+      edgesForPaint.forEach(edge => {
+        const s = nodeById.get(edge.source), t = nodeById.get(edge.target);
+        const sp = projectionMap.get(edge.source), tp = projectionMap.get(edge.target);
+        if (!s || !t || !sp || !tp) return;
+        const line = document.createElementNS(SVG_NS, 'line');
+        line.setAttribute('class', `edge${PEER_EDGE_TYPES.has(edge.type) ? ' peer' : ''}${rootSet.has(edge.source) || rootSet.has(edge.target) ? ' focus' : ''}`);
+        line.setAttribute('data-strength', edgeStrength(edge).toFixed(2));
+        line.setAttribute('data-depth', edgeProjectionDepth(edge, projectionMap).toFixed(1));
+        line.setAttribute('x1', sp.x); line.setAttribute('y1', sp.y); line.setAttribute('x2', tp.x); line.setAttribute('y2', tp.y);
+        line.style.strokeWidth = `${edgeStrokeWidth(edge)}px`;
+        line.style.opacity = edgeOpacity(edge);
+        if (is3dMode) line.style.opacity = String(Number(edgeOpacity(edge)) * Math.min(1, (sp.depthScale + tp.depthScale) / 2));
+        edgeGroup.appendChild(line);
+      });
+      const nodesForPaint = is3dMode
+        ? [...visibleNodes].sort((a, b) => (projectionMap.get(a.id)?.z || 0) - (projectionMap.get(b.id)?.z || 0))
+        : visibleNodes;
+      nodesForPaint.forEach(node => {
+        const projection = projectionMap.get(node.id);
+        if (!projection) return;
+        const circle = document.createElementNS(SVG_NS, 'circle');
+        const highlighted = node.id === selectedId || rootSet.has(node.id);
+        const r = projectedRadius(node, projection);
+        circle.setAttribute('class', `node${highlighted ? ' highlight' : ''}${pinnedPositions.has(node.id) ? ' pinned' : ''}`);
+        circle.setAttribute('cx', projection.x); circle.setAttribute('cy', projection.y); circle.setAttribute('r', r);
+        circle.setAttribute('data-depth', projection.z.toFixed(1));
+        circle.setAttribute('fill', COLORS[node.type] || '#667085');
+        circle.style.opacity = projectionOpacity(projection);
+        circle.setAttribute('tabindex', '0');
+        circle.setAttribute('aria-label', `${node.label} ${LABELS[node.type] || node.type}`);
+        const title = document.createElementNS(SVG_NS, 'title');
+        title.textContent = `${node.label} · ${LABELS[node.type] || node.type}`;
+        circle.appendChild(title);
+        circle.addEventListener('pointerdown', event => startNodeDrag(event, node));
+        circle.addEventListener('click', () => {
+          if (suppressNodeClick === node.id) {
+            suppressNodeClick = null;
+            return;
+          }
+          selectNode(node.id);
+        });
+        circle.addEventListener('dblclick', event => {
+          event.stopPropagation();
+          selectedId = node.id;
+          selectedIds.clear();
+          selectedIds.add(node.id);
+          if (Number(neighborDepthSelect.value) < 2) neighborDepthSelect.value = '2';
+          focusModeSelect.value = 'peer';
+          didInitialFit = false;
+          render();
+        });
+        circle.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectNode(node.id);
+          }
+        });
+        nodeGroup.appendChild(circle);
+        if (showLabels || highlighted || node.type !== 'stock' || scale >= LABEL_ZOOM_THRESHOLD) {
+          const label = document.createElementNS(SVG_NS, 'text');
+          label.setAttribute('class', 'label');
+          label.setAttribute('x', projection.x + 8); label.setAttribute('y', projection.y + 4);
+          label.style.opacity = projectionOpacity(projection);
+          label.textContent = node.label;
+          labelGroup.appendChild(label);
+        }
+      });
+      const edgeSummary = edgeSelection.candidateCount > visibleEdges.length
+        ? `${visibleEdges.length.toLocaleString()} / 후보 ${edgeSelection.candidateCount.toLocaleString()} · 상한 ${edgeSelection.limit.toLocaleString()}`
+        : visibleEdges.length.toLocaleString();
+      const zAxisSummary = is3dMode ? ` · Z축 ${Z_AXIS_LABELS[zAxisSelect.value]}` : '';
+      summary.textContent = `기준일 ${GRAPH_DATA.meta.source_date || ''} · ${is3dMode ? '3D' : '2D'}${zAxisSummary} · 표시 ${visibleNodes.length.toLocaleString()} / 전체 ${GRAPH_DATA.meta.node_count?.toLocaleString?.() || GRAPH_DATA.nodes.length.toLocaleString()} · 렌더 엣지 ${edgeSummary} / 전체 ${GRAPH_DATA.meta.edge_count?.toLocaleString?.() || GRAPH_DATA.edges.length.toLocaleString()}`;
+      zoomReadout.textContent = `${Math.round(scale * 100)}%`;
+      renderRelationSummary();
+      if (roots.length > 1) renderMultiRootDetail(roots);
+      else if (roots.length === 1 && nodeById.has(roots[0])) renderDetail(nodeById.get(roots[0]));
+      else if (selectedId && nodeById.has(selectedId)) renderDetail(nodeById.get(selectedId));
+    }
+    function selectNode(id, options = {}) {
+      if (!nodeById.has(id)) return;
+      const multi = Boolean(options.multi);
+      if (multi) {
+        if (selectedIds.has(id) && selectedIds.size > 1) selectedIds.delete(id);
+        else selectedIds.add(id);
+        if (!selectedIds.size) selectedIds.add(id);
+        selectedId = selectedIds.has(id) ? id : [...selectedIds][selectedIds.size - 1] || id;
+        if (Number(neighborDepthSelect.value) < 2) neighborDepthSelect.value = '2';
+        focusModeSelect.value = 'peer';
+      } else {
+        selectedIds.clear();
+        selectedIds.add(id);
+        selectedId = id;
+      }
+      if (focusModeSelect.value === 'overview') focusModeSelect.value = 'focus';
+      didInitialFit = false;
+      render();
+    }
+    function startNodeDrag(event, node) {
+      if (event.button !== undefined && event.button !== 0) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const point = screenToGraphPoint(event);
+      selectedId = node.id;
+      selectedIds.clear();
+      selectedIds.add(node.id);
+      nodeDrag = {
+        id: node.id,
+        dx: node.x - point.x,
+        dy: node.y - point.y,
+        moved: false
+      };
+      graphEl.classList.add('node-dragging');
+    }
+    function edgeLegendClass(type) {
+      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' ? ' focus' : ''}`;
+    }
+    function syncFilterControls() {
+      typeFilters.querySelectorAll('[data-type]').forEach(input => { input.checked = enabledTypes.has(input.dataset.type); });
+      edgeTypeFilters.querySelectorAll('[data-edge]').forEach(input => { input.checked = enabledEdges.has(input.dataset.edge); });
+      legend.querySelectorAll('[data-legend-type]').forEach(button => {
+        button.setAttribute('aria-pressed', enabledTypes.has(button.dataset.legendType) ? 'true' : 'false');
+      });
+      legend.querySelectorAll('[data-legend-edge]').forEach(button => {
+        button.setAttribute('aria-pressed', enabledEdges.has(button.dataset.legendEdge) ? 'true' : 'false');
+      });
+    }
+    function toggleNodeType(type) {
+      enabledTypes.has(type) ? enabledTypes.delete(type) : enabledTypes.add(type);
+      didInitialFit = false;
+      syncFilterControls();
+      render();
+    }
+    function toggleEdgeType(type) {
+      enabledEdges.has(type) ? enabledEdges.delete(type) : enabledEdges.add(type);
+      didInitialFit = false;
+      syncFilterControls();
+      render();
+    }
+    function createLegendSection(title) {
+      const section = document.createElement('div');
+      section.className = 'legend-section';
+      section.innerHTML = `<div class="legend-title">${escapeHtml(title)}</div><div class="legend-list"></div>`;
+      legend.appendChild(section);
+      return section.querySelector('.legend-list');
+    }
+    function setupControls() {
+      markets.forEach(market => {
+        const label = document.createElement('label');
+        label.innerHTML = `<input type="checkbox" checked data-market="${escapeHtml(market)}"> ${escapeHtml(market)}`;
+        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledMarkets.add(market) : enabledMarkets.delete(market); render(); });
+        marketFilters.appendChild(label);
+      });
+      const nodeLegend = createLegendSection('노드');
+      Object.entries(COLORS).forEach(([type, color]) => {
+        const label = document.createElement('label');
+        label.innerHTML = `<input type="checkbox" checked data-type="${escapeHtml(type)}"> ${escapeHtml(LABELS[type] || type)}`;
+        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledTypes.add(type) : enabledTypes.delete(type); didInitialFit = false; syncFilterControls(); render(); });
+        typeFilters.appendChild(label);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'legend-item';
+        button.dataset.legendType = type;
+        button.setAttribute('aria-pressed', 'true');
+        button.title = `${LABELS[type] || type} 노드 켜기/끄기`;
+        button.innerHTML = `<span class="swatch" style="background:${color}"></span><span class="legend-label">${escapeHtml(LABELS[type] || type)}</span>`;
+        button.addEventListener('click', () => toggleNodeType(type));
+        nodeLegend.appendChild(button);
+      });
+      const edgeLegend = createLegendSection('엣지');
+      edgeTypes.forEach(type => {
+        const label = document.createElement('label');
+        label.innerHTML = `<input type="checkbox" checked data-edge="${escapeHtml(type)}"> ${escapeHtml(EDGE_LABELS[type] || type)}`;
+        label.querySelector('input').addEventListener('change', event => { event.target.checked ? enabledEdges.add(type) : enabledEdges.delete(type); didInitialFit = false; syncFilterControls(); render(); });
+        edgeTypeFilters.appendChild(label);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'legend-item';
+        button.dataset.legendEdge = type;
+        button.setAttribute('aria-pressed', 'true');
+        button.title = `${EDGE_LABELS[type] || type} 엣지 켜기/끄기`;
+        button.innerHTML = `<span class="${edgeLegendClass(type)}"></span><span class="legend-label">${escapeHtml(EDGE_LABELS[type] || type)}</span>`;
+        button.addEventListener('click', () => toggleEdgeType(type));
+        edgeLegend.appendChild(button);
+      });
+      syncFilterControls();
+      searchInput.addEventListener('input', requestSearchRender);
+      [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('input', () => { didInitialFit = false; render(); }));
+      [focusModeSelect, neighborDepthSelect, maxVisibleSelect, edgeRenderLimitSelect, zAxisSelect, minTradeValueSelect, priceMoveSelect].forEach(el => el.addEventListener('change', () => { didInitialFit = false; render(); }));
+      document.getElementById('labelsButton').addEventListener('click', () => { showLabels = !showLabels; render(); });
+      document.getElementById('fitButton').addEventListener('click', () => { fitToNodes(lastVisibleNodes); render(); });
+      document.getElementById('unpinButton').addEventListener('click', () => { pinnedPositions.clear(); render(); });
+      document.getElementById('zoomInButton').addEventListener('click', () => { zoomAtCenter(1.18); render(); });
+      document.getElementById('zoomOutButton').addEventListener('click', () => { zoomAtCenter(1 / 1.18); render(); });
+      document.getElementById('mode3dButton').addEventListener('click', () => {
+        is3dMode = !is3dMode;
+        updateMode3dButton();
+        render();
+      });
+      document.getElementById('resetButton').addEventListener('click', () => {
+        window.clearTimeout(searchRenderTimer);
+        selectedId = null; selectedIds.clear(); searchInput.value = ''; focusModeSelect.value = 'focus'; neighborDepthSelect.value = '1'; maxVisibleSelect.value = '250'; edgeRenderLimitSelect.value = 'auto'; zAxisSelect.value = 'relationship_strength'; minTradeValueSelect.value = '0'; priceMoveSelect.value = '';
+        enabledTypes.clear(); Object.keys(COLORS).forEach(type => enabledTypes.add(type));
+        enabledEdges.clear(); edgeTypes.forEach(type => enabledEdges.add(type));
+        enabledMarkets.clear(); markets.forEach(market => enabledMarkets.add(market));
+        document.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = true; });
+        syncFilterControls();
+        pinnedPositions.clear();
+        GRAPH_DATA.nodes.forEach(node => { delete node.x; delete node.y; });
+        is3dMode = false; camera3d.yaw = -0.42; camera3d.pitch = 0.52; updateMode3dButton();
+        scale = 1; offsetX = 0; offsetY = 0; didInitialFit = false; render();
+      });
+      svg.addEventListener('wheel', event => {
+        event.preventDefault();
+        zoomAtClientPoint(event.clientX, event.clientY, event.deltaY > 0 ? 0.9 : 1.1);
+        render();
+      }, { passive: false });
+      graphEl.addEventListener('pointerdown', event => {
+        if (event.button !== undefined && event.button !== 0) return;
+        if (event.target.closest && event.target.closest('.toolbar, .view-toggle')) return;
+        panDrag = { x: event.clientX, y: event.clientY, offsetX, offsetY, yaw: camera3d.yaw, pitch: camera3d.pitch, rotate: is3dMode && !event.shiftKey };
+        graphEl.classList.add('dragging');
+      });
+      window.addEventListener('pointermove', event => {
+        if (nodeDrag) {
+          const node = nodeById.get(nodeDrag.id);
+          if (!node) return;
+          const point = screenToGraphPoint(event);
+          const next = { x: point.x + nodeDrag.dx, y: point.y + nodeDrag.dy };
+          node.x = next.x;
+          node.y = next.y;
+          pinnedPositions.set(node.id, next);
+          nodeDrag.moved = true;
+          scheduleRender();
+          return;
+        }
+        if (!panDrag) return;
+        if (panDrag.rotate) {
+          camera3d.yaw = panDrag.yaw + (event.clientX - panDrag.x) * 0.006;
+          camera3d.pitch = clamp(panDrag.pitch + (event.clientY - panDrag.y) * 0.004, -1.1, 1.1);
+          scheduleRender();
+          return;
+        }
+        offsetX = panDrag.offsetX + event.clientX - panDrag.x;
+        offsetY = panDrag.offsetY + event.clientY - panDrag.y;
+        scheduleRender();
+      });
+      window.addEventListener('pointerup', () => {
+        if (nodeDrag) {
+          const draggedId = nodeDrag.id;
+          const didMove = nodeDrag.moved;
+          nodeDrag = null;
+          graphEl.classList.remove('node-dragging');
+          if (didMove) {
+            suppressNodeClick = draggedId;
+            setTimeout(() => { if (suppressNodeClick === draggedId) suppressNodeClick = null; }, 0);
+          }
+          if (!didMove) selectNode(draggedId);
+          else render();
+        }
+        panDrag = null;
+        graphEl.classList.remove('dragging');
+      });
+    }
+    setupControls();
+    render();
+    window.addEventListener('resize', render);
+  </script>
+</body>
+</html>
