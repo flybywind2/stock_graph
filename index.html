@@ -831,18 +831,116 @@
         if (rootSet.has(node.id)) node._placed = false;
       });
     }
+    function stableUnit(value) {
+      let hash = 2166136261;
+      String(value).split('').forEach(char => {
+        hash ^= char.charCodeAt(0);
+        hash = Math.imul(hash, 16777619);
+      });
+      return ((hash >>> 0) % 10000) / 10000;
+    }
     function placeRootNodes(roots, cx, cy) {
       const count = roots.length;
-      if (!count) return;
-      const ringRadius = count === 1 ? 0 : clamp(34 + count * 12, 52, 104);
+      const anchors = new Map();
+      if (!count) return anchors;
+      const ringRadius = count === 1 ? 0 : clamp(138 + count * 18, 164, 260);
       roots.forEach((id, index) => {
         const node = nodeById.get(id);
-        if (!node || pinnedPositions.has(id)) return;
-        const angle = count === 1 ? 0 : (index / count) * Math.PI * 2 - Math.PI / 2;
-        node.x = cx + Math.cos(angle) * ringRadius;
-        node.y = cy + Math.sin(angle) * ringRadius;
+        if (!node) return;
+        const angle = count === 1 ? 0 : count === 2 ? Math.PI + index * Math.PI : (index / count) * Math.PI * 2 - Math.PI / 2;
+        const pinned = pinnedPositions.get(id);
+        const x = pinned?.x ?? cx + Math.cos(angle) * ringRadius;
+        const y = pinned?.y ?? cy + Math.sin(angle) * ringRadius;
+        anchors.set(id, { x, y, angle });
+        if (pinned) return;
+        node.x = x;
+        node.y = y;
         node._placed = true;
       });
+      return anchors;
+    }
+    function addAffinity(affinities, id, root, amount) {
+      if (!amount || amount <= 0) return;
+      const current = affinities.get(id) || new Map();
+      current.set(root, (current.get(root) || 0) + amount);
+      affinities.set(id, current);
+    }
+    function visibleRootAffinities(nodes, edges, roots) {
+      const rootSet = new Set(roots);
+      const ids = new Set(nodes.map(node => node.id));
+      const affinities = new Map();
+      roots.forEach(root => addAffinity(affinities, root, root, 1000));
+      edges.forEach(edge => {
+        const sourceRoot = rootSet.has(edge.source);
+        const targetRoot = rootSet.has(edge.target);
+        const weight = edgeStrength(edge) * 120 + Number(edge.metadata?.score || 0);
+        if (sourceRoot && ids.has(edge.target) && !targetRoot) addAffinity(affinities, edge.target, edge.source, weight);
+        if (targetRoot && ids.has(edge.source) && !sourceRoot) addAffinity(affinities, edge.source, edge.target, weight);
+      });
+      for (let pass = 0; pass < 2; pass++) {
+        const additions = [];
+        edges.forEach(edge => {
+          const sourceAff = affinities.get(edge.source);
+          const targetAff = affinities.get(edge.target);
+          const carry = edgeStrength(edge) * (pass === 0 ? 0.34 : 0.16);
+          if (sourceAff && ids.has(edge.target) && !rootSet.has(edge.target)) {
+            sourceAff.forEach((score, root) => additions.push([edge.target, root, score * carry]));
+          }
+          if (targetAff && ids.has(edge.source) && !rootSet.has(edge.source)) {
+            targetAff.forEach((score, root) => additions.push([edge.source, root, score * carry]));
+          }
+        });
+        additions.forEach(([id, root, amount]) => addAffinity(affinities, id, root, amount));
+      }
+      return affinities;
+    }
+    function multiRootTarget(node, roots, rootAnchors, affinities, cx, cy) {
+      const affinity = affinities.get(node.id);
+      const jitter = (stableUnit(node.id) - 0.5) * Math.PI * 0.62;
+      if (!affinity || !affinity.size) {
+        const angle = stableUnit(`${node.id}:outer`) * Math.PI * 2;
+        const radius = node.type === 'stock' ? 420 : 340;
+        return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius, pull: 0.025 };
+      }
+      const entries = roots
+        .map(root => ({ root, score: Number(affinity.get(root) || 0), anchor: rootAnchors.get(root) }))
+        .filter(item => item.score > 0 && item.anchor)
+        .sort((a, b) => b.score - a.score);
+      if (!entries.length) return null;
+      const total = entries.reduce((sum, item) => sum + item.score, 0);
+      const top = entries[0];
+      const second = entries[1]?.score || 0;
+      const sharedRatio = entries.length > 1 ? clamp(second / Math.max(top.score, 1), 0, 1) : 0;
+      if (sharedRatio >= 0.28) {
+        const weighted = entries.reduce((acc, item) => {
+          acc.x += item.anchor.x * item.score;
+          acc.y += item.anchor.y * item.score;
+          return acc;
+        }, { x: 0, y: 0 });
+        const avgX = weighted.x / total;
+        const avgY = weighted.y / total;
+        const centerPull = 0.72 + sharedRatio * 0.24;
+        const radius = node.type === 'stock' ? 54 : 34;
+        return {
+          x: avgX + (cx - avgX) * centerPull + Math.cos(jitter) * radius * (1 - sharedRatio * 0.45),
+          y: avgY + (cy - avgY) * centerPull + Math.sin(jitter) * radius * (1 - sharedRatio * 0.45),
+          pull: 0.072 + sharedRatio * 0.035
+        };
+      }
+      const anchor = top.anchor;
+      const dx = anchor.x - cx;
+      const dy = anchor.y - cy;
+      const distance = Math.max(1, Math.hypot(dx, dy));
+      const ux = dx / distance;
+      const uy = dy / distance;
+      const side = stableUnit(`${node.id}:side`) > 0.5 ? 1 : -1;
+      const outward = node.type === 'stock' ? 215 : 145;
+      const spread = node.type === 'stock' ? 135 : 82;
+      return {
+        x: anchor.x + ux * outward + (-uy) * spread * Math.sin(jitter) * side,
+        y: anchor.y + uy * outward + ux * spread * Math.sin(jitter) * side,
+        pull: 0.062
+      };
     }
     function layoutVisible(nodes, edges, roots) {
       const bounds = svg.getBoundingClientRect();
@@ -852,7 +950,7 @@
       const cy = height / 2;
       const byType = {};
       nodes.forEach(node => (byType[node.type] ||= []).push(node));
-      placeRootNodes(roots, cx, cy);
+      const rootAnchors = placeRootNodes(roots, cx, cy);
       const radiusByType = { stock: 250, business_group: 105, business_activity: 155, business_activity_family: 185, theme: 170, external_industry: 195, investment_grade: 125, market_cap: 130, financial_metric: 225, valuation: 235, dividend: 250, disclosure: 310, dart_company: 290, etf: 255, index: 175, security_group: 130 };
       Object.entries(byType).forEach(([type, items]) => {
         items.sort(sortByUsefulness);
@@ -871,15 +969,17 @@
           node.y = cy + Math.sin(angle) * radius;
         });
       });
-      relaxVisibleLayout(nodes, edges, roots, cx, cy);
+      relaxVisibleLayout(nodes, edges, roots, cx, cy, rootAnchors);
       nodes.forEach(node => { delete node._placed; });
     }
-    function relaxVisibleLayout(nodes, edges, roots, cx, cy) {
+    function relaxVisibleLayout(nodes, edges, roots, cx, cy, rootAnchors) {
       if (!nodes.length) return;
       const ids = new Set(nodes.map(node => node.id));
       const rootSet = new Set(roots);
       const movable = node => !pinnedPositions.has(node.id) && !rootSet.has(node.id);
-      const iterations = nodes.length > 650 ? 5 : nodes.length > 300 ? 9 : 16;
+      const multiRootMode = roots.length > 1;
+      const affinities = multiRootMode ? visibleRootAffinities(nodes, edges, roots) : null;
+      const iterations = nodes.length > 650 ? 7 : nodes.length > 300 ? 12 : 20;
       const edgeSubset = edges.slice(0, Math.min(edges.length, 1800));
       for (let step = 0; step < iterations; step++) {
         edgeSubset.forEach(edge => {
@@ -916,6 +1016,13 @@
         }
         nodes.forEach(node => {
           if (!movable(node)) return;
+          if (multiRootMode) {
+            const target = multiRootTarget(node, roots, rootAnchors, affinities, cx, cy);
+            if (!target) return;
+            node.x += (target.x - node.x) * target.pull;
+            node.y += (target.y - node.y) * target.pull;
+            return;
+          }
           node.x += (cx - node.x) * 0.003;
           node.y += (cy - node.y) * 0.003;
         });
