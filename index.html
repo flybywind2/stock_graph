@@ -39,6 +39,7 @@
       --dividend: #607d3b;
       --financial: #8a5a44;
       --disclosure-category: #8f6b2c;
+      --counterparty: #b42318;
     }
     * { box-sizing: border-box; }
     body {
@@ -206,7 +207,8 @@
       <h2>View</h2>
       <div class="control-grid">
         <select id="graphPresetSelect" aria-label="graph preset">
-          <option value="semantic" selected>의미 중심</option>
+          <option value="transaction" selected>거래 관계</option>
+          <option value="semantic">의미 중심</option>
           <option value="investment">투자지표 포함</option>
           <option value="all">전체 보기</option>
         </select>
@@ -285,7 +287,7 @@
     </main>
     <section class="detail" id="detail">
       <div class="detail-title">검색하거나 종목을 선택하세요</div>
-      <div class="detail-type">기본 화면은 관찰 우선순위가 높은 종목만 가볍게 보여줍니다.</div>
+      <div class="detail-type">기본 화면은 DART 공급/판매계약에서 추출한 거래 관계만 보여줍니다.</div>
     </section>
   </div>
   <script src="graph_data.js"></script>
@@ -302,7 +304,9 @@
     const MIN_MULTI_ROOT_TERM_LENGTH = 2;
     const SEARCH_RENDER_DELAY_MS = 120;
     const PEER_EDGE_TYPES = new Set(['theme_peer', 'industry_peer', 'group_peer', 'business_peer', 'business_family_peer', 'related_stock']);
+    const TRANSACTION_EDGE_TYPES = new Set(['supply_contract', 'transaction_supported_by']);
     const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as']);
+    const TRANSACTION_NODE_TYPES = new Set(['stock', 'counterparty', 'disclosure']);
     const SEMANTIC_NODE_TYPES = new Set(['stock', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme']);
     const INVESTMENT_NODE_TYPES = new Set(['market_cap', 'investment_grade', 'valuation', 'dividend', 'financial_metric', 'disclosure', 'disclosure_category', 'dart_company']);
     const SEMANTIC_EDGE_TYPES = new Set([
@@ -332,7 +336,7 @@
       dart_company: cssVar('--dart'), disclosure: cssVar('--disclosure'),
       valuation: cssVar('--valuation'), dividend: cssVar('--dividend'),
       financial_metric: cssVar('--financial'),
-      disclosure_category: cssVar('--disclosure-category')
+      disclosure_category: cssVar('--disclosure-category'), counterparty: cssVar('--counterparty')
     };
     const LABELS = {
       market: '시장', industry: 'KRX 업종', market_cap: '시가총액', investment_grade: '관찰등급',
@@ -341,7 +345,7 @@
       business_group: '기업집단', business_activity: '참여업종', business_activity_family: '사업군', financial_metric: '재무 구간',
       stock: '종목', fsc_company: '금융위 법인', isin: 'ISIN', corporate_registration: '법인등록번호',
       dart_company: 'DART 기업', disclosure: '공시',
-      valuation: '밸류에이션', dividend: '배당', disclosure_category: '공시유형'
+      valuation: '밸류에이션', dividend: '배당', disclosure_category: '공시유형', counterparty: '거래 상대방'
     };
     const EDGE_LABELS = {
       listed_on: '시장', classified_as: 'KRX 업종', market_cap_bucket: '시가총액',
@@ -351,6 +355,7 @@
       business_activity_family_classified_as: '사업군', financial_bucket: '재무 구간',
       group_peer: '기업집단 Peer', business_peer: '참여업종 Peer', business_family_peer: '사업군 Peer',
       theme_tagged_as: '테마', theme_peer: '테마 Peer', industry_peer: '업종 Peer', related_stock: '관련 종목',
+      supply_contract: '공급/판매계약', transaction_supported_by: '거래 근거 공시',
       valuation_bucket: '밸류에이션', dividend_bucket: '배당', mapped_to: 'DART',
       identified_by: 'ISIN', public_data_mapped_to: '공공데이터 법인', registered_as: '법인등록번호',
       security_grouped_as: '증권그룹', has_index_context: '지수 컨텍스트', traded_as_product: '상품시장',
@@ -383,11 +388,12 @@
     const nodeById = new Map(GRAPH_DATA.nodes.map(node => [node.id, node]));
     const stockNodes = GRAPH_DATA.nodes.filter(node => node.type === 'stock');
     const edgeTypes = [...new Set(GRAPH_DATA.edges.map(edge => edge.type))].sort();
-    const enabledTypes = new Set([...SEMANTIC_NODE_TYPES].filter(type => COLORS[type]));
-    const enabledEdges = new Set([...SEMANTIC_EDGE_TYPES].filter(type => edgeTypes.includes(type)));
+    const enabledTypes = new Set([...TRANSACTION_NODE_TYPES].filter(type => COLORS[type]));
+    const enabledEdges = new Set([...TRANSACTION_EDGE_TYPES].filter(type => edgeTypes.includes(type)));
     const markets = [...new Set(stockNodes.map(node => node.metadata?.market).filter(Boolean))].sort();
     const enabledMarkets = new Set(markets);
     const neighbors = new Map();
+    const transactionStockIds = new Set();
     let selectedId = null;
     const selectedIds = new Set();
     let showLabels = false;
@@ -417,6 +423,10 @@
       neighbors.get(edge.target).push({ id: edge.source, edge });
       degreeById.set(edge.source, (degreeById.get(edge.source) || 0) + 1);
       degreeById.set(edge.target, (degreeById.get(edge.target) || 0) + 1);
+      if (edge.type === 'supply_contract') {
+        if (nodeById.get(edge.source)?.type === 'stock') transactionStockIds.add(edge.source);
+        if (nodeById.get(edge.target)?.type === 'stock') transactionStockIds.add(edge.target);
+      }
     });
 
     function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
@@ -442,6 +452,8 @@
       const score = Number(edge.metadata?.score || 0);
       if (edge.type === 'related_stock') return clamp(score / 100, 0.22, 1);
       const weights = {
+        supply_contract: 1,
+        transaction_supported_by: 0.78,
         group_peer: 0.96,
         business_peer: 0.9,
         affiliated_with: 0.86,
@@ -480,16 +492,16 @@
       }
       if (node.type === 'market') return 14;
       const degree = Number(degreeById.get(node.id) || 0);
-      const base = node.type === 'theme' || node.type === 'external_industry' || node.type === 'business_group' || node.type === 'business_activity' || node.type === 'business_activity_family' ? 7.4 : 6.2;
+      const base = node.type === 'theme' || node.type === 'external_industry' || node.type === 'business_group' || node.type === 'business_activity' || node.type === 'business_activity_family' || node.type === 'counterparty' ? 7.4 : 6.2;
       return clamp(base + Math.log10(degree + 1) * 1.2, base, base + 4);
     }
     function sortByUsefulness(a, b) {
-      const typeRank = { stock: 0, business_group: 1, business_activity: 2, business_activity_family: 3, theme: 4, external_industry: 5, investment_grade: 6, market_cap: 7, external_sector: 8, financial_metric: 9 };
+      const typeRank = { stock: 0, counterparty: 1, disclosure: 2, business_group: 3, business_activity: 4, business_activity_family: 5, theme: 6, external_industry: 7, investment_grade: 8, market_cap: 9, external_sector: 10, financial_metric: 11 };
       return (typeRank[a.type] ?? 9) - (typeRank[b.type] ?? 9) || stockRank(b) - stockRank(a) || a.label.localeCompare(b.label, 'ko');
     }
     function nodeSearchText(node) {
       const m = node.metadata || {};
-      return [node.label, node.id, m.code, m.market, m.industry, m.external_sector, m.external_industry, m.industry_system, m.business_group, m.business_activity, m.business_activity_code, m.business_activity_family, m.business_activity_family_code, m.family_code, m.representative_product, m.fsc_industry_name, m.fsc_main_business, m.themes, m.investment_grade, m.corp_code, m.report_name, m.category, m.bucket, m.metric]
+      return [node.label, node.id, m.code, m.market, m.industry, m.external_sector, m.external_industry, m.industry_system, m.business_group, m.business_activity, m.business_activity_code, m.business_activity_family, m.business_activity_family_code, m.family_code, m.representative_product, m.fsc_industry_name, m.fsc_main_business, m.themes, m.investment_grade, m.corp_code, m.report_name, m.category, m.bucket, m.metric, m.counterparty_name, m.contract_name, m.contract_amount, m.receipt_no]
         .filter(Boolean).join(' ').toLowerCase();
     }
     const searchTextById = new Map(GRAPH_DATA.nodes.map(node => [node.id, nodeSearchText(node)]));
@@ -569,7 +581,9 @@
         ? seedRoots.map(id => nodeById.get(id)).filter(Boolean)
         : query
           ? GRAPH_DATA.nodes.filter(node => nodePassesBaseFilters(node) && query.split(/\s+/).every(term => searchTextById.get(node.id)?.includes(term)))
-          : stockNodes.filter(nodePassesBaseFilters);
+          : graphPresetSelect.value === 'transaction'
+            ? stockNodes.filter(node => transactionStockIds.has(node.id) && nodePassesBaseFilters(node))
+            : stockNodes.filter(nodePassesBaseFilters);
       return base.sort(sortByUsefulness).slice(0, 80);
     }
     function rootsFromSearch(matches) {
@@ -582,6 +596,7 @@
       return [];
     }
     function defaultVisibleNodeIds() {
+      if (graphPresetSelect.value === 'transaction') return transactionVisibleNodeIds();
       const limit = Number(maxVisibleSelect.value || 250);
       const ids = new Set();
       stockNodes.filter(nodePassesBaseFilters).sort((a, b) => stockRank(b) - stockRank(a)).slice(0, Math.min(limit, 160)).forEach(node => {
@@ -590,6 +605,22 @@
           if (IMPORTANT_OVERVIEW_EDGES.has(item.edge.type) && edgePassesFilters(item.edge)) ids.add(item.id);
         });
       });
+      return ids;
+    }
+    function contractAmountValue(edge) {
+      return Number(String(edge.metadata?.contract_amount || '').replace(/[^\d.-]/g, '')) || 0;
+    }
+    function transactionVisibleNodeIds() {
+      const limit = Number(maxVisibleSelect.value || 250);
+      const ids = new Set();
+      const transactionEdges = GRAPH_DATA.edges
+        .filter(edge => TRANSACTION_EDGE_TYPES.has(edge.type) && edgePassesFilters(edge))
+        .sort((a, b) => contractAmountValue(b) - contractAmountValue(a) || (b.metadata?.receipt_date || '').localeCompare(a.metadata?.receipt_date || ''));
+      for (const edge of transactionEdges) {
+        ids.add(edge.source);
+        ids.add(edge.target);
+        if (ids.size >= limit) break;
+      }
       return ids;
     }
     function visibleNodeIds(matches) {
@@ -655,7 +686,7 @@
         .sort((a, b) => b.roots.size - a.roots.size || b.score - a.score || sortByUsefulness(a.node, b.node));
     }
     function edgeImportance(type) {
-      const order = ['related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
+      const order = ['supply_contract', 'transaction_supported_by', 'related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
       const index = order.indexOf(type);
       return index === -1 ? 99 : index;
     }
@@ -672,7 +703,7 @@
       const touchesRoot = rootSet.has(edge.source) || rootSet.has(edge.target);
       const connectsRoots = rootSet.has(edge.source) && rootSet.has(edge.target);
       const touchesStock = source?.type === 'stock' || target?.type === 'stock';
-      const directRelation = edge.type === 'related_stock' || edge.type.endsWith('_peer');
+      const directRelation = edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type.endsWith('_peer');
       return (connectsRoots ? 10000 : 0)
         + (touchesRoot ? 5200 : 0)
         + (directRelation ? 900 : 0)
@@ -685,7 +716,7 @@
       if (graphPresetSelect.value !== 'semantic') return true;
       if (!rootSet.size) return true;
       if (rootSet.has(edge.source) || rootSet.has(edge.target)) return true;
-      if (edge.type === 'related_stock' || edge.type.endsWith('_peer')) return true;
+      if (edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type.endsWith('_peer')) return true;
       if (edgeImportance(edge.type) <= 10) return true;
       return false;
     }
@@ -725,6 +756,7 @@
     function presetNodeTypes(preset) {
       const allTypes = new Set(Object.keys(COLORS));
       if (preset === 'all') return allTypes;
+      if (preset === 'transaction') return new Set(TRANSACTION_NODE_TYPES);
       const types = new Set(SEMANTIC_NODE_TYPES);
       if (preset === 'investment') INVESTMENT_NODE_TYPES.forEach(type => types.add(type));
       return types;
@@ -732,6 +764,7 @@
     function presetEdgeTypes(preset) {
       const allTypes = new Set(edgeTypes);
       if (preset === 'all') return allTypes;
+      if (preset === 'transaction') return new Set(TRANSACTION_EDGE_TYPES);
       const types = new Set(SEMANTIC_EDGE_TYPES);
       if (preset === 'investment') INVESTMENT_EDGE_TYPES.forEach(type => types.add(type));
       return types;
@@ -799,7 +832,7 @@
 
     function renderResults(matches) {
       const query = searchInput.value.trim();
-      searchHint.textContent = query ? `${matches.length.toLocaleString()}개 결과` : '검색 전에는 관찰 점수가 높은 종목을 우선 표시합니다.';
+      searchHint.textContent = query ? `${matches.length.toLocaleString()}개 결과` : graphPresetSelect.value === 'transaction' ? '검색 전에는 거래 관계가 있는 종목을 우선 표시합니다.' : '검색 전에는 관찰 점수가 높은 종목을 우선 표시합니다.';
       resultList.innerHTML = matches.slice(0, 60).map(node => {
         const m = node.metadata || {};
         const meta = [LABELS[node.type] || node.type, m.code, m.market, m.investment_grade, m.business_group, m.business_activity, m.business_activity_family, m.external_industry || m.bucket || m.category].filter(Boolean).join(' · ');
@@ -826,7 +859,9 @@
         return;
       }
       if (!selectedId || !nodeById.has(selectedId)) {
-        relationSummary.innerHTML = '<div class="summary">종목을 선택하면 기업집단, 참여업종, 사업군, 테마 관계가 그룹으로 정리됩니다.</div>';
+        relationSummary.innerHTML = graphPresetSelect.value === 'transaction'
+          ? '<div class="summary">종목을 선택하면 DART 공급/판매계약 상대방과 근거 공시가 정리됩니다.</div>'
+          : '<div class="summary">종목을 선택하면 기업집단, 참여업종, 사업군, 테마 관계가 그룹으로 정리됩니다.</div>';
         return;
       }
       relationSummary.innerHTML = relationGroupsForNode(selectedId).slice(0, 8).map(([type, items]) => {
@@ -1271,7 +1306,8 @@
           }
         });
         nodeGroup.appendChild(circle);
-        if (showLabels || highlighted || node.type !== 'stock' || scale >= LABEL_ZOOM_THRESHOLD) {
+        const transactionOverview = graphPresetSelect.value === 'transaction' && !rootSet.size;
+        if (showLabels || highlighted || (!transactionOverview && node.type !== 'stock') || scale >= LABEL_ZOOM_THRESHOLD) {
           const label = document.createElementNS(SVG_NS, 'text');
           label.setAttribute('class', 'label');
           label.setAttribute('x', projection.x + 8); label.setAttribute('y', projection.y + 4);
@@ -1327,7 +1363,7 @@
       graphEl.classList.add('node-dragging');
     }
     function edgeLegendClass(type) {
-      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' ? ' focus' : ''}`;
+      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' || type === 'supply_contract' ? ' focus' : ''}`;
     }
     function syncFilterControls() {
       typeFilters.querySelectorAll('[data-type]').forEach(input => { input.checked = enabledTypes.has(input.dataset.type); });
@@ -1416,8 +1452,8 @@
       });
       document.getElementById('resetButton').addEventListener('click', () => {
         window.clearTimeout(searchRenderTimer);
-        selectedId = null; selectedIds.clear(); searchInput.value = ''; graphPresetSelect.value = 'semantic'; focusModeSelect.value = 'focus'; neighborDepthSelect.value = '1'; maxVisibleSelect.value = '250'; edgeRenderLimitSelect.value = 'auto'; zAxisSelect.value = 'relationship_strength'; minTradeValueSelect.value = '0'; priceMoveSelect.value = '';
-        applyGraphPreset('semantic');
+        selectedId = null; selectedIds.clear(); searchInput.value = ''; graphPresetSelect.value = 'transaction'; focusModeSelect.value = 'focus'; neighborDepthSelect.value = '1'; maxVisibleSelect.value = '250'; edgeRenderLimitSelect.value = 'auto'; zAxisSelect.value = 'relationship_strength'; minTradeValueSelect.value = '0'; priceMoveSelect.value = '';
+        applyGraphPreset('transaction');
         enabledMarkets.clear(); markets.forEach(market => enabledMarkets.add(market));
         document.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = true; });
         syncFilterControls();
