@@ -304,7 +304,7 @@
     const MIN_MULTI_ROOT_TERM_LENGTH = 2;
     const SEARCH_RENDER_DELAY_MS = 120;
     const PEER_EDGE_TYPES = new Set(['theme_peer', 'industry_peer', 'group_peer', 'business_peer', 'business_family_peer', 'related_stock']);
-    const TRANSACTION_EDGE_TYPES = new Set(['supply_contract', 'transaction_supported_by']);
+    const TRANSACTION_EDGE_TYPES = new Set(['supply_contract', 'related_party_transaction', 'transaction_supported_by']);
     const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as']);
     const TRANSACTION_NODE_TYPES = new Set(['stock', 'counterparty', 'disclosure']);
     const SEMANTIC_NODE_TYPES = new Set(['stock', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme']);
@@ -355,7 +355,7 @@
       business_activity_family_classified_as: '사업군', financial_bucket: '재무 구간',
       group_peer: '기업집단 Peer', business_peer: '참여업종 Peer', business_family_peer: '사업군 Peer',
       theme_tagged_as: '테마', theme_peer: '테마 Peer', industry_peer: '업종 Peer', related_stock: '관련 종목',
-      supply_contract: '공급/판매계약', transaction_supported_by: '거래 근거 공시',
+      supply_contract: '공급/판매계약', related_party_transaction: '계열 상품/용역거래', transaction_supported_by: '거래 근거 공시',
       valuation_bucket: '밸류에이션', dividend_bucket: '배당', mapped_to: 'DART',
       identified_by: 'ISIN', public_data_mapped_to: '공공데이터 법인', registered_as: '법인등록번호',
       security_grouped_as: '증권그룹', has_index_context: '지수 컨텍스트', traded_as_product: '상품시장',
@@ -423,7 +423,7 @@
       neighbors.get(edge.target).push({ id: edge.source, edge });
       degreeById.set(edge.source, (degreeById.get(edge.source) || 0) + 1);
       degreeById.set(edge.target, (degreeById.get(edge.target) || 0) + 1);
-      if (edge.type === 'supply_contract') {
+      if (edge.type === 'supply_contract' || edge.type === 'related_party_transaction') {
         if (nodeById.get(edge.source)?.type === 'stock') transactionStockIds.add(edge.source);
         if (nodeById.get(edge.target)?.type === 'stock') transactionStockIds.add(edge.target);
       }
@@ -453,6 +453,7 @@
       if (edge.type === 'related_stock') return clamp(score / 100, 0.22, 1);
       const weights = {
         supply_contract: 1,
+        related_party_transaction: 0.92,
         transaction_supported_by: 0.78,
         group_peer: 0.96,
         business_peer: 0.9,
@@ -686,7 +687,7 @@
         .sort((a, b) => b.roots.size - a.roots.size || b.score - a.score || sortByUsefulness(a.node, b.node));
     }
     function edgeImportance(type) {
-      const order = ['supply_contract', 'transaction_supported_by', 'related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
+      const order = ['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
       const index = order.indexOf(type);
       return index === -1 ? 99 : index;
     }
@@ -703,7 +704,7 @@
       const touchesRoot = rootSet.has(edge.source) || rootSet.has(edge.target);
       const connectsRoots = rootSet.has(edge.source) && rootSet.has(edge.target);
       const touchesStock = source?.type === 'stock' || target?.type === 'stock';
-      const directRelation = edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type.endsWith('_peer');
+      const directRelation = edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type === 'related_party_transaction' || edge.type.endsWith('_peer');
       return (connectsRoots ? 10000 : 0)
         + (touchesRoot ? 5200 : 0)
         + (directRelation ? 900 : 0)
@@ -716,7 +717,7 @@
       if (graphPresetSelect.value !== 'semantic') return true;
       if (!rootSet.size) return true;
       if (rootSet.has(edge.source) || rootSet.has(edge.target)) return true;
-      if (edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type.endsWith('_peer')) return true;
+      if (edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type === 'related_party_transaction' || edge.type.endsWith('_peer')) return true;
       if (edgeImportance(edge.type) <= 10) return true;
       return false;
     }
@@ -1363,7 +1364,7 @@
       graphEl.classList.add('node-dragging');
     }
     function edgeLegendClass(type) {
-      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' || type === 'supply_contract' ? ' focus' : ''}`;
+      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' || type === 'supply_contract' || type === 'related_party_transaction' ? ' focus' : ''}`;
     }
     function syncFilterControls() {
       typeFilters.querySelectorAll('[data-type]').forEach(input => { input.checked = enabledTypes.has(input.dataset.type); });
