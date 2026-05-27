@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-05-28T08:54:20.573593+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "status": "pass",
+    "node_count": 37038,
+    "edge_count": 192708,
+    "duplicate_node_id_count": 0,
+    "broken_edge_count": 0,
+    "relation_layer_count": 6,
+    "relation_layers": [
+      "event",
+      "fact",
+      "market",
+      "peer",
+      "structure",
+      "transaction"
+    ],
+    "render_payload_bytes": 43280583
+  },
+  "checks": [
+    {
+      "id": "node_id_uniqueness",
+      "status": "pass",
+      "evidence": [
+        "unique graph node ids"
+      ],
+      "details": {
+        "duplicate_node_ids": []
+      }
+    },
+    {
+      "id": "edge_endpoint_integrity",
+      "status": "pass",
+      "evidence": [
+        "all edge endpoints resolve to node ids"
+      ],
+      "details": {
+        "broken_edge_count": 0,
+        "sample": []
+      }
+    },
+    {
+      "id": "required_relation_layers",
+      "status": "pass",
+      "evidence": [
+        "event",
+        "fact",
+        "market",
+        "peer",
+        "structure",
+        "transaction"
+      ],
+      "details": {
+        "layers": {
+          "fact": [
+            "classified_as",
+            "identified_by",
+            "listed_on",
+            "public_data_mapped_to"
+          ],
+          "structure": [
+            "affiliated_with",
+            "business_activity_classified_as",
+            "invests_in",
+            "owns",
+            "serves_at"
+          ],
+          "market": [
+            "co_moves",
+            "leads"
+          ],
+          "event": [
+            "has_event",
+            "negative_exposure",
+            "positive_exposure"
+          ],
+          "transaction": [
+            "related_party_transaction",
+            "supply_contract",
+            "transaction_supported_by"
+          ],
+          "peer": [
+            "business_family_peer",
+            "business_peer",
+            "group_peer",
+            "industry_peer",
+            "related_stock",
+            "theme_peer"
+          ]
+        }
+      }
+    },
+    {
+      "id": "render_payload_budget",
+      "status": "pass",
+      "evidence": [
+        "graph_data.js payload budget"
+      ],
+      "details": {
+        "render_payload_bytes": 43280583,
+        "budget_bytes": 60000000
+      }
+    },
+    {
+      "id": "metadata_presence",
+      "status": "pass",
+      "evidence": [
+        "source_coverage",
+        "api_endpoint_inventory"
+      ],
+      "details": {
+        "has_source_coverage": true,
+        "has_api_endpoint_inventory": true
+      }
+    }
+  ]
+}

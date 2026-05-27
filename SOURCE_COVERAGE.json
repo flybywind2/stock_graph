@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T08:48:28.859517+09:00",
+  "generated_at": "2026-05-28T08:54:09.449693+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 11,
@@ -14,7 +14,7 @@
       "source": "KRX Open API",
       "mode": "direct_api",
       "status": "loaded",
-      "count": 37033,
+      "count": 37038,
       "env_key": "KRX_OPEN_API_KEY",
       "used_for": "KOSPI/KOSDAQ daily rows, security master, index, ETF",
       "gaps": []

@@ -50,6 +50,10 @@
 
 `API_ENDPOINTS.json`과 `API_ENDPOINTS.md`를 함께 생성한다. 현재 코드가 직접 호출하는 OpenDART, data.go.kr FSC/FTC, KRX Open API, Naver/FnGuide 공개 페이지 endpoint와 KIND, BIGKinds, KRX Data Marketplace, SEIBro/KSD, provider snapshot import 경로를 한 파일에서 확인한다.
 
+## Graph quality audit
+
+`QUALITY_AUDIT.json`과 `QUALITY_AUDIT.md`를 함께 생성한다. 노드 ID 중복, 끊어진 엣지, 필수 관계 레이어, 렌더링 payload 예산, 핵심 메타데이터 존재 여부를 검사해 그래프 산출물 자체의 무결성을 확인한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |

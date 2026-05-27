@@ -1,6 +1,6 @@
 # Source Coverage
 
-생성시각: 2026-05-28T08:48:28.859517+09:00
+생성시각: 2026-05-28T08:54:09.449693+09:00
 기준일: 20260521
 
 ## Summary
@@ -14,7 +14,7 @@
 
 | Source | Mode | Status | Count | Gaps |
 |---|---|---:|---:|---|
-| KRX Open API | direct_api | loaded | 37033 | - |
+| KRX Open API | direct_api | loaded | 37038 | - |
 | OpenDART | direct_api | ok: transaction_docs 14, counterparties 14 | 530 | - |
 | data.go.kr FSC | direct_api | ok: 2656 stocks, source_date 20260521 | 2656 | - |
 | data.go.kr FTC | direct_api | ok: 388 listed companies, public_ym 202605 | 388 | - |
