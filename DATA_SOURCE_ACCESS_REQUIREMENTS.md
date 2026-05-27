@@ -12,6 +12,7 @@
 | OpenDART | `DART_OPEN_API_KEY` | OpenDART 인증키 | corpCode, 공시목록, 원문, 기업개황, 주요계정, 최대주주, 임원, 타법인출자 |
 | data.go.kr 금융위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | KRX 상장종목정보, 기업기본정보, 기업 재무정보, 주식발행정보, 주식배당정보 |
 | data.go.kr 공정거래위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | 대규모기업집단, 소속회사, 참여업종, 재무현황 |
+| KRX Data Marketplace export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--krx-marketplace-snapshots` 지정 | 업종분류, 지수구성종목, ETF PDF/편입종목 |
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
 | FnGuide public page | 없음 | 공개 페이지 캐시 | 섹터, 업종, PER/PBR/배당 보강 |
 
@@ -40,9 +41,35 @@
 | KIND | 공시/IR/기업분석 보고서 다운로드 경로 또는 API/엑셀 export 규격 확정 | `--supplemental-events`, `--supplemental-relations` JSON/CSV/TSV로 이벤트/관계/증거 import |
 | SEIBro / KSD | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 보호예수, 대차, 권리 이벤트와 주주/발행회사 관계를 supplemental import |
 | BIGKinds | Open API 이용 신청 및 호출 제한 확인 | 기사/개체명/이벤트 후보를 `--supplemental-events` 또는 `--supplemental-relations`로 import |
-| KRX Data Marketplace 웹 다운로드 | 필요한 통계 메뉴의 다운로드 파일 포맷 고정 | 업종분류, 지수구성, ETF PDF 같은 스냅샷 CSV import 예정 |
 | 유료 FnGuide/DataGuide/QuantiWise | 계약 및 데이터 사용권 확인 | 컨센서스, 정제 공급망, 리포트 edge 보강용 |
 | DeepSearch / Finorma | 계약 및 API key 발급 | 뉴스/문서/공급망 후보 보강용 |
+
+## KRX Data Marketplace snapshots
+
+KRX Data Marketplace에서 받은 업종분류, 지수구성종목, ETF PDF/편입종목 파일은 `snapshot_type`으로 구분해 넣는다. CSV/TSV/JSON을 지원하고, `snapshot_type`이 비어 있어도 컬럼 조합으로 일부 자동 추론한다.
+
+지원 타입:
+
+| snapshot_type | 최소 필드 | 생성 관계 |
+|---|---|---|
+| `industry_classification` | `stock_code`, `industry_name` | `stock -> industry` `classified_as` |
+| `index_constituent` | `stock_code`, `index_name` 또는 `index_code` | `stock -> index` `member_of` |
+| `etf_holding` | `stock_code`, `etf_code` 또는 `etf_name` | `etf -> stock` `holds` |
+
+CSV 예시:
+
+```csv
+snapshot_type,stock_code,stock_name,index_name,index_code,etf_code,etf_name,weight,industry_name,industry_system,basis_date
+index_constituent,005930,삼성전자,코스피 200,1028,,,31.2,,,20260522
+etf_holding,000660,SK하이닉스,,,069500,KODEX 200,6.4,,,20260522
+industry_classification,214320,이노션,,,,,,광고,KRX 업종,20260522
+```
+
+CLI 예시:
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --krx-marketplace-snapshots reports/stock_graph/krx_marketplace_snapshots.csv
+```
 
 ## supplemental-events format
 

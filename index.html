@@ -313,13 +313,13 @@
     const SEMANTIC_NODE_TYPES = new Set(['stock', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event']);
     const INVESTMENT_NODE_TYPES = new Set(['stock', 'market_cap', 'investment_grade', 'valuation', 'dividend', 'dividend_event', 'stock_issue', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'dart_company']);
     const FACT_NODE_TYPES = new Set(['stock', 'market', 'industry', 'security_group', 'index', 'index_family', 'product_market', 'etf', 'fsc_company', 'isin', 'corporate_registration', 'business_group', 'business_activity', 'business_activity_family', 'dart_company', 'disclosure', 'disclosure_category', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'company', 'stock_issue', 'dividend_event']);
-    const FACT_EDGE_TYPES = new Set(['listed_on', 'classified_as', 'identified_by', 'public_data_mapped_to', 'registered_as', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'security_grouped_as', 'has_index_context', 'traded_as_product', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'issued_stock_as', 'has_dividend_event', 'mapped_to', 'filed', 'stock_filed', 'disclosure_categorized_as']);
+    const FACT_EDGE_TYPES = new Set(['listed_on', 'classified_as', 'identified_by', 'public_data_mapped_to', 'registered_as', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'security_grouped_as', 'has_index_context', 'traded_as_product', 'member_of', 'holds', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'issued_stock_as', 'has_dividend_event', 'mapped_to', 'filed', 'stock_filed', 'disclosure_categorized_as']);
     const PROPAGATION_NODE_TYPES = new Set(['stock', 'counterparty', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event', 'relation_fact', 'evidence', 'disclosure']);
     const PROPAGATION_EDGE_TYPES = new Set(['supply_contract', 'supplies_to', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as']);
     const SEMANTIC_EDGE_TYPES = new Set(['related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'co_moves', 'leads', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as', 'positive_exposure', 'negative_exposure']);
     const INVESTMENT_EDGE_TYPES = new Set(['market_cap_bucket', 'investment_grade_bucket', 'valuation_bucket', 'dividend_bucket', 'has_dividend_event', 'issued_stock_as', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'stock_filed', 'filed', 'disclosure_categorized_as', 'mapped_to']);
-    const SIGNED_IMPACT_EDGE_TYPES = new Set(['co_moves', 'leads', 'positive_exposure', 'negative_exposure', 'supply_contract', 'supplies_to', 'related_party_transaction', 'owns', 'invests_in', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'related_stock']);
-    const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'owns', 'serves_at', 'invests_in', 'reports_metric', 'co_moves', 'leads']);
+    const SIGNED_IMPACT_EDGE_TYPES = new Set(['co_moves', 'leads', 'positive_exposure', 'negative_exposure', 'supply_contract', 'supplies_to', 'related_party_transaction', 'owns', 'invests_in', 'member_of', 'holds', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'related_stock']);
+    const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'member_of', 'holds', 'owns', 'serves_at', 'invests_in', 'reports_metric', 'co_moves', 'leads']);
     const Z_AXIS_LABELS = {
       market_cap: '시가총액',
       traded_value: '거래대금',
@@ -368,7 +368,7 @@
       theme_tagged_as: '테마', theme_peer: '테마 Peer', industry_peer: '업종 Peer', related_stock: '관련 종목',
       valuation_bucket: '밸류에이션', dividend_bucket: '배당', issued_stock_as: '주식발행', has_dividend_event: '배당 이벤트', mapped_to: 'DART',
       identified_by: 'ISIN', public_data_mapped_to: '공공데이터 법인', registered_as: '법인등록번호',
-      security_grouped_as: '증권그룹', has_index_context: '지수 컨텍스트', traded_as_product: '상품시장',
+      security_grouped_as: '증권그룹', has_index_context: '지수 컨텍스트', traded_as_product: '상품시장', member_of: '지수 구성', holds: 'ETF 편입',
       filed: '공시', stock_filed: '종목공시', disclosure_categorized_as: '공시유형'
     };
 
@@ -474,6 +474,8 @@
         business_peer: 0.9,
         affiliated_with: 0.86,
         business_activity_classified_as: 0.82,
+        holds: 0.78,
+        member_of: 0.76,
         business_family_peer: 0.74,
         business_activity_family_classified_as: 0.7,
         theme_peer: 0.66,
