@@ -311,13 +311,13 @@
     const TRANSACTION_EDGE_TYPES = new Set(['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target']);
     const TRANSACTION_NODE_TYPES = new Set(['stock', 'counterparty', 'disclosure', 'relation_fact', 'evidence', 'event']);
     const SEMANTIC_NODE_TYPES = new Set(['stock', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event']);
-    const INVESTMENT_NODE_TYPES = new Set(['stock', 'market_cap', 'investment_grade', 'valuation', 'dividend', 'dividend_event', 'stock_issue', 'rights_event', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'dart_company']);
+    const INVESTMENT_NODE_TYPES = new Set(['stock', 'market_cap', 'investment_grade', 'valuation', 'dividend', 'dividend_event', 'stock_issue', 'rights_event', 'financial_metric', 'financial_snapshot', 'provider_metric', 'provider_report', 'shareholder', 'executive', 'dart_company']);
     const FACT_NODE_TYPES = new Set(['stock', 'market', 'industry', 'security_group', 'index', 'index_family', 'product_market', 'etf', 'fsc_company', 'isin', 'corporate_registration', 'business_group', 'business_activity', 'business_activity_family', 'dart_company', 'disclosure', 'disclosure_category', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'company', 'stock_issue', 'dividend_event', 'rights_event']);
     const FACT_EDGE_TYPES = new Set(['listed_on', 'classified_as', 'identified_by', 'public_data_mapped_to', 'registered_as', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'security_grouped_as', 'has_index_context', 'traded_as_product', 'member_of', 'holds', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'issued_stock_as', 'has_dividend_event', 'has_rights_event', 'has_lending_signal', 'has_lockup_release', 'mapped_to', 'filed', 'stock_filed', 'disclosure_categorized_as']);
     const PROPAGATION_NODE_TYPES = new Set(['stock', 'counterparty', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event', 'relation_fact', 'evidence', 'disclosure']);
     const PROPAGATION_EDGE_TYPES = new Set(['supply_contract', 'supplies_to', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as']);
     const SEMANTIC_EDGE_TYPES = new Set(['related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'co_moves', 'leads', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as', 'positive_exposure', 'negative_exposure']);
-    const INVESTMENT_EDGE_TYPES = new Set(['market_cap_bucket', 'investment_grade_bucket', 'valuation_bucket', 'dividend_bucket', 'has_dividend_event', 'issued_stock_as', 'has_rights_event', 'has_lending_signal', 'has_lockup_release', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'stock_filed', 'filed', 'disclosure_categorized_as', 'mapped_to']);
+    const INVESTMENT_EDGE_TYPES = new Set(['market_cap_bucket', 'investment_grade_bucket', 'valuation_bucket', 'dividend_bucket', 'has_dividend_event', 'issued_stock_as', 'has_rights_event', 'has_lending_signal', 'has_lockup_release', 'has_consensus_metric', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'stock_filed', 'filed', 'disclosure_categorized_as', 'mapped_to']);
     const SIGNED_IMPACT_EDGE_TYPES = new Set(['co_moves', 'leads', 'positive_exposure', 'negative_exposure', 'supply_contract', 'supplies_to', 'related_party_transaction', 'owns', 'invests_in', 'member_of', 'holds', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'related_stock']);
     const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'member_of', 'holds', 'owns', 'serves_at', 'invests_in', 'reports_metric', 'co_moves', 'leads']);
     const Z_AXIS_LABELS = {
@@ -338,7 +338,7 @@
       dart_company: cssVar('--dart'), disclosure: cssVar('--disclosure'),
       valuation: cssVar('--valuation'), dividend: cssVar('--dividend'),
       financial_metric: cssVar('--financial'), financial_snapshot: cssVar('--financial'),
-      stock_issue: cssVar('--financial'), dividend_event: cssVar('--dividend'),
+      stock_issue: cssVar('--financial'), dividend_event: cssVar('--dividend'), provider_metric: cssVar('--valuation'), provider_report: cssVar('--disclosure'),
       shareholder: '#b45309', executive: '#7c3aed', company: '#0f766e',
       relation_fact: '#475569', evidence: '#64748b', event: '#ea580c',
       disclosure_category: cssVar('--disclosure-category')
@@ -350,7 +350,7 @@
       business_group: '기업집단', business_activity: '참여업종', business_activity_family: '사업군', financial_metric: '재무 구간',
       financial_snapshot: 'DART 재무스냅샷', shareholder: '주주', executive: '임원', company: '회사', relation_fact: '관계팩트', evidence: '증거', event: '이벤트',
       stock: '종목', fsc_company: '금융위 법인', isin: 'ISIN', corporate_registration: '법인등록번호',
-      dart_company: 'DART 기업', disclosure: '공시', stock_issue: '주식발행', dividend_event: '배당 이벤트', rights_event: '권리/대차',
+      dart_company: 'DART 기업', disclosure: '공시', stock_issue: '주식발행', dividend_event: '배당 이벤트', rights_event: '권리/대차', provider_metric: '벤더 컨센서스', provider_report: '벤더 리포트',
       valuation: '밸류에이션', dividend: '배당', disclosure_category: '공시유형'
     };
     const EDGE_LABELS = {
@@ -359,7 +359,7 @@
       external_sector_classified_as: '외부 섹터', external_industry_classified_as: 'FnGuide 업종',
       affiliated_with: '기업집단', business_activity_classified_as: '참여업종',
       business_activity_family_classified_as: '사업군', financial_bucket: '재무 구간',
-      issued_stock_as: '주식발행', has_dividend_event: '배당 이벤트', has_rights_event: '권리 이벤트', has_lending_signal: '대차 신호', has_lockup_release: '보호예수 해제',
+      issued_stock_as: '주식발행', has_dividend_event: '배당 이벤트', has_rights_event: '권리 이벤트', has_lending_signal: '대차 신호', has_lockup_release: '보호예수 해제', has_consensus_metric: '컨센서스',
       reports_metric: 'DART 주요계정', owns: '최대주주', serves_at: '임원', invests_in: '타법인출자',
       supported_by: '증거', fact_source: '팩트 출발', fact_target: '팩트 도착',
       co_moves: '잔차 동행', leads: '1일 선행', has_event: '이벤트', positive_exposure: '긍정 노출', negative_exposure: '부정 노출',

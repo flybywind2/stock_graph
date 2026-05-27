@@ -16,6 +16,7 @@
 | BIGKinds export | 없음 또는 Open API 승인 | CSV/TSV/JSON 다운로드 후 `--bigkinds-snapshots` 지정 | 뉴스 기사, 개체명, 키워드 기반 이벤트/증거 |
 | KRX Data Marketplace export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--krx-marketplace-snapshots` 지정 | 업종분류, 지수구성종목, ETF PDF/편입종목 |
 | SEIBro / KSD export | 없음 또는 서비스별 승인 | CSV/TSV/JSON 다운로드 후 `--ksd-seibro-snapshots` 지정 | 배당/권리, 증권대차, 보호예수 해제 이벤트 |
+| Paid provider export | 계약 필요 | CSV/TSV/JSON 다운로드 후 `--provider-snapshots` 지정 | 컨센서스, 리포트, 정제 공급망/관계망 |
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
 | FnGuide public page | 없음 | 공개 페이지 캐시 | 섹터, 업종, PER/PBR/배당 보강 |
 
@@ -44,8 +45,8 @@
 | KIND direct API | 공식 API 또는 화면별 엑셀 다운로드 자동화 규격 확정 | 다운로드 스냅샷은 `--kind-snapshots`로 1급 import, API 직결은 화면별 문서 필요 |
 | SEIBro / KSD direct API | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 다운로드 스냅샷은 `--ksd-seibro-snapshots`로 1급 import, API 직결은 서비스별 문서 필요 |
 | BIGKinds direct API | Open API 이용 신청, 호출 제한, 응답 레이아웃 확인 | 다운로드/API 결과 스냅샷은 `--bigkinds-snapshots`로 1급 import |
-| 유료 FnGuide/DataGuide/QuantiWise | 계약 및 데이터 사용권 확인 | 컨센서스, 정제 공급망, 리포트 edge 보강용 |
-| DeepSearch / Finorma | 계약 및 API key 발급 | 뉴스/문서/공급망 후보 보강용 |
+| 유료 FnGuide/DataGuide/QuantiWise direct API | 계약, 데이터 사용권, API key 또는 파일 레이아웃 확인 | 계약 데이터 export는 `--provider-snapshots`로 1급 import |
+| DeepSearch / Finorma direct API | 계약 및 API key 발급 | 계약 데이터 export는 `--provider-snapshots`로 1급 import |
 
 ## KIND snapshots
 
@@ -98,6 +99,33 @@ CLI 예시:
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --bigkinds-snapshots reports/stock_graph/bigkinds_snapshots.csv
+```
+
+## Paid provider snapshots
+
+FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 같은 계약형 데이터는 원문 전문을 그래프에 넣지 않고, 컨센서스 지표·리포트 신호·정제 관계만 넣는다. 실제 API 직접 호출은 계약서와 레이아웃 확인이 필요하지만, 받은 파일은 `--provider-snapshots`로 바로 반영할 수 있다.
+
+지원 타입:
+
+| snapshot_type | 최소 필드 | 생성 관계 |
+|---|---|---|
+| `consensus` | `provider`, `stock_code`, `source_id`, `metric` | `stock -> provider_metric` `has_consensus_metric` |
+| `broker_report` | `provider`, `stock_code`, `source_id`, `title` | `provider_report -> stock` `positive_exposure`/`negative_exposure`/`has_event` |
+| `provider_relation` | `provider`, `stock_code`, `target_stock_code`, `rel_type` | `stock -> stock` `supplies_to`/`related_stock` 등 |
+
+CSV 예시:
+
+```csv
+snapshot_type,provider,stock_code,stock_name,source_id,title,published_at,url,metric,value,target_price,rating,rel_type,target_stock_code,sign,weight,confidence
+consensus,DataGuide,005930,삼성전자,DG-1,삼성전자 컨센서스,20260522,,12m_forward_per,9.8,95000,BUY,,,+,0.7,0.8
+broker_report,QuantiWise,000660,SK하이닉스,QW-1,SK하이닉스 리포트,20260521,https://example.com/qw,투자의견,BUY,310000,BUY,,,+,0.6,0.75
+provider_relation,DeepSearch,095340,ISC,DS-1,ISC 공급망,20260520,https://example.com/ds,,,,,supplies_to,005930,+,0.8,0.7
+```
+
+CLI 예시:
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --provider-snapshots reports/stock_graph/provider_snapshots.csv
 ```
 
 ## KRX Data Marketplace snapshots
