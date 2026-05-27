@@ -29,6 +29,10 @@
 
 `neo4j/nodes.csv`, `neo4j/relationships.csv`, `neo4j/import.cypher`를 함께 생성한다. 정적 HTML은 탐색용이고, Neo4j export는 전략 문서의 다중 홉 질의, 경로 점수 검증, 그래프 DB 이전 검토용이다.
 
+## Impact summary
+
+그래프 JSON/JS의 `meta.impact_summary`에는 상위 종목별 1~3홉 signed path 영향권 요약을 저장한다. HTML 상세 패널의 실시간 계산과 같은 방향의 점수이며, 외부 분석이나 Neo4j 검증에서 빠른 후보군으로 사용할 수 있다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
