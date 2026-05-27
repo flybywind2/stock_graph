@@ -210,6 +210,8 @@
       <div class="control-grid">
         <select id="graphPresetSelect" aria-label="graph preset">
           <option value="transaction" selected>거래 관계</option>
+          <option value="fact">공식 사실 그래프</option>
+          <option value="propagation">시장·이벤트 파급</option>
           <option value="semantic">의미 중심</option>
           <option value="investment">투자지표 포함</option>
           <option value="all">전체 보기</option>
@@ -310,6 +312,10 @@
     const TRANSACTION_NODE_TYPES = new Set(['stock', 'counterparty', 'disclosure', 'relation_fact', 'evidence', 'event']);
     const SEMANTIC_NODE_TYPES = new Set(['stock', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event']);
     const INVESTMENT_NODE_TYPES = new Set(['stock', 'market_cap', 'investment_grade', 'valuation', 'dividend', 'dividend_event', 'stock_issue', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'dart_company']);
+    const FACT_NODE_TYPES = new Set(['stock', 'market', 'industry', 'security_group', 'index', 'index_family', 'product_market', 'etf', 'fsc_company', 'isin', 'corporate_registration', 'business_group', 'business_activity', 'business_activity_family', 'dart_company', 'disclosure', 'disclosure_category', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'company', 'stock_issue', 'dividend_event']);
+    const FACT_EDGE_TYPES = new Set(['listed_on', 'classified_as', 'identified_by', 'public_data_mapped_to', 'registered_as', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'security_grouped_as', 'has_index_context', 'traded_as_product', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'issued_stock_as', 'has_dividend_event', 'mapped_to', 'filed', 'stock_filed', 'disclosure_categorized_as']);
+    const PROPAGATION_NODE_TYPES = new Set(['stock', 'counterparty', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event', 'relation_fact', 'evidence', 'disclosure']);
+    const PROPAGATION_EDGE_TYPES = new Set(['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as']);
     const SEMANTIC_EDGE_TYPES = new Set(['related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'co_moves', 'leads', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as', 'positive_exposure', 'negative_exposure']);
     const INVESTMENT_EDGE_TYPES = new Set(['market_cap_bucket', 'investment_grade_bucket', 'valuation_bucket', 'dividend_bucket', 'has_dividend_event', 'issued_stock_as', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'stock_filed', 'filed', 'disclosure_categorized_as', 'mapped_to']);
     const SIGNED_IMPACT_EDGE_TYPES = new Set(['co_moves', 'leads', 'positive_exposure', 'negative_exposure', 'supply_contract', 'related_party_transaction', 'owns', 'invests_in', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'related_stock']);
@@ -800,7 +806,12 @@
 
     function renderResults(matches) {
       const query = searchInput.value.trim();
-      searchHint.textContent = query ? `${matches.length.toLocaleString()}개 결과` : graphPresetSelect.value === 'transaction' ? '검색 전에는 거래 관계가 있는 종목을 우선 표시합니다.' : '검색 전에는 관찰 점수가 높은 종목을 우선 표시합니다.';
+      const emptyHints = {
+        transaction: '검색 전에는 거래 관계가 있는 종목을 우선 표시합니다.',
+        fact: '검색 전에는 공식 원천 기반 사실 관계가 많은 종목을 우선 표시합니다.',
+        propagation: '검색 전에는 시장·이벤트 파급 관계가 많은 종목을 우선 표시합니다.'
+      };
+      searchHint.textContent = query ? `${matches.length.toLocaleString()}개 결과` : (emptyHints[graphPresetSelect.value] || '검색 전에는 관찰 점수가 높은 종목을 우선 표시합니다.');
       resultList.innerHTML = matches.slice(0, 60).map(node => {
         const m = node.metadata || {};
         const meta = [LABELS[node.type] || node.type, m.code, m.market, m.investment_grade, m.business_group, m.business_activity, m.business_activity_family, m.external_industry || m.bucket || m.category].filter(Boolean).join(' · ');
@@ -827,9 +838,12 @@
         return;
       }
       if (!selectedId || !nodeById.has(selectedId)) {
-        relationSummary.innerHTML = graphPresetSelect.value === 'transaction'
-          ? '<div class="summary">검색 전에는 DART 공급/판매계약과 계열 거래 관계가 있는 종목을 우선 표시합니다.</div>'
-          : '<div class="summary">종목을 선택하면 기업집단, 참여업종, 사업군, 테마 관계가 그룹으로 정리됩니다.</div>';
+        const presetSummaries = {
+          transaction: '검색 전에는 DART 공급/판매계약과 계열 거래 관계가 있는 종목을 우선 표시합니다.',
+          fact: '공식 사실 그래프는 KRX, DART, 공정위, 금융위 원천에서 확인되는 식별자·소속·재무·지분·권리 관계를 보여줍니다.',
+          propagation: '시장·이벤트 파급 그래프는 잔차 동행, 선행/후행, 거래, peer, 이벤트 노출 관계를 중심으로 보여줍니다.'
+        };
+        relationSummary.innerHTML = `<div class="summary">${escapeHtml(presetSummaries[graphPresetSelect.value] || '종목을 선택하면 기업집단, 참여업종, 사업군, 테마 관계가 그룹으로 정리됩니다.')}</div>`;
         return;
       }
       relationSummary.innerHTML = relationGroupsForNode(selectedId).slice(0, 8).map(([type, items]) => {
@@ -1388,6 +1402,12 @@
       if (preset === 'transaction') {
         addTypes(TRANSACTION_NODE_TYPES);
         addEdges(TRANSACTION_EDGE_TYPES);
+      } else if (preset === 'fact') {
+        addTypes(FACT_NODE_TYPES);
+        addEdges(FACT_EDGE_TYPES);
+      } else if (preset === 'propagation') {
+        addTypes(PROPAGATION_NODE_TYPES);
+        addEdges(PROPAGATION_EDGE_TYPES);
       } else if (preset === 'semantic') {
         addTypes(SEMANTIC_NODE_TYPES);
         addEdges(SEMANTIC_EDGE_TYPES);

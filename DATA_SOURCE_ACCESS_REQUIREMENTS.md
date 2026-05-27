@@ -15,6 +15,16 @@
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
 | FnGuide public page | 없음 | 공개 페이지 캐시 | 섹터, 업종, PER/PBR/배당 보강 |
 
+## HTML graph layer
+
+| Preset | Meaning |
+|---|---|
+| 거래 관계 | DART 공급/판매계약, 계열 상품·용역거래, RelationFact/Evidence 근거 |
+| 공식 사실 그래프 | KRX, DART, 금융위, 공정위에서 확인되는 식별자, 시장, 업종, 기업집단, 재무, 지분, 임원, 발행/배당 관계 |
+| 시장·이벤트 파급 | 잔차 동행, 1일 선행, 거래, peer, positive/negative exposure 기반 1~3홉 파급 관계 |
+| 의미 중심 | 기업집단, 참여업종, 사업군, 테마, 외부 업종 중심 관계 |
+| 투자지표 포함 | 의미 관계에 재무, 밸류에이션, 배당, DART 구조 관계를 추가 |
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
