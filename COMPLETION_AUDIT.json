@@ -1,20 +1,25 @@
 {
-  "generated_at": "2026-05-28T08:42:26.236896+09:00",
+  "generated_at": "2026-05-28T08:44:53.828383+09:00",
   "source_date": "20260521",
   "summary": {
-    "requirement_count": 9,
-    "verified_count": 8,
+    "requirement_count": 11,
+    "verified_count": 9,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
-      "blocked_external_dependency"
-    ]
+      "blocked_external_dependency",
+      "optional_external_dependency"
+    ],
+    "free_core_requirement_count": 9,
+    "free_core_verified_count": 9,
+    "free_core_status": "verified"
   },
   "requirements": [
     {
       "id": "fact_graph",
       "requirement": "공식 원천 기반 Company/Security/Market/Industry 사실 그래프",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "stock_graph_YYYYMMDD.json",
         "listed_on",
@@ -28,6 +33,7 @@
       "id": "propagation_graph",
       "requirement": "시장·이벤트 기반 동행, 선행, 노출, peer 파급 그래프",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "business_family_peer",
         "business_peer",
@@ -47,6 +53,7 @@
       "id": "signed_path_scoring",
       "requirement": "1~3홉 signed path 영향 점수와 종목별 영향권 요약",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "meta.impact_summary",
         "meta.impact_summary_policy",
@@ -58,6 +65,7 @@
       "id": "source_coverage",
       "requirement": "원천별 direct API, snapshot import, 계약형 import 상태 추적",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "SOURCE_COVERAGE.json",
         "SOURCE_COVERAGE.md"
@@ -70,6 +78,7 @@
       "id": "neo4j_export",
       "requirement": "그래프 DB 이전과 다중 홉 질의를 위한 Neo4j import 산출물",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "neo4j/nodes.csv",
         "neo4j/relationships.csv",
@@ -81,6 +90,7 @@
       "id": "obsidian_vault",
       "requirement": "현재 그래프 기준 Obsidian Vault Markdown 정리",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "vault/Home.md",
         "vault/Stocks",
@@ -93,6 +103,7 @@
       "id": "html_explorer",
       "requirement": "가벼운 정적 HTML 기반 검색, 선택, 범례, edge limit, 2D/3D 탐색",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "index.html",
         "graph_data.js",
@@ -106,6 +117,7 @@
       "id": "governance_metadata",
       "requirement": "source_system, source_id, confidence, sign, evidence_count, license gap 메타데이터",
       "status": "verified",
+      "scope": "free_core",
       "evidence": [
         "edge.metadata",
         "SOURCE_COVERAGE.json",
@@ -117,6 +129,7 @@
       "id": "direct_api_completion",
       "requirement": "KIND, BIGKinds, SEIBro/KSD, 유료 provider direct API 완전 자동 수집",
       "status": "blocked_external_dependency",
+      "scope": "external_direct_api",
       "evidence": [
         "SOURCE_COVERAGE.json",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
@@ -124,6 +137,37 @@
       "gaps": [
         "direct_api_gap"
       ]
+    },
+    {
+      "id": "optional_paid_provider_completion",
+      "requirement": "FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 계약형 보강 데이터",
+      "status": "optional_external_dependency",
+      "scope": "optional_enrichment",
+      "evidence": [
+        "--provider-snapshots",
+        "has_consensus_metric",
+        "broker_report",
+        "provider_relation"
+      ],
+      "gaps": [
+        "contract_required"
+      ]
+    },
+    {
+      "id": "free_core_completion",
+      "requirement": "무료 공식/준공식 원천과 snapshot import 기반 전략 그래프 코어 완성도",
+      "status": "verified",
+      "scope": "free_core",
+      "evidence": [
+        "KRX Open API",
+        "OpenDART",
+        "data.go.kr FSC/FTC",
+        "KIND snapshots",
+        "KRX Data Marketplace snapshots",
+        "SEIBro/KSD snapshots",
+        "BIGKinds snapshots"
+      ],
+      "gaps": []
     }
   ]
 }
