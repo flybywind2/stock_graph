@@ -1,0 +1,319 @@
+{
+  "generated_at": "2026-05-28T08:48:28.859619+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "endpoint_count": 36,
+    "direct_api_count": 26,
+    "snapshot_import_count": 6,
+    "contract_snapshot_import_count": 1,
+    "public_page_cache_count": 3
+  },
+  "endpoints": [
+    {
+      "id": "dart_corp_code",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/corpCode.xml",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "DART corp_code to stock_code master"
+    },
+    {
+      "id": "dart_disclosure_list",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/list.json",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "recent disclosure list"
+    },
+    {
+      "id": "dart_company_profile",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/company.json",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "company overview"
+    },
+    {
+      "id": "dart_financial_account",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/fnlttSinglAcnt.json",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "single-company financial accounts"
+    },
+    {
+      "id": "dart_major_shareholders",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/hyslrSttus.json",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "major shareholder status"
+    },
+    {
+      "id": "dart_executives",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/exctvSttus.json",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "executive status"
+    },
+    {
+      "id": "dart_other_company_investments",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/otrCprInvstmntSttus.json",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "other-company investment status"
+    },
+    {
+      "id": "dart_document",
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "url": "https://opendart.fss.or.kr/api/document.xml",
+      "auth": "DART_OPEN_API_KEY",
+      "used_for": "disclosure original document"
+    },
+    {
+      "id": "fsc_krx_listed_info",
+      "source": "data.go.kr FSC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1160100/service/GetKrxListedInfoService/getItemInfo",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KRX listed security master",
+      "status": "ok: 2656 stocks, source_date 20260521"
+    },
+    {
+      "id": "fsc_company_basic",
+      "source": "data.go.kr FSC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1160100/service/GetCorpBasicInfoService_V2/getCorpOutline_V2",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "company basic information",
+      "status": "ok: 2599 companies"
+    },
+    {
+      "id": "fsc_company_financial",
+      "source": "data.go.kr FSC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1160100/service/GetFinaStatInfoService_V2/getSummFinaStat_V2",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "company financial summary",
+      "status": "ok: 2557 companies"
+    },
+    {
+      "id": "fsc_stock_issue",
+      "source": "data.go.kr FSC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getItemBasiInfo",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "stock issue information",
+      "status": "unknown"
+    },
+    {
+      "id": "fsc_stock_dividend",
+      "source": "data.go.kr FSC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "stock dividend information",
+      "status": "unknown"
+    },
+    {
+      "id": "ftc_public_ym",
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1130000/publicYmList/publicYmListApi",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "available disclosure month",
+      "status": "ok: 388 listed companies, public_ym 202605"
+    },
+    {
+      "id": "ftc_group_status",
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1130000/appnGroupSttusList/appnGroupSttusListApi",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "designated business group list",
+      "status": "ok: 388 listed companies, public_ym 202605"
+    },
+    {
+      "id": "ftc_group_member",
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1130000/appnGroupAffiList/appnGroupAffiListApi",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "business group affiliates",
+      "status": "ok: 388 listed companies, public_ym 202605"
+    },
+    {
+      "id": "ftc_group_company_overview",
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1130000/affiliationCompSttusList/affiliationCompSttusListApi",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "affiliate overview",
+      "status": "ok: 388 listed companies, public_ym 202605"
+    },
+    {
+      "id": "ftc_group_activity",
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1130000/typeOfBusinessCompSttusList/typeOfBusinessCompSttusListApi",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "affiliate business activity",
+      "status": "ok: 388 listed companies, public_ym 202605"
+    },
+    {
+      "id": "ftc_group_financial",
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "url": "https://apis.data.go.kr/1130000/financeCompSttusList/financeCompSttusListApi",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "affiliate financial status",
+      "status": "ok: 388 listed companies, public_ym 202605"
+    },
+    {
+      "id": "krx_kospi_security_master",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_isu_base_info",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "KOSPI security master"
+    },
+    {
+      "id": "krx_kosdaq_security_master",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/sto/ksq_isu_base_info",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "KOSDAQ security master"
+    },
+    {
+      "id": "krx_konex_security_master",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/sto/knx_isu_base_info",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "KONEX security master"
+    },
+    {
+      "id": "krx_index_krx_daily",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/idx/krx_dd_trd",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "KRX index daily trading"
+    },
+    {
+      "id": "krx_index_kospi_daily",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "KOSPI index daily trading"
+    },
+    {
+      "id": "krx_index_kosdaq_daily",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/idx/kosdaq_dd_trd",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "KOSDAQ index daily trading"
+    },
+    {
+      "id": "krx_etf_daily",
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "url": "https://data-dbg.krx.co.kr/svc/apis/etp/etf_bydd_trd",
+      "auth": "KRX_OPEN_API_KEY",
+      "used_for": "ETF daily trading"
+    },
+    {
+      "id": "naver_theme_list",
+      "source": "Naver Finance",
+      "mode": "public_page_cache",
+      "url": "https://finance.naver.com/sise/theme.naver",
+      "auth": "none",
+      "used_for": "theme list"
+    },
+    {
+      "id": "naver_theme_detail",
+      "source": "Naver Finance",
+      "mode": "public_page_cache",
+      "url": "https://finance.naver.com/sise/sise_group_detail.naver",
+      "auth": "none",
+      "used_for": "theme constituents"
+    },
+    {
+      "id": "fnguide_company_profile",
+      "source": "FnGuide public page",
+      "mode": "public_page_cache",
+      "url": "https://comp.fnguide.com/SVO2/ASP/SVD_Main.asp",
+      "auth": "none",
+      "used_for": "sector, industry, valuation public profile"
+    },
+    {
+      "id": "kind_snapshots",
+      "source": "KIND",
+      "mode": "snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "none",
+      "used_for": "disclosures, IR, company analysis reports",
+      "option": "--kind-snapshots"
+    },
+    {
+      "id": "bigkinds_snapshots",
+      "source": "BIGKinds",
+      "mode": "snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "none or BIGKinds Open API approval",
+      "used_for": "news articles, entities, keywords",
+      "option": "--bigkinds-snapshots"
+    },
+    {
+      "id": "krx_marketplace_snapshots",
+      "source": "KRX Data Marketplace",
+      "mode": "snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "none",
+      "used_for": "industry classification, index constituents, ETF holdings",
+      "option": "--krx-marketplace-snapshots"
+    },
+    {
+      "id": "ksd_seibro_snapshots",
+      "source": "SEIBro/KSD",
+      "mode": "snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "none or service approval",
+      "used_for": "rights, lending, lockup releases",
+      "option": "--ksd-seibro-snapshots"
+    },
+    {
+      "id": "provider_snapshots",
+      "source": "Paid providers",
+      "mode": "contract_snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "contract required",
+      "used_for": "consensus, broker reports, curated relations",
+      "option": "--provider-snapshots"
+    },
+    {
+      "id": "supplemental_events",
+      "source": "Manual supplemental",
+      "mode": "snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "none",
+      "used_for": "event exposure files",
+      "option": "--supplemental-events"
+    },
+    {
+      "id": "supplemental_relations",
+      "source": "Manual supplemental",
+      "mode": "snapshot_import",
+      "url": "local JSON/CSV/TSV file",
+      "auth": "none",
+      "used_for": "relationship files",
+      "option": "--supplemental-relations"
+    }
+  ]
+}

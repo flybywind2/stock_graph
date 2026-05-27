@@ -46,6 +46,10 @@
 
 `COMPLETION_AUDIT.json`과 `COMPLETION_AUDIT.md`를 함께 생성한다. 전략 문서의 사실 그래프, 파급 그래프, signed path scoring, source coverage, Neo4j export, Obsidian Vault, HTML explorer, governance metadata 요구사항을 항목별로 검증하고, 외부 인증/계약 때문에 남은 direct API gap은 `blocked_external_dependency`로 분리한다.
 
+## API endpoint inventory
+
+`API_ENDPOINTS.json`과 `API_ENDPOINTS.md`를 함께 생성한다. 현재 코드가 직접 호출하는 OpenDART, data.go.kr FSC/FTC, KRX Open API, Naver/FnGuide 공개 페이지 endpoint와 KIND, BIGKinds, KRX Data Marketplace, SEIBro/KSD, provider snapshot import 경로를 한 파일에서 확인한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
