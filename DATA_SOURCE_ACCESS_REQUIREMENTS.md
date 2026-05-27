@@ -12,6 +12,7 @@
 | OpenDART | `DART_OPEN_API_KEY` | OpenDART 인증키 | corpCode, 공시목록, 원문, 기업개황, 주요계정, 최대주주, 임원, 타법인출자 |
 | data.go.kr 금융위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | KRX 상장종목정보, 기업기본정보, 기업 재무정보, 주식발행정보, 주식배당정보 |
 | data.go.kr 공정거래위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | 대규모기업집단, 소속회사, 참여업종, 재무현황 |
+| KIND export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--kind-snapshots` 지정 | 거래소 공시, IR자료, 기업분석보고서 이벤트/증거 |
 | KRX Data Marketplace export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--krx-marketplace-snapshots` 지정 | 업종분류, 지수구성종목, ETF PDF/편입종목 |
 | SEIBro / KSD export | 없음 또는 서비스별 승인 | CSV/TSV/JSON 다운로드 후 `--ksd-seibro-snapshots` 지정 | 배당/권리, 증권대차, 보호예수 해제 이벤트 |
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
@@ -39,11 +40,38 @@
 
 | Source | 필요한 조치 | 현재 반영 방법 |
 |---|---|---|
-| KIND | 공시/IR/기업분석 보고서 다운로드 경로 또는 API/엑셀 export 규격 확정 | `--supplemental-events`, `--supplemental-relations` JSON/CSV/TSV로 이벤트/관계/증거 import |
+| KIND direct API | 공식 API 또는 화면별 엑셀 다운로드 자동화 규격 확정 | 다운로드 스냅샷은 `--kind-snapshots`로 1급 import, API 직결은 화면별 문서 필요 |
 | SEIBro / KSD direct API | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 다운로드 스냅샷은 `--ksd-seibro-snapshots`로 1급 import, API 직결은 서비스별 문서 필요 |
 | BIGKinds | Open API 이용 신청 및 호출 제한 확인 | 기사/개체명/이벤트 후보를 `--supplemental-events` 또는 `--supplemental-relations`로 import |
 | 유료 FnGuide/DataGuide/QuantiWise | 계약 및 데이터 사용권 확인 | 컨센서스, 정제 공급망, 리포트 edge 보강용 |
 | DeepSearch / Finorma | 계약 및 API key 발급 | 뉴스/문서/공급망 후보 보강용 |
+
+## KIND snapshots
+
+KIND 상장공시, IR자료실, 기업분석보고서 export 파일은 `snapshot_type`으로 구분해 넣는다. CSV/TSV/JSON을 지원하고, 이벤트 노드와 Evidence 노드를 함께 만들어 `positive_exposure`, `negative_exposure`, 또는 중립 `has_event`로 종목에 연결한다.
+
+지원 타입:
+
+| snapshot_type | 최소 필드 | 생성 관계 |
+|---|---|---|
+| `disclosure_event` | `stock_code`, `document_id` 또는 `title` | `event -> stock` `positive_exposure`/`negative_exposure`/`has_event` |
+| `ir_material` | `stock_code`, `document_id` 또는 `title` | `event -> stock` + `event -> evidence` |
+| `analysis_report` | `stock_code`, `document_id` 또는 `title` | `event -> stock` + `event -> evidence` |
+
+CSV 예시:
+
+```csv
+snapshot_type,stock_code,stock_name,document_id,document_type,title,published_at,url,summary,sign,weight,confidence
+disclosure_event,005930,삼성전자,KIND-1,단일판매공급계약,삼성전자 공급계약,20260522,https://kind.krx.co.kr/disclosure,공급계약 체결,positive,0.8,0.75
+ir_material,000660,SK하이닉스,KIND-IR-1,IR,SK하이닉스 IR,20260521,https://kind.krx.co.kr/ir,HBM 투자 설명,positive,0.6,0.65
+analysis_report,214320,이노션,KIND-R-1,기업분석보고서,이노션 분석,20260520,https://kind.krx.co.kr/report,광고 경기 점검,neutral,0.4,0.55
+```
+
+CLI 예시:
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --kind-snapshots reports/stock_graph/kind_snapshots.csv
+```
 
 ## KRX Data Marketplace snapshots
 
