@@ -13,6 +13,7 @@
 | data.go.kr 금융위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | KRX 상장종목정보, 기업기본정보, 기업 재무정보, 주식발행정보, 주식배당정보 |
 | data.go.kr 공정거래위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | 대규모기업집단, 소속회사, 참여업종, 재무현황 |
 | KRX Data Marketplace export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--krx-marketplace-snapshots` 지정 | 업종분류, 지수구성종목, ETF PDF/편입종목 |
+| SEIBro / KSD export | 없음 또는 서비스별 승인 | CSV/TSV/JSON 다운로드 후 `--ksd-seibro-snapshots` 지정 | 배당/권리, 증권대차, 보호예수 해제 이벤트 |
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
 | FnGuide public page | 없음 | 공개 페이지 캐시 | 섹터, 업종, PER/PBR/배당 보강 |
 
@@ -39,7 +40,7 @@
 | Source | 필요한 조치 | 현재 반영 방법 |
 |---|---|---|
 | KIND | 공시/IR/기업분석 보고서 다운로드 경로 또는 API/엑셀 export 규격 확정 | `--supplemental-events`, `--supplemental-relations` JSON/CSV/TSV로 이벤트/관계/증거 import |
-| SEIBro / KSD | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 보호예수, 대차, 권리 이벤트와 주주/발행회사 관계를 supplemental import |
+| SEIBro / KSD direct API | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 다운로드 스냅샷은 `--ksd-seibro-snapshots`로 1급 import, API 직결은 서비스별 문서 필요 |
 | BIGKinds | Open API 이용 신청 및 호출 제한 확인 | 기사/개체명/이벤트 후보를 `--supplemental-events` 또는 `--supplemental-relations`로 import |
 | 유료 FnGuide/DataGuide/QuantiWise | 계약 및 데이터 사용권 확인 | 컨센서스, 정제 공급망, 리포트 edge 보강용 |
 | DeepSearch / Finorma | 계약 및 API key 발급 | 뉴스/문서/공급망 후보 보강용 |
@@ -69,6 +70,33 @@ CLI 예시:
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --krx-marketplace-snapshots reports/stock_graph/krx_marketplace_snapshots.csv
+```
+
+## SEIBro / KSD snapshots
+
+SEIBro 오픈플랫폼 또는 KSD GW에서 받은 권리/배당, 증권대차, 보호예수 해제 파일은 `snapshot_type`으로 구분해 넣는다. CSV/TSV/JSON을 지원하고, 권리성 이벤트는 투자지표 포함 프리셋과 공식 사실 그래프에 같이 표시된다.
+
+지원 타입:
+
+| snapshot_type | 최소 필드 | 생성 관계 |
+|---|---|---|
+| `dividend_right` | `stock_code`, `event_type` 또는 `event_date` | `stock -> rights_event` `has_rights_event` |
+| `securities_lending` | `stock_code`, `quantity` 또는 `ratio` | `stock -> rights_event` `has_lending_signal` |
+| `lockup_release` | `stock_code`, `event_date` 또는 `quantity` | `stock -> rights_event` `has_lockup_release` |
+
+CSV 예시:
+
+```csv
+snapshot_type,stock_code,stock_name,event_type,event_date,quantity,amount,ratio,source_system,source_id,title,url
+dividend_right,005930,삼성전자,현금배당,20260522,,1444,2.1,SEIBRO,div-1,삼성전자 배당,https://example.com/div
+securities_lending,000660,SK하이닉스,대차잔고,20260522,1234567,,1.4,KSD_GW,slb-1,SK하이닉스 대차잔고,
+lockup_release,214320,이노션,보호예수해제,20260522,100000,,0.9,SEIBRO,lock-1,이노션 보호예수,
+```
+
+CLI 예시:
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --ksd-seibro-snapshots reports/stock_graph/ksd_seibro_snapshots.csv
 ```
 
 ## supplemental-events format
