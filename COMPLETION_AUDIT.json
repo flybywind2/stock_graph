@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-05-28T08:54:20.946753+09:00",
+  "generated_at": "2026-05-28T08:57:37.003579+09:00",
   "source_date": "20260521",
   "summary": {
-    "requirement_count": 11,
-    "verified_count": 9,
+    "requirement_count": 12,
+    "verified_count": 10,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
       "blocked_external_dependency",
       "optional_external_dependency"
     ],
-    "free_core_requirement_count": 9,
-    "free_core_verified_count": 9,
+    "free_core_requirement_count": 10,
+    "free_core_verified_count": 10,
     "free_core_status": "verified"
   },
   "requirements": [
@@ -122,6 +122,18 @@
         "edge.metadata",
         "SOURCE_COVERAGE.json",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "graph_quality_gate",
+      "requirement": "노드/엣지 무결성, 필수 관계 레이어, 렌더 payload 예산 품질 게이트",
+      "status": "verified",
+      "scope": "free_core",
+      "evidence": [
+        "QUALITY_AUDIT.json",
+        "QUALITY_AUDIT.md",
+        "quality_status=pass"
       ],
       "gaps": []
     },
