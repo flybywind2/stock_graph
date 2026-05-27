@@ -13,6 +13,7 @@
 | data.go.kr 금융위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | KRX 상장종목정보, 기업기본정보, 기업 재무정보, 주식발행정보, 주식배당정보 |
 | data.go.kr 공정거래위원회 | `DATA_GO_KR_SERVICE_KEY` | 공공데이터포털 활용신청 | 대규모기업집단, 소속회사, 참여업종, 재무현황 |
 | KIND export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--kind-snapshots` 지정 | 거래소 공시, IR자료, 기업분석보고서 이벤트/증거 |
+| BIGKinds export | 없음 또는 Open API 승인 | CSV/TSV/JSON 다운로드 후 `--bigkinds-snapshots` 지정 | 뉴스 기사, 개체명, 키워드 기반 이벤트/증거 |
 | KRX Data Marketplace export | 없음 | 웹에서 CSV/TSV/JSON 다운로드 후 `--krx-marketplace-snapshots` 지정 | 업종분류, 지수구성종목, ETF PDF/편입종목 |
 | SEIBro / KSD export | 없음 또는 서비스별 승인 | CSV/TSV/JSON 다운로드 후 `--ksd-seibro-snapshots` 지정 | 배당/권리, 증권대차, 보호예수 해제 이벤트 |
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
@@ -42,7 +43,7 @@
 |---|---|---|
 | KIND direct API | 공식 API 또는 화면별 엑셀 다운로드 자동화 규격 확정 | 다운로드 스냅샷은 `--kind-snapshots`로 1급 import, API 직결은 화면별 문서 필요 |
 | SEIBro / KSD direct API | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 다운로드 스냅샷은 `--ksd-seibro-snapshots`로 1급 import, API 직결은 서비스별 문서 필요 |
-| BIGKinds | Open API 이용 신청 및 호출 제한 확인 | 기사/개체명/이벤트 후보를 `--supplemental-events` 또는 `--supplemental-relations`로 import |
+| BIGKinds direct API | Open API 이용 신청, 호출 제한, 응답 레이아웃 확인 | 다운로드/API 결과 스냅샷은 `--bigkinds-snapshots`로 1급 import |
 | 유료 FnGuide/DataGuide/QuantiWise | 계약 및 데이터 사용권 확인 | 컨센서스, 정제 공급망, 리포트 edge 보강용 |
 | DeepSearch / Finorma | 계약 및 API key 발급 | 뉴스/문서/공급망 후보 보강용 |
 
@@ -71,6 +72,32 @@ CLI 예시:
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --kind-snapshots reports/stock_graph/kind_snapshots.csv
+```
+
+## BIGKinds snapshots
+
+BIGKinds 뉴스검색/분석 또는 Open API 결과는 `snapshot_type`으로 구분해 넣는다. 기사, 개체명, 키워드 후보를 Evidence로 보존하고 종목에는 이벤트 노출로 연결한다. 뉴스는 공식 사실이 아니라 증거 레이어이므로 `confidence`를 낮게 시작하고 다른 원천과 교차확인하는 전제가 맞다.
+
+지원 타입:
+
+| snapshot_type | 최소 필드 | 생성 관계 |
+|---|---|---|
+| `article_event` | `stock_code`, `article_id` 또는 `title` | `event -> stock` `positive_exposure`/`negative_exposure`/`has_event` |
+| `entity_mention` | `stock_code`, `entity` 또는 `article_id` | `event -> stock` + `event -> evidence` |
+| `keyword_signal` | `stock_code`, `keyword` 또는 `article_id` | `event -> stock` + `event -> evidence` |
+
+CSV 예시:
+
+```csv
+snapshot_type,stock_code,stock_name,article_id,title,published_at,url,summary,topic,keyword,entity,sentiment,weight,confidence
+article_event,005930,삼성전자,BK-1,삼성전자 HBM 증설,20260522,https://bigkinds.or.kr/a,HBM 투자 확대,HBM,HBM,삼성전자,positive,0.7,0.62
+entity_mention,000660,SK하이닉스,BK-2,SK하이닉스 공급망,20260521,https://bigkinds.or.kr/b,공급망 점검,공급망,반도체,SK하이닉스,neutral,0.4,0.55
+```
+
+CLI 예시:
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --bigkinds-snapshots reports/stock_graph/bigkinds_snapshots.csv
 ```
 
 ## KRX Data Marketplace snapshots
