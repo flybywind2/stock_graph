@@ -315,10 +315,10 @@
     const FACT_NODE_TYPES = new Set(['stock', 'market', 'industry', 'security_group', 'index', 'index_family', 'product_market', 'etf', 'fsc_company', 'isin', 'corporate_registration', 'business_group', 'business_activity', 'business_activity_family', 'dart_company', 'disclosure', 'disclosure_category', 'financial_metric', 'financial_snapshot', 'shareholder', 'executive', 'company', 'stock_issue', 'dividend_event']);
     const FACT_EDGE_TYPES = new Set(['listed_on', 'classified_as', 'identified_by', 'public_data_mapped_to', 'registered_as', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'security_grouped_as', 'has_index_context', 'traded_as_product', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'issued_stock_as', 'has_dividend_event', 'mapped_to', 'filed', 'stock_filed', 'disclosure_categorized_as']);
     const PROPAGATION_NODE_TYPES = new Set(['stock', 'counterparty', 'business_group', 'business_activity', 'business_activity_family', 'external_sector', 'external_industry', 'theme', 'event', 'relation_fact', 'evidence', 'disclosure']);
-    const PROPAGATION_EDGE_TYPES = new Set(['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as']);
+    const PROPAGATION_EDGE_TYPES = new Set(['supply_contract', 'supplies_to', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as']);
     const SEMANTIC_EDGE_TYPES = new Set(['related_stock', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'co_moves', 'leads', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_sector_classified_as', 'external_industry_classified_as', 'positive_exposure', 'negative_exposure']);
     const INVESTMENT_EDGE_TYPES = new Set(['market_cap_bucket', 'investment_grade_bucket', 'valuation_bucket', 'dividend_bucket', 'has_dividend_event', 'issued_stock_as', 'financial_bucket', 'reports_metric', 'owns', 'serves_at', 'invests_in', 'stock_filed', 'filed', 'disclosure_categorized_as', 'mapped_to']);
-    const SIGNED_IMPACT_EDGE_TYPES = new Set(['co_moves', 'leads', 'positive_exposure', 'negative_exposure', 'supply_contract', 'related_party_transaction', 'owns', 'invests_in', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'related_stock']);
+    const SIGNED_IMPACT_EDGE_TYPES = new Set(['co_moves', 'leads', 'positive_exposure', 'negative_exposure', 'supply_contract', 'supplies_to', 'related_party_transaction', 'owns', 'invests_in', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'related_stock']);
     const IMPORTANT_OVERVIEW_EDGES = new Set(['investment_grade_bucket', 'market_cap_bucket', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'owns', 'serves_at', 'invests_in', 'reports_metric', 'co_moves', 'leads']);
     const Z_AXIS_LABELS = {
       market_cap: '시가총액',
@@ -364,6 +364,7 @@
       supported_by: '증거', fact_source: '팩트 출발', fact_target: '팩트 도착',
       co_moves: '잔차 동행', leads: '1일 선행', has_event: '이벤트', positive_exposure: '긍정 노출', negative_exposure: '부정 노출',
       group_peer: '기업집단 Peer', business_peer: '참여업종 Peer', business_family_peer: '사업군 Peer',
+      supplies_to: '공급망',
       theme_tagged_as: '테마', theme_peer: '테마 Peer', industry_peer: '업종 Peer', related_stock: '관련 종목',
       valuation_bucket: '밸류에이션', dividend_bucket: '배당', issued_stock_as: '주식발행', has_dividend_event: '배당 이벤트', mapped_to: 'DART',
       identified_by: 'ISIN', public_data_mapped_to: '공공데이터 법인', registered_as: '법인등록번호',
@@ -461,6 +462,7 @@
       if (edge.type === 'related_stock') return clamp(score / 100, 0.22, 1);
       const weights = {
         supply_contract: 1,
+        supplies_to: 0.86,
         related_party_transaction: 0.92,
         issued_stock_as: 0.72,
         has_dividend_event: 0.74,
@@ -703,7 +705,7 @@
         .sort((a, b) => b.roots.size - a.roots.size || b.score - a.score || sortByUsefulness(a.node, b.node));
     }
     function edgeImportance(type) {
-      const order = ['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
+      const order = ['supply_contract', 'supplies_to', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target', 'related_stock', 'co_moves', 'leads', 'group_peer', 'business_peer', 'business_family_peer', 'theme_peer', 'industry_peer', 'positive_exposure', 'negative_exposure', 'affiliated_with', 'business_activity_classified_as', 'business_activity_family_classified_as', 'theme_tagged_as', 'external_industry_classified_as', 'financial_bucket', 'investment_grade_bucket', 'market_cap_bucket', 'valuation_bucket', 'dividend_bucket', 'stock_filed'];
       const index = order.indexOf(type);
       return index === -1 ? 99 : index;
     }
@@ -720,7 +722,7 @@
       const touchesRoot = rootSet.has(edge.source) || rootSet.has(edge.target);
       const connectsRoots = rootSet.has(edge.source) && rootSet.has(edge.target);
       const touchesStock = source?.type === 'stock' || target?.type === 'stock';
-      const directRelation = edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type === 'related_party_transaction' || edge.type === 'co_moves' || edge.type === 'leads' || edge.type.endsWith('_peer');
+      const directRelation = edge.type === 'related_stock' || edge.type === 'supply_contract' || edge.type === 'supplies_to' || edge.type === 'related_party_transaction' || edge.type === 'co_moves' || edge.type === 'leads' || edge.type.endsWith('_peer');
       return (connectsRoots ? 10000 : 0)
         + (touchesRoot ? 5200 : 0)
         + (directRelation ? 900 : 0)
@@ -1422,7 +1424,7 @@
       syncFilterControls();
     }
     function edgeLegendClass(type) {
-      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' || type === 'supply_contract' || type === 'related_party_transaction' || type === 'co_moves' || type === 'leads' ? ' focus' : ''}`;
+      return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' || type === 'supply_contract' || type === 'supplies_to' || type === 'related_party_transaction' || type === 'co_moves' || type === 'leads' ? ' focus' : ''}`;
     }
     function syncFilterControls() {
       typeFilters.querySelectorAll('[data-type]').forEach(input => { input.checked = enabledTypes.has(input.dataset.type); });

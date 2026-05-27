@@ -29,9 +29,9 @@
 
 | Source | 필요한 조치 | 현재 반영 방법 |
 |---|---|---|
-| KIND | 공시/IR/기업분석 보고서 다운로드 경로 또는 API/엑셀 export 규격 확정 | `--supplemental-events` JSON/CSV/TSV로 이벤트/증거 import |
-| SEIBro / KSD | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 보호예수, 대차, 권리 이벤트를 supplemental event 또는 별도 CSV로 import 예정 |
-| BIGKinds | Open API 이용 신청 및 호출 제한 확인 | 기사/개체명/이벤트 후보를 `--supplemental-events`로 import |
+| KIND | 공시/IR/기업분석 보고서 다운로드 경로 또는 API/엑셀 export 규격 확정 | `--supplemental-events`, `--supplemental-relations` JSON/CSV/TSV로 이벤트/관계/증거 import |
+| SEIBro / KSD | 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃 확인, 상업적 이용 가능 여부 확인 | 보호예수, 대차, 권리 이벤트와 주주/발행회사 관계를 supplemental import |
+| BIGKinds | Open API 이용 신청 및 호출 제한 확인 | 기사/개체명/이벤트 후보를 `--supplemental-events` 또는 `--supplemental-relations`로 import |
 | KRX Data Marketplace 웹 다운로드 | 필요한 통계 메뉴의 다운로드 파일 포맷 고정 | 업종분류, 지수구성, ETF PDF 같은 스냅샷 CSV import 예정 |
 | 유료 FnGuide/DataGuide/QuantiWise | 계약 및 데이터 사용권 확인 | 컨센서스, 정제 공급망, 리포트 edge 보강용 |
 | DeepSearch / Finorma | 계약 및 API key 발급 | 뉴스/문서/공급망 후보 보강용 |
@@ -60,4 +60,33 @@ CLI 예시:
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --supplemental-events reports/stock_graph/kind_events.csv --supplemental-events reports/stock_graph/bigkinds_events.json
+```
+
+## supplemental-relations format
+
+KIND, SEIBro/KSD, BIGKinds, 리포트, 유료 벤더, 수동 검토 결과에서 확인한 공급망·고객사·권리·지분 관계를 일반 관계로 넣을 수 있다.
+
+```json
+{
+  "relations": [
+    {
+      "source_system": "KIND",
+      "source_id": "report-1",
+      "rel_type": "supplies_to",
+      "source_stock_code": "095340",
+      "target_stock_code": "005930",
+      "sign": "positive",
+      "weight": 0.8,
+      "confidence": 0.7,
+      "title": "삼성전자 공급망 보고서",
+      "url": "https://example.com/report"
+    }
+  ]
+}
+```
+
+CLI 예시:
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --supplemental-relations reports/stock_graph/supply_chain_relations.csv
 ```
