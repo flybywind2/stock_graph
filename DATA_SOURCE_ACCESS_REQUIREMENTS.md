@@ -25,6 +25,10 @@
 | 의미 중심 | 기업집단, 참여업종, 사업군, 테마, 외부 업종 중심 관계 |
 | 투자지표 포함 | 의미 관계에 재무, 밸류에이션, 배당, DART 구조 관계를 추가 |
 
+## Graph DB export
+
+`neo4j/nodes.csv`, `neo4j/relationships.csv`, `neo4j/import.cypher`를 함께 생성한다. 정적 HTML은 탐색용이고, Neo4j export는 전략 문서의 다중 홉 질의, 경로 점수 검증, 그래프 DB 이전 검토용이다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
