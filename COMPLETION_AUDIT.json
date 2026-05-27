@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-05-28T08:42:26.236896+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "requirement_count": 9,
+    "verified_count": 8,
+    "partial_count": 0,
+    "blocked_external_dependency_count": 1,
+    "remaining_statuses": [
+      "blocked_external_dependency"
+    ]
+  },
+  "requirements": [
+    {
+      "id": "fact_graph",
+      "requirement": "공식 원천 기반 Company/Security/Market/Industry 사실 그래프",
+      "status": "verified",
+      "evidence": [
+        "stock_graph_YYYYMMDD.json",
+        "listed_on",
+        "classified_as",
+        "identified_by",
+        "public_data_mapped_to"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "propagation_graph",
+      "requirement": "시장·이벤트 기반 동행, 선행, 노출, peer 파급 그래프",
+      "status": "verified",
+      "evidence": [
+        "business_family_peer",
+        "business_peer",
+        "co_moves",
+        "group_peer",
+        "has_event",
+        "industry_peer",
+        "leads",
+        "negative_exposure",
+        "positive_exposure",
+        "related_stock",
+        "theme_peer"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "signed_path_scoring",
+      "requirement": "1~3홉 signed path 영향 점수와 종목별 영향권 요약",
+      "status": "verified",
+      "evidence": [
+        "meta.impact_summary",
+        "meta.impact_summary_policy",
+        "HTML detail panel path scoring"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "source_coverage",
+      "requirement": "원천별 direct API, snapshot import, 계약형 import 상태 추적",
+      "status": "verified",
+      "evidence": [
+        "SOURCE_COVERAGE.json",
+        "SOURCE_COVERAGE.md"
+      ],
+      "gaps": [
+        "direct_api_gap"
+      ]
+    },
+    {
+      "id": "neo4j_export",
+      "requirement": "그래프 DB 이전과 다중 홉 질의를 위한 Neo4j import 산출물",
+      "status": "verified",
+      "evidence": [
+        "neo4j/nodes.csv",
+        "neo4j/relationships.csv",
+        "neo4j/import.cypher"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "obsidian_vault",
+      "requirement": "현재 그래프 기준 Obsidian Vault Markdown 정리",
+      "status": "verified",
+      "evidence": [
+        "vault/Home.md",
+        "vault/Stocks",
+        "vault/Industries",
+        "vault/Markets"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "html_explorer",
+      "requirement": "가벼운 정적 HTML 기반 검색, 선택, 범례, edge limit, 2D/3D 탐색",
+      "status": "verified",
+      "evidence": [
+        "index.html",
+        "graph_data.js",
+        "legend filtering",
+        "edge render limit",
+        "2D/3D toggle"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "governance_metadata",
+      "requirement": "source_system, source_id, confidence, sign, evidence_count, license gap 메타데이터",
+      "status": "verified",
+      "evidence": [
+        "edge.metadata",
+        "SOURCE_COVERAGE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "direct_api_completion",
+      "requirement": "KIND, BIGKinds, SEIBro/KSD, 유료 provider direct API 완전 자동 수집",
+      "status": "blocked_external_dependency",
+      "evidence": [
+        "SOURCE_COVERAGE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ],
+      "gaps": [
+        "direct_api_gap"
+      ]
+    }
+  ]
+}

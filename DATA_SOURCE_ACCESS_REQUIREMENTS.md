@@ -42,6 +42,10 @@
 
 `SOURCE_COVERAGE.json`과 `SOURCE_COVERAGE.md`를 함께 생성한다. 각 원천의 `direct_api`, `snapshot_import`, `contract_snapshot_import`, `public_page_cache` 상태와 count, 남은 direct API gap을 기계적으로 확인하기 위한 산출물이다.
 
+## Completion audit
+
+`COMPLETION_AUDIT.json`과 `COMPLETION_AUDIT.md`를 함께 생성한다. 전략 문서의 사실 그래프, 파급 그래프, signed path scoring, source coverage, Neo4j export, Obsidian Vault, HTML explorer, governance metadata 요구사항을 항목별로 검증하고, 외부 인증/계약 때문에 남은 direct API gap은 `blocked_external_dependency`로 분리한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
