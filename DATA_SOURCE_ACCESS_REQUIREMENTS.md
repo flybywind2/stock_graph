@@ -38,6 +38,10 @@
 
 그래프 JSON/JS의 `meta.impact_summary`에는 상위 종목별 1~3홉 signed path 영향권 요약을 저장한다. HTML 상세 패널의 실시간 계산과 같은 방향의 점수이며, 외부 분석이나 Neo4j 검증에서 빠른 후보군으로 사용할 수 있다.
 
+## Source coverage
+
+`SOURCE_COVERAGE.json`과 `SOURCE_COVERAGE.md`를 함께 생성한다. 각 원천의 `direct_api`, `snapshot_import`, `contract_snapshot_import`, `public_page_cache` 상태와 count, 남은 direct API gap을 기계적으로 확인하기 위한 산출물이다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |

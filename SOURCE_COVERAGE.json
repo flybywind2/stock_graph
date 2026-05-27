@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-05-28T08:37:24.856847+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "source_count": 11,
+    "direct_or_loaded_count": 4,
+    "snapshot_import_path_count": 5,
+    "remaining_direct_api_gaps": [
+      "direct_api_gap"
+    ]
+  },
+  "sources": [
+    {
+      "source": "KRX Open API",
+      "mode": "direct_api",
+      "status": "loaded",
+      "count": 37033,
+      "env_key": "KRX_OPEN_API_KEY",
+      "used_for": "KOSPI/KOSDAQ daily rows, security master, index, ETF",
+      "gaps": []
+    },
+    {
+      "source": "OpenDART",
+      "mode": "direct_api",
+      "status": "ok: transaction_docs 14, counterparties 14",
+      "count": 530,
+      "env_key": "DART_OPEN_API_KEY",
+      "used_for": "corpCode, disclosures, company profile, accounts, shareholders, executives, investments",
+      "gaps": []
+    },
+    {
+      "source": "data.go.kr FSC",
+      "mode": "direct_api",
+      "status": "ok: 2656 stocks, source_date 20260521",
+      "count": 2656,
+      "env_key": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KRX listed info, company basic, financial summary, stock issue, dividend",
+      "gaps": []
+    },
+    {
+      "source": "data.go.kr FTC",
+      "mode": "direct_api",
+      "status": "ok: 388 listed companies, public_ym 202605",
+      "count": 388,
+      "env_key": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "business groups, affiliates, activities, financial status",
+      "gaps": []
+    },
+    {
+      "source": "KIND",
+      "mode": "snapshot_import",
+      "status": "skipped",
+      "count": 0,
+      "option": "--kind-snapshots",
+      "used_for": "disclosure, IR, company analysis report events and evidence",
+      "gaps": [
+        "direct_api_gap"
+      ]
+    },
+    {
+      "source": "BIGKinds",
+      "mode": "snapshot_import",
+      "status": "skipped",
+      "count": 0,
+      "option": "--bigkinds-snapshots",
+      "used_for": "news articles, entities, keywords as event evidence",
+      "gaps": [
+        "direct_api_gap"
+      ]
+    },
+    {
+      "source": "KRX Data Marketplace",
+      "mode": "snapshot_import",
+      "status": "skipped",
+      "count": 0,
+      "option": "--krx-marketplace-snapshots",
+      "used_for": "industry classification, index constituents, ETF holdings",
+      "gaps": []
+    },
+    {
+      "source": "SEIBro/KSD",
+      "mode": "snapshot_import",
+      "status": "skipped",
+      "count": 0,
+      "option": "--ksd-seibro-snapshots",
+      "used_for": "rights, dividends, securities lending, lockup releases",
+      "gaps": [
+        "direct_api_gap",
+        "license_review_required"
+      ]
+    },
+    {
+      "source": "Paid providers",
+      "mode": "contract_snapshot_import",
+      "status": "skipped",
+      "count": 0,
+      "option": "--provider-snapshots",
+      "used_for": "consensus, broker reports, curated supply chain and relation networks",
+      "gaps": [
+        "contract_required",
+        "direct_api_gap"
+      ]
+    },
+    {
+      "source": "Naver Finance",
+      "mode": "public_page_cache",
+      "status": "ok: 2348 stocks, 6448 stock-theme links",
+      "count": 0,
+      "used_for": "theme groups",
+      "gaps": [
+        "public_page_fragility"
+      ]
+    },
+    {
+      "source": "FnGuide public page",
+      "mode": "public_page_cache",
+      "status": "ok: 2622 stocks",
+      "count": 2652,
+      "used_for": "sector, industry, PER/PBR/dividend public profile",
+      "gaps": [
+        "public_page_fragility"
+      ]
+    }
+  ]
+}
