@@ -1,12 +1,12 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T14:00:52.464327+09:00
+생성시각: 2026-05-28T14:06:15.731442+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: ready
-- artifact_count: 18
+- artifact_count: 20
 - required_artifacts_present: True
 - repository: flybywind2/stock_graph
 - branch: main
@@ -23,7 +23,7 @@
 | QUALITY_AUDIT.json | True | 2638 |
 | TRACEABILITY_MATRIX.json | True | 3953 |
 | API_ENDPOINTS.json | True | 14597 |
-| DEPLOYMENT_AUDIT.json | True | 2313 |
+| DEPLOYMENT_AUDIT.json | True | 2527 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1289 |
 | EXTERNAL_DEPENDENCY_AUDIT.json | True | 11751 |
 | EXTERNAL_API.env.example | True | 482 |
@@ -34,3 +34,5 @@
 | EXTERNAL_API_READINESS.md | True | 3785 |
 | FULL_100_ACTIONS.json | True | 27016 |
 | FULL_100_ACTIONS.md | True | 11493 |
+| EXTERNAL_GAP_VALIDATION.json | True | 10121 |
+| EXTERNAL_GAP_VALIDATION.md | True | 2693 |
