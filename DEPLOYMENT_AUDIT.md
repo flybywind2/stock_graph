@@ -1,12 +1,12 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T14:52:33.051515+09:00
+생성시각: 2026-05-28T14:58:01.805623+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: ready
-- artifact_count: 23
+- artifact_count: 28
 - required_artifacts_present: True
 - repository: flybywind2/stock_graph
 - branch: main
@@ -23,14 +23,19 @@
 | QUALITY_AUDIT.json | True | 2638 |
 | TRACEABILITY_MATRIX.json | True | 3953 |
 | API_ENDPOINTS.json | True | 14597 |
-| DEPLOYMENT_AUDIT.json | True | 2852 |
+| DEPLOYMENT_AUDIT.json | True | 3469 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1289 |
 | EXTERNAL_DEPENDENCY_AUDIT.json | True | 11564 |
 | EXTERNAL_API.env.example | True | 482 |
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1878 |
 | EXTERNAL_API_CONFIG.example.json | True | 2673 |
 | EXTERNAL_API_LIVE_RUNBOOK.md | True | 4080 |
-| DATA_SOURCE_ACCESS_REQUIREMENTS.md | True | 17732 |
+| DATA_SOURCE_ACCESS_REQUIREMENTS.md | True | 18688 |
+| snapshot_templates/kind_events.csv | True | 606 |
+| snapshot_templates/bigkinds_articles.csv | True | 293 |
+| snapshot_templates/ksd_seibro_events.csv | True | 360 |
+| snapshot_templates/fsc_stock_issue_events.csv | True | 227 |
+| snapshot_templates/fsc_stock_dividend_events.csv | True | 236 |
 | EXTERNAL_API_READINESS.json | True | 17133 |
 | EXTERNAL_API_READINESS.md | True | 3762 |
 | FULL_100_ACTIONS.json | True | 31813 |

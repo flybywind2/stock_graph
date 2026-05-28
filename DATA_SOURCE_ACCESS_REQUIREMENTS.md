@@ -20,6 +20,18 @@
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
 | FnGuide public page | 없음 | 공개 페이지 캐시 | 섹터, 업종, PER/PBR/배당 보강 |
 
+## Snapshot templates
+
+API 승인이나 endpoint 확인 전에도 아래 템플릿에 공식 export 값을 채우면 동일 importer 경로로 그래프에 반영할 수 있다.
+
+| Template | Import option | Purpose |
+|---|---|---|
+| `snapshot_templates/kind_events.csv` | `--kind-snapshots` | KIND 공시, IR, 기업분석보고서 이벤트/증거 |
+| `snapshot_templates/bigkinds_articles.csv` | `--bigkinds-snapshots` | BIGKinds 기사, 개체명, 키워드 기반 이벤트/증거 |
+| `snapshot_templates/ksd_seibro_events.csv` | `--ksd-seibro-snapshots` | SEIBro/KSD 배당, 권리, 대차, 보호예수 이벤트 |
+| `snapshot_templates/fsc_stock_issue_events.csv` | `--ksd-seibro-snapshots` 또는 `--supplemental-events` | 금융위원회/예탁결제원 주식발행 이벤트 |
+| `snapshot_templates/fsc_stock_dividend_events.csv` | `--ksd-seibro-snapshots` 또는 `--supplemental-events` | 금융위원회 주식배당 이벤트 |
+
 ## 주식발행정보/주식배당정보 접근 메모
 
 `금융위원회_주식발행정보`와 `금융위원회_주식배당정보`는 data.go.kr 활용신청 대상이지만 원천 권리는 한국예탁결제원/KSD 계열 여부를 분리해서 봐야 한다. 현재 공식 catalog/openapi.json 기준으로 `금융위원회_주식배당정보`는 이용허락범위 제한 없음으로 기록하고, `금융위원회_주식발행정보`는 제3자 권리 포함 및 공공누리 2유형, 즉 공공누리 제2유형(출처표시+상업적 이용금지) 조건으로 기록한다. 투자 서비스나 외부 배포 목적이면 주식발행정보는 KSD 정보이용계약 또는 이용범위 검토가 필요하다.

@@ -1,0 +1,2 @@
+article_id,published_at,title,url,summary,entities,keywords,stock_code,stock_name,sign,weight,confidence
+BIGKINDS-1,20260522,반도체 공급망 뉴스,https://www.bigkinds.or.kr/,HBM 공급망 관련 기사,"삼성전자;SK하이닉스","HBM;반도체",005930,삼성전자,positive,0.5,0.6
