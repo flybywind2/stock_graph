@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T09:35:06.465192+09:00
+생성시각: 2026-05-28T09:40:19.483002+09:00
 기준일: 20260521
 
 ## Summary
@@ -25,4 +25,4 @@
 | API_ENDPOINTS.json | True | 10885 |
 | DEPLOYMENT_AUDIT.json | True | 1442 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1289 |
-| EXTERNAL_DEPENDENCY_AUDIT.json | True | 3074 |
+| EXTERNAL_DEPENDENCY_AUDIT.json | True | 4050 |
