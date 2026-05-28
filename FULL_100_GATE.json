@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:21:27.149104+09:00",
+  "generated_at": "2026-05-28T17:27:13.328608+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -61,7 +61,7 @@
       "source": "BIGKinds",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
+      "next_fix": "BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다."
     },
     {
       "id": "ksd_seibro_direct_api_gap",
@@ -91,7 +91,7 @@
       "source": "BIGKinds",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
+      "next_fix": "BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다."
     },
     {
       "id": "ksd_seibro_direct_api_gap",

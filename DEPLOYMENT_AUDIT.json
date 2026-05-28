@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:21:28.906237+09:00",
+  "generated_at": "2026-05-28T17:27:15.090018+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 6472
+      "size_bytes": 6435
     },
     {
       "path": "EXTERNAL_API.env.example",
@@ -81,7 +81,7 @@
     {
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": true,
-      "size_bytes": 3800
+      "size_bytes": 3775
     },
     {
       "path": "DATA_SOURCE_ACCESS_REQUIREMENTS.md",
@@ -116,42 +116,42 @@
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 6480
+      "size_bytes": 6418
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
-      "size_bytes": 2206
+      "size_bytes": 2180
     },
     {
       "path": "FULL_100_ACTIONS.json",
       "exists": true,
-      "size_bytes": 20248
+      "size_bytes": 20172
     },
     {
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
-      "size_bytes": 9180
+      "size_bytes": 9155
     },
     {
       "path": "FULL_100_GATE.json",
       "exists": true,
-      "size_bytes": 4320
+      "size_bytes": 4290
     },
     {
       "path": "FULL_100_GATE.md",
       "exists": true,
-      "size_bytes": 1865
+      "size_bytes": 1850
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.json",
       "exists": true,
-      "size_bytes": 5463
+      "size_bytes": 5407
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.md",
       "exists": true,
-      "size_bytes": 1723
+      "size_bytes": 1678
     },
     {
       "path": "OFFICIAL_SNAPSHOT_IMPORT.json",

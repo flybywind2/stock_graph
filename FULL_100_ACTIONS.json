@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:21:27.148896+09:00",
+  "generated_at": "2026-05-28T17:27:13.328396+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -148,8 +148,7 @@
       ],
       "current_fallback": "--bigkinds-snapshots",
       "missing_requirements": [
-        "credential_missing",
-        "endpoint_config_missing"
+        "credential_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",
       "latest_probe": {
@@ -164,14 +163,14 @@
           "entities",
           "keywords"
         ],
-        "error": "endpoint_config_missing",
-        "failure_class": "endpoint_config_missing",
-        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+        "error": "credential_missing",
+        "failure_class": "credential_missing",
+        "next_fix": "BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다.",
         "attempts": [],
         "operation_probe_summary": {},
         "operation_results": []
       },
-      "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+      "probe_next_fix": "BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다.",
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",

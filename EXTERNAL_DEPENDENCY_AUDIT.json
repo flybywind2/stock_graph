@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:21:26.618013+09:00",
+  "generated_at": "2026-05-28T17:27:12.790450+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -25,7 +25,7 @@
       "endpoint_env_keys": [
         "BIGKINDS_API_URL"
       ],
-      "endpoint_config_present": false,
+      "endpoint_config_present": true,
       "http_method": "POST_JSON",
       "row_path": "return_object.documents",
       "expected_fields": [
@@ -50,8 +50,7 @@
       "direct_connector_implemented": true,
       "ready_for_live_fetch": false,
       "missing_requirements": [
-        "credential_missing",
-        "endpoint_config_missing"
+        "credential_missing"
       ]
     },
     {

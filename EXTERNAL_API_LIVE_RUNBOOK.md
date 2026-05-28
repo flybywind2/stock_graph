@@ -60,7 +60,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 
 | ID | Ready | Missing Requirements |
 |---|---:|---|
-| bigkinds_direct_api_gap | False | credential_missing, endpoint_config_missing |
+| bigkinds_direct_api_gap | False | credential_missing |
 | ksd_seibro_direct_api_gap | False | credential_missing, endpoint_config_missing |
 | paid_provider_contract_required | False | contract_required |
 | paid_provider_direct_api_gap | False | credential_missing, endpoint_config_missing |
