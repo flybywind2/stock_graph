@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-05-28T09:32:00.343483+09:00",
+  "generated_at": "2026-05-28T09:35:07.606363+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 5,
     "credential_ready_gap_count": 1,
+    "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -20,7 +21,13 @@
       "credential_env_keys": [
         "BIGKINDS_API_KEY"
       ],
-      "credential_present": false
+      "credential_present": false,
+      "direct_connector_implemented": false,
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "credential_missing",
+        "direct_connector_missing"
+      ]
     },
     {
       "id": "kind_direct_api_gap",
@@ -33,7 +40,13 @@
       "credential_env_keys": [
         "KIND_API_KEY"
       ],
-      "credential_present": false
+      "credential_present": false,
+      "direct_connector_implemented": false,
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "credential_missing",
+        "direct_connector_missing"
+      ]
     },
     {
       "id": "ksd_seibro_direct_api_gap",
@@ -48,7 +61,12 @@
         "KSD_API_KEY",
         "DATA_GO_KR_SERVICE_KEY"
       ],
-      "credential_present": true
+      "credential_present": true,
+      "direct_connector_implemented": false,
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "direct_connector_missing"
+      ]
     },
     {
       "id": "paid_provider_contract_required",
@@ -59,7 +77,13 @@
       "used_for": "consensus, broker reports, curated supply chain and relation networks",
       "blocks": "full_100_direct_api",
       "credential_env_keys": [],
-      "credential_present": false
+      "credential_present": false,
+      "direct_connector_implemented": false,
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "contract_required",
+        "direct_connector_missing"
+      ]
     },
     {
       "id": "paid_provider_direct_api_gap",
@@ -76,7 +100,13 @@
         "DEEPSEARCH_API_KEY",
         "FINORMA_API_KEY"
       ],
-      "credential_present": false
+      "credential_present": false,
+      "direct_connector_implemented": false,
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "credential_missing",
+        "direct_connector_missing"
+      ]
     }
   ]
 }
