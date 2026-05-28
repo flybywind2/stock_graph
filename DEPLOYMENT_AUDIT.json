@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T09:57:30.048631+09:00",
+  "generated_at": "2026-05-28T10:02:29.957019+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 10,
-    "required_artifacts_present": true
+    "artifact_count": 12,
+    "required_artifacts_present": false
   },
   "pages": {
     "repository": "flybywind2/stock_graph",
@@ -61,7 +61,17 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 4569
+      "size_bytes": 4572
+    },
+    {
+      "path": "EXTERNAL_API.env.example",
+      "exists": false,
+      "size_bytes": 0
+    },
+    {
+      "path": "EXTERNAL_API_ENV_TEMPLATE.md",
+      "exists": false,
+      "size_bytes": 0
     }
   ]
 }

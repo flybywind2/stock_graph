@@ -1,6 +1,6 @@
 # Completion Audit
 
-생성시각: 2026-05-28T09:57:31.926035+09:00
+생성시각: 2026-05-28T10:02:31.968365+09:00
 기준일: 20260521
 
 ## Summary
@@ -31,6 +31,6 @@
 | ui_interaction_gate | free_core | verified | UI_INTERACTION_AUDIT.json, UI_INTERACTION_AUDIT.md, ui_status=pass | - |
 | data_freshness_gate | free_core | verified | DATA_FRESHNESS_AUDIT.json, DATA_FRESHNESS_AUDIT.md, freshness_status=pass | - |
 | investment_analysis_gate | investment_analysis | verified | INVESTMENT_ANALYSIS_AUDIT.json, INVESTMENT_ANALYSIS_AUDIT.md, investment_status=pass | - |
-| direct_api_completion | external_direct_api | blocked_external_dependency | SOURCE_COVERAGE.json, EXTERNAL_DEPENDENCY_AUDIT.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md | bigkinds_direct_api_gap, kind_direct_api_gap, ksd_seibro_direct_api_gap, paid_provider_direct_api_gap |
+| direct_api_completion | external_direct_api | blocked_external_dependency | SOURCE_COVERAGE.json, EXTERNAL_DEPENDENCY_AUDIT.json, EXTERNAL_API.env.example, DATA_SOURCE_ACCESS_REQUIREMENTS.md | bigkinds_direct_api_gap, kind_direct_api_gap, ksd_seibro_direct_api_gap, paid_provider_direct_api_gap |
 | optional_paid_provider_completion | optional_enrichment | optional_external_dependency | --provider-snapshots, has_consensus_metric, broker_report, provider_relation | contract_required |
 | free_core_completion | free_core | verified | KRX Open API, OpenDART, data.go.kr FSC/FTC, KIND snapshots, KRX Data Marketplace snapshots, SEIBro/KSD snapshots, BIGKinds snapshots | - |
