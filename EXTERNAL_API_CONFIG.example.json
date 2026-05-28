@@ -3,6 +3,7 @@
     "url": "",
     "api_key_env": "KIND_API_KEY",
     "api_key_name": "serviceKey",
+    "row_path": "response.body.items.item",
     "params": {
       "basDt": "{date}"
     }
@@ -11,6 +12,7 @@
     "url": "",
     "api_key_env": "BIGKINDS_API_KEY",
     "api_key_name": "access_key",
+    "row_path": "return_object.documents",
     "params": {
       "date": "{date}"
     }
@@ -19,6 +21,7 @@
     "url": "",
     "api_key_env": "SEIBRO_API_KEY",
     "api_key_name": "serviceKey",
+    "row_path": "response.body.items.item",
     "params": {
       "basDt": "{date}"
     }
@@ -27,6 +30,7 @@
     "url": "",
     "api_key_env": "DEEPSEARCH_API_KEY",
     "api_key_name": "api_key",
+    "row_path": "data.items",
     "params": {
       "date": "{date}"
     }

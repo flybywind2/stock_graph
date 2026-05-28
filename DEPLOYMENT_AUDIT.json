@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:41:29.020621+09:00",
+  "generated_at": "2026-05-28T10:48:48.912328+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 1988
+      "size_bytes": 2102
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -76,12 +76,12 @@
     {
       "path": "EXTERNAL_API_CONFIG.example.json",
       "exists": true,
-      "size_bytes": 0
+      "size_bytes": 815
     },
     {
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": true,
-      "size_bytes": 2657
+      "size_bytes": 2813
     },
     {
       "path": "EXTERNAL_API_READINESS.json",
