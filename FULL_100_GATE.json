@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:08:38.891001+09:00",
+  "generated_at": "2026-05-28T16:28:13.603815+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -68,14 +68,14 @@
       "source": "data.go.kr FSC",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다."
+      "next_fix": "probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다."
     },
     {
       "id": "fsc_stock_issue_endpoint_review_required",
       "source": "data.go.kr FSC",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다."
+      "next_fix": "none"
     },
     {
       "id": "kind_direct_api_gap",
@@ -126,14 +126,14 @@
       "source": "data.go.kr FSC",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다."
+      "next_fix": "probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다."
     },
     {
       "id": "fsc_stock_issue_endpoint_review_required",
       "source": "data.go.kr FSC",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다."
+      "next_fix": "none"
     },
     {
       "id": "kind_direct_api_gap",

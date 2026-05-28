@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:08:38.341369+09:00",
+  "generated_at": "2026-05-28T16:28:13.029120+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -113,9 +113,8 @@
       "expected_fields": [
         "crno",
         "stckIssuCmpyNm",
-        "stckIssuDt",
-        "isuStckCnt",
-        "stckKndNm"
+        "onskTisuCnt",
+        "pfstTisuCnt"
       ],
       "source_urls": [
         "https://www.data.go.kr/data/15043423/openapi.do",

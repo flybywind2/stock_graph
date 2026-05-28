@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:08:38.890605+09:00",
+  "generated_at": "2026-05-28T16:28:13.603387+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -125,10 +125,10 @@
       ],
       "completion_gate": "probe_ok_with_expected_fields",
       "latest_probe": {
-        "status": "degraded",
+        "status": "ok",
         "row_count": 0,
         "sample_keys": [],
-        "field_coverage_status": "probe_not_ok",
+        "field_coverage_status": "missing_expected_fields",
         "missing_expected_fields": [
           "crno",
           "stckIssuCmpyNm",
@@ -136,43 +136,22 @@
           "cashDvdnPayDt",
           "stckGenrDvdnAmt"
         ],
-        "error": "HTTP Error 401: Unauthorized",
-        "failure_class": "auth_or_approval_failed",
-        "next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+        "error": "",
+        "failure_class": "missing_expected_fields",
+        "next_fix": "probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다.",
         "attempts": [
           {
             "url_scheme": "https",
             "api_key_name": "serviceKey",
-            "status": "degraded",
+            "status": "ok",
             "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
-          },
-          {
-            "url_scheme": "https",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "serviceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
+            "error": ""
           }
         ],
         "operation_probe_summary": {},
         "operation_results": []
       },
-      "probe_next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+      "probe_next_fix": "probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다.",
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -204,9 +183,8 @@
       "expected_fields": [
         "crno",
         "stckIssuCmpyNm",
-        "stckIssuDt",
-        "isuStckCnt",
-        "stckKndNm"
+        "onskTisuCnt",
+        "pfstTisuCnt"
       ],
       "source_urls": [
         "https://www.data.go.kr/data/15043423/openapi.do",
@@ -220,7 +198,7 @@
           "operation": "getItemBasiInfo",
           "name": "종목기본정보 조회",
           "purpose": "주식액면가, 발행주식수, 상장/상장폐지일자 등 종목 기본정보",
-          "default_url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getItemBasiInfo",
+          "default_url": "https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuInfo_V3",
           "expected_fields": [
             "crno",
             "isinCd",
@@ -234,7 +212,7 @@
           "operation": "stock_issue_history",
           "name": "주식발행내역 조회",
           "purpose": "주식발행일자, 발행차수, 발행사유 등 자본 이벤트",
-          "default_url": "",
+          "default_url": "https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuInfo_V3",
           "expected_fields": [
             "crno",
             "stckIssuCmpyNm",
@@ -247,7 +225,7 @@
           "operation": "lockup_return",
           "name": "의무보호예수반환정보 조회",
           "purpose": "lockup return / 의무보호예수 반환일자와 반환주식수",
-          "default_url": "",
+          "default_url": "https://apis.data.go.kr/1160100/GetStocIssuInfoService_V2/getLockUpRetuInfo_V2",
           "expected_fields": [
             "crno",
             "stckIssuCmpyNm",
@@ -260,7 +238,7 @@
           "operation": "getStocIssuStat",
           "name": "주식발행현황 조회",
           "purpose": "보통주/우선주 총발행수",
-          "default_url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getStocIssuStat",
+          "default_url": "https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuStat_V3",
           "expected_fields": [
             "crno",
             "stckIssuCmpyNm",
@@ -281,92 +259,109 @@
       ],
       "completion_gate": "probe_ok_with_expected_fields",
       "latest_probe": {
-        "status": "degraded",
-        "row_count": 0,
-        "sample_keys": [],
-        "field_coverage_status": "probe_not_ok",
-        "missing_expected_fields": [
+        "status": "ok",
+        "row_count": 1,
+        "sample_keys": [
+          "basDt",
           "crno",
-          "stckIssuCmpyNm",
-          "stckIssuDt",
-          "isuStckCnt",
-          "stckKndNm"
+          "onskTisuCnt",
+          "pfstTisuCnt",
+          "stckIssuCmpyNm"
         ],
-        "error": "HTTP Error 404: Not Found",
-        "failure_class": "endpoint_or_operation_not_found",
-        "next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다.",
+        "field_coverage_status": "pass",
+        "missing_expected_fields": [],
+        "error": "",
+        "failure_class": "ok",
+        "next_fix": "none",
         "attempts": [
           {
             "url_scheme": "https",
             "api_key_name": "serviceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
-          },
-          {
-            "url_scheme": "https",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "serviceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
+            "status": "ok",
+            "row_count": 1,
+            "error": ""
           }
         ],
         "operation_probe_summary": {
           "candidate_count": 4,
-          "ok_count": 0,
-          "degraded_count": 2,
-          "skipped_count": 2
+          "ok_count": 3,
+          "degraded_count": 1,
+          "skipped_count": 0
         },
         "operation_results": [
           {
             "operation": "getItemBasiInfo",
             "name": "종목기본정보 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 404: Not Found"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "basDt",
+              "crno",
+              "isinCd",
+              "isinCdNm",
+              "issuStckCnt",
+              "lstgDt",
+              "scrsDcd",
+              "scrsItmsKcd",
+              "scrsItmsKcdNm",
+              "stckIssuCmpyNm",
+              "stckIssuDcnt",
+              "stckIssuDt",
+              "stckIssuRcd",
+              "stckIssuRcdNm",
+              "stckIssuSqno"
+            ],
+            "error": ""
           },
           {
             "operation": "stock_issue_history",
             "name": "주식발행내역 조회",
-            "status": "skipped",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "operation_url_missing_from_public_metadata"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "basDt",
+              "crno",
+              "isinCd",
+              "isinCdNm",
+              "issuStckCnt",
+              "lstgDt",
+              "scrsDcd",
+              "scrsItmsKcd",
+              "scrsItmsKcdNm",
+              "stckIssuCmpyNm",
+              "stckIssuDcnt",
+              "stckIssuDt",
+              "stckIssuRcd",
+              "stckIssuRcdNm",
+              "stckIssuSqno"
+            ],
+            "error": ""
           },
           {
             "operation": "lockup_return",
             "name": "의무보호예수반환정보 조회",
-            "status": "skipped",
+            "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "operation_url_missing_from_public_metadata"
+            "error": "HTTP Error 500: Internal Server Error"
           },
           {
             "operation": "getStocIssuStat",
             "name": "주식발행현황 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 404: Not Found"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "basDt",
+              "crno",
+              "onskTisuCnt",
+              "pfstTisuCnt",
+              "stckIssuCmpyNm"
+            ],
+            "error": ""
           }
         ]
       },
-      "probe_next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다.",
+      "probe_next_fix": "none",
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",

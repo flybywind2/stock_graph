@@ -1,6 +1,6 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T16:08:30.118656+09:00
+생성시각: 2026-05-28T16:28:04.518906+09:00
 기준일: 20260521
 
 ## Summary
@@ -29,8 +29,8 @@
 | fsc_krx_listed_info | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetKrxListedInfoService/getItemInfo | - |
 | fsc_company_basic | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetCorpBasicInfoService_V2/getCorpOutline_V2 | - |
 | fsc_company_financial | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetFinaStatInfoService_V2/getSummFinaStat_V2 | - |
-| fsc_stock_issue | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getStocIssuStat | - |
-| fsc_stock_dividend | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo | - |
+| fsc_stock_issue | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuStat_V3 | - |
+| fsc_stock_dividend | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/GetStocDiviInfoService_V2/getDiviInfo_V2 | - |
 | fsc_financial_company_basic | data.go.kr FSC approved | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetFnCoBasiInfoService/getFnCoOutl | - |
 | fsc_bond_basic | data.go.kr FSC approved | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetBondIssuInfoService/getBondBasiInfo | - |
 | fsc_bond_issue | data.go.kr FSC approved | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetBondTradInfoService/getIssuIssuItemStat | - |

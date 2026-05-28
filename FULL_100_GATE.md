@@ -1,6 +1,6 @@
 # Full 100 Completion Gate
 
-생성시각: 2026-05-28T16:08:38.891001+09:00
+생성시각: 2026-05-28T16:28:13.603815+09:00
 기준일: 20260521
 
 ## Summary
@@ -30,8 +30,8 @@
 | ID | Source | Blocks | Status | Next Fix |
 |---|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |
-| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | full_100_direct_api | blocked_external_dependency | data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다. |
-| fsc_stock_issue_endpoint_review_required | data.go.kr FSC | full_100_direct_api | blocked_external_dependency | data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다. |
+| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | full_100_direct_api | blocked_external_dependency | probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다. |
+| fsc_stock_issue_endpoint_review_required | data.go.kr FSC | full_100_direct_api | blocked_external_dependency | none |
 | kind_direct_api_gap | KIND | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |
 | ksd_seibro_license_review_required | SEIBro/KSD | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |

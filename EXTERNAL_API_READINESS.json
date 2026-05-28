@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:08:38.341662+09:00",
+  "generated_at": "2026-05-28T16:28:13.029445+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 7,
@@ -99,10 +99,10 @@
       ],
       "live_fetch_command_option": "--fsc-stock-dividend-url",
       "probe": {
-        "status": "degraded",
+        "status": "ok",
         "row_count": 0,
         "sample_keys": [],
-        "field_coverage_status": "probe_not_ok",
+        "field_coverage_status": "missing_expected_fields",
         "missing_expected_fields": [
           "crno",
           "stckIssuCmpyNm",
@@ -110,37 +110,16 @@
           "cashDvdnPayDt",
           "stckGenrDvdnAmt"
         ],
-        "error": "HTTP Error 401: Unauthorized",
-        "failure_class": "auth_or_approval_failed",
-        "next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+        "error": "",
+        "failure_class": "missing_expected_fields",
+        "next_fix": "probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다.",
         "attempts": [
           {
             "url_scheme": "https",
             "api_key_name": "serviceKey",
-            "status": "degraded",
+            "status": "ok",
             "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
-          },
-          {
-            "url_scheme": "https",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "serviceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 401: Unauthorized"
+            "error": ""
           }
         ],
         "operation_probe_summary": {},
@@ -170,9 +149,8 @@
       "expected_fields": [
         "crno",
         "stckIssuCmpyNm",
-        "stckIssuDt",
-        "isuStckCnt",
-        "stckKndNm"
+        "onskTisuCnt",
+        "pfstTisuCnt"
       ],
       "normalizes_to": [
         "Event",
@@ -186,88 +164,105 @@
       ],
       "live_fetch_command_option": "--fsc-stock-issue-url",
       "probe": {
-        "status": "degraded",
-        "row_count": 0,
-        "sample_keys": [],
-        "field_coverage_status": "probe_not_ok",
-        "missing_expected_fields": [
+        "status": "ok",
+        "row_count": 1,
+        "sample_keys": [
+          "basDt",
           "crno",
-          "stckIssuCmpyNm",
-          "stckIssuDt",
-          "isuStckCnt",
-          "stckKndNm"
+          "onskTisuCnt",
+          "pfstTisuCnt",
+          "stckIssuCmpyNm"
         ],
-        "error": "HTTP Error 404: Not Found",
-        "failure_class": "endpoint_or_operation_not_found",
-        "next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다.",
+        "field_coverage_status": "pass",
+        "missing_expected_fields": [],
+        "error": "",
+        "failure_class": "ok",
+        "next_fix": "none",
         "attempts": [
           {
             "url_scheme": "https",
             "api_key_name": "serviceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
-          },
-          {
-            "url_scheme": "https",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "serviceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
-          },
-          {
-            "url_scheme": "http",
-            "api_key_name": "ServiceKey",
-            "status": "degraded",
-            "row_count": 0,
-            "error": "HTTP Error 404: Not Found"
+            "status": "ok",
+            "row_count": 1,
+            "error": ""
           }
         ],
         "operation_probe_summary": {
           "candidate_count": 4,
-          "ok_count": 0,
-          "degraded_count": 2,
-          "skipped_count": 2
+          "ok_count": 3,
+          "degraded_count": 1,
+          "skipped_count": 0
         },
         "operation_results": [
           {
             "operation": "getItemBasiInfo",
             "name": "종목기본정보 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 404: Not Found"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "basDt",
+              "crno",
+              "isinCd",
+              "isinCdNm",
+              "issuStckCnt",
+              "lstgDt",
+              "scrsDcd",
+              "scrsItmsKcd",
+              "scrsItmsKcdNm",
+              "stckIssuCmpyNm",
+              "stckIssuDcnt",
+              "stckIssuDt",
+              "stckIssuRcd",
+              "stckIssuRcdNm",
+              "stckIssuSqno"
+            ],
+            "error": ""
           },
           {
             "operation": "stock_issue_history",
             "name": "주식발행내역 조회",
-            "status": "skipped",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "operation_url_missing_from_public_metadata"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "basDt",
+              "crno",
+              "isinCd",
+              "isinCdNm",
+              "issuStckCnt",
+              "lstgDt",
+              "scrsDcd",
+              "scrsItmsKcd",
+              "scrsItmsKcdNm",
+              "stckIssuCmpyNm",
+              "stckIssuDcnt",
+              "stckIssuDt",
+              "stckIssuRcd",
+              "stckIssuRcdNm",
+              "stckIssuSqno"
+            ],
+            "error": ""
           },
           {
             "operation": "lockup_return",
             "name": "의무보호예수반환정보 조회",
-            "status": "skipped",
+            "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "operation_url_missing_from_public_metadata"
+            "error": "HTTP Error 500: Internal Server Error"
           },
           {
             "operation": "getStocIssuStat",
             "name": "주식발행현황 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 404: Not Found"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "basDt",
+              "crno",
+              "onskTisuCnt",
+              "pfstTisuCnt",
+              "stckIssuCmpyNm"
+            ],
+            "error": ""
           }
         ]
       },

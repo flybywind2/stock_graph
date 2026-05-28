@@ -1,6 +1,6 @@
 # External API Readiness
 
-생성시각: 2026-05-28T16:08:38.341662+09:00
+생성시각: 2026-05-28T16:28:13.029445+09:00
 기준일: 20260521
 
 ## Summary
@@ -21,8 +21,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source | Ready | Option | Row Path | Expected Fields | Normalizes To | Credential Ready | Endpoint Ready | Missing | Probe Status | Probe Rows | Field Coverage | Missing Fields | Coverage Mode | Coverage Status |
 |---|---|---:|---|---|---|---|---:|---:|---|---|---:|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | False | --bigkinds-api-url | return_object.documents | article_id, title, published_at, entities, keywords | Event, Evidence, positive_exposure, negative_exposure | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | article_id, title, published_at, entities, keywords | snapshot_import | skipped |
-| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | False | --fsc-stock-dividend-url | response.body.items.item | crno, stckIssuCmpyNm, diviBseDt, cashDvdnPayDt, stckGenrDvdnAmt | Event, Evidence, dividend_event | True | True | license_review_required | degraded | 0 | probe_not_ok | crno, stckIssuCmpyNm, diviBseDt, cashDvdnPayDt, stckGenrDvdnAmt | direct_api | ok: 2656 stocks, source_date 20260521 |
-| fsc_stock_issue_endpoint_review_required | data.go.kr FSC | False | --fsc-stock-issue-url | response.body.items.item | crno, stckIssuCmpyNm, stckIssuDt, isuStckCnt, stckKndNm | Event, Evidence, stock_issue, rights_event | True | True | license_review_required | degraded | 0 | probe_not_ok | crno, stckIssuCmpyNm, stckIssuDt, isuStckCnt, stckKndNm | direct_api | ok: 2656 stocks, source_date 20260521 |
+| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | False | --fsc-stock-dividend-url | response.body.items.item | crno, stckIssuCmpyNm, diviBseDt, cashDvdnPayDt, stckGenrDvdnAmt | Event, Evidence, dividend_event | True | True | license_review_required | ok | 0 | missing_expected_fields | crno, stckIssuCmpyNm, diviBseDt, cashDvdnPayDt, stckGenrDvdnAmt | direct_api | ok: 2656 stocks, source_date 20260521 |
+| fsc_stock_issue_endpoint_review_required | data.go.kr FSC | False | --fsc-stock-issue-url | response.body.items.item | crno, stckIssuCmpyNm, onskTisuCnt, pfstTisuCnt | Event, Evidence, stock_issue, rights_event | True | True | license_review_required | ok | 1 | pass | - | direct_api | ok: 2656 stocks, source_date 20260521 |
 | kind_direct_api_gap | KIND | False | --kind-api-url | response.body.items.item | corp_name, stock_code, disclosure_id, title, published_at, report_type | Disclosure, Event, Evidence, has_event | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | corp_name, stock_code, disclosure_id, title, published_at, report_type | snapshot_import | skipped |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | False | --ksd-seibro-api-url | response.body.items.item | stock_code, isin, event_type, event_date, amount, ratio | Event, Evidence, dividend_event, rights_event, lending_event, lockup_event | True | False | endpoint_config_missing | skipped | 0 | probe_not_ok | stock_code, isin, event_type, event_date, amount, ratio | snapshot_import | skipped |
 | ksd_seibro_license_review_required | SEIBro/KSD | False | - | license.review | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | DataLicense, SourceContract | False | False | license_review_required | skipped | 0 | probe_not_ok | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | snapshot_import | skipped |
