@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T12:00:45.403059+09:00",
+  "generated_at": "2026-05-28T12:15:08.413480+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -21,12 +21,12 @@
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 43281447
+      "size_bytes": 43281654
     },
     {
       "path": "SOURCE_COVERAGE.json",
       "exists": true,
-      "size_bytes": 4676
+      "size_bytes": 4883
     },
     {
       "path": "COMPLETION_AUDIT.json",

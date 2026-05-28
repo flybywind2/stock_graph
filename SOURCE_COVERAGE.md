@@ -1,6 +1,6 @@
 # Source Coverage
 
-생성시각: 2026-05-28T12:00:25.138041+09:00
+생성시각: 2026-05-28T12:14:47.997774+09:00
 기준일: 20260521
 
 ## Summary
@@ -22,7 +22,7 @@
 | OpenDART | direct_api | ok: transaction_docs 14, counterparties 14 | 530 | - |
 | data.go.kr FSC | direct_api | ok: 2656 stocks, source_date 20260521 | 2656 | - |
 | data.go.kr FTC | direct_api | ok: 388 listed companies, public_ym 202605 | 388 | - |
-| data.go.kr FSC approved | approved_direct_api_backlog | approved_not_imported | 5 | approved_data_go_kr_import_backlog |
+| data.go.kr FSC approved | approved_direct_api_backlog | approved_not_imported: financial_company_basic=approved_not_imported, bond_basic=approved_not_imported, bond_issue=approved_not_imported, international_dr_item=approved_not_imported, general_commodity_price=approved_not_imported | 5 | approved_data_go_kr_import_backlog |
 | KIND | snapshot_import | skipped | 0 | kind_direct_api_gap |
 | BIGKinds | snapshot_import | skipped | 0 | bigkinds_direct_api_gap |
 | KRX Data Marketplace | snapshot_import | skipped | 0 | - |

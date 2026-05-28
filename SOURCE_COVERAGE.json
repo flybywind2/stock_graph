@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T12:00:25.138041+09:00",
+  "generated_at": "2026-05-28T12:14:47.997774+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 12,
@@ -66,7 +66,7 @@
     {
       "source": "data.go.kr FSC approved",
       "mode": "approved_direct_api_backlog",
-      "status": "approved_not_imported",
+      "status": "approved_not_imported: financial_company_basic=approved_not_imported, bond_basic=approved_not_imported, bond_issue=approved_not_imported, international_dr_item=approved_not_imported, general_commodity_price=approved_not_imported",
       "count": 5,
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "financial company basic, bond basic/issue, international DR, general commodity price reference",
