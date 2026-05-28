@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:29:16.430203+09:00",
+  "generated_at": "2026-05-28T13:37:25.567659+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -86,7 +86,7 @@
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 11494
+      "size_bytes": 12697
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
@@ -96,12 +96,12 @@
     {
       "path": "FULL_100_ACTIONS.json",
       "exists": true,
-      "size_bytes": 21852
+      "size_bytes": 23959
     },
     {
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
-      "size_bytes": 8745
+      "size_bytes": 9658
     }
   ]
 }
