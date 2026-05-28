@@ -1,12 +1,12 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T14:47:07.492234+09:00
+생성시각: 2026-05-28T14:52:33.051515+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: ready
-- artifact_count: 22
+- artifact_count: 23
 - required_artifacts_present: True
 - repository: flybywind2/stock_graph
 - branch: main
@@ -16,20 +16,21 @@
 
 | Path | Exists | Size Bytes |
 |---|---:|---:|
-| index.html | True | 94922 |
-| graph_data.js | True | 39783964 |
+| index.html | True | 95007 |
+| graph_data.js | True | 39784040 |
 | SOURCE_COVERAGE.json | True | 4908 |
 | COMPLETION_AUDIT.json | True | 8363 |
 | QUALITY_AUDIT.json | True | 2638 |
 | TRACEABILITY_MATRIX.json | True | 3953 |
 | API_ENDPOINTS.json | True | 14597 |
-| DEPLOYMENT_AUDIT.json | True | 2734 |
+| DEPLOYMENT_AUDIT.json | True | 2852 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1289 |
 | EXTERNAL_DEPENDENCY_AUDIT.json | True | 11564 |
 | EXTERNAL_API.env.example | True | 482 |
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1878 |
 | EXTERNAL_API_CONFIG.example.json | True | 2673 |
 | EXTERNAL_API_LIVE_RUNBOOK.md | True | 4080 |
+| DATA_SOURCE_ACCESS_REQUIREMENTS.md | True | 17732 |
 | EXTERNAL_API_READINESS.json | True | 17133 |
 | EXTERNAL_API_READINESS.md | True | 3762 |
 | FULL_100_ACTIONS.json | True | 31813 |
