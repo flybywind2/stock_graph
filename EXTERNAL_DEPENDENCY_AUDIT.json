@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:19:20.842004+09:00",
+  "generated_at": "2026-05-28T13:23:26.564730+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -76,7 +76,7 @@
         "stckGenrDvdnAmt"
       ],
       "source_urls": [
-        "https://www.data.go.kr/data/15125571/openapi.do"
+        "https://www.data.go.kr/data/15043284/openapi.do"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "normalizes_to": [
@@ -115,7 +115,7 @@
         "stckKndNm"
       ],
       "source_urls": [
-        "https://www.data.go.kr/data/15125569/openapi.do"
+        "https://www.data.go.kr/data/15043423/openapi.do"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "normalizes_to": [

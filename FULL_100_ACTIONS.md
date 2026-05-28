@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T13:19:17.473425+09:00
+생성시각: 2026-05-28T13:23:23.197537+09:00
 기준일: 20260521
 
 ## Summary
@@ -35,8 +35,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source URLs | Auth Hint |
 |---|---|---|
 | bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - |
-| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15125571/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
-| fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15125569/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
+| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15043284/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
+| fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15043423/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
 | kind_direct_api_gap | https://kind.krx.co.kr/ | - |
 | ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
 | ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - |
