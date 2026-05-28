@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T14:32:11.039795+09:00
+생성시각: 2026-05-28T14:40:39.113826+09:00
 기준일: 20260521
 
 ## Summary
@@ -64,6 +64,15 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | fsc_stock_issue_endpoint_review_required | stock_issue_history | 주식발행내역 조회 | 주식발행일자, 발행차수, 발행사유 등 자본 이벤트 | - | crno, stckIssuCmpyNm, stckIssuDt, isuStckCnt, stckIssuRcdNm |
 | fsc_stock_issue_endpoint_review_required | lockup_return | 의무보호예수반환정보 조회 | lockup return / 의무보호예수 반환일자와 반환주식수 | - | crno, stckIssuCmpyNm, rtnDt, rtnStckCnt, dpsgRegDt |
 | fsc_stock_issue_endpoint_review_required | getStocIssuStat | 주식발행현황 조회 | 보통주/우선주 총발행수 | https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getStocIssuStat | crno, stckIssuCmpyNm, onskTisuCnt, pfstTisuCnt |
+
+## Operation Probe Results
+
+| ID | Operation | Name | Status | Rows | Sample Keys | Error |
+|---|---|---|---|---:|---|---|
+| fsc_stock_issue_endpoint_review_required | getItemBasiInfo | 종목기본정보 조회 | degraded | 0 | - | HTTP Error 404: Not Found |
+| fsc_stock_issue_endpoint_review_required | stock_issue_history | 주식발행내역 조회 | skipped | 0 | - | operation_url_missing_from_public_metadata |
+| fsc_stock_issue_endpoint_review_required | lockup_return | 의무보호예수반환정보 조회 | skipped | 0 | - | operation_url_missing_from_public_metadata |
+| fsc_stock_issue_endpoint_review_required | getStocIssuStat | 주식발행현황 조회 | degraded | 0 | - | HTTP Error 404: Not Found |
 
 ## Operator Steps
 

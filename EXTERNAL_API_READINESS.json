@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:32:10.360933+09:00",
+  "generated_at": "2026-05-28T14:40:38.422931+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 7,
@@ -56,7 +56,14 @@
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
         "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-        "attempts": []
+        "attempts": [],
+        "operation_probe_summary": {
+          "candidate_count": 0,
+          "ok_count": 0,
+          "degraded_count": 0,
+          "skipped_count": 0
+        },
+        "operation_results": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -138,7 +145,14 @@
             "row_count": 0,
             "error": "HTTP Error 401: Unauthorized"
           }
-        ]
+        ],
+        "operation_probe_summary": {
+          "candidate_count": 0,
+          "ok_count": 0,
+          "degraded_count": 0,
+          "skipped_count": 0
+        },
+        "operation_results": []
       },
       "coverage": {
         "mode": "direct_api",
@@ -223,6 +237,46 @@
             "row_count": 0,
             "error": "HTTP Error 404: Not Found"
           }
+        ],
+        "operation_probe_summary": {
+          "candidate_count": 4,
+          "ok_count": 0,
+          "degraded_count": 2,
+          "skipped_count": 2
+        },
+        "operation_results": [
+          {
+            "operation": "getItemBasiInfo",
+            "name": "종목기본정보 조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 404: Not Found"
+          },
+          {
+            "operation": "stock_issue_history",
+            "name": "주식발행내역 조회",
+            "status": "skipped",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "operation_url_missing_from_public_metadata"
+          },
+          {
+            "operation": "lockup_return",
+            "name": "의무보호예수반환정보 조회",
+            "status": "skipped",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "operation_url_missing_from_public_metadata"
+          },
+          {
+            "operation": "getStocIssuStat",
+            "name": "주식발행현황 조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 404: Not Found"
+          }
         ]
       },
       "coverage": {
@@ -282,7 +336,14 @@
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
         "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-        "attempts": []
+        "attempts": [],
+        "operation_probe_summary": {
+          "candidate_count": 0,
+          "ok_count": 0,
+          "degraded_count": 0,
+          "skipped_count": 0
+        },
+        "operation_results": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -345,7 +406,14 @@
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
         "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-        "attempts": []
+        "attempts": [],
+        "operation_probe_summary": {
+          "candidate_count": 0,
+          "ok_count": 0,
+          "degraded_count": 0,
+          "skipped_count": 0
+        },
+        "operation_results": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -395,7 +463,9 @@
         "error": "",
         "failure_class": "probe_not_run",
         "next_fix": "probe_not_run",
-        "attempts": []
+        "attempts": [],
+        "operation_probe_summary": {},
+        "operation_results": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -459,7 +529,14 @@
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
         "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-        "attempts": []
+        "attempts": [],
+        "operation_probe_summary": {
+          "candidate_count": 0,
+          "ok_count": 0,
+          "degraded_count": 0,
+          "skipped_count": 0
+        },
+        "operation_results": []
       },
       "coverage": {
         "mode": "contract_snapshot_import",
