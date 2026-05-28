@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T14:13:05.272883+09:00",
+  "generated_at": "2026-05-28T14:18:59.580298+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 20,
+    "artifact_count": 22,
     "required_artifacts_present": true
   },
   "pages": {
@@ -16,12 +16,12 @@
     {
       "path": "index.html",
       "exists": true,
-      "size_bytes": 94118
+      "size_bytes": 94302
     },
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 39783708
+      "size_bytes": 39783792
     },
     {
       "path": "SOURCE_COVERAGE.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 2534
+      "size_bytes": 2728
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -102,6 +102,16 @@
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
       "size_bytes": 11493
+    },
+    {
+      "path": "FULL_100_GATE.json",
+      "exists": true,
+      "size_bytes": 3211
+    },
+    {
+      "path": "FULL_100_GATE.md",
+      "exists": true,
+      "size_bytes": 2097
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.json",

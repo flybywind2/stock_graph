@@ -331,6 +331,7 @@
     const MIN_MULTI_ROOT_TERM_LENGTH = 2;
     const SEARCH_RENDER_DELAY_MS = 120;
     const DEFAULT_STATUS_REPORTS = [
+      { label: '100% Gate', href: 'FULL_100_GATE.md' },
       { label: '100% Actions', href: 'FULL_100_ACTIONS.md' },
       { label: 'Gap Validation', href: 'EXTERNAL_GAP_VALIDATION.md' },
       { label: 'Completion Audit', href: 'COMPLETION_AUDIT.md' },
@@ -488,6 +489,7 @@
           <div>전략 검증</div><div class="status-value">${verified.toLocaleString()} / ${required.toLocaleString()}</div>
           <div>외부 갭</div><div class="status-value">${externalGaps.toLocaleString()}개 · 차단 ${blockedGaps.toLocaleString()}개</div>
           <div>남은 조치</div><div class="status-value">${remainingActions.toLocaleString()}개</div>
+          <div>완료 주장</div><div class="status-value">${status.can_claim_full_100_complete ? '가능' : '불가'}</div>
           <div>시크릿 저장</div><div class="status-value">${status.secret_values_recorded ? '있음' : '없음'}</div>
         </div>
         <div class="status-links">${links}</div>
