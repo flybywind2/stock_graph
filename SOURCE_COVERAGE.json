@@ -1,9 +1,11 @@
 {
-  "generated_at": "2026-05-28T10:06:02.748662+09:00",
+  "generated_at": "2026-05-28T10:10:37.760907+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 11,
     "direct_or_loaded_count": 4,
+    "configured_direct_api_loaded_count": 0,
+    "contract_direct_api_loaded_count": 0,
     "snapshot_import_path_count": 5,
     "remaining_direct_api_gaps": [
       "bigkinds_direct_api_gap",
