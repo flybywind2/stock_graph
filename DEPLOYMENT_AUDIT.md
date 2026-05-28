@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T20:50:06.192518+09:00
+생성시각: 2026-05-28T20:59:22.931315+09:00
 기준일: 20260521
 
 ## Summary
@@ -16,14 +16,14 @@
 
 | Path | Exists | Size Bytes |
 |---|---:|---:|
-| index.html | True | 95160 |
+| index.html | True | 100327 |
 | graph_data.js | True | 32450704 |
 | SOURCE_COVERAGE.json | True | 4509 |
 | COMPLETION_AUDIT.json | True | 7934 |
 | QUALITY_AUDIT.json | True | 2445 |
 | TRACEABILITY_MATRIX.json | True | 3571 |
 | API_ENDPOINTS.json | True | 22389 |
-| DEPLOYMENT_AUDIT.json | True | 3909 |
+| DEPLOYMENT_AUDIT.json | True | 3910 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1287 |
 | EXTERNAL_DEPENDENCY_AUDIT.json | True | 6390 |
 | EXTERNAL_API.env.example | True | 405 |

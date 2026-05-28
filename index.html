@@ -203,6 +203,24 @@
       background-size: 32px 32px;
     }
     .zoom-readout { min-width: 46px; align-self: center; color: var(--muted); font-size: 12px; text-align: center; }
+    .insight-presets { display: grid; gap: 6px; margin: 8px 0 14px; }
+    .insight-preset {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 8px;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+    .insight-preset:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(47, 98, 214, .08); }
+    .insight-preset-title { font-size: 12px; font-weight: 800; color: var(--text); }
+    .insight-preset-count { color: var(--accent); font-size: 11px; font-weight: 800; }
+    .insight-preset-desc { grid-column: 1 / -1; color: var(--muted); font-size: 11px; line-height: 1.35; }
     .detail-title { font-size: 19px; font-weight: 750; margin-bottom: 6px; }
     .detail-type { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
     .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
@@ -225,6 +243,8 @@
       <h1>KR Stock Graph</h1>
       <div class="summary" id="summary"></div>
       <div class="status-panel" id="completionStatus"></div>
+      <h2>Insight Presets</h2>
+      <div class="insight-presets" id="insightPresetButtons"></div>
       <h2>Search</h2>
       <input id="searchInput" type="search" placeholder="종목명, 코드, 테마, 업종, 공시">
       <div class="hint" id="searchHint"></div>
@@ -340,6 +360,56 @@
       { label: 'Completion Audit', href: 'COMPLETION_AUDIT.md' },
       { label: 'Traceability', href: 'TRACEABILITY_MATRIX.md' }
     ];
+    const INSIGHT_PRESETS = [
+      {
+        id: 'undervalued-income',
+        title: '저평가·고배당',
+        description: '저PER/PBR, 배당 3% 이상, 관찰점수 상위 금융·통신·지주 후보',
+        keywords: '우리금융지주, BNK금융지주, JB금융지주, 기업은행, 한화생명, 현대해상, DB손해보험, KT, LG유플러스, GS',
+        terms: ['우리금융지주', 'BNK금융지주', 'JB금융지주', '기업은행', '한화생명', '현대해상', 'DB손해보험', 'KT', 'LG유플러스', 'GS'],
+        preset: 'investment',
+        focus: 'peer',
+        depth: '2',
+        maxVisible: '500',
+        edgeLimit: '1200'
+      },
+      {
+        id: 'samsung-sk-semiconductor',
+        title: '삼성·SK 반도체',
+        description: '삼성전자·SK하이닉스 주변 관련주와 2차 반도체 설계·검증 후보',
+        keywords: '삼성전자, SK하이닉스, 큐알티, 오픈엣지테크놀로지, 퀄리타스반도체, 칩스앤미디어, 동운아나텍, 켐트로닉스',
+        terms: ['삼성전자', 'SK하이닉스', '큐알티', '오픈엣지테크놀로지', '퀄리타스반도체', '칩스앤미디어', '동운아나텍', '켐트로닉스'],
+        preset: 'propagation',
+        focus: 'peer',
+        depth: '3',
+        maxVisible: '500',
+        edgeLimit: '1800'
+      },
+      {
+        id: 'power-grid',
+        title: '전력망',
+        description: '효성중공업 중심 전력설비·한전 계열·전력 인프라 관계',
+        keywords: '효성중공업, 지투파워, 한국전력, 한전기술, 한전산업, 한전KPS, 보성파워텍, 금양그린파워',
+        terms: ['효성중공업', '지투파워', '한국전력', '한전기술', '한전산업', '한전KPS', '보성파워텍', '금양그린파워'],
+        preset: 'propagation',
+        focus: 'peer',
+        depth: '3',
+        maxVisible: '500',
+        edgeLimit: '1800'
+      },
+      {
+        id: 'game-ai-second-hop',
+        title: '게임·AI 2차',
+        description: '크래프톤에서 게임·AI·플랫폼 2차 관련주로 확장',
+        keywords: '크래프톤, 핑거, 인포뱅크, 셀바스AI, 폴라리스오피스, 아톤, 한컴위드, 헥토이노베이션',
+        terms: ['크래프톤', '핑거', '인포뱅크', '셀바스AI', '폴라리스오피스', '아톤', '한컴위드', '헥토이노베이션'],
+        preset: 'semantic',
+        focus: 'peer',
+        depth: '3',
+        maxVisible: '500',
+        edgeLimit: '1200'
+      }
+    ];
     const PEER_EDGE_TYPES = new Set(['theme_peer', 'industry_peer', 'group_peer', 'business_peer', 'business_family_peer', 'related_stock', 'co_moves', 'leads']);
     const TRANSACTION_EDGE_TYPES = new Set(['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target']);
     const TRANSACTION_NODE_TYPES = new Set(['stock', 'counterparty', 'disclosure', 'relation_fact', 'evidence', 'event']);
@@ -411,6 +481,7 @@
     const detail = document.getElementById('detail');
     const resultList = document.getElementById('resultList');
     const relationSummary = document.getElementById('relationSummary');
+    const insightPresetButtons = document.getElementById('insightPresetButtons');
     const searchHint = document.getElementById('searchHint');
     const searchInput = document.getElementById('searchInput');
     const graphPresetSelect = document.getElementById('graphPresetSelect');
@@ -1489,6 +1560,26 @@
       invalidateLayout();
       syncFilterControls();
     }
+    function applyInsightPreset(presetId) {
+      const preset = INSIGHT_PRESETS.find(item => item.id === presetId);
+      if (!preset) return;
+      window.clearTimeout(searchRenderTimer);
+      selectedId = null;
+      selectedIds.clear();
+      searchInput.value = preset.terms.join(', ');
+      graphPresetSelect.value = preset.preset;
+      focusModeSelect.value = preset.focus;
+      neighborDepthSelect.value = preset.depth;
+      maxVisibleSelect.value = preset.maxVisible;
+      edgeRenderLimitSelect.value = preset.edgeLimit;
+      zAxisSelect.value = preset.preset === 'investment' ? 'investment_score' : 'relationship_strength';
+      minTradeValueSelect.value = '0';
+      priceMoveSelect.value = '';
+      applyGraphPreset(preset.preset);
+      cachedSeedRootsForSearch = { key: '', roots: [] };
+      invalidateLayout();
+      render();
+    }
     function edgeLegendClass(type) {
       return `edge-swatch${PEER_EDGE_TYPES.has(type) ? ' peer' : ''}${type === 'related_stock' || type === 'supply_contract' || type === 'supplies_to' || type === 'related_party_transaction' || type === 'co_moves' || type === 'leads' ? ' focus' : ''}`;
     }
@@ -1523,6 +1614,16 @@
     }
     function setupControls() {
       renderCompletionStatus();
+      insightPresetButtons.innerHTML = INSIGHT_PRESETS.map(preset => `
+        <button class="insight-preset" type="button" data-insight-preset="${escapeHtml(preset.id)}" title="${escapeHtml(preset.keywords || preset.terms.join(', '))}">
+          <span class="insight-preset-title">${escapeHtml(preset.title)}</span>
+          <span class="insight-preset-count">${preset.terms.length}종목</span>
+          <span class="insight-preset-desc">${escapeHtml(preset.description)}</span>
+        </button>
+      `).join('');
+      insightPresetButtons.querySelectorAll('[data-insight-preset]').forEach(button => {
+        button.addEventListener('click', () => applyInsightPreset(button.dataset.insightPreset));
+      });
       markets.forEach(market => {
         const label = document.createElement('label');
         label.innerHTML = `<input type="checkbox" checked data-market="${escapeHtml(market)}"> ${escapeHtml(market)}`;

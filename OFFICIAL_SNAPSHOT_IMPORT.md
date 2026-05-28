@@ -1,6 +1,6 @@
 # Official Snapshot Import
 
-Generated: 2026-05-28T20:50:06.187926+09:00
+Generated: 2026-05-28T20:59:22.926930+09:00
 
 | Field | Value |
 |---|---|
