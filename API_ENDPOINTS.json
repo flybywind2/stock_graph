@@ -1,9 +1,11 @@
 {
-  "generated_at": "2026-05-28T09:47:36.163155+09:00",
+  "generated_at": "2026-05-28T09:53:21.403788+09:00",
   "source_date": "20260521",
   "summary": {
-    "endpoint_count": 36,
+    "endpoint_count": 40,
     "direct_api_count": 26,
+    "configured_direct_api_count": 3,
+    "contract_direct_api_count": 1,
     "snapshot_import_count": 6,
     "contract_snapshot_import_count": 1,
     "public_page_cache_count": 3
@@ -251,6 +253,42 @@
       "url": "https://comp.fnguide.com/SVO2/ASP/SVD_Main.asp",
       "auth": "none",
       "used_for": "sector, industry, valuation public profile"
+    },
+    {
+      "id": "kind_configured_direct_api",
+      "source": "KIND",
+      "mode": "configured_direct_api",
+      "url": "${KIND_API_URL}",
+      "auth": "KIND_API_KEY",
+      "used_for": "configured KIND disclosures, IR, company analysis reports",
+      "option": "--kind-api-url"
+    },
+    {
+      "id": "bigkinds_configured_direct_api",
+      "source": "BIGKinds",
+      "mode": "configured_direct_api",
+      "url": "${BIGKINDS_API_URL}",
+      "auth": "BIGKINDS_API_KEY",
+      "used_for": "configured BIGKinds news, entities, keywords",
+      "option": "--bigkinds-api-url"
+    },
+    {
+      "id": "ksd_seibro_configured_direct_api",
+      "source": "SEIBro/KSD",
+      "mode": "configured_direct_api",
+      "url": "${SEIBRO_API_URL} or ${KSD_API_URL}",
+      "auth": "SEIBRO_API_KEY/KSD_API_KEY/DATA_GO_KR_SERVICE_KEY",
+      "used_for": "configured rights, lending, lockup releases",
+      "option": "--ksd-seibro-api-url"
+    },
+    {
+      "id": "provider_configured_direct_api",
+      "source": "Paid providers",
+      "mode": "contract_direct_api",
+      "url": "${PROVIDER_API_URL}",
+      "auth": "FNGUIDE_API_KEY/DATAGUIDE_API_KEY/QUANTIWISE_API_KEY/DEEPSEARCH_API_KEY/FINORMA_API_KEY",
+      "used_for": "configured consensus, broker reports, curated relations",
+      "option": "--provider-api-url"
     },
     {
       "id": "kind_snapshots",

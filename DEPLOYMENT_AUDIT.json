@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:47:52.492843+09:00",
+  "generated_at": "2026-05-28T09:53:37.620806+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -46,7 +46,7 @@
     {
       "path": "API_ENDPOINTS.json",
       "exists": true,
-      "size_bytes": 10885
+      "size_bytes": 12326
     },
     {
       "path": "DEPLOYMENT_AUDIT.json",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 4535
+      "size_bytes": 4569
     }
   ]
 }

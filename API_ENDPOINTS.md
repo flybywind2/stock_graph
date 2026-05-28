@@ -1,12 +1,14 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T09:47:36.163155+09:00
+생성시각: 2026-05-28T09:53:21.403788+09:00
 기준일: 20260521
 
 ## Summary
 
-- endpoint_count: 36
+- endpoint_count: 40
 - direct_api_count: 26
+- configured_direct_api_count: 3
+- contract_direct_api_count: 1
 - snapshot_import_count: 6
 - contract_snapshot_import_count: 1
 - public_page_cache_count: 3
@@ -44,6 +46,10 @@
 | naver_theme_list | Naver Finance | public_page_cache | none | https://finance.naver.com/sise/theme.naver | - |
 | naver_theme_detail | Naver Finance | public_page_cache | none | https://finance.naver.com/sise/sise_group_detail.naver | - |
 | fnguide_company_profile | FnGuide public page | public_page_cache | none | https://comp.fnguide.com/SVO2/ASP/SVD_Main.asp | - |
+| kind_configured_direct_api | KIND | configured_direct_api | KIND_API_KEY | ${KIND_API_URL} | --kind-api-url |
+| bigkinds_configured_direct_api | BIGKinds | configured_direct_api | BIGKINDS_API_KEY | ${BIGKINDS_API_URL} | --bigkinds-api-url |
+| ksd_seibro_configured_direct_api | SEIBro/KSD | configured_direct_api | SEIBRO_API_KEY/KSD_API_KEY/DATA_GO_KR_SERVICE_KEY | ${SEIBRO_API_URL} or ${KSD_API_URL} | --ksd-seibro-api-url |
+| provider_configured_direct_api | Paid providers | contract_direct_api | FNGUIDE_API_KEY/DATAGUIDE_API_KEY/QUANTIWISE_API_KEY/DEEPSEARCH_API_KEY/FINORMA_API_KEY | ${PROVIDER_API_URL} | --provider-api-url |
 | kind_snapshots | KIND | snapshot_import | none | local JSON/CSV/TSV file | --kind-snapshots |
 | bigkinds_snapshots | BIGKinds | snapshot_import | none or BIGKinds Open API approval | local JSON/CSV/TSV file | --bigkinds-snapshots |
 | krx_marketplace_snapshots | KRX Data Marketplace | snapshot_import | none | local JSON/CSV/TSV file | --krx-marketplace-snapshots |
