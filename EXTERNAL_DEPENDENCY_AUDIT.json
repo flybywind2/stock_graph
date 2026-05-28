@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T10:56:11.443970+09:00",
+  "generated_at": "2026-05-28T11:32:40.383318+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
-    "gap_count": 5,
+    "gap_count": 6,
     "credential_ready_gap_count": 1,
     "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
@@ -125,6 +125,36 @@
       "ready_for_live_fetch": false,
       "missing_requirements": [
         "endpoint_config_missing"
+      ]
+    },
+    {
+      "id": "ksd_seibro_license_review_required",
+      "source": "SEIBro/KSD",
+      "status": "blocked_external_dependency",
+      "required_action": "SEIBro/KSD 원천별 이용허락, 출처표시, 비영리/상업적 이용 제한 확인",
+      "current_fallback": "--ksd-seibro-snapshots",
+      "used_for": "배당/권리, 증권대차, 보호예수 해제 이벤트의 라이선스 거버넌스",
+      "blocks": "full_100_direct_api",
+      "credential_env_keys": [],
+      "credential_present": false,
+      "endpoint_env_keys": [],
+      "endpoint_config_present": false,
+      "row_path": "license.review",
+      "expected_fields": [
+        "license_type",
+        "commercial_use_allowed",
+        "attribution_required",
+        "source_name",
+        "reviewed_at"
+      ],
+      "normalizes_to": [
+        "DataLicense",
+        "SourceContract"
+      ],
+      "direct_connector_implemented": true,
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "license_review_required"
       ]
     },
     {

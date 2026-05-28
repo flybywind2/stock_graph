@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T10:56:11.444103+09:00",
+  "generated_at": "2026-05-28T11:32:40.383469+09:00",
   "source_date": "20260521",
   "summary": {
-    "connector_count": 4,
+    "connector_count": 5,
     "ready_for_live_fetch_count": 0,
-    "not_ready_count": 4,
+    "not_ready_count": 5,
     "secret_values_recorded": false
   },
   "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --probe-external-apis --output-dir reports/stock_graph",
@@ -178,6 +178,53 @@
       },
       "current_fallback": "--ksd-seibro-snapshots",
       "used_for": "배당/권리, 증권대차, 보호예수 해제 이벤트"
+    },
+    {
+      "id": "ksd_seibro_license_review_required",
+      "source": "SEIBro/KSD",
+      "ready_for_live_fetch": false,
+      "credential_env_keys": [],
+      "credential_present": false,
+      "endpoint_env_keys": [],
+      "endpoint_config_present": false,
+      "row_path": "license.review",
+      "expected_fields": [
+        "license_type",
+        "commercial_use_allowed",
+        "attribution_required",
+        "source_name",
+        "reviewed_at"
+      ],
+      "normalizes_to": [
+        "DataLicense",
+        "SourceContract"
+      ],
+      "direct_connector_implemented": true,
+      "missing_requirements": [
+        "license_review_required"
+      ],
+      "live_fetch_command_option": "",
+      "probe": {
+        "status": "not_run",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "license_type",
+          "commercial_use_allowed",
+          "attribution_required",
+          "source_name",
+          "reviewed_at"
+        ],
+        "error": ""
+      },
+      "coverage": {
+        "mode": "snapshot_import",
+        "status": "skipped",
+        "count": 0
+      },
+      "current_fallback": "--ksd-seibro-snapshots",
+      "used_for": "배당/권리, 증권대차, 보호예수 해제 이벤트의 라이선스 거버넌스"
     },
     {
       "id": "paid_provider_direct_api_gap",

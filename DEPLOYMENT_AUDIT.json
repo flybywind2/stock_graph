@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:56:14.489593+09:00",
+  "generated_at": "2026-05-28T11:32:43.388343+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -21,17 +21,17 @@
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 43280814
+      "size_bytes": 43281027
     },
     {
       "path": "SOURCE_COVERAGE.json",
       "exists": true,
-      "size_bytes": 3861
+      "size_bytes": 4135
     },
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 7591
+      "size_bytes": 7773
     },
     {
       "path": "QUALITY_AUDIT.json",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 6271
+      "size_bytes": 7342
     },
     {
       "path": "EXTERNAL_API.env.example",
@@ -81,17 +81,17 @@
     {
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": true,
-      "size_bytes": 2813
+      "size_bytes": 2887
     },
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 6820
+      "size_bytes": 8218
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
-      "size_bytes": 2455
+      "size_bytes": 2835
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:55:54.228861+09:00",
+  "generated_at": "2026-05-28T11:32:23.395567+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 11,
@@ -11,6 +11,14 @@
       "bigkinds_direct_api_gap",
       "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
+      "paid_provider_direct_api_gap"
+    ],
+    "remaining_external_access_gaps": [
+      "bigkinds_direct_api_gap",
+      "kind_direct_api_gap",
+      "ksd_seibro_direct_api_gap",
+      "ksd_seibro_license_review_required",
+      "paid_provider_contract_required",
       "paid_provider_direct_api_gap"
     ]
   },
