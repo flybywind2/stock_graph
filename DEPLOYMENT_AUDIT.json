@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:49:34.669498+09:00",
+  "generated_at": "2026-05-28T13:55:01.766737+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 2312
+      "size_bytes": 2313
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 10929
+      "size_bytes": 11663
     },
     {
       "path": "EXTERNAL_API.env.example",
@@ -96,12 +96,12 @@
     {
       "path": "FULL_100_ACTIONS.json",
       "exists": true,
-      "size_bytes": 25920
+      "size_bytes": 26654
     },
     {
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
-      "size_bytes": 10690
+      "size_bytes": 11235
     }
   ]
 }

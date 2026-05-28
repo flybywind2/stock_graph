@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T13:49:28.611227+09:00
+생성시각: 2026-05-28T13:54:55.628325+09:00
 기준일: 20260521
 
 ## Summary
@@ -32,16 +32,16 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 
 ## Official Sources
 
-| ID | Source URLs | Auth Hint |
-|---|---|---|
-| bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - |
-| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15043284/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
-| fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15043423/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
-| kind_direct_api_gap | https://kind.krx.co.kr/ | - |
-| ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
-| ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - |
-| paid_provider_contract_required | https://www.fnguide.com/, https://www.deepsearch.com/ | - |
-| paid_provider_direct_api_gap | https://www.fnguide.com/, https://www.deepsearch.com/ | - |
+| ID | Source URLs | Auth Hint | License Note |
+|---|---|---|---|
+| bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - | - |
+| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15043284/openapi.do, https://www.data.go.kr/catalog/15043284/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요 |
+| fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15043423/openapi.do, https://www.data.go.kr/catalog/15043423/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요 |
+| kind_direct_api_gap | https://kind.krx.co.kr/ | - | - |
+| ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | - |
+| ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - | - |
+| paid_provider_contract_required | https://www.fnguide.com/, https://www.deepsearch.com/ | - | - |
+| paid_provider_direct_api_gap | https://www.fnguide.com/, https://www.deepsearch.com/ | - | - |
 
 ## Probe Attempts
 

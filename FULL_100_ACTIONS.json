@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:49:28.611227+09:00",
+  "generated_at": "2026-05-28T13:54:55.628325+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -34,6 +34,7 @@
         "https://www.bigkinds.or.kr/"
       ],
       "auth_key_hint": "",
+      "license_note": "",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -99,9 +100,11 @@
         "stckGenrDvdnAmt"
       ],
       "source_urls": [
-        "https://www.data.go.kr/data/15043284/openapi.do"
+        "https://www.data.go.kr/data/15043284/openapi.do",
+        "https://www.data.go.kr/catalog/15043284/openapi.json"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
+      "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -192,9 +195,11 @@
         "stckKndNm"
       ],
       "source_urls": [
-        "https://www.data.go.kr/data/15043423/openapi.do"
+        "https://www.data.go.kr/data/15043423/openapi.do",
+        "https://www.data.go.kr/catalog/15043423/openapi.json"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
+      "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -290,6 +295,7 @@
         "https://kind.krx.co.kr/"
       ],
       "auth_key_hint": "",
+      "license_note": "",
       "normalizes_to": [
         "Disclosure",
         "Event",
@@ -364,6 +370,7 @@
         "https://www.data.go.kr/"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
+      "license_note": "",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -431,6 +438,7 @@
         "https://www.data.go.kr/"
       ],
       "auth_key_hint": "",
+      "license_note": "",
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -491,6 +499,7 @@
         "https://www.deepsearch.com/"
       ],
       "auth_key_hint": "",
+      "license_note": "",
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -544,6 +553,7 @@
         "https://www.deepsearch.com/"
       ],
       "auth_key_hint": "",
+      "license_note": "",
       "normalizes_to": [
         "RelationFact",
         "Evidence",
