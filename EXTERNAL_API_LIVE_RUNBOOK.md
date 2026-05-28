@@ -8,6 +8,8 @@
 - KIND/BIGKinds/SEIBro/KSD/provider 중 아직 계약이나 URL이 없는 항목은 비워둔다.
 - `EXTERNAL_API_CONFIG.example.json`을 복사해 실제 제공처 레이아웃에 맞춘 config JSON을 만든다.
 - 서비스별 파라미터명이나 응답 배열 위치가 다르면 `EXTERNAL_API_CONFIG` JSON 파일에 `url`, `api_key_name`, `params`, `row_path`를 설정한다.
+- SEIBro/KSD 라이선스 검토가 끝나면 `SEIBro/KSD.license_review`에 `license_type`, `commercial_use_allowed`, `attribution_required`, `source_name`, `reviewed_at`을 채운다.
+- 유료 provider 계약이 끝나면 `Paid providers.contract_review`에 `contract_id`, `license_scope`, `provider_name`, `valid_from`, `valid_to`를 채운다.
 
 ## 2. Probe endpoints first
 
