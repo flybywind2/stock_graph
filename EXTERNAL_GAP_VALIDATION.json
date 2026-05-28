@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-05-28T18:05:55.328944+09:00",
+  "generated_at": "2026-05-28T20:50:04.342996+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 4,
-    "blocked_gap_count": 4,
-    "ready_gap_count": 0,
-    "required_gap_count": 2,
-    "blocked_required_gap_count": 2,
-    "ready_required_gap_count": 0,
-    "optional_gap_count": 2,
-    "blocked_optional_gap_count": 2,
+    "blocked_gap_count": 3,
+    "ready_gap_count": 1,
+    "required_gap_count": 1,
+    "blocked_required_gap_count": 0,
+    "ready_required_gap_count": 1,
+    "optional_gap_count": 3,
+    "blocked_optional_gap_count": 3,
     "ready_optional_gap_count": 0,
     "secret_values_recorded": false
   },
@@ -18,7 +18,7 @@
     {
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
-      "blocks": "full_100_direct_api",
+      "blocks": "optional_enrichment",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "credential_missing"
@@ -47,18 +47,17 @@
       "id": "ksd_seibro_direct_api_gap",
       "source": "SEIBro/KSD",
       "blocks": "full_100_direct_api",
-      "status": "blocked_external_dependency",
+      "status": "ready",
       "blocking_requirements": [],
       "close_conditions": [
         "probe_ok_with_expected_fields",
         "endpoint_probe_configured"
       ],
-      "probe_status": "degraded",
-      "probe_field_coverage": "probe_not_ok",
-      "probe_failure_class": "auth_or_approval_failed",
-      "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+      "probe_status": "ok",
+      "probe_field_coverage": "pass",
+      "probe_failure_class": "ok",
+      "next_fix": "none",
       "operator_steps": [
-        "SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
         "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
         "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."
       ],

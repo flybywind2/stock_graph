@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-05-28T18:05:55.329097+09:00",
+  "generated_at": "2026-05-28T20:50:04.343106+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
-    "required_open_count": 2,
-    "optional_open_count": 2,
+    "required_open_count": 0,
+    "optional_open_count": 3,
     "can_claim_full_100_complete": false,
     "secret_values_recorded": false
   },
-  "required_items": [
+  "required_items": [],
+  "optional_items": [
     {
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
-      "required_for_full_100": true,
-      "blocks": "full_100_direct_api",
+      "required_for_full_100": false,
+      "blocks": "optional_enrichment",
       "status": "blocked_external_dependency",
       "probe_status": "skipped",
       "probe_failure_class": "credential_missing",
@@ -48,80 +49,6 @@
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
       ]
     },
-    {
-      "id": "ksd_seibro_direct_api_gap",
-      "source": "SEIBro/KSD",
-      "required_for_full_100": true,
-      "blocks": "full_100_direct_api",
-      "status": "blocked_external_dependency",
-      "probe_status": "degraded",
-      "probe_failure_class": "auth_or_approval_failed",
-      "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
-      "credential_env_keys": [
-        "SEIBRO_API_KEY",
-        "KSD_API_KEY",
-        "DATA_GO_KR_SERVICE_KEY"
-      ],
-      "endpoint_env_keys": [
-        "SEIBRO_API_URL",
-        "KSD_API_URL"
-      ],
-      "missing_requirements": [],
-      "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --probe-external-apis-only",
-      "operator_checklist": [
-        "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태를 확인한다.",
-        ".env의 DATA_GO_KR_SERVICE_KEY가 같은 계정의 일반 인증키 Decoding 값인지 확인한다.",
-        "승인받은 서비스가 B552481/StockSvc 계열인지 확인한다.",
-        "getStkIsinByShortIsinN1 probe가 HTTP 403 Forbidden 없이 응답하는지 --probe-external-apis-only로 확인한다.",
-        "403이 계속되면 해당 서비스의 인증키를 재발급하거나 승인 계정과 키 계정 불일치를 확인한다."
-      ],
-      "operation_probe_summary": {
-        "candidate_count": 5,
-        "ok_count": 0,
-        "degraded_count": 5,
-        "skipped_count": 0
-      },
-      "operation_results": [
-        {
-          "operation": "getStkIsinByShortIsinN1",
-          "name": "단축번호로 주식종목코드(풀코드) 조회",
-          "status": "degraded",
-          "error": "HTTP Error 403: Forbidden"
-        },
-        {
-          "operation": "getDividendRankN1",
-          "name": "배당순위조회",
-          "status": "degraded",
-          "error": "HTTP Error 403: Forbidden"
-        },
-        {
-          "operation": "getSafeDpDutyDepoStatusN1",
-          "name": "의무보호예수전체현황 전체현황표 조회",
-          "status": "degraded",
-          "error": "HTTP Error 403: Forbidden"
-        },
-        {
-          "operation": "getSafeDpDutyDepoRgtStatusN1",
-          "name": "의무보호예수전체현황 사유별 조회",
-          "status": "degraded",
-          "error": "HTTP Error 403: Forbidden"
-        },
-        {
-          "operation": "getStkListInfoN1",
-          "name": "주식상장정보 조회",
-          "status": "degraded",
-          "error": "HTTP Error 403: Forbidden"
-        }
-      ],
-      "evidence_files": [
-        "EXTERNAL_API_READINESS.json",
-        "FULL_100_ACTIONS.json",
-        "FULL_100_GATE.json",
-        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
-      ]
-    }
-  ],
-  "optional_items": [
     {
       "id": "paid_provider_contract_required",
       "source": "Paid providers",

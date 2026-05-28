@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T18:05:54.772962+09:00",
+  "generated_at": "2026-05-28T20:50:03.734167+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 3,
-    "ready_for_live_fetch_count": 0,
-    "not_ready_count": 3,
+    "ready_for_live_fetch_count": 1,
+    "not_ready_count": 2,
     "secret_values_recorded": false
   },
   "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --probe-external-apis --output-dir reports/stock_graph",
@@ -76,7 +76,7 @@
     {
       "id": "ksd_seibro_direct_api_gap",
       "source": "SEIBro/KSD",
-      "ready_for_live_fetch": false,
+      "ready_for_live_fetch": true,
       "credential_env_keys": [
         "SEIBRO_API_KEY",
         "KSD_API_KEY",
@@ -110,68 +110,90 @@
       "missing_requirements": [],
       "live_fetch_command_option": "--ksd-seibro-api-url",
       "probe": {
-        "status": "degraded",
-        "row_count": 0,
-        "sample_keys": [],
-        "field_coverage_status": "probe_not_ok",
-        "missing_expected_fields": [
-          "stock_code",
-          "isin",
-          "event_type",
-          "event_date",
-          "amount",
-          "ratio"
+        "status": "ok",
+        "row_count": 1,
+        "sample_keys": [
+          "resultCode",
+          "resultMsg"
         ],
-        "error": "HTTP Error 403: Forbidden",
-        "failure_class": "auth_or_approval_failed",
-        "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+        "field_coverage_status": "pass",
+        "missing_expected_fields": [],
+        "error": "",
+        "failure_class": "ok",
+        "next_fix": "none",
         "attempts": [],
         "operation_probe_summary": {
           "candidate_count": 5,
-          "ok_count": 0,
-          "degraded_count": 5,
+          "ok_count": 5,
+          "degraded_count": 0,
           "skipped_count": 0
         },
         "operation_results": [
           {
             "operation": "getStkIsinByShortIsinN1",
             "name": "단축번호로 주식종목코드(풀코드) 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 403: Forbidden"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "resultCode",
+              "resultMsg"
+            ],
+            "error": ""
           },
           {
             "operation": "getDividendRankN1",
             "name": "배당순위조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 403: Forbidden"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "resultCode",
+              "resultMsg"
+            ],
+            "error": ""
           },
           {
             "operation": "getSafeDpDutyDepoStatusN1",
             "name": "의무보호예수전체현황 전체현황표 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 403: Forbidden"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "cocnt",
+              "issuStkKindTpcd",
+              "issuStkKindTpnm",
+              "issuStkqty",
+              "safedpRatioValue",
+              "secncnt",
+              "stdDt",
+              "stkDepoQty"
+            ],
+            "error": ""
           },
           {
             "operation": "getSafeDpDutyDepoRgtStatusN1",
             "name": "의무보호예수전체현황 사유별 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 403: Forbidden"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "resultCode",
+              "resultMsg"
+            ],
+            "error": ""
           },
           {
             "operation": "getStkListInfoN1",
             "name": "주식상장정보 조회",
-            "status": "degraded",
-            "row_count": 0,
-            "sample_keys": [],
-            "error": "HTTP Error 403: Forbidden"
+            "status": "ok",
+            "row_count": 1,
+            "sample_keys": [
+              "apliDt",
+              "dlistDt",
+              "isin",
+              "issucoCustno",
+              "korSecnNm",
+              "listTpcd",
+              "xpitDt"
+            ],
+            "error": ""
           }
         ]
       },

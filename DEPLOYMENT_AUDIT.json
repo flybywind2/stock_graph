@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T18:05:57.175316+09:00",
+  "generated_at": "2026-05-28T20:50:06.192518+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -21,7 +21,7 @@
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 32450705
+      "size_bytes": 32450704
     },
     {
       "path": "SOURCE_COVERAGE.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 3910
+      "size_bytes": 3909
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 6358
+      "size_bytes": 6390
     },
     {
       "path": "EXTERNAL_API.env.example",
@@ -116,52 +116,52 @@
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 8241
+      "size_bytes": 8443
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
-      "size_bytes": 2137
+      "size_bytes": 2068
     },
     {
       "path": "FULL_100_ACTIONS.json",
       "exists": true,
-      "size_bytes": 21898
+      "size_bytes": 22064
     },
     {
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
-      "size_bytes": 9770
+      "size_bytes": 9527
     },
     {
       "path": "FULL_100_GATE.json",
       "exists": true,
-      "size_bytes": 5064
+      "size_bytes": 3945
     },
     {
       "path": "FULL_100_GATE.md",
       "exists": true,
-      "size_bytes": 1900
+      "size_bytes": 1642
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.json",
       "exists": true,
-      "size_bytes": 5235
+      "size_bytes": 4896
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.md",
       "exists": true,
-      "size_bytes": 1687
+      "size_bytes": 1486
     },
     {
       "path": "EXTERNAL_ACCESS_CHECKLIST.json",
       "exists": true,
-      "size_bytes": 7615
+      "size_bytes": 4649
     },
     {
       "path": "EXTERNAL_ACCESS_CHECKLIST.md",
       "exists": true,
-      "size_bytes": 2698
+      "size_bytes": 734
     },
     {
       "path": "OFFICIAL_SNAPSHOT_IMPORT.json",

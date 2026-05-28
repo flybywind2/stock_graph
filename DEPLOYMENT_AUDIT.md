@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T18:05:57.175316+09:00
+생성시각: 2026-05-28T20:50:06.192518+09:00
 기준일: 20260521
 
 ## Summary
@@ -17,15 +17,15 @@
 | Path | Exists | Size Bytes |
 |---|---:|---:|
 | index.html | True | 95160 |
-| graph_data.js | True | 32450705 |
+| graph_data.js | True | 32450704 |
 | SOURCE_COVERAGE.json | True | 4509 |
 | COMPLETION_AUDIT.json | True | 7934 |
 | QUALITY_AUDIT.json | True | 2445 |
 | TRACEABILITY_MATRIX.json | True | 3571 |
 | API_ENDPOINTS.json | True | 22389 |
-| DEPLOYMENT_AUDIT.json | True | 3910 |
+| DEPLOYMENT_AUDIT.json | True | 3909 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1287 |
-| EXTERNAL_DEPENDENCY_AUDIT.json | True | 6358 |
+| EXTERNAL_DEPENDENCY_AUDIT.json | True | 6390 |
 | EXTERNAL_API.env.example | True | 405 |
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1570 |
 | EXTERNAL_API_CONFIG.example.json | True | 3066 |
@@ -36,15 +36,15 @@
 | snapshot_templates/ksd_seibro_events.csv | True | 96 |
 | snapshot_templates/fsc_stock_issue_events.csv | True | 113 |
 | snapshot_templates/fsc_stock_dividend_events.csv | True | 121 |
-| EXTERNAL_API_READINESS.json | True | 8241 |
-| EXTERNAL_API_READINESS.md | True | 2137 |
-| FULL_100_ACTIONS.json | True | 21898 |
-| FULL_100_ACTIONS.md | True | 9770 |
-| FULL_100_GATE.json | True | 5064 |
-| FULL_100_GATE.md | True | 1900 |
-| EXTERNAL_GAP_VALIDATION.json | True | 5235 |
-| EXTERNAL_GAP_VALIDATION.md | True | 1687 |
-| EXTERNAL_ACCESS_CHECKLIST.json | True | 7615 |
-| EXTERNAL_ACCESS_CHECKLIST.md | True | 2698 |
+| EXTERNAL_API_READINESS.json | True | 8443 |
+| EXTERNAL_API_READINESS.md | True | 2068 |
+| FULL_100_ACTIONS.json | True | 22064 |
+| FULL_100_ACTIONS.md | True | 9527 |
+| FULL_100_GATE.json | True | 3945 |
+| FULL_100_GATE.md | True | 1642 |
+| EXTERNAL_GAP_VALIDATION.json | True | 4896 |
+| EXTERNAL_GAP_VALIDATION.md | True | 1486 |
+| EXTERNAL_ACCESS_CHECKLIST.json | True | 4649 |
+| EXTERNAL_ACCESS_CHECKLIST.md | True | 734 |
 | OFFICIAL_SNAPSHOT_IMPORT.json | True | 2408 |
 | OFFICIAL_SNAPSHOT_IMPORT.md | True | 1170 |

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T18:05:54.772781+09:00",
+  "generated_at": "2026-05-28T20:50:03.733965+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -14,10 +14,10 @@
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
       "status": "blocked_external_dependency",
-      "required_action": "BIGKinds OpenAPI access_key 발급 후 tools.kinds.or.kr POST JSON endpoint 응답 레이아웃 확인",
+      "required_action": "BIGKinds 유료 전환/계약 가능 시 OpenAPI access_key 발급 후 tools.kinds.or.kr POST JSON endpoint 응답 레이아웃 확인",
       "current_fallback": "--bigkinds-snapshots",
       "used_for": "뉴스 기사, 개체명, 키워드 기반 이벤트/증거",
-      "blocks": "full_100_direct_api",
+      "blocks": "optional_enrichment",
       "credential_env_keys": [
         "BIGKINDS_API_KEY"
       ],
