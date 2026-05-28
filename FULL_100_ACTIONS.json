@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:27:13.328396+09:00",
+  "generated_at": "2026-05-28T17:29:15.868592+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -328,7 +328,6 @@
       ],
       "current_fallback": "--ksd-seibro-snapshots",
       "missing_requirements": [
-        "credential_missing",
         "endpoint_config_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T17:27:12.790450+09:00",
+  "generated_at": "2026-05-28T17:29:15.319314+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 4,
-    "credential_ready_gap_count": 0,
+    "credential_ready_gap_count": 1,
     "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
     "free_core_blocked": false
@@ -66,7 +66,7 @@
         "KSD_API_KEY",
         "DATA_GO_KR_SERVICE_KEY"
       ],
-      "credential_present": false,
+      "credential_present": true,
       "endpoint_env_keys": [
         "SEIBRO_API_URL",
         "KSD_API_URL"
@@ -103,7 +103,6 @@
       "direct_connector_implemented": true,
       "ready_for_live_fetch": false,
       "missing_requirements": [
-        "credential_missing",
         "endpoint_config_missing"
       ]
     },

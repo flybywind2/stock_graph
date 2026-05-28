@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:27:12.790597+09:00",
+  "generated_at": "2026-05-28T17:29:15.319464+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 3,
@@ -77,7 +77,7 @@
         "KSD_API_KEY",
         "DATA_GO_KR_SERVICE_KEY"
       ],
-      "credential_present": false,
+      "credential_present": true,
       "endpoint_env_keys": [
         "SEIBRO_API_URL",
         "KSD_API_URL"
@@ -103,7 +103,6 @@
       ],
       "direct_connector_implemented": true,
       "missing_requirements": [
-        "credential_missing",
         "endpoint_config_missing"
       ],
       "live_fetch_command_option": "--ksd-seibro-api-url",
