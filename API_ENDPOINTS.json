@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:57:44.186724+09:00",
+  "generated_at": "2026-05-28T15:25:36.961181+09:00",
   "source_date": "20260521",
   "summary": {
     "endpoint_count": 45,
@@ -107,7 +107,7 @@
       "id": "fsc_stock_issue",
       "source": "data.go.kr FSC",
       "mode": "direct_api",
-      "url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getItemBasiInfo",
+      "url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getStocIssuStat",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock issue information",
       "status": "degraded: fsc_stock_issue_1101110028591: HTTP Error 404: Not Found; fsc_stock_issue_1831462000000: HTTP Error 404: Not Found"
