@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T17:56:21.082617+09:00",
+  "generated_at": "2026-05-28T18:03:04.773452+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 30,
+    "artifact_count": 32,
     "required_artifacts_present": true
   },
   "pages": {
@@ -16,12 +16,12 @@
     {
       "path": "index.html",
       "exists": true,
-      "size_bytes": 95084
+      "size_bytes": 95160
     },
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 32450638
+      "size_bytes": 32450705
     },
     {
       "path": "SOURCE_COVERAGE.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 3686
+      "size_bytes": 3904
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -152,6 +152,16 @@
       "path": "EXTERNAL_GAP_VALIDATION.md",
       "exists": true,
       "size_bytes": 1687
+    },
+    {
+      "path": "EXTERNAL_ACCESS_CHECKLIST.json",
+      "exists": true,
+      "size_bytes": 7615
+    },
+    {
+      "path": "EXTERNAL_ACCESS_CHECKLIST.md",
+      "exists": true,
+      "size_bytes": 2698
     },
     {
       "path": "OFFICIAL_SNAPSHOT_IMPORT.json",

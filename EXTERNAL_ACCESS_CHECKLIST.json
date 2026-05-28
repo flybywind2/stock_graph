@@ -1,0 +1,194 @@
+{
+  "generated_at": "2026-05-28T18:03:02.991564+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "status": "blocked_external_dependency",
+    "required_open_count": 2,
+    "optional_open_count": 2,
+    "can_claim_full_100_complete": false,
+    "secret_values_recorded": false
+  },
+  "required_items": [
+    {
+      "id": "bigkinds_direct_api_gap",
+      "source": "BIGKinds",
+      "required_for_full_100": true,
+      "blocks": "full_100_direct_api",
+      "status": "blocked_external_dependency",
+      "probe_status": "skipped",
+      "probe_failure_class": "credential_missing",
+      "next_fix": "BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다.",
+      "credential_env_keys": [
+        "BIGKINDS_API_KEY"
+      ],
+      "endpoint_env_keys": [
+        "BIGKINDS_API_URL"
+      ],
+      "missing_requirements": [
+        "credential_missing"
+      ],
+      "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --probe-external-apis-only",
+      "operator_checklist": [
+        "BIGKinds Open API access_key를 발급받아 .env의 BIGKINDS_API_KEY에 설정한다.",
+        "BIGKINDS_API_URL은 비워두면 https://tools.kinds.or.kr/search/news 기본 endpoint를 사용한다.",
+        "POST_JSON body의 access_key 방식으로 호출되는지 --probe-external-apis-only로 확인한다.",
+        "EXTERNAL_API_READINESS.json에서 probe.status가 ok이고 return_object.documents row가 잡히는지 확인한다."
+      ],
+      "operation_probe_summary": {
+        "candidate_count": 0,
+        "ok_count": 0,
+        "degraded_count": 0,
+        "skipped_count": 0
+      },
+      "operation_results": [],
+      "evidence_files": [
+        "EXTERNAL_API_READINESS.json",
+        "FULL_100_ACTIONS.json",
+        "FULL_100_GATE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ]
+    },
+    {
+      "id": "ksd_seibro_direct_api_gap",
+      "source": "SEIBro/KSD",
+      "required_for_full_100": true,
+      "blocks": "full_100_direct_api",
+      "status": "blocked_external_dependency",
+      "probe_status": "degraded",
+      "probe_failure_class": "auth_or_approval_failed",
+      "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+      "credential_env_keys": [
+        "SEIBRO_API_KEY",
+        "KSD_API_KEY",
+        "DATA_GO_KR_SERVICE_KEY"
+      ],
+      "endpoint_env_keys": [
+        "SEIBRO_API_URL",
+        "KSD_API_URL"
+      ],
+      "missing_requirements": [],
+      "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --probe-external-apis-only",
+      "operator_checklist": [
+        "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태를 확인한다.",
+        ".env의 DATA_GO_KR_SERVICE_KEY가 같은 계정의 일반 인증키 Decoding 값인지 확인한다.",
+        "승인받은 서비스가 B552481/StockSvc 계열인지 확인한다.",
+        "getStkIsinByShortIsinN1 probe가 HTTP 403 Forbidden 없이 응답하는지 --probe-external-apis-only로 확인한다.",
+        "403이 계속되면 해당 서비스의 인증키를 재발급하거나 승인 계정과 키 계정 불일치를 확인한다."
+      ],
+      "operation_probe_summary": {
+        "candidate_count": 5,
+        "ok_count": 0,
+        "degraded_count": 5,
+        "skipped_count": 0
+      },
+      "operation_results": [
+        {
+          "operation": "getStkIsinByShortIsinN1",
+          "name": "단축번호로 주식종목코드(풀코드) 조회",
+          "status": "degraded",
+          "error": "HTTP Error 403: Forbidden"
+        },
+        {
+          "operation": "getDividendRankN1",
+          "name": "배당순위조회",
+          "status": "degraded",
+          "error": "HTTP Error 403: Forbidden"
+        },
+        {
+          "operation": "getSafeDpDutyDepoStatusN1",
+          "name": "의무보호예수전체현황 전체현황표 조회",
+          "status": "degraded",
+          "error": "HTTP Error 403: Forbidden"
+        },
+        {
+          "operation": "getSafeDpDutyDepoRgtStatusN1",
+          "name": "의무보호예수전체현황 사유별 조회",
+          "status": "degraded",
+          "error": "HTTP Error 403: Forbidden"
+        },
+        {
+          "operation": "getStkListInfoN1",
+          "name": "주식상장정보 조회",
+          "status": "degraded",
+          "error": "HTTP Error 403: Forbidden"
+        }
+      ],
+      "evidence_files": [
+        "EXTERNAL_API_READINESS.json",
+        "FULL_100_ACTIONS.json",
+        "FULL_100_GATE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ]
+    }
+  ],
+  "optional_items": [
+    {
+      "id": "paid_provider_contract_required",
+      "source": "Paid providers",
+      "required_for_full_100": false,
+      "blocks": "optional_enrichment",
+      "status": "blocked_external_dependency",
+      "probe_status": "not_run",
+      "probe_failure_class": "",
+      "next_fix": "probe_not_run",
+      "credential_env_keys": [],
+      "endpoint_env_keys": [],
+      "missing_requirements": [],
+      "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --probe-external-apis-only",
+      "operator_checklist": [
+        "FnGuide/DataGuide/QuantiWise 또는 DeepSearch/Finorma 계약 범위와 외부 배포 가능 여부를 확인한다.",
+        "계약 데이터는 원문 저장 대신 provider snapshot으로 가져와 라이선스 메타데이터를 남긴다."
+      ],
+      "operation_probe_summary": {},
+      "operation_results": [],
+      "evidence_files": [
+        "EXTERNAL_API_READINESS.json",
+        "FULL_100_ACTIONS.json",
+        "FULL_100_GATE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ]
+    },
+    {
+      "id": "paid_provider_direct_api_gap",
+      "source": "Paid providers",
+      "required_for_full_100": false,
+      "blocks": "optional_enrichment",
+      "status": "blocked_external_dependency",
+      "probe_status": "skipped",
+      "probe_failure_class": "endpoint_config_missing",
+      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+      "credential_env_keys": [
+        "FNGUIDE_API_KEY",
+        "DATAGUIDE_API_KEY",
+        "QUANTIWISE_API_KEY",
+        "DEEPSEARCH_API_KEY",
+        "FINORMA_API_KEY"
+      ],
+      "endpoint_env_keys": [
+        "PROVIDER_API_URL"
+      ],
+      "missing_requirements": [
+        "credential_missing",
+        "endpoint_config_missing"
+      ],
+      "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --probe-external-apis-only",
+      "operator_checklist": [
+        "계약 완료 후 PROVIDER_API_URL과 PROVIDER_API_KEY를 설정한다.",
+        "--provider-api-url 또는 --provider-snapshots 경로로 공급망, 컨센서스, 리포트 보강 데이터를 검증한다."
+      ],
+      "operation_probe_summary": {
+        "candidate_count": 0,
+        "ok_count": 0,
+        "degraded_count": 0,
+        "skipped_count": 0
+      },
+      "operation_results": [],
+      "evidence_files": [
+        "EXTERNAL_API_READINESS.json",
+        "FULL_100_ACTIONS.json",
+        "FULL_100_GATE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ]
+    }
+  ]
+}
