@@ -6,6 +6,7 @@
 
 | Key | Purpose |
 |---|---|
+| EXTERNAL_API_CONFIG | Optional JSON file overriding source URLs, key names, and params |
 | BIGKINDS_API_KEY | BIGKinds configured direct API credential |
 | BIGKINDS_API_URL | BIGKinds configured direct API endpoint |
 | KIND_API_KEY | KIND configured direct API credential |
@@ -28,6 +29,7 @@
 # Fill these values in .env to enable configured external direct APIs.
 # Secret values are intentionally omitted from generated reports.
 
+EXTERNAL_API_CONFIG=
 BIGKINDS_API_KEY=
 BIGKINDS_API_URL=
 KIND_API_KEY=

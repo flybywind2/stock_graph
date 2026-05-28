@@ -6,6 +6,7 @@
 
 - `EXTERNAL_API.env.example`의 빈 값을 실제 발급 키와 endpoint URL로 채운다.
 - KIND/BIGKinds/SEIBro/KSD/provider 중 아직 계약이나 URL이 없는 항목은 비워둔다.
+- 서비스별 파라미터명이 다르면 `EXTERNAL_API_CONFIG` JSON 파일에 `url`, `api_key_name`, `params`를 설정한다.
 
 ## 2. Probe endpoints first
 
@@ -16,6 +17,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
   --provider-api-url $env:PROVIDER_API_URL `
+  --external-api-config $env:EXTERNAL_API_CONFIG `
   --probe-external-apis-only `
   --output-dir reports/stock_graph
 ```
@@ -29,6 +31,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
   --provider-api-url $env:PROVIDER_API_URL `
+  --external-api-config $env:EXTERNAL_API_CONFIG `
   --probe-external-apis `
   --require-external-direct-apis `
   --output-dir reports/stock_graph

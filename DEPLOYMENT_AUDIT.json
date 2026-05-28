@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:31:33.167906+09:00",
+  "generated_at": "2026-05-28T10:37:54.120223+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -76,7 +76,7 @@
     {
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": true,
-      "size_bytes": 2264
+      "size_bytes": 2422
     },
     {
       "path": "EXTERNAL_API_READINESS.json",
