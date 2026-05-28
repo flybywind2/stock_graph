@@ -58,6 +58,10 @@
 
 `TRACEABILITY_MATRIX.json`과 `TRACEABILITY_MATRIX.md`를 함께 생성한다. 전략 문서의 공식 사실 그래프, 파급 그래프, signed path scorer, 데이터 접근, 거버넌스, 품질/배포 요구사항이 어떤 산출물로 검증되는지 추적한다.
 
+## Pages deployment audit
+
+`DEPLOYMENT_AUDIT.json`과 `DEPLOYMENT_AUDIT.md`를 함께 생성한다. GitHub Pages 저장소, 브랜치, 공개 URL, 정적 entrypoint, 필수 감사 산출물 존재 여부를 배포 준비 상태로 기록한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |

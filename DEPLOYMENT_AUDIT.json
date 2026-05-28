@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-05-28T09:06:46.441494+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "status": "ready",
+    "artifact_count": 8,
+    "required_artifacts_present": true
+  },
+  "pages": {
+    "repository": "flybywind2/stock_graph",
+    "branch": "main",
+    "url": "https://flybywind2.github.io/stock_graph/",
+    "entrypoint": "index.html"
+  },
+  "artifacts": [
+    {
+      "path": "index.html",
+      "exists": true,
+      "size_bytes": 91261
+    },
+    {
+      "path": "graph_data.js",
+      "exists": true,
+      "size_bytes": 43280584
+    },
+    {
+      "path": "SOURCE_COVERAGE.json",
+      "exists": true,
+      "size_bytes": 3593
+    },
+    {
+      "path": "COMPLETION_AUDIT.json",
+      "exists": true,
+      "size_bytes": 5993
+    },
+    {
+      "path": "QUALITY_AUDIT.json",
+      "exists": true,
+      "size_bytes": 2680
+    },
+    {
+      "path": "TRACEABILITY_MATRIX.json",
+      "exists": true,
+      "size_bytes": 2858
+    },
+    {
+      "path": "API_ENDPOINTS.json",
+      "exists": true,
+      "size_bytes": 10885
+    },
+    {
+      "path": "DEPLOYMENT_AUDIT.json",
+      "exists": true,
+      "size_bytes": 1213
+    }
+  ]
+}

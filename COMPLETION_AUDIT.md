@@ -1,17 +1,17 @@
 # Completion Audit
 
-생성시각: 2026-05-28T09:00:49.521181+09:00
+생성시각: 2026-05-28T09:06:47.228541+09:00
 기준일: 20260521
 
 ## Summary
 
-- requirement_count: 13
-- verified_count: 11
+- requirement_count: 14
+- verified_count: 12
 - partial_count: 0
 - blocked_external_dependency_count: 1
 - remaining_statuses: blocked_external_dependency, optional_external_dependency
 - free_core_status: verified
-- free_core_verified_count: 11 / 11
+- free_core_verified_count: 12 / 12
 
 ## Requirements
 
@@ -27,6 +27,7 @@
 | governance_metadata | free_core | verified | edge.metadata, SOURCE_COVERAGE.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md | - |
 | graph_quality_gate | free_core | verified | QUALITY_AUDIT.json, QUALITY_AUDIT.md, quality_status=pass | - |
 | strategy_traceability | free_core | verified | TRACEABILITY_MATRIX.json, TRACEABILITY_MATRIX.md, traceability_status=verified | - |
+| pages_deployment_readiness | free_core | verified | DEPLOYMENT_AUDIT.json, DEPLOYMENT_AUDIT.md, deployment_status=ready | - |
 | direct_api_completion | external_direct_api | blocked_external_dependency | SOURCE_COVERAGE.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md | direct_api_gap |
 | optional_paid_provider_completion | optional_enrichment | optional_external_dependency | --provider-snapshots, has_consensus_metric, broker_report, provider_relation | contract_required |
 | free_core_completion | free_core | verified | KRX Open API, OpenDART, data.go.kr FSC/FTC, KIND snapshots, KRX Data Marketplace snapshots, SEIBro/KSD snapshots, BIGKinds snapshots | - |
