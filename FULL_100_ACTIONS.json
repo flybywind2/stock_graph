@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:23:23.197537+09:00",
+  "generated_at": "2026-05-28T13:29:10.356216+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -46,6 +46,20 @@
         "endpoint_config_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",
+      "latest_probe": {
+        "status": "skipped",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "probe_not_ok",
+        "missing_expected_fields": [
+          "article_id",
+          "title",
+          "published_at",
+          "entities",
+          "keywords"
+        ],
+        "error": "endpoint_config_missing"
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -90,10 +104,22 @@
         "dividend_event"
       ],
       "current_fallback": "FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import",
-      "missing_requirements": [
-        "endpoint_config_missing"
-      ],
+      "missing_requirements": [],
       "completion_gate": "probe_ok_with_expected_fields",
+      "latest_probe": {
+        "status": "degraded",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "probe_not_ok",
+        "missing_expected_fields": [
+          "crno",
+          "stckIssuCmpyNm",
+          "diviBseDt",
+          "cashDvdnPayDt",
+          "stckGenrDvdnAmt"
+        ],
+        "error": "HTTP Error 401: Unauthorized"
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -139,10 +165,22 @@
         "rights_event"
       ],
       "current_fallback": "DART 발행/자본변동 공시와 KRX 상장주식수",
-      "missing_requirements": [
-        "endpoint_config_missing"
-      ],
+      "missing_requirements": [],
       "completion_gate": "probe_ok_with_expected_fields",
+      "latest_probe": {
+        "status": "degraded",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "probe_not_ok",
+        "missing_expected_fields": [
+          "crno",
+          "stckIssuCmpyNm",
+          "stckIssuDt",
+          "isuStckCnt",
+          "stckKndNm"
+        ],
+        "error": "HTTP Error 404: Not Found"
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -194,6 +232,21 @@
         "endpoint_config_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",
+      "latest_probe": {
+        "status": "skipped",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "probe_not_ok",
+        "missing_expected_fields": [
+          "corp_name",
+          "stock_code",
+          "disclosure_id",
+          "title",
+          "published_at",
+          "report_type"
+        ],
+        "error": "endpoint_config_missing"
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -250,6 +303,21 @@
         "endpoint_config_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",
+      "latest_probe": {
+        "status": "skipped",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "probe_not_ok",
+        "missing_expected_fields": [
+          "stock_code",
+          "isin",
+          "event_type",
+          "event_date",
+          "amount",
+          "ratio"
+        ],
+        "error": "endpoint_config_missing"
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -294,6 +362,20 @@
         "license_review_required"
       ],
       "completion_gate": "license_review_recorded",
+      "latest_probe": {
+        "status": "not_run",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "license_type",
+          "commercial_use_allowed",
+          "attribution_required",
+          "source_name",
+          "reviewed_at"
+        ],
+        "error": ""
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -336,6 +418,7 @@
         "contract_required"
       ],
       "completion_gate": "contract_review_recorded",
+      "latest_probe": {},
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
@@ -391,6 +474,21 @@
         "endpoint_config_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",
+      "latest_probe": {
+        "status": "skipped",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "probe_not_ok",
+        "missing_expected_fields": [
+          "stock_code",
+          "relation_type",
+          "target_code",
+          "weight",
+          "confidence",
+          "source_id"
+        ],
+        "error": "endpoint_config_missing"
+      },
       "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",

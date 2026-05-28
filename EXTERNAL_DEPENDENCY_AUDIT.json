@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-28T13:23:26.564730+09:00",
+  "generated_at": "2026-05-28T13:29:13.545783+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 8,
     "credential_ready_gap_count": 3,
-    "live_fetch_ready_gap_count": 0,
+    "live_fetch_ready_gap_count": 2,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -66,7 +66,7 @@
       "endpoint_env_keys": [
         "FSC_STOCK_DIVIDEND_URL"
       ],
-      "endpoint_config_present": false,
+      "endpoint_config_present": true,
       "row_path": "response.body.items.item",
       "expected_fields": [
         "crno",
@@ -85,10 +85,8 @@
         "dividend_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "endpoint_config_missing"
-      ]
+      "ready_for_live_fetch": true,
+      "missing_requirements": []
     },
     {
       "id": "fsc_stock_issue_endpoint_review_required",
@@ -105,7 +103,7 @@
       "endpoint_env_keys": [
         "FSC_STOCK_ISSUE_URL"
       ],
-      "endpoint_config_present": false,
+      "endpoint_config_present": true,
       "row_path": "response.body.items.item",
       "expected_fields": [
         "crno",
@@ -125,10 +123,8 @@
         "rights_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "endpoint_config_missing"
-      ]
+      "ready_for_live_fetch": true,
+      "missing_requirements": []
     },
     {
       "id": "kind_direct_api_gap",
