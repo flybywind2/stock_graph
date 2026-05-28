@@ -1,18 +1,25 @@
 {
-  "generated_at": "2026-05-28T15:56:07.874495+09:00",
+  "generated_at": "2026-05-28T16:02:21.768446+09:00",
   "summary": {
     "file_count": 5,
     "ready_file_count": 0,
     "ready_to_close_any_gap": false,
     "all_templates_header_only": true
   },
+  "source_dir": "",
+  "loaded_files": [],
+  "missing_files": [],
+  "row_counts": {},
   "standard_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --official-snapshot-dir reports/stock_graph/official_snapshots --output-dir reports/stock_graph",
   "files": [
     {
       "file_name": "kind_events.csv",
       "template_exists": true,
       "template_data_rows": 0,
+      "source_rows": 0,
       "imported_rows": 0,
+      "loaded_from_source_dir": false,
+      "missing_from_source_dir": false,
       "ready_to_close_gap": false,
       "closes_gaps": [
         "kind_direct_api_gap"
@@ -22,7 +29,10 @@
       "file_name": "bigkinds_articles.csv",
       "template_exists": true,
       "template_data_rows": 0,
+      "source_rows": 0,
       "imported_rows": 0,
+      "loaded_from_source_dir": false,
+      "missing_from_source_dir": false,
       "ready_to_close_gap": false,
       "closes_gaps": [
         "bigkinds_direct_api_gap"
@@ -32,7 +42,10 @@
       "file_name": "ksd_seibro_events.csv",
       "template_exists": true,
       "template_data_rows": 0,
+      "source_rows": 0,
       "imported_rows": 0,
+      "loaded_from_source_dir": false,
+      "missing_from_source_dir": false,
       "ready_to_close_gap": false,
       "closes_gaps": [
         "ksd_seibro_direct_api_gap",
@@ -43,7 +56,10 @@
       "file_name": "fsc_stock_issue_events.csv",
       "template_exists": true,
       "template_data_rows": 0,
+      "source_rows": 0,
       "imported_rows": 0,
+      "loaded_from_source_dir": false,
+      "missing_from_source_dir": false,
       "ready_to_close_gap": false,
       "closes_gaps": [
         "fsc_stock_issue_endpoint_review_required"
@@ -53,7 +69,10 @@
       "file_name": "fsc_stock_dividend_events.csv",
       "template_exists": true,
       "template_data_rows": 0,
+      "source_rows": 0,
       "imported_rows": 0,
+      "loaded_from_source_dir": false,
+      "missing_from_source_dir": false,
       "ready_to_close_gap": false,
       "closes_gaps": [
         "fsc_stock_dividend_auth_or_license_review_required"

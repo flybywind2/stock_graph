@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:56:07.878227+09:00",
+  "generated_at": "2026-05-28T16:02:21.772703+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 3689
+      "size_bytes": 3690
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -156,12 +156,12 @@
     {
       "path": "OFFICIAL_SNAPSHOT_IMPORT.json",
       "exists": true,
-      "size_bytes": 1789
+      "size_bytes": 2408
     },
     {
       "path": "OFFICIAL_SNAPSHOT_IMPORT.md",
       "exists": true,
-      "size_bytes": 962
+      "size_bytes": 1170
     }
   ]
 }

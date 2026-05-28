@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:56:01.087086+09:00",
+  "generated_at": "2026-05-28T16:02:14.887164+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "pass",
@@ -15,7 +15,7 @@
       "structure",
       "transaction"
     ],
-    "render_payload_bytes": 32451300
+    "render_payload_bytes": 32451368
   },
   "checks": [
     {
@@ -88,7 +88,7 @@
         "graph_data.js payload budget"
       ],
       "details": {
-        "render_payload_bytes": 32451300,
+        "render_payload_bytes": 32451368,
         "budget_bytes": 60000000
       }
     },
