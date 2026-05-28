@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T16:52:50.582061+09:00",
+  "generated_at": "2026-05-28T17:00:54.536506+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
-    "remaining_action_count": 5,
-    "remaining_required_action_count": 3,
+    "remaining_action_count": 4,
+    "remaining_required_action_count": 2,
     "remaining_optional_action_count": 2,
     "free_scope_status": "external_actions_required",
     "free_core_status": "verified",
@@ -82,81 +82,6 @@
       "operator_steps": [
         "BIGKINDS_API_URL에 공식 endpoint URL을 설정한다.",
         "BIGKINDS_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
-        "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
-        "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."
-      ]
-    },
-    {
-      "id": "kind_direct_api_gap",
-      "source": "KIND",
-      "blocks": "full_100_direct_api",
-      "required_action": "KIND 화면별 공식 API 또는 엑셀 다운로드 자동화 규격 확정",
-      "credential_env_keys": [
-        "KIND_API_KEY"
-      ],
-      "endpoint_env_keys": [
-        "KIND_API_URL"
-      ],
-      "live_fetch_command_option": "--kind-api-url",
-      "row_path": "response.body.items.item",
-      "expected_fields": [
-        "corp_name",
-        "stock_code",
-        "disclosure_id",
-        "title",
-        "published_at",
-        "report_type"
-      ],
-      "source_urls": [
-        "https://kind.krx.co.kr/"
-      ],
-      "auth_key_hint": "",
-      "license_note": "",
-      "license_review_required": false,
-      "operation_candidates": [],
-      "normalizes_to": [
-        "Disclosure",
-        "Event",
-        "Evidence",
-        "has_event"
-      ],
-      "current_fallback": "--kind-snapshots",
-      "missing_requirements": [
-        "credential_missing",
-        "endpoint_config_missing"
-      ],
-      "completion_gate": "probe_ok_with_expected_fields",
-      "latest_probe": {
-        "status": "skipped",
-        "row_count": 0,
-        "sample_keys": [],
-        "field_coverage_status": "probe_not_ok",
-        "missing_expected_fields": [
-          "corp_name",
-          "stock_code",
-          "disclosure_id",
-          "title",
-          "published_at",
-          "report_type"
-        ],
-        "error": "endpoint_config_missing",
-        "failure_class": "endpoint_config_missing",
-        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-        "attempts": [],
-        "operation_probe_summary": {},
-        "operation_results": []
-      },
-      "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
-      "completion_evidence": [
-        "EXTERNAL_API_READINESS.json",
-        "SOURCE_COVERAGE.json",
-        "COMPLETION_AUDIT.json",
-        "FULL_100_ACTIONS.json"
-      ],
-      "operator_steps": [
-        "KIND_API_URL에 공식 endpoint URL을 설정한다.",
-        "KIND_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
         "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
         "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."
       ]

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-05-28T16:52:50.582253+09:00",
+  "generated_at": "2026-05-28T17:00:54.536661+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
-    "gap_count": 5,
-    "blocked_gap_count": 5,
+    "gap_count": 4,
+    "blocked_gap_count": 4,
     "ready_gap_count": 0,
-    "required_gap_count": 3,
-    "blocked_required_gap_count": 3,
+    "required_gap_count": 2,
+    "blocked_required_gap_count": 2,
     "ready_required_gap_count": 0,
     "optional_gap_count": 2,
     "blocked_optional_gap_count": 2,
@@ -35,36 +35,6 @@
       "operator_steps": [
         "BIGKINDS_API_URL에 공식 endpoint URL을 설정한다.",
         "BIGKINDS_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
-        "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
-        "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."
-      ],
-      "evidence": [
-        "EXTERNAL_API_READINESS.json",
-        "SOURCE_COVERAGE.json",
-        "COMPLETION_AUDIT.json",
-        "FULL_100_ACTIONS.json"
-      ]
-    },
-    {
-      "id": "kind_direct_api_gap",
-      "source": "KIND",
-      "blocks": "full_100_direct_api",
-      "status": "blocked_external_dependency",
-      "blocking_requirements": [
-        "credential_missing",
-        "endpoint_config_missing"
-      ],
-      "close_conditions": [
-        "probe_ok_with_expected_fields",
-        "endpoint_probe_configured"
-      ],
-      "probe_status": "skipped",
-      "probe_field_coverage": "probe_not_ok",
-      "probe_failure_class": "endpoint_config_missing",
-      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "operator_steps": [
-        "KIND_API_URL에 공식 endpoint URL을 설정한다.",
-        "KIND_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
         "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
         "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."
       ],

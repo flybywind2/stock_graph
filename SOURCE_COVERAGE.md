@@ -1,6 +1,6 @@
 # Source Coverage
 
-생성시각: 2026-05-28T16:52:41.702937+09:00
+생성시각: 2026-05-28T17:00:45.689761+09:00
 기준일: 20260521
 
 ## Summary
@@ -10,8 +10,8 @@
 - configured_direct_api_loaded_count: 0
 - contract_direct_api_loaded_count: 0
 - approved_direct_api_backlog_count: 0
-- snapshot_import_path_count: 5
-- remaining_direct_api_gaps: bigkinds_direct_api_gap, kind_direct_api_gap, ksd_seibro_direct_api_gap, paid_provider_direct_api_gap
+- snapshot_import_path_count: 4
+- remaining_direct_api_gaps: bigkinds_direct_api_gap, ksd_seibro_direct_api_gap, paid_provider_direct_api_gap
 - remaining_approved_import_backlogs: none
 
 ## Sources
@@ -23,7 +23,7 @@
 | data.go.kr FSC | direct_api | ok: 2656 stocks, source_date 20260521 | 2656 | - |
 | data.go.kr FTC | direct_api | ok: 388 listed companies, public_ym 202605 | 388 | - |
 | data.go.kr FSC approved | direct_api | ok: financial_company_basic 81 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows | 5 | - |
-| KIND | snapshot_import | skipped | 0 | kind_direct_api_gap |
+| KIND | official_web_export | official_export_path_available | 0 | - |
 | BIGKinds | snapshot_import | skipped | 0 | bigkinds_direct_api_gap |
 | KRX Data Marketplace | snapshot_import | skipped | 0 | - |
 | SEIBro/KSD | snapshot_import | skipped | 0 | ksd_seibro_direct_api_gap |

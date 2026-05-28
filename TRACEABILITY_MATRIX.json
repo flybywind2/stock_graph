@@ -1,15 +1,14 @@
 {
-  "generated_at": "2026-05-28T16:52:50.316119+09:00",
+  "generated_at": "2026-05-28T17:00:54.270446+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 6,
     "verified_count": 5,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
-    "external_gap_count": 5,
+    "external_gap_count": 4,
     "remaining_external_access_gaps": [
       "bigkinds_direct_api_gap",
-      "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
       "paid_provider_contract_required",
       "paid_provider_direct_api_gap"
@@ -66,7 +65,6 @@
       ],
       "remaining_external_access_gaps": [
         "bigkinds_direct_api_gap",
-        "kind_direct_api_gap",
         "ksd_seibro_direct_api_gap",
         "paid_provider_contract_required",
         "paid_provider_direct_api_gap"

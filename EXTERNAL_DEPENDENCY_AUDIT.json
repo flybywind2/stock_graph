@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T16:52:50.047173+09:00",
+  "generated_at": "2026-05-28T17:00:54.004479+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
-    "gap_count": 5,
+    "gap_count": 4,
     "credential_ready_gap_count": 0,
     "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
@@ -44,49 +44,6 @@
         "Evidence",
         "positive_exposure",
         "negative_exposure"
-      ],
-      "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "credential_missing",
-        "endpoint_config_missing"
-      ]
-    },
-    {
-      "id": "kind_direct_api_gap",
-      "source": "KIND",
-      "status": "blocked_external_dependency",
-      "required_action": "KIND 화면별 공식 API 또는 엑셀 다운로드 자동화 규격 확정",
-      "current_fallback": "--kind-snapshots",
-      "used_for": "거래소 공시, IR자료, 기업분석보고서 이벤트/증거",
-      "blocks": "full_100_direct_api",
-      "credential_env_keys": [
-        "KIND_API_KEY"
-      ],
-      "credential_present": false,
-      "endpoint_env_keys": [
-        "KIND_API_URL"
-      ],
-      "endpoint_config_present": false,
-      "row_path": "response.body.items.item",
-      "expected_fields": [
-        "corp_name",
-        "stock_code",
-        "disclosure_id",
-        "title",
-        "published_at",
-        "report_type"
-      ],
-      "source_urls": [
-        "https://kind.krx.co.kr/"
-      ],
-      "auth_key_hint": "",
-      "license_note": "",
-      "normalizes_to": [
-        "Disclosure",
-        "Event",
-        "Evidence",
-        "has_event"
       ],
       "direct_connector_implemented": true,
       "ready_for_live_fetch": false,

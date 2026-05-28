@@ -1,6 +1,6 @@
 # Full 100 Completion Gate
 
-생성시각: 2026-05-28T16:52:50.582312+09:00
+생성시각: 2026-05-28T17:00:54.536711+09:00
 기준일: 20260521
 
 ## Summary
@@ -10,8 +10,8 @@
 - can_claim_free_scope_complete: False
 - failed_criteria_count: 5
 - failed_required_criteria_count: 3
-- blocker_count: 5
-- required_blocker_count: 3
+- blocker_count: 4
+- required_blocker_count: 2
 - optional_blocker_count: 2
 
 ## Criteria
@@ -21,16 +21,15 @@
 | free_core_verified | True | COMPLETION_AUDIT.json | verified |
 | traceability_verified | False | TRACEABILITY_MATRIX.json | blocked_external_dependency |
 | external_gap_validation_ready | False | EXTERNAL_GAP_VALIDATION.json | blocked_external_dependency |
-| external_required_gap_validation_ready | False | EXTERNAL_GAP_VALIDATION.json | blocked_required_gap_count=3 |
+| external_required_gap_validation_ready | False | EXTERNAL_GAP_VALIDATION.json | blocked_required_gap_count=2 |
 | no_remaining_full_100_actions | False | FULL_100_ACTIONS.json | external_actions_required |
-| no_remaining_required_full_100_actions | False | FULL_100_ACTIONS.json | remaining_required_action_count=3 |
+| no_remaining_required_full_100_actions | False | FULL_100_ACTIONS.json | remaining_required_action_count=2 |
 
 ## Blockers
 
 | ID | Source | Blocks | Status | Next Fix |
 |---|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |
-| kind_direct_api_gap | KIND | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |
 | paid_provider_contract_required | Paid providers | optional_enrichment | blocked_external_dependency | probe_not_run |
 | paid_provider_direct_api_gap | Paid providers | optional_enrichment | blocked_external_dependency | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. |

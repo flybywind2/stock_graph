@@ -9,8 +9,6 @@
 | EXTERNAL_API_CONFIG | Optional JSON file overriding source URLs, key names, and params |
 | BIGKINDS_API_KEY | BIGKinds configured direct API credential |
 | BIGKINDS_API_URL | BIGKinds configured direct API endpoint |
-| KIND_API_KEY | KIND configured direct API credential |
-| KIND_API_URL | KIND configured direct API endpoint |
 | SEIBRO_API_KEY | SEIBro configured direct API credential |
 | KSD_API_KEY | KSD GW configured direct API credential |
 | DATA_GO_KR_SERVICE_KEY | data.go.kr fallback credential for SEIBro/KSD-style configured APIs |
@@ -32,8 +30,6 @@
 EXTERNAL_API_CONFIG=
 BIGKINDS_API_KEY=
 BIGKINDS_API_URL=
-KIND_API_KEY=
-KIND_API_URL=
 SEIBRO_API_KEY=
 KSD_API_KEY=
 DATA_GO_KR_SERVICE_KEY=

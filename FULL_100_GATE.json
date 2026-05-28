@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:52:50.582312+09:00",
+  "generated_at": "2026-05-28T17:00:54.536711+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -7,8 +7,8 @@
     "can_claim_free_scope_complete": false,
     "failed_criteria_count": 5,
     "failed_required_criteria_count": 3,
-    "blocker_count": 5,
-    "required_blocker_count": 3,
+    "blocker_count": 4,
+    "required_blocker_count": 2,
     "optional_blocker_count": 2
   },
   "criteria": {
@@ -30,7 +30,7 @@
     "external_required_gap_validation_ready": {
       "passed": false,
       "evidence": "EXTERNAL_GAP_VALIDATION.json",
-      "actual": "blocked_required_gap_count=3"
+      "actual": "blocked_required_gap_count=2"
     },
     "no_remaining_full_100_actions": {
       "passed": false,
@@ -40,7 +40,7 @@
     "no_remaining_required_full_100_actions": {
       "passed": false,
       "evidence": "FULL_100_ACTIONS.json",
-      "actual": "remaining_required_action_count=3"
+      "actual": "remaining_required_action_count=2"
     }
   },
   "failed_criteria": [
@@ -59,13 +59,6 @@
     {
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
-      "blocks": "full_100_direct_api",
-      "status": "blocked_external_dependency",
-      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
-    },
-    {
-      "id": "kind_direct_api_gap",
-      "source": "KIND",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
@@ -96,13 +89,6 @@
     {
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
-      "blocks": "full_100_direct_api",
-      "status": "blocked_external_dependency",
-      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
-    },
-    {
-      "id": "kind_direct_api_gap",
-      "source": "KIND",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."

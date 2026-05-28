@@ -1,11 +1,11 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T16:52:41.703624+09:00
+생성시각: 2026-05-28T17:00:45.690324+09:00
 기준일: 20260521
 
 ## Summary
 
-- endpoint_count: 50
+- endpoint_count: 55
 - direct_api_count: 31
 - configured_direct_api_count: 3
 - contract_direct_api_count: 1
@@ -52,6 +52,11 @@
 | naver_theme_list | Naver Finance | public_page_cache | none | https://finance.naver.com/sise/theme.naver | - |
 | naver_theme_detail | Naver Finance | public_page_cache | none | https://finance.naver.com/sise/sise_group_detail.naver | - |
 | fnguide_company_profile | FnGuide public page | public_page_cache | none | https://comp.fnguide.com/SVO2/ASP/SVD_Main.asp | - |
+| kind_listed_issue_status | KIND | official_web_export | none | https://kind.krx.co.kr/corpgeneral/listedIssueStatus.do?method=loadInitPage | - |
+| kind_corporation_list | KIND | official_web_export | none | https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage | - |
+| kind_ir_materials | KIND | official_web_export | none | https://kind.krx.co.kr/corpgeneral/irschedule.do?method=searchIRScheduleMain&gubun=iRMaterials | - |
+| kind_company_analysis_report | KIND | official_web_export | none | https://kind.krx.co.kr/corpgeneral/companyAnalysisReport.do?method=listingForeignCompanyMain&searchGubun=companyAnalysisReport | - |
+| kind_new_listing_analysis_report | KIND | official_web_export | none | https://kind.krx.co.kr/corpgeneral/newListingForeignCompany.do?method=listingForeignCompanyMain&searchGubun=newListingForeignCompany | - |
 | kind_configured_direct_api | KIND | configured_direct_api | KIND_API_KEY | ${KIND_API_URL} | --kind-api-url |
 | bigkinds_configured_direct_api | BIGKinds | configured_direct_api | BIGKINDS_API_KEY | ${BIGKINDS_API_URL} | --bigkinds-api-url |
 | ksd_seibro_configured_direct_api | SEIBro/KSD | configured_direct_api | SEIBRO_API_KEY/KSD_API_KEY/DATA_GO_KR_SERVICE_KEY | ${SEIBRO_API_URL} or ${KSD_API_URL} | --ksd-seibro-api-url |

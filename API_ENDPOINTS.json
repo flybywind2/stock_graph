@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-05-28T16:52:41.703624+09:00",
+  "generated_at": "2026-05-28T17:00:45.690324+09:00",
   "source_date": "20260521",
   "summary": {
-    "endpoint_count": 50,
+    "endpoint_count": 55,
     "direct_api_count": 31,
     "configured_direct_api_count": 3,
     "contract_direct_api_count": 1,
     "official_service_candidate_count": 5,
+    "official_web_export_count": 5,
     "approved_direct_api_backlog_count": 0,
     "snapshot_import_count": 6,
     "contract_snapshot_import_count": 1,
@@ -300,6 +301,51 @@
       "url": "https://comp.fnguide.com/SVO2/ASP/SVD_Main.asp",
       "auth": "none",
       "used_for": "sector, industry, valuation public profile"
+    },
+    {
+      "id": "kind_listed_issue_status",
+      "source": "KIND",
+      "mode": "official_web_export",
+      "url": "https://kind.krx.co.kr/corpgeneral/listedIssueStatus.do?method=loadInitPage",
+      "auth": "none",
+      "used_for": "KIND 상장종목현황 공식 웹/export",
+      "status": "official_export_path_available"
+    },
+    {
+      "id": "kind_corporation_list",
+      "source": "KIND",
+      "mode": "official_web_export",
+      "url": "https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage",
+      "auth": "none",
+      "used_for": "KIND 상장법인목록 공식 웹/export",
+      "status": "official_export_path_available"
+    },
+    {
+      "id": "kind_ir_materials",
+      "source": "KIND",
+      "mode": "official_web_export",
+      "url": "https://kind.krx.co.kr/corpgeneral/irschedule.do?method=searchIRScheduleMain&gubun=iRMaterials",
+      "auth": "none",
+      "used_for": "KIND IR자료실 공식 웹/export",
+      "status": "official_export_path_available"
+    },
+    {
+      "id": "kind_company_analysis_report",
+      "source": "KIND",
+      "mode": "official_web_export",
+      "url": "https://kind.krx.co.kr/corpgeneral/companyAnalysisReport.do?method=listingForeignCompanyMain&searchGubun=companyAnalysisReport",
+      "auth": "none",
+      "used_for": "KIND 기업분석보고서 공식 웹/export",
+      "status": "official_export_path_available"
+    },
+    {
+      "id": "kind_new_listing_analysis_report",
+      "source": "KIND",
+      "mode": "official_web_export",
+      "url": "https://kind.krx.co.kr/corpgeneral/newListingForeignCompany.do?method=listingForeignCompanyMain&searchGubun=newListingForeignCompany",
+      "auth": "none",
+      "used_for": "KIND 신규상장기업분석보고서 공식 웹/export",
+      "status": "official_export_path_available"
     },
     {
       "id": "kind_configured_direct_api",

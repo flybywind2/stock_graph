@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:52:41.702937+09:00",
+  "generated_at": "2026-05-28T17:00:45.689761+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 12,
@@ -7,17 +7,15 @@
     "configured_direct_api_loaded_count": 0,
     "contract_direct_api_loaded_count": 0,
     "approved_direct_api_backlog_count": 0,
-    "snapshot_import_path_count": 5,
+    "snapshot_import_path_count": 4,
     "remaining_direct_api_gaps": [
       "bigkinds_direct_api_gap",
-      "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
       "paid_provider_direct_api_gap"
     ],
     "remaining_approved_import_backlogs": [],
     "remaining_external_access_gaps": [
       "bigkinds_direct_api_gap",
-      "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
       "paid_provider_contract_required",
       "paid_provider_direct_api_gap"
@@ -71,14 +69,12 @@
     },
     {
       "source": "KIND",
-      "mode": "snapshot_import",
-      "status": "skipped",
+      "mode": "official_web_export",
+      "status": "official_export_path_available",
       "count": 0,
       "option": "--kind-snapshots",
       "used_for": "disclosure, IR, company analysis report events and evidence",
-      "gaps": [
-        "kind_direct_api_gap"
-      ]
+      "gaps": []
     },
     {
       "source": "BIGKinds",
