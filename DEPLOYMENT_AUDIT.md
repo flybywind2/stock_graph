@@ -1,12 +1,12 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T15:51:47.344227+09:00
+생성시각: 2026-05-28T15:56:07.878227+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: ready
-- artifact_count: 28
+- artifact_count: 30
 - required_artifacts_present: True
 - repository: flybywind2/stock_graph
 - branch: main
@@ -16,14 +16,14 @@
 
 | Path | Exists | Size Bytes |
 |---|---:|---:|
-| index.html | True | 95007 |
-| graph_data.js | True | 32451301 |
+| index.html | True | 95084 |
+| graph_data.js | True | 32451369 |
 | SOURCE_COVERAGE.json | True | 4908 |
 | COMPLETION_AUDIT.json | True | 8324 |
 | QUALITY_AUDIT.json | True | 2445 |
 | TRACEABILITY_MATRIX.json | True | 3953 |
 | API_ENDPOINTS.json | True | 14597 |
-| DEPLOYMENT_AUDIT.json | True | 3468 |
+| DEPLOYMENT_AUDIT.json | True | 3689 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1287 |
 | EXTERNAL_DEPENDENCY_AUDIT.json | True | 11564 |
 | EXTERNAL_API.env.example | True | 482 |
@@ -44,3 +44,5 @@
 | FULL_100_GATE.md | True | 2740 |
 | EXTERNAL_GAP_VALIDATION.json | True | 10678 |
 | EXTERNAL_GAP_VALIDATION.md | True | 3054 |
+| OFFICIAL_SNAPSHOT_IMPORT.json | True | 1789 |
+| OFFICIAL_SNAPSHOT_IMPORT.md | True | 962 |
