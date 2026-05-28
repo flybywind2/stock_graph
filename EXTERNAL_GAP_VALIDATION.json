@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:18:57.315113+09:00",
+  "generated_at": "2026-05-28T14:27:15.166229+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -42,11 +42,8 @@
       "id": "fsc_stock_dividend_auth_or_license_review_required",
       "source": "data.go.kr FSC",
       "status": "blocked_external_dependency",
-      "blocking_requirements": [
-        "license_review_required"
-      ],
+      "blocking_requirements": [],
       "close_conditions": [
-        "license_review_recorded",
         "probe_ok_with_expected_fields",
         "endpoint_probe_configured"
       ],

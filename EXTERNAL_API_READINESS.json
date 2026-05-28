@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T14:18:56.584354+09:00",
+  "generated_at": "2026-05-28T14:27:14.423431+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 7,
-    "ready_for_live_fetch_count": 0,
-    "not_ready_count": 7,
+    "ready_for_live_fetch_count": 1,
+    "not_ready_count": 6,
     "secret_values_recorded": false
   },
   "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --probe-external-apis --output-dir reports/stock_graph",
@@ -69,7 +69,7 @@
     {
       "id": "fsc_stock_dividend_auth_or_license_review_required",
       "source": "data.go.kr FSC",
-      "ready_for_live_fetch": false,
+      "ready_for_live_fetch": true,
       "credential_env_keys": [
         "DATA_GO_KR_SERVICE_KEY"
       ],
@@ -92,9 +92,7 @@
         "dividend_event"
       ],
       "direct_connector_implemented": true,
-      "missing_requirements": [
-        "license_review_required"
-      ],
+      "missing_requirements": [],
       "live_fetch_command_option": "--fsc-stock-dividend-url",
       "probe": {
         "status": "degraded",

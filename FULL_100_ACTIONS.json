@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:18:57.314776+09:00",
+  "generated_at": "2026-05-28T14:27:15.165942+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -35,6 +35,7 @@
       ],
       "auth_key_hint": "",
       "license_note": "",
+      "license_review_required": false,
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -83,7 +84,7 @@
       "id": "fsc_stock_dividend_auth_or_license_review_required",
       "source": "data.go.kr FSC",
       "blocks": "full_100_direct_api",
-      "required_action": "금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, KSD 공공누리 2유형 이용범위 확인",
+      "required_action": "금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, Swagger operation URL 확인",
       "credential_env_keys": [
         "DATA_GO_KR_SERVICE_KEY"
       ],
@@ -104,16 +105,15 @@
         "https://www.data.go.kr/catalog/15043284/openapi.json"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
-      "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
+      "license_note": "공식 catalog/openapi.json 기준 이용허락범위 제한 없음",
+      "license_review_required": false,
       "normalizes_to": [
         "Event",
         "Evidence",
         "dividend_event"
       ],
       "current_fallback": "FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import",
-      "missing_requirements": [
-        "license_review_required"
-      ],
+      "missing_requirements": [],
       "completion_gate": "probe_ok_with_expected_fields",
       "latest_probe": {
         "status": "degraded",
@@ -203,6 +203,7 @@
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
+      "license_review_required": true,
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -302,6 +303,7 @@
       ],
       "auth_key_hint": "",
       "license_note": "",
+      "license_review_required": false,
       "normalizes_to": [
         "Disclosure",
         "Event",
@@ -377,6 +379,7 @@
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "",
+      "license_review_required": false,
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -445,6 +448,7 @@
       ],
       "auth_key_hint": "",
       "license_note": "",
+      "license_review_required": true,
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -506,6 +510,7 @@
       ],
       "auth_key_hint": "",
       "license_note": "",
+      "license_review_required": false,
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -560,6 +565,7 @@
       ],
       "auth_key_hint": "",
       "license_note": "",
+      "license_review_required": false,
       "normalizes_to": [
         "RelationFact",
         "Evidence",

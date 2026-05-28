@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-28T14:18:56.584086+09:00",
+  "generated_at": "2026-05-28T14:27:14.423147+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 8,
     "credential_ready_gap_count": 3,
-    "live_fetch_ready_gap_count": 0,
+    "live_fetch_ready_gap_count": 1,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -56,7 +56,7 @@
       "id": "fsc_stock_dividend_auth_or_license_review_required",
       "source": "data.go.kr FSC",
       "status": "blocked_external_dependency",
-      "required_action": "금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, KSD 공공누리 2유형 이용범위 확인",
+      "required_action": "금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, Swagger operation URL 확인",
       "current_fallback": "FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import",
       "used_for": "배당기준일, 현금배당지급일, 주식배당 이벤트",
       "blocks": "full_100_direct_api",
@@ -81,17 +81,15 @@
         "https://www.data.go.kr/catalog/15043284/openapi.json"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
-      "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
+      "license_note": "공식 catalog/openapi.json 기준 이용허락범위 제한 없음",
       "normalizes_to": [
         "Event",
         "Evidence",
         "dividend_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "license_review_required"
-      ]
+      "ready_for_live_fetch": true,
+      "missing_requirements": []
     },
     {
       "id": "fsc_stock_issue_endpoint_review_required",

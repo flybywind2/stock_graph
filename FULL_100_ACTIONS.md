@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T14:18:57.314776+09:00
+생성시각: 2026-05-28T14:27:15.165942+09:00
 기준일: 20260521
 
 ## Summary
@@ -22,7 +22,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source | Blocks | Required Action | Env Keys | Option | Completion Gate | Latest Probe | Probe Class | Next Fix | Fallback | Evidence |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | full_100_direct_api | BIGKinds Open API 이용 신청, 호출 제한과 응답 레이아웃 확인 | BIGKINDS_API_KEY, BIGKINDS_API_URL | --bigkinds-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --bigkinds-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
-| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | full_100_direct_api | 금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, KSD 공공누리 2유형 이용범위 확인 | DATA_GO_KR_SERVICE_KEY, FSC_STOCK_DIVIDEND_URL | --fsc-stock-dividend-url | probe_ok_with_expected_fields | degraded: HTTP Error 401: Unauthorized | auth_or_approval_failed | data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다. | FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
+| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | full_100_direct_api | 금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, Swagger operation URL 확인 | DATA_GO_KR_SERVICE_KEY, FSC_STOCK_DIVIDEND_URL | --fsc-stock-dividend-url | probe_ok_with_expected_fields | degraded: HTTP Error 401: Unauthorized | auth_or_approval_failed | data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다. | FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | fsc_stock_issue_endpoint_review_required | data.go.kr FSC | full_100_direct_api | 금융위원회_주식발행정보 Swagger의 최신 operation URL 확인 후 FSC_STOCK_ISSUE_URL에 반영 | DATA_GO_KR_SERVICE_KEY, FSC_STOCK_ISSUE_URL | --fsc-stock-issue-url | probe_ok_with_expected_fields | degraded: HTTP Error 404: Not Found | endpoint_or_operation_not_found | data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다. | DART 발행/자본변동 공시와 KRX 상장주식수 | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | kind_direct_api_gap | KIND | full_100_direct_api | KIND 화면별 공식 API 또는 엑셀 다운로드 자동화 규격 확정 | KIND_API_KEY, KIND_API_URL | --kind-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --kind-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
@@ -35,7 +35,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source URLs | Auth Hint | License Note |
 |---|---|---|---|
 | bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - | - |
-| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15043284/openapi.do, https://www.data.go.kr/catalog/15043284/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요 |
+| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15043284/openapi.do, https://www.data.go.kr/catalog/15043284/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 catalog/openapi.json 기준 이용허락범위 제한 없음 |
 | fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15043423/openapi.do, https://www.data.go.kr/catalog/15043423/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요 |
 | kind_direct_api_gap | https://kind.krx.co.kr/ | - | - |
 | ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | - |
