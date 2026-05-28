@@ -66,6 +66,10 @@
 
 `UI_INTERACTION_AUDIT.json`과 `UI_INTERACTION_AUDIT.md`를 함께 생성한다. 검색, 쉼표/줄바꿈 다중 루트, Ctrl/Meta 다중 선택, 노드/엣지 범례 토글, 렌더 엣지 수 제한, 2D/3D 전환, 노드 드래그와 pan/rotate 상호작용이 HTML에 포함되어 있는지 확인한다.
 
+## Data freshness audit
+
+`DATA_FRESHNESS_AUDIT.json`과 `DATA_FRESHNESS_AUDIT.md`를 함께 생성한다. 그래프 기준일, 생성시각, 노드/엣지의 source_date, published_at, observed_at, valid_from/to, receipt_date, event_date, basis_date 커버리지를 확인한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |

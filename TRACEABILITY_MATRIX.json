@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:10:16.554289+09:00",
+  "generated_at": "2026-05-28T09:15:37.586198+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 6,
@@ -62,6 +62,7 @@
       "evidence": [
         "COMPLETION_AUDIT.json",
         "SOURCE_COVERAGE.json",
+        "DATA_FRESHNESS_AUDIT.json",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
       ]
     },

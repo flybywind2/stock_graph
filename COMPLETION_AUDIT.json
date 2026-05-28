@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-05-28T09:10:16.992107+09:00",
+  "generated_at": "2026-05-28T09:15:37.982651+09:00",
   "source_date": "20260521",
   "summary": {
-    "requirement_count": 15,
-    "verified_count": 13,
+    "requirement_count": 16,
+    "verified_count": 14,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
       "blocked_external_dependency",
       "optional_external_dependency"
     ],
-    "free_core_requirement_count": 13,
-    "free_core_verified_count": 13,
+    "free_core_requirement_count": 14,
+    "free_core_verified_count": 14,
     "free_core_status": "verified"
   },
   "requirements": [
@@ -170,6 +170,18 @@
         "UI_INTERACTION_AUDIT.json",
         "UI_INTERACTION_AUDIT.md",
         "ui_status=pass"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "data_freshness_gate",
+      "requirement": "기준일, 생성일, 원천 날짜/유효기간 메타데이터 최신성 게이트",
+      "status": "verified",
+      "scope": "free_core",
+      "evidence": [
+        "DATA_FRESHNESS_AUDIT.json",
+        "DATA_FRESHNESS_AUDIT.md",
+        "freshness_status=pass"
       ],
       "gaps": []
     },
