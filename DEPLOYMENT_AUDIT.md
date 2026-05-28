@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T17:52:02.523907+09:00
+생성시각: 2026-05-28T17:56:21.082617+09:00
 기준일: 20260521
 
 ## Summary
@@ -30,7 +30,7 @@
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1570 |
 | EXTERNAL_API_CONFIG.example.json | True | 3066 |
 | EXTERNAL_API_LIVE_RUNBOOK.md | True | 3732 |
-| DATA_SOURCE_ACCESS_REQUIREMENTS.md | True | 19206 |
+| DATA_SOURCE_ACCESS_REQUIREMENTS.md | True | 21828 |
 | snapshot_templates/kind_events.csv | True | 117 |
 | snapshot_templates/bigkinds_articles.csv | True | 106 |
 | snapshot_templates/ksd_seibro_events.csv | True | 96 |

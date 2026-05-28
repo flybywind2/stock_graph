@@ -49,6 +49,47 @@ API 승인이나 endpoint 확인 전에도 아래 템플릿에 공식 export 값
 | 금융위원회_주식발행정보 | `FSC_STOCK_ISSUE_URL` | 기본 경로가 `404 Not Found`이면 Swagger의 최신 operation URL 확인 필요 |
 | 금융위원회_주식배당정보 | `FSC_STOCK_DIVIDEND_URL` | `401/403`이면 일반 인증키 Decoding 값, 활용신청 승인, KSD 권리/이용조건 확인 필요 |
 
+## 남은 인증/승인 체크리스트
+
+`FULL_100_GATE.json`의 필수 블로커는 구현 누락이 아니라 외부 접근권 문제로 분리한다. 아래 항목이 해소되면
+`--probe-external-apis-only`로 라이브 확인 후 같은 빌드 경로에서 100% gate가 자동 갱신된다.
+
+### BIGKinds Open API
+
+- 현재 구현 상태: 공식 Open API `search/news` endpoint를 `POST_JSON`으로 호출한다.
+- 기본 endpoint: `https://tools.kinds.or.kr/search/news`
+- 인증 방식: JSON body에 `access_key`를 넣는다. URL query에 키를 붙이지 않는다.
+- 필요한 환경변수: `BIGKINDS_API_KEY`
+- 선택 환경변수: `BIGKINDS_API_URL`
+- row path: `return_object.documents`
+- 현재 블로커 의미: `BIGKINDS_API_KEY`가 없으면 네트워크 호출을 하지 않고 `credential_missing`으로 기록한다.
+
+```powershell
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --probe-external-apis-only
+```
+
+### SEIBro / KSD StockSvc
+
+- 현재 구현 상태: KSD StockSvc 후보 endpoint를 내장하고, `DATA_GO_KR_SERVICE_KEY`를 일반 인증키 Decoding 값으로 정규화해 호출한다.
+- 필요한 data.go.kr 신청 서비스: `한국예탁결제원_주식정보서비스_GW`
+- 현재 키 처리: `_Decoding` suffix 또는 URL-encoded 값은 probe 전에 정규화한다.
+- 현재 라이브 진단 의미: `HTTP 403 Forbidden`이면 키 형식보다 활용신청 승인, 승인 서비스와 키의 계정 연결, 또는 서비스 권한 문제를 먼저 확인한다.
+
+| Operation | Endpoint |
+|---|---|
+| `getStkIsinByShortIsinN1` | `https://apis.data.go.kr/B552481/StockSvc/getStkIsinByShortIsinN1` |
+| `getDividendRankN1` | `https://apis.data.go.kr/B552481/StockSvc/getDividendRankN1` |
+| `getSafeDpDutyDepoStatusN1` | `https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoStatusN1` |
+| `getSafeDpDutyDepoRgtStatusN1` | `https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoRgtStatusN1` |
+| `getStkListInfoN1` | `https://apis.data.go.kr/B552481/StockSvc/getStkListInfoN1` |
+
+재확인 순서:
+
+1. data.go.kr 마이페이지에서 `한국예탁결제원_주식정보서비스_GW` 활용신청 승인 여부를 확인한다.
+2. 같은 계정의 일반 인증키 Decoding 값을 `.env`의 `DATA_GO_KR_SERVICE_KEY`에 둔다.
+3. `--probe-external-apis-only`를 실행해 `EXTERNAL_API_READINESS.json`의 `ksd_seibro_direct_api_gap` 상태를 확인한다.
+4. 계속 `HTTP 403 Forbidden`이면 같은 서비스에서 인증키를 재발급하거나, 승인받은 서비스가 `B552481/StockSvc`인지 확인한다.
+
 ## HTML graph layer
 
 | Preset | Meaning |
