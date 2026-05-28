@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T10:10:54.106014+09:00",
+  "generated_at": "2026-05-28T10:16:20.496864+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 13,
+    "artifact_count": 15,
     "required_artifacts_present": true
   },
   "pages": {
@@ -41,7 +41,7 @@
     {
       "path": "TRACEABILITY_MATRIX.json",
       "exists": true,
-      "size_bytes": 3008
+      "size_bytes": 3048
     },
     {
       "path": "API_ENDPOINTS.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 1769
+      "size_bytes": 1770
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -77,6 +77,16 @@
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": true,
       "size_bytes": 1681
+    },
+    {
+      "path": "EXTERNAL_API_READINESS.json",
+      "exists": true,
+      "size_bytes": 0
+    },
+    {
+      "path": "EXTERNAL_API_READINESS.md",
+      "exists": true,
+      "size_bytes": 0
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:10:55.613054+09:00",
+  "generated_at": "2026-05-28T10:16:21.988142+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 6,
@@ -52,6 +52,7 @@
       "evidence": [
         "SOURCE_COVERAGE.json",
         "API_ENDPOINTS.json",
+        "EXTERNAL_API_READINESS.json",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
       ]
     },
