@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:03:57.572437+09:00",
+  "generated_at": "2026-05-28T13:07:19.866987+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -86,12 +86,12 @@
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 11307
+      "size_bytes": 11407
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
-      "size_bytes": 3655
+      "size_bytes": 3755
     }
   ]
 }
