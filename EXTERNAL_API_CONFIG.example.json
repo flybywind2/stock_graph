@@ -98,6 +98,13 @@
     ],
     "params": {
       "date": "{date}"
+    },
+    "contract_review": {
+      "contract_id": "",
+      "license_scope": "",
+      "provider_name": "",
+      "valid_from": "",
+      "valid_to": ""
     }
   }
 }
