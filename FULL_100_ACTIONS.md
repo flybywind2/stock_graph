@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T17:41:29.422010+09:00
+생성시각: 2026-05-28T17:45:54.583013+09:00
 기준일: 20260521
 
 ## Summary
@@ -63,7 +63,11 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 
 | ID | Operation | Name | Status | Rows | Sample Keys | Error |
 |---|---|---|---|---:|---|---|
-| - | - | - | - | 0 | - | - |
+| ksd_seibro_direct_api_gap | getStkIsinByShortIsinN1 | 단축번호로 주식종목코드(풀코드) 조회 | degraded | 0 | - | HTTP Error 401: Unauthorized |
+| ksd_seibro_direct_api_gap | getDividendRankN1 | 배당순위조회 | degraded | 0 | - | HTTP Error 401: Unauthorized |
+| ksd_seibro_direct_api_gap | getSafeDpDutyDepoStatusN1 | 의무보호예수전체현황 전체현황표 조회 | degraded | 0 | - | HTTP Error 401: Unauthorized |
+| ksd_seibro_direct_api_gap | getSafeDpDutyDepoRgtStatusN1 | 의무보호예수전체현황 사유별 조회 | degraded | 0 | - | HTTP Error 401: Unauthorized |
+| ksd_seibro_direct_api_gap | getStkListInfoN1 | 주식상장정보 조회 | degraded | 0 | - | HTTP Error 401: Unauthorized |
 
 ## Operator Steps
 

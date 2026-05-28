@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:41:28.883084+09:00",
+  "generated_at": "2026-05-28T17:45:54.042123+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 3,
@@ -127,12 +127,53 @@
         "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
         "attempts": [],
         "operation_probe_summary": {
-          "candidate_count": 0,
+          "candidate_count": 5,
           "ok_count": 0,
-          "degraded_count": 0,
+          "degraded_count": 5,
           "skipped_count": 0
         },
-        "operation_results": []
+        "operation_results": [
+          {
+            "operation": "getStkIsinByShortIsinN1",
+            "name": "단축번호로 주식종목코드(풀코드) 조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "operation": "getDividendRankN1",
+            "name": "배당순위조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "operation": "getSafeDpDutyDepoStatusN1",
+            "name": "의무보호예수전체현황 전체현황표 조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "operation": "getSafeDpDutyDepoRgtStatusN1",
+            "name": "의무보호예수전체현황 사유별 조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "operation": "getStkListInfoN1",
+            "name": "주식상장정보 조회",
+            "status": "degraded",
+            "row_count": 0,
+            "sample_keys": [],
+            "error": "HTTP Error 401: Unauthorized"
+          }
+        ]
       },
       "coverage": {
         "mode": "snapshot_import",
