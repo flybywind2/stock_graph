@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T12:52:09.035269+09:00",
+  "generated_at": "2026-05-28T12:56:25.072888+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 2103
+      "size_bytes": 2104
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -81,7 +81,7 @@
     {
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": true,
-      "size_bytes": 3443
+      "size_bytes": 3646
     },
     {
       "path": "EXTERNAL_API_READINESS.json",
