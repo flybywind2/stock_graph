@@ -16,12 +16,14 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
   --provider-api-url $env:PROVIDER_API_URL `
+  --probe-external-apis `
   --output-dir reports/stock_graph
 ```
 
 ## 3. Verify gates
 
 - `EXTERNAL_DEPENDENCY_AUDIT.json`: `live_fetch_ready_gap_count`가 채운 원천 수만큼 증가해야 한다.
+- `EXTERNAL_API_READINESS.json`: `probe.status`가 `ok`이고 `probe.row_count`가 1 이상이면 endpoint와 레이아웃이 실제 응답을 반환한 것이다.
 - `SOURCE_COVERAGE.json`: 해당 source status가 `ok: direct_api ... rows` 또는 loaded 상태로 바뀌어야 한다.
 - `COMPLETION_AUDIT.json`: 무료 코어 `free_core_status`는 계속 `verified`여야 한다.
 - `QUALITY_AUDIT.json`: status가 `pass`여야 한다.
