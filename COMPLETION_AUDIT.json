@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T09:15:37.982651+09:00",
+  "generated_at": "2026-05-28T09:21:28.698623+09:00",
   "source_date": "20260521",
   "summary": {
-    "requirement_count": 16,
-    "verified_count": 14,
+    "requirement_count": 17,
+    "verified_count": 15,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
@@ -182,6 +182,18 @@
         "DATA_FRESHNESS_AUDIT.json",
         "DATA_FRESHNESS_AUDIT.md",
         "freshness_status=pass"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "investment_analysis_gate",
+      "requirement": "signed path, 밸류에이션, 배당, 관찰등급, 저평가 신호 기반 투자 분석 게이트",
+      "status": "verified",
+      "scope": "investment_analysis",
+      "evidence": [
+        "INVESTMENT_ANALYSIS_AUDIT.json",
+        "INVESTMENT_ANALYSIS_AUDIT.md",
+        "investment_status=pass"
       ],
       "gaps": []
     },

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T09:15:36.048973+09:00",
+  "generated_at": "2026-05-28T09:21:26.832681+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 8,
+    "artifact_count": 9,
     "required_artifacts_present": true
   },
   "pages": {
@@ -31,7 +31,7 @@
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 6361
+      "size_bytes": 6736
     },
     {
       "path": "QUALITY_AUDIT.json",
@@ -41,7 +41,7 @@
     {
       "path": "TRACEABILITY_MATRIX.json",
       "exists": true,
-      "size_bytes": 2934
+      "size_bytes": 3008
     },
     {
       "path": "API_ENDPOINTS.json",
@@ -52,6 +52,11 @@
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
       "size_bytes": 1215
+    },
+    {
+      "path": "INVESTMENT_ANALYSIS_AUDIT.json",
+      "exists": true,
+      "size_bytes": 0
     }
   ]
 }

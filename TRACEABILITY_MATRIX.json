@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:15:37.586198+09:00",
+  "generated_at": "2026-05-28T09:21:28.310829+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 6,
@@ -35,10 +35,11 @@
     {
       "id": "signed_path_scorer",
       "strategy_section": "2~3홉 signed path impact scoring",
-      "implementation": "meta.impact_summary와 HTML 상세 패널의 signed path 계산",
+      "implementation": "meta.impact_summary와 HTML 상세 패널의 signed path 계산, 투자분석 감사 게이트",
       "status": "verified",
       "evidence": [
         "COMPLETION_AUDIT.json",
+        "INVESTMENT_ANALYSIS_AUDIT.json",
         "stock_graph_YYYYMMDD.json",
         "graph_data.js"
       ]

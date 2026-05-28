@@ -70,6 +70,10 @@
 
 `DATA_FRESHNESS_AUDIT.json`과 `DATA_FRESHNESS_AUDIT.md`를 함께 생성한다. 그래프 기준일, 생성시각, 노드/엣지의 source_date, published_at, observed_at, valid_from/to, receipt_date, event_date, basis_date 커버리지를 확인한다.
 
+## Investment analysis audit
+
+`INVESTMENT_ANALYSIS_AUDIT.json`과 `INVESTMENT_ANALYSIS_AUDIT.md`를 함께 생성한다. 1~3홉 signed path 영향권, 밸류에이션 bucket, 배당 bucket, 투자 관찰등급, 저평가 신호, 의미 있는 관계 universe가 투자 분석용 그래프에 포함되어 있는지 확인한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
