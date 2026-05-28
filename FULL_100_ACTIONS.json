@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:27:15.165942+09:00",
+  "generated_at": "2026-05-28T14:32:11.039795+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -36,6 +36,7 @@
       "auth_key_hint": "",
       "license_note": "",
       "license_review_required": false,
+      "operation_candidates": [],
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -107,6 +108,7 @@
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "공식 catalog/openapi.json 기준 이용허락범위 제한 없음",
       "license_review_required": false,
+      "operation_candidates": [],
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -204,6 +206,60 @@
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
       "license_review_required": true,
+      "operation_candidates": [
+        {
+          "operation": "getItemBasiInfo",
+          "name": "종목기본정보 조회",
+          "purpose": "주식액면가, 발행주식수, 상장/상장폐지일자 등 종목 기본정보",
+          "default_url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getItemBasiInfo",
+          "expected_fields": [
+            "crno",
+            "isinCd",
+            "stckIssuCmpyNm",
+            "stckParPrc",
+            "issuStckCnt",
+            "lstgDt"
+          ]
+        },
+        {
+          "operation": "stock_issue_history",
+          "name": "주식발행내역 조회",
+          "purpose": "주식발행일자, 발행차수, 발행사유 등 자본 이벤트",
+          "default_url": "",
+          "expected_fields": [
+            "crno",
+            "stckIssuCmpyNm",
+            "stckIssuDt",
+            "isuStckCnt",
+            "stckIssuRcdNm"
+          ]
+        },
+        {
+          "operation": "lockup_return",
+          "name": "의무보호예수반환정보 조회",
+          "purpose": "lockup return / 의무보호예수 반환일자와 반환주식수",
+          "default_url": "",
+          "expected_fields": [
+            "crno",
+            "stckIssuCmpyNm",
+            "rtnDt",
+            "rtnStckCnt",
+            "dpsgRegDt"
+          ]
+        },
+        {
+          "operation": "getStocIssuStat",
+          "name": "주식발행현황 조회",
+          "purpose": "보통주/우선주 총발행수",
+          "default_url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getStocIssuStat",
+          "expected_fields": [
+            "crno",
+            "stckIssuCmpyNm",
+            "onskTisuCnt",
+            "pfstTisuCnt"
+          ]
+        }
+      ],
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -304,6 +360,7 @@
       "auth_key_hint": "",
       "license_note": "",
       "license_review_required": false,
+      "operation_candidates": [],
       "normalizes_to": [
         "Disclosure",
         "Event",
@@ -380,6 +437,7 @@
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "",
       "license_review_required": false,
+      "operation_candidates": [],
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -449,6 +507,7 @@
       "auth_key_hint": "",
       "license_note": "",
       "license_review_required": true,
+      "operation_candidates": [],
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -511,6 +570,7 @@
       "auth_key_hint": "",
       "license_note": "",
       "license_review_required": false,
+      "operation_candidates": [],
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -566,6 +626,7 @@
       "auth_key_hint": "",
       "license_note": "",
       "license_review_required": false,
+      "operation_candidates": [],
       "normalizes_to": [
         "RelationFact",
         "Evidence",
