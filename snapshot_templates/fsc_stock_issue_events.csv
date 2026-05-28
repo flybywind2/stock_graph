@@ -1,2 +1,1 @@
 snapshot_type,stock_code,stock_name,crno,stckIssuCmpyNm,stckIssuDt,isuStckCnt,stckKndNm,source_id,source_system
-stock_issue,005930,삼성전자,1101110006246,삼성전자,20260522,1000000,보통주,FSC-ISSUE-1,FSC_DATA_GO_KR

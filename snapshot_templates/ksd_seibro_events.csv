@@ -1,4 +1,1 @@
 snapshot_type,stock_code,stock_name,event_type,event_date,amount,ratio,source_id,source_system
-dividend_right,005930,삼성전자,현금배당,20260522,361,0.0,KSD-DIV-1,SEIBRO
-securities_lending,000660,SK하이닉스,대차잔고,20260522,100000,0.1,KSD-LEND-1,KSD
-lockup_release,123456,예시종목,의무보유해제,20260522,50000,0.2,KSD-LOCKUP-1,KSD

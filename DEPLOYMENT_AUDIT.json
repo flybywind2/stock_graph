@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:42:30.263558+09:00",
+  "generated_at": "2026-05-28T15:46:30.505707+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 3469
+      "size_bytes": 3468
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -91,27 +91,27 @@
     {
       "path": "snapshot_templates/kind_events.csv",
       "exists": true,
-      "size_bytes": 606
+      "size_bytes": 117
     },
     {
       "path": "snapshot_templates/bigkinds_articles.csv",
       "exists": true,
-      "size_bytes": 293
+      "size_bytes": 106
     },
     {
       "path": "snapshot_templates/ksd_seibro_events.csv",
       "exists": true,
-      "size_bytes": 360
+      "size_bytes": 96
     },
     {
       "path": "snapshot_templates/fsc_stock_issue_events.csv",
       "exists": true,
-      "size_bytes": 227
+      "size_bytes": 113
     },
     {
       "path": "snapshot_templates/fsc_stock_dividend_events.csv",
       "exists": true,
-      "size_bytes": 236
+      "size_bytes": 121
     },
     {
       "path": "EXTERNAL_API_READINESS.json",

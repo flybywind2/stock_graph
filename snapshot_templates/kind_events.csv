@@ -1,4 +1,1 @@
 snapshot_type,stock_code,stock_name,document_id,document_type,title,published_at,url,summary,sign,weight,confidence
-disclosure_event,005930,삼성전자,KIND-DISCLOSURE-1,단일판매공급계약,삼성전자 공급계약,20260522,https://kind.krx.co.kr/disclosure,공급계약 체결,positive,0.8,0.75
-ir_material,000660,SK하이닉스,KIND-IR-1,IR,SK하이닉스 IR,20260521,https://kind.krx.co.kr/ir,HBM 투자 설명,positive,0.6,0.65
-analysis_report,214320,이노션,KIND-REPORT-1,기업분석보고서,이노션 분석,20260520,https://kind.krx.co.kr/report,광고 경기 점검,neutral,0.4,0.55
