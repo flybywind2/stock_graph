@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:44:22.845767+09:00",
+  "generated_at": "2026-05-28T09:47:53.588034+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -116,13 +116,15 @@
         "FINORMA_API_KEY"
       ],
       "credential_present": false,
-      "endpoint_env_keys": [],
+      "endpoint_env_keys": [
+        "PROVIDER_API_URL"
+      ],
       "endpoint_config_present": false,
-      "direct_connector_implemented": false,
+      "direct_connector_implemented": true,
       "ready_for_live_fetch": false,
       "missing_requirements": [
         "credential_missing",
-        "direct_connector_missing"
+        "endpoint_config_missing"
       ]
     }
   ]
