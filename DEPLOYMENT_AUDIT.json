@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T13:07:19.866987+09:00",
+  "generated_at": "2026-05-28T13:15:39.397212+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 16,
+    "artifact_count": 18,
     "required_artifacts_present": true
   },
   "pages": {
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 2104
+      "size_bytes": 2311
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -92,6 +92,16 @@
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
       "size_bytes": 3755
+    },
+    {
+      "path": "FULL_100_ACTIONS.json",
+      "exists": true,
+      "size_bytes": 17915
+    },
+    {
+      "path": "FULL_100_ACTIONS.md",
+      "exists": true,
+      "size_bytes": 7471
     }
   ]
 }
