@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:15:32.865667+09:00",
+  "generated_at": "2026-05-28T13:19:17.473425+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -30,6 +30,10 @@
         "entities",
         "keywords"
       ],
+      "source_urls": [
+        "https://www.bigkinds.or.kr/"
+      ],
+      "auth_key_hint": "",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -76,6 +80,10 @@
         "cashDvdnPayDt",
         "stckGenrDvdnAmt"
       ],
+      "source_urls": [
+        "https://www.data.go.kr/data/15125571/openapi.do"
+      ],
+      "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -120,6 +128,10 @@
         "isuStckCnt",
         "stckKndNm"
       ],
+      "source_urls": [
+        "https://www.data.go.kr/data/15125569/openapi.do"
+      ],
+      "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -166,6 +178,10 @@
         "published_at",
         "report_type"
       ],
+      "source_urls": [
+        "https://kind.krx.co.kr/"
+      ],
+      "auth_key_hint": "",
       "normalizes_to": [
         "Disclosure",
         "Event",
@@ -216,6 +232,11 @@
         "amount",
         "ratio"
       ],
+      "source_urls": [
+        "https://seibro.or.kr/",
+        "https://www.data.go.kr/"
+      ],
+      "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "normalizes_to": [
         "Event",
         "Evidence",
@@ -259,6 +280,11 @@
         "source_name",
         "reviewed_at"
       ],
+      "source_urls": [
+        "https://seibro.or.kr/",
+        "https://www.data.go.kr/"
+      ],
+      "auth_key_hint": "",
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -296,6 +322,11 @@
         "valid_from",
         "valid_to"
       ],
+      "source_urls": [
+        "https://www.fnguide.com/",
+        "https://www.deepsearch.com/"
+      ],
+      "auth_key_hint": "",
       "normalizes_to": [
         "DataLicense",
         "SourceContract"
@@ -342,6 +373,11 @@
         "confidence",
         "source_id"
       ],
+      "source_urls": [
+        "https://www.fnguide.com/",
+        "https://www.deepsearch.com/"
+      ],
+      "auth_key_hint": "",
       "normalizes_to": [
         "RelationFact",
         "Evidence",

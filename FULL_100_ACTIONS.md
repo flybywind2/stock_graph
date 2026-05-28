@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T13:15:32.865667+09:00
+생성시각: 2026-05-28T13:19:17.473425+09:00
 기준일: 20260521
 
 ## Summary
@@ -29,6 +29,19 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ksd_seibro_license_review_required | SEIBro/KSD | full_100_direct_api | SEIBro/KSD 원천별 이용허락, 출처표시, 비영리/상업적 이용 제한 확인 | - | - | license_review_recorded | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_contract_required | Paid providers | full_100_direct_api | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결 | - | - | contract_review_recorded | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_direct_api_gap | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 계약과 API key 또는 파일 레이아웃 확인 | FNGUIDE_API_KEY, DATAGUIDE_API_KEY, QUANTIWISE_API_KEY, DEEPSEARCH_API_KEY, FINORMA_API_KEY, PROVIDER_API_URL | --provider-api-url | probe_ok_with_expected_fields | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
+
+## Official Sources
+
+| ID | Source URLs | Auth Hint |
+|---|---|---|
+| bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - |
+| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15125571/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
+| fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15125569/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
+| kind_direct_api_gap | https://kind.krx.co.kr/ | - |
+| ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 |
+| ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - |
+| paid_provider_contract_required | https://www.fnguide.com/, https://www.deepsearch.com/ | - |
+| paid_provider_direct_api_gap | https://www.fnguide.com/, https://www.deepsearch.com/ | - |
 
 ## Operator Steps
 
