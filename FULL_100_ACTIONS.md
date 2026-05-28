@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T17:29:15.868592+09:00
+생성시각: 2026-05-28T17:41:29.422010+09:00
 기준일: 20260521
 
 ## Summary
@@ -25,7 +25,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source | Blocks | Required Action | Env Keys | Option | Completion Gate | Latest Probe | Probe Class | Next Fix | Fallback | Evidence |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | full_100_direct_api | BIGKinds OpenAPI access_key 발급 후 tools.kinds.or.kr POST JSON endpoint 응답 레이아웃 확인 | BIGKINDS_API_KEY, BIGKINDS_API_URL | --bigkinds-api-url | probe_ok_with_expected_fields | skipped: credential_missing | credential_missing | BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다. | --bigkinds-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
-| ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | 한국예탁결제원_주식정보서비스_GW 활용신청 승인 후 StockSvc operation URL과 응답 레이아웃 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
+| ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | 한국예탁결제원_주식정보서비스_GW 활용신청 승인 후 StockSvc operation URL과 응답 레이아웃 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | degraded: HTTP Error 401: Unauthorized | auth_or_approval_failed | data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_contract_required | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결 | - | - | contract_review_recorded | - | - | probe_not_run | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_direct_api_gap | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 계약과 API key 또는 파일 레이아웃 확인 | FNGUIDE_API_KEY, DATAGUIDE_API_KEY, QUANTIWISE_API_KEY, DEEPSEARCH_API_KEY, FINORMA_API_KEY, PROVIDER_API_URL | --provider-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 
@@ -68,13 +68,11 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 ## Operator Steps
 
 ### bigkinds_direct_api_gap
-- BIGKINDS_API_URL에 공식 endpoint URL을 설정한다.
 - BIGKINDS_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
 - probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
 - SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.
 
 ### ksd_seibro_direct_api_gap
-- SEIBRO_API_URL, KSD_API_URL에 공식 endpoint URL을 설정한다.
 - SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
 - probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
 - SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.

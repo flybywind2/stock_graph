@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:29:15.868748+09:00",
+  "generated_at": "2026-05-28T17:41:29.422160+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -32,7 +32,6 @@
       "probe_failure_class": "credential_missing",
       "next_fix": "BIGKinds Open API access_key를 BIGKINDS_API_KEY에 설정한 뒤 probe를 재실행한다.",
       "operator_steps": [
-        "BIGKINDS_API_URL에 공식 endpoint URL을 설정한다.",
         "BIGKINDS_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
         "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
         "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."
@@ -49,19 +48,16 @@
       "source": "SEIBro/KSD",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "blocking_requirements": [
-        "endpoint_config_missing"
-      ],
+      "blocking_requirements": [],
       "close_conditions": [
         "probe_ok_with_expected_fields",
         "endpoint_probe_configured"
       ],
-      "probe_status": "skipped",
+      "probe_status": "degraded",
       "probe_field_coverage": "probe_not_ok",
-      "probe_failure_class": "endpoint_config_missing",
-      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+      "probe_failure_class": "auth_or_approval_failed",
+      "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
       "operator_steps": [
-        "SEIBRO_API_URL, KSD_API_URL에 공식 endpoint URL을 설정한다.",
         "SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.",
         "probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.",
         "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."

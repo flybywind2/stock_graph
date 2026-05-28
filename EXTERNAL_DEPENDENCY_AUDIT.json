@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-28T17:29:15.319314+09:00",
+  "generated_at": "2026-05-28T17:41:28.882930+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 4,
     "credential_ready_gap_count": 1,
-    "live_fetch_ready_gap_count": 0,
+    "live_fetch_ready_gap_count": 1,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -71,7 +71,7 @@
         "SEIBRO_API_URL",
         "KSD_API_URL"
       ],
-      "endpoint_config_present": false,
+      "endpoint_config_present": true,
       "http_method": "GET",
       "row_path": "response.body.items.item",
       "expected_fields": [
@@ -101,10 +101,8 @@
         "lockup_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "endpoint_config_missing"
-      ]
+      "ready_for_live_fetch": true,
+      "missing_requirements": []
     },
     {
       "id": "paid_provider_contract_required",
