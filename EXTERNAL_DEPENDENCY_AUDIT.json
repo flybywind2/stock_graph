@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-28T13:54:58.864984+09:00",
+  "generated_at": "2026-05-28T14:00:49.537091+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 8,
     "credential_ready_gap_count": 3,
-    "live_fetch_ready_gap_count": 2,
+    "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -88,8 +88,10 @@
         "dividend_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": true,
-      "missing_requirements": []
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "license_review_required"
+      ]
     },
     {
       "id": "fsc_stock_issue_endpoint_review_required",
@@ -128,8 +130,10 @@
         "rights_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": true,
-      "missing_requirements": []
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "license_review_required"
+      ]
     },
     {
       "id": "kind_direct_api_gap",

@@ -73,7 +73,18 @@
       "commercial_use_allowed": false,
       "attribution_required": true,
       "source_name": "SEIBro/KSD",
-      "reviewed_at": ""
+      "reviewed_at": "",
+      "intended_use": ""
+    }
+  },
+  "data.go.kr FSC": {
+    "license_review": {
+      "license_type": "KOGL Type 2 / third-party rights",
+      "commercial_use_allowed": false,
+      "attribution_required": true,
+      "source_name": "금융위원회_주식발행정보/주식배당정보 via KSD",
+      "reviewed_at": "",
+      "intended_use": ""
     }
   },
   "Paid providers": {

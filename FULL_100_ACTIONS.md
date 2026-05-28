@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T13:54:55.628325+09:00
+생성시각: 2026-05-28T14:00:46.314309+09:00
 기준일: 20260521
 
 ## Summary
@@ -67,12 +67,14 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 ### fsc_stock_dividend_auth_or_license_review_required
 - FSC_STOCK_DIVIDEND_URL에 공식 endpoint URL을 설정한다.
 - DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
+- EXTERNAL_API_CONFIG의 data.go.kr FSC.license_review에 license_type, source_name, reviewed_at, intended_use를 기록한다.
 - probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
 - SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.
 
 ### fsc_stock_issue_endpoint_review_required
 - FSC_STOCK_ISSUE_URL에 공식 endpoint URL을 설정한다.
 - DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
+- EXTERNAL_API_CONFIG의 data.go.kr FSC.license_review에 license_type, source_name, reviewed_at, intended_use를 기록한다.
 - probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
 - SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.
 

@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T13:55:01.766737+09:00
+생성시각: 2026-05-28T14:00:52.464327+09:00
 기준일: 20260521
 
 ## Summary
@@ -25,12 +25,12 @@
 | API_ENDPOINTS.json | True | 14597 |
 | DEPLOYMENT_AUDIT.json | True | 2313 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1289 |
-| EXTERNAL_DEPENDENCY_AUDIT.json | True | 11663 |
+| EXTERNAL_DEPENDENCY_AUDIT.json | True | 11751 |
 | EXTERNAL_API.env.example | True | 482 |
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1878 |
-| EXTERNAL_API_CONFIG.example.json | True | 2310 |
-| EXTERNAL_API_LIVE_RUNBOOK.md | True | 3820 |
-| EXTERNAL_API_READINESS.json | True | 14658 |
-| EXTERNAL_API_READINESS.md | True | 3739 |
-| FULL_100_ACTIONS.json | True | 26654 |
-| FULL_100_ACTIONS.md | True | 11235 |
+| EXTERNAL_API_CONFIG.example.json | True | 2673 |
+| EXTERNAL_API_LIVE_RUNBOOK.md | True | 4103 |
+| EXTERNAL_API_READINESS.json | True | 14746 |
+| EXTERNAL_API_READINESS.md | True | 3785 |
+| FULL_100_ACTIONS.json | True | 27016 |
+| FULL_100_ACTIONS.md | True | 11493 |

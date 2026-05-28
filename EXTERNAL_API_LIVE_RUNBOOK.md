@@ -10,6 +10,7 @@
 - 서비스별 파라미터명이나 응답 배열 위치가 다르면 `EXTERNAL_API_CONFIG` JSON 파일에 `url`, `api_key_name`, `params`, `row_path`를 설정한다.
 - 주식발행정보/주식배당정보는 고정 data.go.kr client가 사용하므로 최신 Swagger operation URL을 확인한 뒤 `FSC_STOCK_ISSUE_URL`, `FSC_STOCK_DIVIDEND_URL`에 직접 넣는다.
 - SEIBro/KSD 라이선스 검토가 끝나면 `SEIBro/KSD.license_review`에 `license_type`, `commercial_use_allowed`, `attribution_required`, `source_name`, `reviewed_at`을 채운다.
+- data.go.kr FSC 주식발행/배당은 공식 catalog상 KSD 제3자 권리와 상업적 이용금지 조건이 있으므로 `data.go.kr FSC.license_review`에 `license_type`, `source_name`, `reviewed_at`, `intended_use`를 채운다.
 - 유료 provider 계약이 끝나면 `Paid providers.contract_review`에 `contract_id`, `license_scope`, `provider_name`, `valid_from`, `valid_to`를 채운다.
 
 ## 2. Probe endpoints first
@@ -60,8 +61,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 | ID | Ready | Missing Requirements |
 |---|---:|---|
 | bigkinds_direct_api_gap | False | credential_missing, endpoint_config_missing |
-| fsc_stock_dividend_auth_or_license_review_required | False | endpoint_config_missing |
-| fsc_stock_issue_endpoint_review_required | False | endpoint_config_missing |
+| fsc_stock_dividend_auth_or_license_review_required | False | license_review_required |
+| fsc_stock_issue_endpoint_review_required | False | license_review_required |
 | kind_direct_api_gap | False | credential_missing, endpoint_config_missing |
 | ksd_seibro_direct_api_gap | False | endpoint_config_missing |
 | ksd_seibro_license_review_required | False | license_review_required |
