@@ -1,0 +1,34 @@
+{
+  "KIND": {
+    "url": "",
+    "api_key_env": "KIND_API_KEY",
+    "api_key_name": "serviceKey",
+    "params": {
+      "basDt": "{date}"
+    }
+  },
+  "BIGKinds": {
+    "url": "",
+    "api_key_env": "BIGKINDS_API_KEY",
+    "api_key_name": "access_key",
+    "params": {
+      "date": "{date}"
+    }
+  },
+  "SEIBro/KSD": {
+    "url": "",
+    "api_key_env": "SEIBRO_API_KEY",
+    "api_key_name": "serviceKey",
+    "params": {
+      "basDt": "{date}"
+    }
+  },
+  "Paid providers": {
+    "url": "",
+    "api_key_env": "DEEPSEARCH_API_KEY",
+    "api_key_name": "api_key",
+    "params": {
+      "date": "{date}"
+    }
+  }
+}

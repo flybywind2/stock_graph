@@ -6,6 +6,7 @@
 
 - `EXTERNAL_API.env.example`의 빈 값을 실제 발급 키와 endpoint URL로 채운다.
 - KIND/BIGKinds/SEIBro/KSD/provider 중 아직 계약이나 URL이 없는 항목은 비워둔다.
+- `EXTERNAL_API_CONFIG.example.json`을 복사해 실제 제공처 레이아웃에 맞춘 config JSON을 만든다.
 - 서비스별 파라미터명이 다르면 `EXTERNAL_API_CONFIG` JSON 파일에 `url`, `api_key_name`, `params`를 설정한다.
 
 ## 2. Probe endpoints first
