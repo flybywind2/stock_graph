@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-05-28T15:33:40.984131+09:00",
+  "generated_at": "2026-05-28T15:42:27.928324+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "pass",
     "source_date": "20260521",
     "generated_at_present": true,
-    "node_count": 33033,
-    "edge_count": 180294,
-    "node_temporal_count": 10330,
-    "edge_temporal_count": 68,
+    "node_count": 17439,
+    "edge_count": 148249,
+    "node_temporal_count": 10373,
+    "edge_temporal_count": 111,
     "temporal_keys": [
       "basis_date",
       "event_date",
@@ -32,21 +32,21 @@
       "id": "generated_at",
       "status": "pass",
       "evidence": [
-        "2026-05-28T12:40:08.246421+09:00"
+        "2026-05-28T15:37:05.381501+09:00"
       ]
     },
     {
       "id": "node_temporal_metadata",
       "status": "pass",
       "evidence": [
-        "10330"
+        "10373"
       ]
     },
     {
       "id": "edge_temporal_metadata",
       "status": "pass",
       "evidence": [
-        "68"
+        "111"
       ]
     }
   ]

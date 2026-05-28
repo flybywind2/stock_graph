@@ -1,6 +1,6 @@
 # Completion Audit
 
-생성시각: 2026-05-28T15:33:41.694694+09:00
+생성시각: 2026-05-28T15:42:28.507576+09:00
 기준일: 20260521
 
 ## Summary
@@ -18,7 +18,7 @@
 | ID | Scope | Status | Evidence | Gaps |
 |---|---|---|---|---|
 | fact_graph | free_core | verified | stock_graph_YYYYMMDD.json, listed_on, classified_as, identified_by, public_data_mapped_to | - |
-| propagation_graph | free_core | verified | business_family_peer, business_peer, co_moves, group_peer, has_event, industry_peer, leads, negative_exposure, positive_exposure, related_stock, theme_peer | - |
+| propagation_graph | free_core | verified | business_family_peer, business_peer, group_peer, has_event, industry_peer, negative_exposure, positive_exposure, related_stock, theme_peer | - |
 | signed_path_scoring | free_core | verified | meta.impact_summary, meta.impact_summary_policy, HTML detail panel path scoring | - |
 | source_coverage | free_core | verified | SOURCE_COVERAGE.json, SOURCE_COVERAGE.md | bigkinds_direct_api_gap, fsc_stock_dividend_auth_or_license_review_required, fsc_stock_issue_endpoint_review_required, kind_direct_api_gap, ksd_seibro_direct_api_gap, ksd_seibro_license_review_required, paid_provider_contract_required, paid_provider_direct_api_gap |
 | approved_free_api_backlog | free_approved_backlog | verified | SOURCE_COVERAGE.json, API_ENDPOINTS.json | - |

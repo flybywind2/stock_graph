@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:33:41.695444+09:00",
+  "generated_at": "2026-05-28T15:42:28.508327+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -174,10 +174,10 @@
       "close_conditions": [
         "license_review_recorded"
       ],
-      "probe_status": "not_run",
-      "probe_field_coverage": "not_run",
-      "probe_failure_class": "probe_not_run",
-      "next_fix": "probe_not_run",
+      "probe_status": "skipped",
+      "probe_field_coverage": "probe_not_ok",
+      "probe_failure_class": "endpoint_config_missing",
+      "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
       "operator_steps": [
         "EXTERNAL_API_CONFIG의 SEIBro/KSD.license_review에 이용허락, 상업적 이용 가능 여부, 출처표시 조건을 기록한다.",
         "SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다."

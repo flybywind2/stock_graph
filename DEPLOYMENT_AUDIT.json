@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:33:43.939758+09:00",
+  "generated_at": "2026-05-28T15:42:30.263558+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -21,7 +21,7 @@
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 39784040
+      "size_bytes": 32451301
     },
     {
       "path": "SOURCE_COVERAGE.json",
@@ -31,12 +31,12 @@
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 8363
+      "size_bytes": 8324
     },
     {
       "path": "QUALITY_AUDIT.json",
       "exists": true,
-      "size_bytes": 2638
+      "size_bytes": 2445
     },
     {
       "path": "TRACEABILITY_MATRIX.json",
@@ -56,7 +56,7 @@
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
       "exists": true,
-      "size_bytes": 1289
+      "size_bytes": 1287
     },
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
@@ -86,7 +86,7 @@
     {
       "path": "DATA_SOURCE_ACCESS_REQUIREMENTS.md",
       "exists": true,
-      "size_bytes": 18968
+      "size_bytes": 19206
     },
     {
       "path": "snapshot_templates/kind_events.csv",
@@ -116,42 +116,42 @@
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 17133
+      "size_bytes": 16609
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
-      "size_bytes": 3762
+      "size_bytes": 3767
     },
     {
       "path": "FULL_100_ACTIONS.json",
       "exists": true,
-      "size_bytes": 31813
+      "size_bytes": 31382
     },
     {
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
-      "size_bytes": 13370
+      "size_bytes": 13498
     },
     {
       "path": "FULL_100_GATE.json",
       "exists": true,
-      "size_bytes": 6676
+      "size_bytes": 6862
     },
     {
       "path": "FULL_100_GATE.md",
       "exists": true,
-      "size_bytes": 2647
+      "size_bytes": 2740
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.json",
       "exists": true,
-      "size_bytes": 10570
+      "size_bytes": 10678
     },
     {
       "path": "EXTERNAL_GAP_VALIDATION.md",
       "exists": true,
-      "size_bytes": 2951
+      "size_bytes": 3054
     }
   ]
 }

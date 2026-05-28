@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:33:26.255866+09:00",
+  "generated_at": "2026-05-28T15:42:19.667661+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 12,
@@ -31,7 +31,7 @@
       "source": "KRX Open API",
       "mode": "direct_api",
       "status": "loaded",
-      "count": 33033,
+      "count": 17439,
       "env_key": "KRX_OPEN_API_KEY",
       "used_for": "KOSPI/KOSDAQ daily rows, security master, index, ETF",
       "gaps": []
@@ -69,7 +69,7 @@
     {
       "source": "data.go.kr FSC approved",
       "mode": "direct_api",
-      "status": "ok: financial_company_basic 38 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows",
+      "status": "ok: financial_company_basic 81 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows",
       "count": 5,
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "financial company basic, bond basic/issue, international DR, general commodity price reference",

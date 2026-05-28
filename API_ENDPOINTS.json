@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:33:26.256680+09:00",
+  "generated_at": "2026-05-28T15:42:19.668469+09:00",
   "source_date": "20260521",
   "summary": {
     "endpoint_count": 45,
@@ -110,7 +110,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getStocIssuStat",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock issue information",
-      "status": "degraded: fsc_stock_issue_1101110028591: HTTP Error 404: Not Found; fsc_stock_issue_1831462000000: HTTP Error 404: Not Found"
+      "status": "degraded: fsc_stock_issue_0000000000000: HTTP Error 404: Not Found; fsc_stock_issue_1601110007032: HTTP Error 404: Not Found"
     },
     {
       "id": "fsc_stock_dividend",
@@ -119,7 +119,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock dividend information",
-      "status": "degraded: fsc_stock_dividend_1101110043870: data.go.kr authentication failed for https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo (HTTP 403); fsc_stock_dividend_1601110007032: data.go.kr authentication failed for https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo (HTTP 403)"
+      "status": "degraded: fsc_stock_dividend_1101110013287: data.go.kr authentication failed for https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo (HTTP 403); fsc_stock_dividend_1601110007032: data.go.kr authentication failed for https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo (HTTP 403)"
     },
     {
       "id": "fsc_financial_company_basic",
@@ -128,7 +128,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetFnCoBasiInfoService/getFnCoOutl",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "financial company basic information",
-      "status": "ok: 38 companies"
+      "status": "ok: 81 companies"
     },
     {
       "id": "fsc_bond_basic",

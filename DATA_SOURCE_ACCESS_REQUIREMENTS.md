@@ -35,6 +35,8 @@ API 승인이나 endpoint 확인 전에도 아래 템플릿에 공식 export 값
 `fsc_stock_issue_events.csv`와 `fsc_stock_dividend_events.csv`를 공식 export 값으로 채워
 `--ksd-seibro-snapshots`에 넣으면 FSC 주식발행/주식배당 direct API gap을 대체 충족한 것으로
 `SOURCE_COVERAGE.json`과 `FULL_100_GATE.json`에 반영한다.
+위 5개 표준 파일명을 한 폴더에 모아두면 `--official-snapshot-dir reports/stock_graph/official_snapshots`
+하나로 KIND, BIGKinds, SEIBro/KSD, FSC 주식발행, FSC 주식배당 스냅샷을 함께 로드할 수 있다.
 
 ## 주식발행정보/주식배당정보 접근 메모
 

@@ -1,22 +1,21 @@
 {
-  "generated_at": "2026-05-28T15:33:35.287935+09:00",
+  "generated_at": "2026-05-28T15:42:23.395526+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "pass",
-    "node_count": 33033,
-    "edge_count": 180294,
+    "node_count": 17439,
+    "edge_count": 148249,
     "duplicate_node_id_count": 0,
     "broken_edge_count": 0,
-    "relation_layer_count": 6,
+    "relation_layer_count": 5,
     "relation_layers": [
       "event",
       "fact",
-      "market",
       "peer",
       "structure",
       "transaction"
     ],
-    "render_payload_bytes": 39784039
+    "render_payload_bytes": 32451300
   },
   "checks": [
     {
@@ -46,7 +45,6 @@
       "evidence": [
         "event",
         "fact",
-        "market",
         "peer",
         "structure",
         "transaction"
@@ -61,14 +59,7 @@
           ],
           "structure": [
             "affiliated_with",
-            "business_activity_classified_as",
-            "invests_in",
-            "owns",
-            "serves_at"
-          ],
-          "market": [
-            "co_moves",
-            "leads"
+            "business_activity_classified_as"
           ],
           "event": [
             "has_event",
@@ -97,7 +88,7 @@
         "graph_data.js payload budget"
       ],
       "details": {
-        "render_payload_bytes": 39784039,
+        "render_payload_bytes": 32451300,
         "budget_bytes": 60000000
       }
     },

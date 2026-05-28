@@ -1,6 +1,6 @@
 # External API Readiness
 
-생성시각: 2026-05-28T15:33:40.984866+09:00
+생성시각: 2026-05-28T15:42:27.929041+09:00
 기준일: 20260521
 
 ## Summary
@@ -25,5 +25,5 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | fsc_stock_issue_endpoint_review_required | data.go.kr FSC | False | --fsc-stock-issue-url | response.body.items.item | crno, stckIssuCmpyNm, stckIssuDt, isuStckCnt, stckKndNm | Event, Evidence, stock_issue, rights_event | True | True | license_review_required | degraded | 0 | probe_not_ok | crno, stckIssuCmpyNm, stckIssuDt, isuStckCnt, stckKndNm | direct_api | ok: 2656 stocks, source_date 20260521 |
 | kind_direct_api_gap | KIND | False | --kind-api-url | response.body.items.item | corp_name, stock_code, disclosure_id, title, published_at, report_type | Disclosure, Event, Evidence, has_event | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | corp_name, stock_code, disclosure_id, title, published_at, report_type | snapshot_import | skipped |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | False | --ksd-seibro-api-url | response.body.items.item | stock_code, isin, event_type, event_date, amount, ratio | Event, Evidence, dividend_event, rights_event, lending_event, lockup_event | True | False | endpoint_config_missing | skipped | 0 | probe_not_ok | stock_code, isin, event_type, event_date, amount, ratio | snapshot_import | skipped |
-| ksd_seibro_license_review_required | SEIBro/KSD | False | - | license.review | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | DataLicense, SourceContract | False | False | license_review_required | not_run | 0 | not_run | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | snapshot_import | skipped |
+| ksd_seibro_license_review_required | SEIBro/KSD | False | - | license.review | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | DataLicense, SourceContract | False | False | license_review_required | skipped | 0 | probe_not_ok | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | snapshot_import | skipped |
 | paid_provider_direct_api_gap | Paid providers | False | --provider-api-url | data.items | stock_code, relation_type, target_code, weight, confidence, source_id | RelationFact, Evidence, provider_relation, broker_report, consensus_metric | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | stock_code, relation_type, target_code, weight, confidence, source_id | contract_snapshot_import | skipped |

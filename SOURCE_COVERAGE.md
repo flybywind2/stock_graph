@@ -1,6 +1,6 @@
 # Source Coverage
 
-생성시각: 2026-05-28T15:33:26.255866+09:00
+생성시각: 2026-05-28T15:42:19.667661+09:00
 기준일: 20260521
 
 ## Summary
@@ -18,11 +18,11 @@
 
 | Source | Mode | Status | Count | Gaps |
 |---|---|---:|---:|---|
-| KRX Open API | direct_api | loaded | 33033 | - |
+| KRX Open API | direct_api | loaded | 17439 | - |
 | OpenDART | direct_api | ok: transaction_docs 14, counterparties 14 | 14 | - |
 | data.go.kr FSC | direct_api | ok: 2656 stocks, source_date 20260521 | 2656 | fsc_stock_issue_endpoint_review_required, fsc_stock_dividend_auth_or_license_review_required |
 | data.go.kr FTC | direct_api | ok: 388 listed companies, public_ym 202605 | 388 | - |
-| data.go.kr FSC approved | direct_api | ok: financial_company_basic 38 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows | 5 | - |
+| data.go.kr FSC approved | direct_api | ok: financial_company_basic 81 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows | 5 | - |
 | KIND | snapshot_import | skipped | 0 | kind_direct_api_gap |
 | BIGKinds | snapshot_import | skipped | 0 | bigkinds_direct_api_gap |
 | KRX Data Marketplace | snapshot_import | skipped | 0 | - |
