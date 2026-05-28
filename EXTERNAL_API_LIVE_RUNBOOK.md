@@ -55,6 +55,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 | ID | Ready | Missing Requirements |
 |---|---:|---|
 | bigkinds_direct_api_gap | False | credential_missing, endpoint_config_missing |
+| fsc_stock_dividend_auth_or_license_review_required | False | endpoint_config_missing |
+| fsc_stock_issue_endpoint_review_required | False | endpoint_config_missing |
 | kind_direct_api_gap | False | credential_missing, endpoint_config_missing |
 | ksd_seibro_direct_api_gap | False | endpoint_config_missing |
 | ksd_seibro_license_review_required | False | license_review_required |

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T12:40:27.206627+09:00",
+  "generated_at": "2026-05-28T12:52:06.138602+09:00",
   "source_date": "20260521",
   "summary": {
-    "connector_count": 5,
+    "connector_count": 7,
     "ready_for_live_fetch_count": 0,
-    "not_ready_count": 5,
+    "not_ready_count": 7,
     "secret_values_recorded": false
   },
   "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --probe-external-apis --output-dir reports/stock_graph",
@@ -62,6 +62,111 @@
       },
       "current_fallback": "--bigkinds-snapshots",
       "used_for": "뉴스 기사, 개체명, 키워드 기반 이벤트/증거"
+    },
+    {
+      "id": "fsc_stock_dividend_auth_or_license_review_required",
+      "source": "data.go.kr FSC",
+      "ready_for_live_fetch": false,
+      "credential_env_keys": [
+        "DATA_GO_KR_SERVICE_KEY"
+      ],
+      "credential_present": true,
+      "endpoint_env_keys": [
+        "FSC_STOCK_DIVIDEND_URL"
+      ],
+      "endpoint_config_present": false,
+      "row_path": "response.body.items.item",
+      "expected_fields": [
+        "crno",
+        "stckIssuCmpyNm",
+        "diviBseDt",
+        "cashDvdnPayDt",
+        "stckGenrDvdnAmt"
+      ],
+      "normalizes_to": [
+        "Event",
+        "Evidence",
+        "dividend_event"
+      ],
+      "direct_connector_implemented": true,
+      "missing_requirements": [
+        "endpoint_config_missing"
+      ],
+      "live_fetch_command_option": "",
+      "probe": {
+        "status": "not_run",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "crno",
+          "stckIssuCmpyNm",
+          "diviBseDt",
+          "cashDvdnPayDt",
+          "stckGenrDvdnAmt"
+        ],
+        "error": ""
+      },
+      "coverage": {
+        "mode": "direct_api",
+        "status": "ok: 2656 stocks, source_date 20260521",
+        "count": 2656
+      },
+      "current_fallback": "FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import",
+      "used_for": "배당기준일, 현금배당지급일, 주식배당 이벤트"
+    },
+    {
+      "id": "fsc_stock_issue_endpoint_review_required",
+      "source": "data.go.kr FSC",
+      "ready_for_live_fetch": false,
+      "credential_env_keys": [
+        "DATA_GO_KR_SERVICE_KEY"
+      ],
+      "credential_present": true,
+      "endpoint_env_keys": [
+        "FSC_STOCK_ISSUE_URL"
+      ],
+      "endpoint_config_present": false,
+      "row_path": "response.body.items.item",
+      "expected_fields": [
+        "crno",
+        "stckIssuCmpyNm",
+        "stckIssuDt",
+        "isuStckCnt",
+        "stckKndNm"
+      ],
+      "normalizes_to": [
+        "Event",
+        "Evidence",
+        "stock_issue",
+        "rights_event"
+      ],
+      "direct_connector_implemented": true,
+      "missing_requirements": [
+        "endpoint_config_missing"
+      ],
+      "live_fetch_command_option": "",
+      "probe": {
+        "status": "not_run",
+        "row_count": 0,
+        "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "crno",
+          "stckIssuCmpyNm",
+          "stckIssuDt",
+          "isuStckCnt",
+          "stckKndNm"
+        ],
+        "error": ""
+      },
+      "coverage": {
+        "mode": "direct_api",
+        "status": "ok: 2656 stocks, source_date 20260521",
+        "count": 2656
+      },
+      "current_fallback": "DART 발행/자본변동 공시와 KRX 상장주식수",
+      "used_for": "주식발행, 보호예수 반환, 발행현황 이벤트"
     },
     {
       "id": "kind_direct_api_gap",

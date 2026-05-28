@@ -20,6 +20,17 @@
 | Naver Finance | 없음 | 공개 페이지 캐시 | 테마 그룹 보강 |
 | FnGuide public page | 없음 | 공개 페이지 캐시 | 섹터, 업종, PER/PBR/배당 보강 |
 
+## 주식발행정보/주식배당정보 접근 메모
+
+`금융위원회_주식발행정보`와 `금융위원회_주식배당정보`는 data.go.kr 활용신청 대상이지만 원천 권리는 한국예탁결제원/KSD 계열로 분리해서 봐야 한다. 공식 상세 페이지 기준으로 두 데이터는 공공누리 2유형, 즉 출처표시와 상업적 이용금지 조건이 붙어 있으므로 투자 서비스나 외부 배포 목적이면 KSD 정보이용계약 또는 이용범위 검토가 필요하다.
+
+현재 파이프라인은 아래 환경변수로 endpoint를 교체할 수 있게 열어둔다. 기본 endpoint가 포털 개편 또는 승인 범위와 맞지 않아 `404`, `401`, `403`을 반환하면 그래프 빌드는 중단하지 않고 `fsc_stock_issue_status`, `fsc_stock_dividend_status`를 `degraded`로 기록한다.
+
+| Dataset | Default env override | Current diagnostic meaning |
+|---|---|---|
+| 금융위원회_주식발행정보 | `FSC_STOCK_ISSUE_URL` | 기본 경로가 `404 Not Found`이면 Swagger의 최신 operation URL 확인 필요 |
+| 금융위원회_주식배당정보 | `FSC_STOCK_DIVIDEND_URL` | `401/403`이면 일반 인증키 Decoding 값, 활용신청 승인, KSD 권리/이용조건 확인 필요 |
+
 ## HTML graph layer
 
 | Preset | Meaning |
