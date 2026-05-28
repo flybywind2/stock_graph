@@ -67,6 +67,13 @@
     ],
     "params": {
       "basDt": "{date}"
+    },
+    "license_review": {
+      "license_type": "",
+      "commercial_use_allowed": false,
+      "attribution_required": true,
+      "source_name": "SEIBro/KSD",
+      "reviewed_at": ""
     }
   },
   "Paid providers": {
