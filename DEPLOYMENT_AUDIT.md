@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T17:13:01.986943+09:00
+생성시각: 2026-05-28T17:21:28.906237+09:00
 기준일: 20260521
 
 ## Summary
@@ -25,10 +25,10 @@
 | API_ENDPOINTS.json | True | 22389 |
 | DEPLOYMENT_AUDIT.json | True | 3686 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1287 |
-| EXTERNAL_DEPENDENCY_AUDIT.json | True | 6350 |
+| EXTERNAL_DEPENDENCY_AUDIT.json | True | 6472 |
 | EXTERNAL_API.env.example | True | 405 |
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1570 |
-| EXTERNAL_API_CONFIG.example.json | True | 2673 |
+| EXTERNAL_API_CONFIG.example.json | True | 3066 |
 | EXTERNAL_API_LIVE_RUNBOOK.md | True | 3800 |
 | DATA_SOURCE_ACCESS_REQUIREMENTS.md | True | 19206 |
 | snapshot_templates/kind_events.csv | True | 117 |
@@ -36,7 +36,7 @@
 | snapshot_templates/ksd_seibro_events.csv | True | 96 |
 | snapshot_templates/fsc_stock_issue_events.csv | True | 113 |
 | snapshot_templates/fsc_stock_dividend_events.csv | True | 121 |
-| EXTERNAL_API_READINESS.json | True | 6387 |
+| EXTERNAL_API_READINESS.json | True | 6480 |
 | EXTERNAL_API_READINESS.md | True | 2206 |
 | FULL_100_ACTIONS.json | True | 20248 |
 | FULL_100_ACTIONS.md | True | 9180 |

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:12:59.681641+09:00",
+  "generated_at": "2026-05-28T17:21:26.618013+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -26,6 +26,7 @@
         "BIGKINDS_API_URL"
       ],
       "endpoint_config_present": false,
+      "http_method": "POST_JSON",
       "row_path": "return_object.documents",
       "expected_fields": [
         "article_id",
@@ -72,6 +73,7 @@
         "KSD_API_URL"
       ],
       "endpoint_config_present": false,
+      "http_method": "GET",
       "row_path": "response.body.items.item",
       "expected_fields": [
         "stock_code",
@@ -118,6 +120,7 @@
       "credential_present": false,
       "endpoint_env_keys": [],
       "endpoint_config_present": false,
+      "http_method": "GET",
       "row_path": "data.items",
       "expected_fields": [
         "contract_id",
@@ -162,6 +165,7 @@
         "PROVIDER_API_URL"
       ],
       "endpoint_config_present": false,
+      "http_method": "GET",
       "row_path": "data.items",
       "expected_fields": [
         "stock_code",

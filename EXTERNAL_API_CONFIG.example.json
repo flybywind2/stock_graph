@@ -23,9 +23,10 @@
     }
   },
   "BIGKinds": {
-    "url": "",
+    "url": "https://tools.kinds.or.kr/search/news",
     "api_key_env": "BIGKINDS_API_KEY",
     "api_key_name": "access_key",
+    "http_method": "POST_JSON",
     "row_path": "return_object.documents",
     "expected_fields": [
       "article_id",
@@ -41,7 +42,21 @@
       "negative_exposure"
     ],
     "params": {
-      "date": "{date}"
+      "argument": {
+        "query": "삼성전자",
+        "published_at": {
+          "from": "2026-01-01",
+          "until": "{date_iso}"
+        },
+        "return_from": 0,
+        "return_size": 10,
+        "fields": [
+          "news_id",
+          "title",
+          "published_at",
+          "provider"
+        ]
+      }
     }
   },
   "SEIBro/KSD": {
