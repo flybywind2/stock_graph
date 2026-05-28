@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T18:03:04.773452+09:00",
+  "generated_at": "2026-05-28T18:05:57.175316+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 3904
+      "size_bytes": 3910
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
