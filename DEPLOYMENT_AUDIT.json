@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:06:15.731442+09:00",
+  "generated_at": "2026-05-28T14:13:05.272883+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -16,12 +16,12 @@
     {
       "path": "index.html",
       "exists": true,
-      "size_bytes": 91261
+      "size_bytes": 94118
     },
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 39783202
+      "size_bytes": 39783708
     },
     {
       "path": "SOURCE_COVERAGE.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 2527
+      "size_bytes": 2534
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",

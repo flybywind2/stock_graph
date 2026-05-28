@@ -63,6 +63,28 @@
     h1 { margin: 0 0 6px; font-size: 21px; line-height: 1.2; }
     h2 { margin: 18px 0 9px; font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spacing: 0; }
     .summary, .hint { color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .status-panel {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+    .status-title { font-size: 12px; font-weight: 800; color: var(--text); }
+    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 8px; font-size: 12px; color: var(--muted); }
+    .status-value { font-weight: 750; color: var(--text); }
+    .status-links { display: flex; flex-wrap: wrap; gap: 6px; }
+    .status-links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 7px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 11px;
+      background: #fff;
+    }
     input, select {
       width: 100%;
       height: 38px;
@@ -202,6 +224,7 @@
     <aside>
       <h1>KR Stock Graph</h1>
       <div class="summary" id="summary"></div>
+      <div class="status-panel" id="completionStatus"></div>
       <h2>Search</h2>
       <input id="searchInput" type="search" placeholder="종목명, 코드, 테마, 업종, 공시">
       <div class="hint" id="searchHint"></div>
@@ -307,6 +330,12 @@
     const LABEL_ZOOM_THRESHOLD = 4.5;
     const MIN_MULTI_ROOT_TERM_LENGTH = 2;
     const SEARCH_RENDER_DELAY_MS = 120;
+    const DEFAULT_STATUS_REPORTS = [
+      { label: '100% Actions', href: 'FULL_100_ACTIONS.md' },
+      { label: 'Gap Validation', href: 'EXTERNAL_GAP_VALIDATION.md' },
+      { label: 'Completion Audit', href: 'COMPLETION_AUDIT.md' },
+      { label: 'Traceability', href: 'TRACEABILITY_MATRIX.md' }
+    ];
     const PEER_EDGE_TYPES = new Set(['theme_peer', 'industry_peer', 'group_peer', 'business_peer', 'business_family_peer', 'related_stock', 'co_moves', 'leads']);
     const TRANSACTION_EDGE_TYPES = new Set(['supply_contract', 'related_party_transaction', 'transaction_supported_by', 'supported_by', 'fact_source', 'fact_target']);
     const TRANSACTION_NODE_TYPES = new Set(['stock', 'counterparty', 'disclosure', 'relation_fact', 'evidence', 'event']);
@@ -441,6 +470,28 @@
     function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+    function renderCompletionStatus() {
+      const status = GRAPH_DATA.meta.html_status_summary || {};
+      const reports = Array.isArray(status.reports) && status.reports.length ? status.reports : DEFAULT_STATUS_REPORTS;
+      const links = reports.map(report => `<a href="${escapeHtml(report.href)}" target="_blank" rel="noopener">${escapeHtml(report.label)}</a>`).join('');
+      const verified = Number(status.verified_requirement_count || 0);
+      const required = Number(status.requirement_count || 0);
+      const externalGaps = Number(status.external_gap_count || 0);
+      const blockedGaps = Number(status.blocked_gap_count || 0);
+      const remainingActions = Number(status.remaining_action_count || 0);
+      completionStatus.innerHTML = `
+        <div class="status-title">100% 진행 상태</div>
+        <div class="status-grid">
+          <div>무료 코어</div><div class="status-value">${escapeHtml(status.free_core_status || 'unknown')}</div>
+          <div>전체 상태</div><div class="status-value">${escapeHtml(status.completion_status || 'unknown')}</div>
+          <div>전략 검증</div><div class="status-value">${verified.toLocaleString()} / ${required.toLocaleString()}</div>
+          <div>외부 갭</div><div class="status-value">${externalGaps.toLocaleString()}개 · 차단 ${blockedGaps.toLocaleString()}개</div>
+          <div>남은 조치</div><div class="status-value">${remainingActions.toLocaleString()}개</div>
+          <div>시크릿 저장</div><div class="status-value">${status.secret_values_recorded ? '있음' : '없음'}</div>
+        </div>
+        <div class="status-links">${links}</div>
+      `;
     }
     function priceMoveBucket(value) {
       const n = Number(value || 0);
@@ -1461,6 +1512,7 @@
       return section.querySelector('.legend-list');
     }
     function setupControls() {
+      renderCompletionStatus();
       markets.forEach(market => {
         const label = document.createElement('label');
         label.innerHTML = `<input type="checkbox" checked data-market="${escapeHtml(market)}"> ${escapeHtml(market)}`;
