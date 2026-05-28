@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:53:03.133132+09:00",
+  "generated_at": "2026-05-28T10:56:11.444103+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 4,
@@ -45,6 +45,14 @@
         "status": "not_run",
         "row_count": 0,
         "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "article_id",
+          "title",
+          "published_at",
+          "entities",
+          "keywords"
+        ],
         "error": ""
       },
       "coverage": {
@@ -92,6 +100,15 @@
         "status": "not_run",
         "row_count": 0,
         "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "corp_name",
+          "stock_code",
+          "disclosure_id",
+          "title",
+          "published_at",
+          "report_type"
+        ],
         "error": ""
       },
       "coverage": {
@@ -143,6 +160,15 @@
         "status": "not_run",
         "row_count": 0,
         "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "stock_code",
+          "isin",
+          "event_type",
+          "event_date",
+          "amount",
+          "ratio"
+        ],
         "error": ""
       },
       "coverage": {
@@ -195,6 +221,15 @@
         "status": "not_run",
         "row_count": 0,
         "sample_keys": [],
+        "field_coverage_status": "not_run",
+        "missing_expected_fields": [
+          "stock_code",
+          "relation_type",
+          "target_code",
+          "weight",
+          "confidence",
+          "source_id"
+        ],
         "error": ""
       },
       "coverage": {
