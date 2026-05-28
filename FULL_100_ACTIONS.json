@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:07:20.448337+09:00",
+  "generated_at": "2026-05-28T17:13:00.223903+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -17,7 +17,7 @@
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
       "blocks": "full_100_direct_api",
-      "required_action": "BIGKinds Open API 이용 신청, 호출 제한과 응답 레이아웃 확인",
+      "required_action": "BIGKinds OpenAPI access_key 발급 후 tools.kinds.or.kr POST JSON endpoint 응답 레이아웃 확인",
       "credential_env_keys": [
         "BIGKINDS_API_KEY"
       ],
@@ -34,12 +34,112 @@
         "keywords"
       ],
       "source_urls": [
+        "https://www.newsbigdata.kr/OpenAPI_%EC%82%AC%EC%9A%A9%EC%9E%90%EC%A7%80%EC%B9%A8%EC%84%9C_V1.5.pdf",
         "https://www.bigkinds.or.kr/"
       ],
-      "auth_key_hint": "",
+      "auth_key_hint": "BIGKinds OpenAPI는 POST JSON body의 access_key에 발급 키를 넣는다.",
       "license_note": "",
       "license_review_required": false,
-      "operation_candidates": [],
+      "operation_candidates": [
+        {
+          "operation": "search_news",
+          "name": "뉴스 검색 API",
+          "purpose": "기업/종목/이벤트 키워드로 기사, 언론사, 분류, 발행일, 하이라이트를 증거로 수집",
+          "default_url": "https://tools.kinds.or.kr/search/news",
+          "request_fields": [
+            "access_key",
+            "argument.query",
+            "argument.published_at",
+            "argument.return_from",
+            "argument.return_size",
+            "argument.fields"
+          ],
+          "expected_fields": [
+            "result",
+            "return_object",
+            "total_hits",
+            "documents",
+            "news_id",
+            "published_at",
+            "provider",
+            "title"
+          ]
+        },
+        {
+          "operation": "word_cloud",
+          "name": "연관어 분석 API",
+          "purpose": "뉴스 문서에서 종목/이벤트 관련 연관 키워드를 추출해 theme/event exposure 후보 생성",
+          "default_url": "https://tools.kinds.or.kr/word_cloud",
+          "request_fields": [
+            "access_key",
+            "argument.query",
+            "argument.published_at"
+          ],
+          "expected_fields": [
+            "result",
+            "return_object",
+            "nodes",
+            "id",
+            "name",
+            "weight"
+          ]
+        },
+        {
+          "operation": "time_line",
+          "name": "키워드 트렌드 API",
+          "purpose": "종목/이벤트 키워드의 기간별 뉴스량을 이벤트 강도와 freshness 근거로 사용",
+          "default_url": "https://tools.kinds.or.kr/time_line",
+          "request_fields": [
+            "access_key",
+            "argument.query",
+            "argument.published_at",
+            "argument.interval"
+          ],
+          "expected_fields": [
+            "result",
+            "return_object",
+            "total_hits",
+            "time_line",
+            "label",
+            "hits"
+          ]
+        },
+        {
+          "operation": "keyword",
+          "name": "키워드 추출 API",
+          "purpose": "기사 제목/부제/본문에서 키워드를 추출해 Evidence 키워드 필드를 보강",
+          "default_url": "https://tools.kinds.or.kr/keyword",
+          "request_fields": [
+            "access_key",
+            "argument.title",
+            "argument.sub_title",
+            "argument.content"
+          ],
+          "expected_fields": [
+            "result",
+            "return_object",
+            "keywords"
+          ]
+        },
+        {
+          "operation": "topn_keyword",
+          "name": "TopN 키워드 API",
+          "purpose": "검색 결과에서 많이 언급된 키워드를 이벤트/테마 후보로 보강",
+          "default_url": "https://tools.kinds.or.kr/topn_keyword",
+          "request_fields": [
+            "access_key",
+            "argument.query",
+            "argument.published_at"
+          ],
+          "expected_fields": [
+            "result",
+            "return_object",
+            "result",
+            "name",
+            "count"
+          ]
+        }
+      ],
       "normalizes_to": [
         "Event",
         "Evidence",

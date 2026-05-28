@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-05-28T17:07:11.578575+09:00",
+  "generated_at": "2026-05-28T17:12:51.422665+09:00",
   "source_date": "20260521",
   "summary": {
-    "endpoint_count": 60,
+    "endpoint_count": 65,
     "direct_api_count": 31,
     "configured_direct_api_count": 3,
     "contract_direct_api_count": 1,
     "official_service_candidate_count": 5,
-    "official_operation_candidate_count": 5,
+    "official_operation_candidate_count": 10,
     "official_web_export_count": 5,
     "approved_direct_api_backlog_count": 0,
     "snapshot_import_count": 6,
@@ -365,6 +365,51 @@
       "auth": "BIGKINDS_API_KEY",
       "used_for": "configured BIGKinds news, entities, keywords",
       "option": "--bigkinds-api-url"
+    },
+    {
+      "id": "bigkinds_search_news",
+      "source": "BIGKinds",
+      "mode": "official_operation_candidate",
+      "url": "https://tools.kinds.or.kr/search/news",
+      "auth": "BIGKINDS_API_KEY as JSON access_key",
+      "used_for": "기업/종목/이벤트 키워드로 기사, 언론사, 분류, 발행일, 하이라이트를 증거로 수집",
+      "status": "access_key_required"
+    },
+    {
+      "id": "bigkinds_word_cloud",
+      "source": "BIGKinds",
+      "mode": "official_operation_candidate",
+      "url": "https://tools.kinds.or.kr/word_cloud",
+      "auth": "BIGKINDS_API_KEY as JSON access_key",
+      "used_for": "뉴스 문서에서 종목/이벤트 관련 연관 키워드를 추출해 theme/event exposure 후보 생성",
+      "status": "access_key_required"
+    },
+    {
+      "id": "bigkinds_time_line",
+      "source": "BIGKinds",
+      "mode": "official_operation_candidate",
+      "url": "https://tools.kinds.or.kr/time_line",
+      "auth": "BIGKINDS_API_KEY as JSON access_key",
+      "used_for": "종목/이벤트 키워드의 기간별 뉴스량을 이벤트 강도와 freshness 근거로 사용",
+      "status": "access_key_required"
+    },
+    {
+      "id": "bigkinds_keyword",
+      "source": "BIGKinds",
+      "mode": "official_operation_candidate",
+      "url": "https://tools.kinds.or.kr/keyword",
+      "auth": "BIGKINDS_API_KEY as JSON access_key",
+      "used_for": "기사 제목/부제/본문에서 키워드를 추출해 Evidence 키워드 필드를 보강",
+      "status": "access_key_required"
+    },
+    {
+      "id": "bigkinds_topn_keyword",
+      "source": "BIGKinds",
+      "mode": "official_operation_candidate",
+      "url": "https://tools.kinds.or.kr/topn_keyword",
+      "auth": "BIGKINDS_API_KEY as JSON access_key",
+      "used_for": "검색 결과에서 많이 언급된 키워드를 이벤트/테마 후보로 보강",
+      "status": "access_key_required"
     },
     {
       "id": "ksd_seibro_configured_direct_api",

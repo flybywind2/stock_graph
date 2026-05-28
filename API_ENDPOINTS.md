@@ -1,11 +1,11 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T17:07:11.578575+09:00
+생성시각: 2026-05-28T17:12:51.422665+09:00
 기준일: 20260521
 
 ## Summary
 
-- endpoint_count: 60
+- endpoint_count: 65
 - direct_api_count: 31
 - configured_direct_api_count: 3
 - contract_direct_api_count: 1
@@ -59,6 +59,11 @@
 | kind_new_listing_analysis_report | KIND | official_web_export | none | https://kind.krx.co.kr/corpgeneral/newListingForeignCompany.do?method=listingForeignCompanyMain&searchGubun=newListingForeignCompany | - |
 | kind_configured_direct_api | KIND | configured_direct_api | KIND_API_KEY | ${KIND_API_URL} | --kind-api-url |
 | bigkinds_configured_direct_api | BIGKinds | configured_direct_api | BIGKINDS_API_KEY | ${BIGKINDS_API_URL} | --bigkinds-api-url |
+| bigkinds_search_news | BIGKinds | official_operation_candidate | BIGKINDS_API_KEY as JSON access_key | https://tools.kinds.or.kr/search/news | - |
+| bigkinds_word_cloud | BIGKinds | official_operation_candidate | BIGKINDS_API_KEY as JSON access_key | https://tools.kinds.or.kr/word_cloud | - |
+| bigkinds_time_line | BIGKinds | official_operation_candidate | BIGKINDS_API_KEY as JSON access_key | https://tools.kinds.or.kr/time_line | - |
+| bigkinds_keyword | BIGKinds | official_operation_candidate | BIGKINDS_API_KEY as JSON access_key | https://tools.kinds.or.kr/keyword | - |
+| bigkinds_topn_keyword | BIGKinds | official_operation_candidate | BIGKINDS_API_KEY as JSON access_key | https://tools.kinds.or.kr/topn_keyword | - |
 | ksd_seibro_configured_direct_api | SEIBro/KSD | configured_direct_api | SEIBRO_API_KEY/KSD_API_KEY/DATA_GO_KR_SERVICE_KEY | ${SEIBRO_API_URL} or ${KSD_API_URL} | --ksd-seibro-api-url |
 | ksd_gw_stock_info_service | 한국예탁결제원_주식정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157413/openapi.do | - |
 | ksd_gw_bond_info_service | 한국예탁결제원_채권정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157416/openapi.do | - |

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:07:19.911584+09:00",
+  "generated_at": "2026-05-28T17:12:59.681641+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -14,7 +14,7 @@
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
       "status": "blocked_external_dependency",
-      "required_action": "BIGKinds Open API 이용 신청, 호출 제한과 응답 레이아웃 확인",
+      "required_action": "BIGKinds OpenAPI access_key 발급 후 tools.kinds.or.kr POST JSON endpoint 응답 레이아웃 확인",
       "current_fallback": "--bigkinds-snapshots",
       "used_for": "뉴스 기사, 개체명, 키워드 기반 이벤트/증거",
       "blocks": "full_100_direct_api",
@@ -35,9 +35,10 @@
         "keywords"
       ],
       "source_urls": [
+        "https://www.newsbigdata.kr/OpenAPI_%EC%82%AC%EC%9A%A9%EC%9E%90%EC%A7%80%EC%B9%A8%EC%84%9C_V1.5.pdf",
         "https://www.bigkinds.or.kr/"
       ],
-      "auth_key_hint": "",
+      "auth_key_hint": "BIGKinds OpenAPI는 POST JSON body의 access_key에 발급 키를 넣는다.",
       "license_note": "",
       "normalizes_to": [
         "Event",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:07:22.204385+09:00",
+  "generated_at": "2026-05-28T17:13:01.986943+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -46,7 +46,7 @@
     {
       "path": "API_ENDPOINTS.json",
       "exists": true,
-      "size_bytes": 20413
+      "size_bytes": 22389
     },
     {
       "path": "DEPLOYMENT_AUDIT.json",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 6137
+      "size_bytes": 6350
     },
     {
       "path": "EXTERNAL_API.env.example",
@@ -126,12 +126,12 @@
     {
       "path": "FULL_100_ACTIONS.json",
       "exists": true,
-      "size_bytes": 16780
+      "size_bytes": 20248
     },
     {
       "path": "FULL_100_ACTIONS.md",
       "exists": true,
-      "size_bytes": 7681
+      "size_bytes": 9180
     },
     {
       "path": "FULL_100_GATE.json",
