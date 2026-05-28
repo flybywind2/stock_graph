@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T13:43:09.818034+09:00
+생성시각: 2026-05-28T13:49:28.611227+09:00
 기준일: 20260521
 
 ## Summary
@@ -42,6 +42,19 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - |
 | paid_provider_contract_required | https://www.fnguide.com/, https://www.deepsearch.com/ | - |
 | paid_provider_direct_api_gap | https://www.fnguide.com/, https://www.deepsearch.com/ | - |
+
+## Probe Attempts
+
+| ID | Scheme | Key Param | Status | Rows | Error |
+|---|---|---|---|---:|---|
+| fsc_stock_dividend_auth_or_license_review_required | https | serviceKey | degraded | 0 | HTTP Error 401: Unauthorized |
+| fsc_stock_dividend_auth_or_license_review_required | https | ServiceKey | degraded | 0 | HTTP Error 401: Unauthorized |
+| fsc_stock_dividend_auth_or_license_review_required | http | serviceKey | degraded | 0 | HTTP Error 401: Unauthorized |
+| fsc_stock_dividend_auth_or_license_review_required | http | ServiceKey | degraded | 0 | HTTP Error 401: Unauthorized |
+| fsc_stock_issue_endpoint_review_required | https | serviceKey | degraded | 0 | HTTP Error 404: Not Found |
+| fsc_stock_issue_endpoint_review_required | https | ServiceKey | degraded | 0 | HTTP Error 404: Not Found |
+| fsc_stock_issue_endpoint_review_required | http | serviceKey | degraded | 0 | HTTP Error 404: Not Found |
+| fsc_stock_issue_endpoint_review_required | http | ServiceKey | degraded | 0 | HTTP Error 404: Not Found |
 
 ## Operator Steps
 

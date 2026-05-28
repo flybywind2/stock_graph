@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:43:13.013036+09:00",
+  "generated_at": "2026-05-28T13:49:31.802937+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 7,
@@ -55,7 +55,8 @@
         ],
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
-        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
+        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+        "attempts": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -107,7 +108,37 @@
         ],
         "error": "HTTP Error 401: Unauthorized",
         "failure_class": "auth_or_approval_failed",
-        "next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다."
+        "next_fix": "data.go.kr 마이페이지에서 해당 서비스 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
+        "attempts": [
+          {
+            "url_scheme": "https",
+            "api_key_name": "serviceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "url_scheme": "https",
+            "api_key_name": "ServiceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "url_scheme": "http",
+            "api_key_name": "serviceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 401: Unauthorized"
+          },
+          {
+            "url_scheme": "http",
+            "api_key_name": "ServiceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 401: Unauthorized"
+          }
+        ]
       },
       "coverage": {
         "mode": "direct_api",
@@ -160,7 +191,37 @@
         ],
         "error": "HTTP Error 404: Not Found",
         "failure_class": "endpoint_or_operation_not_found",
-        "next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다."
+        "next_fix": "data.go.kr Swagger에서 최신 service/operation URL을 확인해 endpoint URL을 갱신한다.",
+        "attempts": [
+          {
+            "url_scheme": "https",
+            "api_key_name": "serviceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 404: Not Found"
+          },
+          {
+            "url_scheme": "https",
+            "api_key_name": "ServiceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 404: Not Found"
+          },
+          {
+            "url_scheme": "http",
+            "api_key_name": "serviceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 404: Not Found"
+          },
+          {
+            "url_scheme": "http",
+            "api_key_name": "ServiceKey",
+            "status": "degraded",
+            "row_count": 0,
+            "error": "HTTP Error 404: Not Found"
+          }
+        ]
       },
       "coverage": {
         "mode": "direct_api",
@@ -218,7 +279,8 @@
         ],
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
-        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
+        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+        "attempts": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -280,7 +342,8 @@
         ],
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
-        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
+        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+        "attempts": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -329,7 +392,8 @@
         ],
         "error": "",
         "failure_class": "probe_not_run",
-        "next_fix": "probe_not_run"
+        "next_fix": "probe_not_run",
+        "attempts": []
       },
       "coverage": {
         "mode": "snapshot_import",
@@ -392,7 +456,8 @@
         ],
         "error": "endpoint_config_missing",
         "failure_class": "endpoint_config_missing",
-        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다."
+        "next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
+        "attempts": []
       },
       "coverage": {
         "mode": "contract_snapshot_import",
