@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:48:45.626549+09:00",
+  "generated_at": "2026-05-28T10:53:03.133132+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 4,
@@ -21,6 +21,20 @@
         "BIGKINDS_API_URL"
       ],
       "endpoint_config_present": false,
+      "row_path": "return_object.documents",
+      "expected_fields": [
+        "article_id",
+        "title",
+        "published_at",
+        "entities",
+        "keywords"
+      ],
+      "normalizes_to": [
+        "Event",
+        "Evidence",
+        "positive_exposure",
+        "negative_exposure"
+      ],
       "direct_connector_implemented": true,
       "missing_requirements": [
         "credential_missing",
@@ -53,6 +67,21 @@
         "KIND_API_URL"
       ],
       "endpoint_config_present": false,
+      "row_path": "response.body.items.item",
+      "expected_fields": [
+        "corp_name",
+        "stock_code",
+        "disclosure_id",
+        "title",
+        "published_at",
+        "report_type"
+      ],
+      "normalizes_to": [
+        "Disclosure",
+        "Event",
+        "Evidence",
+        "has_event"
+      ],
       "direct_connector_implemented": true,
       "missing_requirements": [
         "credential_missing",
@@ -88,6 +117,23 @@
         "KSD_API_URL"
       ],
       "endpoint_config_present": false,
+      "row_path": "response.body.items.item",
+      "expected_fields": [
+        "stock_code",
+        "isin",
+        "event_type",
+        "event_date",
+        "amount",
+        "ratio"
+      ],
+      "normalizes_to": [
+        "Event",
+        "Evidence",
+        "dividend_event",
+        "rights_event",
+        "lending_event",
+        "lockup_event"
+      ],
       "direct_connector_implemented": true,
       "missing_requirements": [
         "endpoint_config_missing"
@@ -123,6 +169,22 @@
         "PROVIDER_API_URL"
       ],
       "endpoint_config_present": false,
+      "row_path": "data.items",
+      "expected_fields": [
+        "stock_code",
+        "relation_type",
+        "target_code",
+        "weight",
+        "confidence",
+        "source_id"
+      ],
+      "normalizes_to": [
+        "RelationFact",
+        "Evidence",
+        "provider_relation",
+        "broker_report",
+        "consensus_metric"
+      ],
       "direct_connector_implemented": true,
       "missing_requirements": [
         "credential_missing",

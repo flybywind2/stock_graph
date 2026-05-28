@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:48:48.912328+09:00",
+  "generated_at": "2026-05-28T10:53:06.252683+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 4572
+      "size_bytes": 6271
     },
     {
       "path": "EXTERNAL_API.env.example",
@@ -76,7 +76,7 @@
     {
       "path": "EXTERNAL_API_CONFIG.example.json",
       "exists": true,
-      "size_bytes": 815
+      "size_bytes": 1949
     },
     {
       "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
@@ -86,12 +86,12 @@
     {
       "path": "EXTERNAL_API_READINESS.json",
       "exists": true,
-      "size_bytes": 4469
+      "size_bytes": 5892
     },
     {
       "path": "EXTERNAL_API_READINESS.md",
       "exists": true,
-      "size_bytes": 1458
+      "size_bytes": 2116
     }
   ]
 }

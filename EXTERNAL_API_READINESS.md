@@ -1,6 +1,6 @@
 # External API Readiness
 
-생성시각: 2026-05-28T10:48:45.626549+09:00
+생성시각: 2026-05-28T10:53:03.133132+09:00
 기준일: 20260521
 
 ## Summary
@@ -18,9 +18,9 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 
 ## Connectors
 
-| ID | Source | Ready | Option | Credential Ready | Endpoint Ready | Missing | Probe Status | Probe Rows | Coverage Mode | Coverage Status |
-|---|---|---:|---|---:|---:|---|---|---:|---|---|
-| bigkinds_direct_api_gap | BIGKinds | False | --bigkinds-api-url | False | False | credential_missing, endpoint_config_missing | not_run | 0 | snapshot_import | skipped |
-| kind_direct_api_gap | KIND | False | --kind-api-url | False | False | credential_missing, endpoint_config_missing | not_run | 0 | snapshot_import | skipped |
-| ksd_seibro_direct_api_gap | SEIBro/KSD | False | --ksd-seibro-api-url | True | False | endpoint_config_missing | not_run | 0 | snapshot_import | skipped |
-| paid_provider_direct_api_gap | Paid providers | False | --provider-api-url | False | False | credential_missing, endpoint_config_missing | not_run | 0 | contract_snapshot_import | skipped |
+| ID | Source | Ready | Option | Row Path | Expected Fields | Normalizes To | Credential Ready | Endpoint Ready | Missing | Probe Status | Probe Rows | Coverage Mode | Coverage Status |
+|---|---|---:|---|---|---|---|---:|---:|---|---|---:|---|---|
+| bigkinds_direct_api_gap | BIGKinds | False | --bigkinds-api-url | return_object.documents | article_id, title, published_at, entities, keywords | Event, Evidence, positive_exposure, negative_exposure | False | False | credential_missing, endpoint_config_missing | not_run | 0 | snapshot_import | skipped |
+| kind_direct_api_gap | KIND | False | --kind-api-url | response.body.items.item | corp_name, stock_code, disclosure_id, title, published_at, report_type | Disclosure, Event, Evidence, has_event | False | False | credential_missing, endpoint_config_missing | not_run | 0 | snapshot_import | skipped |
+| ksd_seibro_direct_api_gap | SEIBro/KSD | False | --ksd-seibro-api-url | response.body.items.item | stock_code, isin, event_type, event_date, amount, ratio | Event, Evidence, dividend_event, rights_event, lending_event, lockup_event | True | False | endpoint_config_missing | not_run | 0 | snapshot_import | skipped |
+| paid_provider_direct_api_gap | Paid providers | False | --provider-api-url | data.items | stock_code, relation_type, target_code, weight, confidence, source_id | RelationFact, Evidence, provider_relation, broker_report, consensus_metric | False | False | credential_missing, endpoint_config_missing | not_run | 0 | contract_snapshot_import | skipped |

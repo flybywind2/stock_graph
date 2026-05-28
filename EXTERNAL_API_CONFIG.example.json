@@ -4,6 +4,20 @@
     "api_key_env": "KIND_API_KEY",
     "api_key_name": "serviceKey",
     "row_path": "response.body.items.item",
+    "expected_fields": [
+      "corp_name",
+      "stock_code",
+      "disclosure_id",
+      "title",
+      "published_at",
+      "report_type"
+    ],
+    "normalizes_to": [
+      "Disclosure",
+      "Event",
+      "Evidence",
+      "has_event"
+    ],
     "params": {
       "basDt": "{date}"
     }
@@ -13,6 +27,19 @@
     "api_key_env": "BIGKINDS_API_KEY",
     "api_key_name": "access_key",
     "row_path": "return_object.documents",
+    "expected_fields": [
+      "article_id",
+      "title",
+      "published_at",
+      "entities",
+      "keywords"
+    ],
+    "normalizes_to": [
+      "Event",
+      "Evidence",
+      "positive_exposure",
+      "negative_exposure"
+    ],
     "params": {
       "date": "{date}"
     }
@@ -22,6 +49,22 @@
     "api_key_env": "SEIBRO_API_KEY",
     "api_key_name": "serviceKey",
     "row_path": "response.body.items.item",
+    "expected_fields": [
+      "stock_code",
+      "isin",
+      "event_type",
+      "event_date",
+      "amount",
+      "ratio"
+    ],
+    "normalizes_to": [
+      "Event",
+      "Evidence",
+      "dividend_event",
+      "rights_event",
+      "lending_event",
+      "lockup_event"
+    ],
     "params": {
       "basDt": "{date}"
     }
@@ -31,6 +74,21 @@
     "api_key_env": "DEEPSEARCH_API_KEY",
     "api_key_name": "api_key",
     "row_path": "data.items",
+    "expected_fields": [
+      "stock_code",
+      "relation_type",
+      "target_code",
+      "weight",
+      "confidence",
+      "source_id"
+    ],
+    "normalizes_to": [
+      "RelationFact",
+      "Evidence",
+      "provider_relation",
+      "broker_report",
+      "consensus_metric"
+    ],
     "params": {
       "date": "{date}"
     }
