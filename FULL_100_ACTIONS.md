@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T17:00:54.536506+09:00
+생성시각: 2026-05-28T17:07:20.448337+09:00
 기준일: 20260521
 
 ## Summary
@@ -25,7 +25,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source | Blocks | Required Action | Env Keys | Option | Completion Gate | Latest Probe | Probe Class | Next Fix | Fallback | Evidence |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | full_100_direct_api | BIGKinds Open API 이용 신청, 호출 제한과 응답 레이아웃 확인 | BIGKINDS_API_KEY, BIGKINDS_API_URL | --bigkinds-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --bigkinds-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
-| ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
+| ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | 한국예탁결제원_주식정보서비스_GW 활용신청 승인 후 StockSvc operation URL과 응답 레이아웃 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_contract_required | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결 | - | - | contract_review_recorded | - | - | probe_not_run | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_direct_api_gap | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 계약과 API key 또는 파일 레이아웃 확인 | FNGUIDE_API_KEY, DATAGUIDE_API_KEY, QUANTIWISE_API_KEY, DEEPSEARCH_API_KEY, FINORMA_API_KEY, PROVIDER_API_URL | --provider-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 
@@ -48,7 +48,11 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 
 | ID | Operation | Name | Purpose | Default URL | Expected Fields |
 |---|---|---|---|---|---|
-| - | - | - | - | - | - |
+| ksd_seibro_direct_api_gap | getStkIsinByShortIsinN1 | 단축번호로 주식종목코드(풀코드) 조회 | 상장 단축코드에서 KSD ISIN/발행회사번호/전자증권 여부를 보강 | https://apis.data.go.kr/B552481/StockSvc/getStkIsinByShortIsinN1 | shotnIsin, isin, korSecnNm, issuDt, issucoCustno, eltscYn |
+| ksd_seibro_direct_api_gap | getDividendRankN1 | 배당순위조회 | 배당금/배당률 상위 종목을 KSD 근거로 보강 | https://apis.data.go.kr/B552481/StockSvc/getDividendRankN1 | shotnIsin, korSecnNm, divAmtPerStk, divRateCpri, divRatePval |
+| ksd_seibro_direct_api_gap | getSafeDpDutyDepoStatusN1 | 의무보호예수전체현황 전체현황표 조회 | 의무보호예수 총량/비율을 권리 이벤트 컨텍스트로 보강 | https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoStatusN1 | stdDt, stkDepoQty, issuStkqty, safedpRatioValue, secncnt |
+| ksd_seibro_direct_api_gap | getSafeDpDutyDepoRgtStatusN1 | 의무보호예수전체현황 사유별 조회 | 의무보호예수 사유별 수량/회사수/종목수를 권리 이벤트 컨텍스트로 보강 | https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoRgtStatusN1 | safedpRacd, codevalueNm, dutyDepoStkDepoQty, safedpStkDepoQty |
+| ksd_seibro_direct_api_gap | getStkListInfoN1 | 주식상장정보 조회 | KSD 상장/상장폐지/발행회사번호를 종목 마스터에 보강 | https://apis.data.go.kr/B552481/StockSvc/getStkListInfoN1 | isin, korSecnNm, listTpcd, apliDt, dlistDt, issucoCustno |
 
 ## Operation Probe Results
 

@@ -1,11 +1,11 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T17:00:45.690324+09:00
+생성시각: 2026-05-28T17:07:11.578575+09:00
 기준일: 20260521
 
 ## Summary
 
-- endpoint_count: 55
+- endpoint_count: 60
 - direct_api_count: 31
 - configured_direct_api_count: 3
 - contract_direct_api_count: 1
@@ -65,6 +65,11 @@
 | ksd_gw_financial_terms_service | 한국예탁결제원_금융용어조회서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15158905/openapi.do | - |
 | ksd_gw_repo_info_service | 한국예탁결제원_REPO정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157427/openapi.do | - |
 | ksd_gw_short_term_securities_service | 한국예탁결제원_단기금융증권정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157428/openapi.do | - |
+| ksd_stocksvc_getStkIsinByShortIsinN1 | 한국예탁결제원_주식정보서비스_GW | official_operation_candidate | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/B552481/StockSvc/getStkIsinByShortIsinN1 | - |
+| ksd_stocksvc_getDividendRankN1 | 한국예탁결제원_주식정보서비스_GW | official_operation_candidate | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/B552481/StockSvc/getDividendRankN1 | - |
+| ksd_stocksvc_getSafeDpDutyDepoStatusN1 | 한국예탁결제원_주식정보서비스_GW | official_operation_candidate | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoStatusN1 | - |
+| ksd_stocksvc_getSafeDpDutyDepoRgtStatusN1 | 한국예탁결제원_주식정보서비스_GW | official_operation_candidate | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoRgtStatusN1 | - |
+| ksd_stocksvc_getStkListInfoN1 | 한국예탁결제원_주식정보서비스_GW | official_operation_candidate | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/B552481/StockSvc/getStkListInfoN1 | - |
 | provider_configured_direct_api | Paid providers | contract_direct_api | FNGUIDE_API_KEY/DATAGUIDE_API_KEY/QUANTIWISE_API_KEY/DEEPSEARCH_API_KEY/FINORMA_API_KEY | ${PROVIDER_API_URL} | --provider-api-url |
 | kind_snapshots | KIND | snapshot_import | none | local JSON/CSV/TSV file | --kind-snapshots |
 | bigkinds_snapshots | BIGKinds | snapshot_import | none or BIGKinds Open API approval | local JSON/CSV/TSV file | --bigkinds-snapshots |

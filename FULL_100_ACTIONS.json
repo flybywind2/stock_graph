@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:00:54.536506+09:00",
+  "generated_at": "2026-05-28T17:07:20.448337+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -90,7 +90,7 @@
       "id": "ksd_seibro_direct_api_gap",
       "source": "SEIBro/KSD",
       "blocks": "full_100_direct_api",
-      "required_action": "SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인",
+      "required_action": "한국예탁결제원_주식정보서비스_GW 활용신청 승인 후 StockSvc operation URL과 응답 레이아웃 확인",
       "credential_env_keys": [
         "SEIBRO_API_KEY",
         "KSD_API_KEY",
@@ -121,7 +121,104 @@
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "",
       "license_review_required": false,
-      "operation_candidates": [],
+      "operation_candidates": [
+        {
+          "operation": "getStkIsinByShortIsinN1",
+          "name": "단축번호로 주식종목코드(풀코드) 조회",
+          "purpose": "상장 단축코드에서 KSD ISIN/발행회사번호/전자증권 여부를 보강",
+          "default_url": "https://apis.data.go.kr/B552481/StockSvc/getStkIsinByShortIsinN1",
+          "request_fields": [
+            "serviceKey",
+            "pageNo",
+            "numOfRows",
+            "shotnIsin"
+          ],
+          "expected_fields": [
+            "shotnIsin",
+            "isin",
+            "korSecnNm",
+            "issuDt",
+            "issucoCustno",
+            "eltscYn"
+          ]
+        },
+        {
+          "operation": "getDividendRankN1",
+          "name": "배당순위조회",
+          "purpose": "배당금/배당률 상위 종목을 KSD 근거로 보강",
+          "default_url": "https://apis.data.go.kr/B552481/StockSvc/getDividendRankN1",
+          "request_fields": [
+            "serviceKey",
+            "pageNo",
+            "numOfRows",
+            "schStdYy"
+          ],
+          "expected_fields": [
+            "shotnIsin",
+            "korSecnNm",
+            "divAmtPerStk",
+            "divRateCpri",
+            "divRatePval"
+          ]
+        },
+        {
+          "operation": "getSafeDpDutyDepoStatusN1",
+          "name": "의무보호예수전체현황 전체현황표 조회",
+          "purpose": "의무보호예수 총량/비율을 권리 이벤트 컨텍스트로 보강",
+          "default_url": "https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoStatusN1",
+          "request_fields": [
+            "serviceKey",
+            "pageNo",
+            "numOfRows",
+            "stdDt"
+          ],
+          "expected_fields": [
+            "stdDt",
+            "stkDepoQty",
+            "issuStkqty",
+            "safedpRatioValue",
+            "secncnt"
+          ]
+        },
+        {
+          "operation": "getSafeDpDutyDepoRgtStatusN1",
+          "name": "의무보호예수전체현황 사유별 조회",
+          "purpose": "의무보호예수 사유별 수량/회사수/종목수를 권리 이벤트 컨텍스트로 보강",
+          "default_url": "https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoRgtStatusN1",
+          "request_fields": [
+            "serviceKey",
+            "pageNo",
+            "numOfRows",
+            "stdDt"
+          ],
+          "expected_fields": [
+            "safedpRacd",
+            "codevalueNm",
+            "dutyDepoStkDepoQty",
+            "safedpStkDepoQty"
+          ]
+        },
+        {
+          "operation": "getStkListInfoN1",
+          "name": "주식상장정보 조회",
+          "purpose": "KSD 상장/상장폐지/발행회사번호를 종목 마스터에 보강",
+          "default_url": "https://apis.data.go.kr/B552481/StockSvc/getStkListInfoN1",
+          "request_fields": [
+            "serviceKey",
+            "pageNo",
+            "numOfRows",
+            "isin"
+          ],
+          "expected_fields": [
+            "isin",
+            "korSecnNm",
+            "listTpcd",
+            "apliDt",
+            "dlistDt",
+            "issucoCustno"
+          ]
+        }
+      ],
       "normalizes_to": [
         "Event",
         "Evidence",

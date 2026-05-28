@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T17:00:56.325383+09:00
+생성시각: 2026-05-28T17:07:22.204385+09:00
 기준일: 20260521
 
 ## Summary
@@ -22,10 +22,10 @@
 | COMPLETION_AUDIT.json | True | 7934 |
 | QUALITY_AUDIT.json | True | 2445 |
 | TRACEABILITY_MATRIX.json | True | 3571 |
-| API_ENDPOINTS.json | True | 18109 |
+| API_ENDPOINTS.json | True | 20413 |
 | DEPLOYMENT_AUDIT.json | True | 3686 |
 | INVESTMENT_ANALYSIS_AUDIT.json | True | 1287 |
-| EXTERNAL_DEPENDENCY_AUDIT.json | True | 6123 |
+| EXTERNAL_DEPENDENCY_AUDIT.json | True | 6137 |
 | EXTERNAL_API.env.example | True | 405 |
 | EXTERNAL_API_ENV_TEMPLATE.md | True | 1570 |
 | EXTERNAL_API_CONFIG.example.json | True | 2673 |
@@ -38,8 +38,8 @@
 | snapshot_templates/fsc_stock_dividend_events.csv | True | 121 |
 | EXTERNAL_API_READINESS.json | True | 6387 |
 | EXTERNAL_API_READINESS.md | True | 2206 |
-| FULL_100_ACTIONS.json | True | 13480 |
-| FULL_100_ACTIONS.md | True | 6171 |
+| FULL_100_ACTIONS.json | True | 16780 |
+| FULL_100_ACTIONS.md | True | 7681 |
 | FULL_100_GATE.json | True | 4320 |
 | FULL_100_GATE.md | True | 1865 |
 | EXTERNAL_GAP_VALIDATION.json | True | 5463 |

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:00:54.004479+09:00",
+  "generated_at": "2026-05-28T17:07:19.911584+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -56,7 +56,7 @@
       "id": "ksd_seibro_direct_api_gap",
       "source": "SEIBro/KSD",
       "status": "blocked_external_dependency",
-      "required_action": "SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인",
+      "required_action": "한국예탁결제원_주식정보서비스_GW 활용신청 승인 후 StockSvc operation URL과 응답 레이아웃 확인",
       "current_fallback": "--ksd-seibro-snapshots",
       "used_for": "배당/권리, 증권대차, 보호예수 해제 이벤트",
       "blocks": "full_100_direct_api",

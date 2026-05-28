@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-05-28T17:00:45.690324+09:00",
+  "generated_at": "2026-05-28T17:07:11.578575+09:00",
   "source_date": "20260521",
   "summary": {
-    "endpoint_count": 55,
+    "endpoint_count": 60,
     "direct_api_count": 31,
     "configured_direct_api_count": 3,
     "contract_direct_api_count": 1,
     "official_service_candidate_count": 5,
+    "official_operation_candidate_count": 5,
     "official_web_export_count": 5,
     "approved_direct_api_backlog_count": 0,
     "snapshot_import_count": 6,
@@ -418,6 +419,51 @@
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "KSD 단기금융증권 후보 서비스",
       "status": "operation_endpoint_required"
+    },
+    {
+      "id": "ksd_stocksvc_getStkIsinByShortIsinN1",
+      "source": "한국예탁결제원_주식정보서비스_GW",
+      "mode": "official_operation_candidate",
+      "url": "https://apis.data.go.kr/B552481/StockSvc/getStkIsinByShortIsinN1",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "상장 단축코드에서 KSD ISIN/발행회사번호/전자증권 여부를 보강",
+      "status": "utilization_approval_required"
+    },
+    {
+      "id": "ksd_stocksvc_getDividendRankN1",
+      "source": "한국예탁결제원_주식정보서비스_GW",
+      "mode": "official_operation_candidate",
+      "url": "https://apis.data.go.kr/B552481/StockSvc/getDividendRankN1",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "배당금/배당률 상위 종목을 KSD 근거로 보강",
+      "status": "utilization_approval_required"
+    },
+    {
+      "id": "ksd_stocksvc_getSafeDpDutyDepoStatusN1",
+      "source": "한국예탁결제원_주식정보서비스_GW",
+      "mode": "official_operation_candidate",
+      "url": "https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoStatusN1",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "의무보호예수 총량/비율을 권리 이벤트 컨텍스트로 보강",
+      "status": "utilization_approval_required"
+    },
+    {
+      "id": "ksd_stocksvc_getSafeDpDutyDepoRgtStatusN1",
+      "source": "한국예탁결제원_주식정보서비스_GW",
+      "mode": "official_operation_candidate",
+      "url": "https://apis.data.go.kr/B552481/StockSvc/getSafeDpDutyDepoRgtStatusN1",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "의무보호예수 사유별 수량/회사수/종목수를 권리 이벤트 컨텍스트로 보강",
+      "status": "utilization_approval_required"
+    },
+    {
+      "id": "ksd_stocksvc_getStkListInfoN1",
+      "source": "한국예탁결제원_주식정보서비스_GW",
+      "mode": "official_operation_candidate",
+      "url": "https://apis.data.go.kr/B552481/StockSvc/getStkListInfoN1",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KSD 상장/상장폐지/발행회사번호를 종목 마스터에 보강",
+      "status": "utilization_approval_required"
     },
     {
       "id": "provider_configured_direct_api",
