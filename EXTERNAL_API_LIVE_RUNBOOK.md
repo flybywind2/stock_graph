@@ -30,6 +30,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
   --provider-api-url $env:PROVIDER_API_URL `
   --probe-external-apis `
+  --require-external-direct-apis `
   --output-dir reports/stock_graph
 ```
 
@@ -39,6 +40,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 - `EXTERNAL_API_READINESS.json`: `probe.status`가 `ok`이고 `probe.row_count`가 1 이상이면 endpoint와 레이아웃이 실제 응답을 반환한 것이다.
 - `SOURCE_COVERAGE.json`: 해당 source status가 `ok: direct_api ... rows` 또는 loaded 상태로 바뀌어야 한다.
 - `COMPLETION_AUDIT.json`: 무료 코어 `free_core_status`는 계속 `verified`여야 한다.
+- `--require-external-direct-apis`: direct API completion이 `verified`가 아니면 exit code 8로 실패해야 한다.
 - `QUALITY_AUDIT.json`: status가 `pass`여야 한다.
 
 ## 5. Current gaps
