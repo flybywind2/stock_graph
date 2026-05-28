@@ -1,17 +1,24 @@
 {
-  "generated_at": "2026-05-28T14:40:39.114112+09:00",
+  "generated_at": "2026-05-28T14:47:05.237785+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 8,
     "blocked_gap_count": 8,
     "ready_gap_count": 0,
+    "required_gap_count": 6,
+    "blocked_required_gap_count": 6,
+    "ready_required_gap_count": 0,
+    "optional_gap_count": 2,
+    "blocked_optional_gap_count": 2,
+    "ready_optional_gap_count": 0,
     "secret_values_recorded": false
   },
   "gaps": [
     {
       "id": "bigkinds_direct_api_gap",
       "source": "BIGKinds",
+      "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "credential_missing",
@@ -41,6 +48,7 @@
     {
       "id": "fsc_stock_dividend_auth_or_license_review_required",
       "source": "data.go.kr FSC",
+      "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [],
       "close_conditions": [
@@ -68,6 +76,7 @@
     {
       "id": "fsc_stock_issue_endpoint_review_required",
       "source": "data.go.kr FSC",
+      "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "license_review_required"
@@ -98,6 +107,7 @@
     {
       "id": "kind_direct_api_gap",
       "source": "KIND",
+      "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "credential_missing",
@@ -127,6 +137,7 @@
     {
       "id": "ksd_seibro_direct_api_gap",
       "source": "SEIBro/KSD",
+      "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "endpoint_config_missing"
@@ -155,6 +166,7 @@
     {
       "id": "ksd_seibro_license_review_required",
       "source": "SEIBro/KSD",
+      "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "license_review_required"
@@ -180,6 +192,7 @@
     {
       "id": "paid_provider_contract_required",
       "source": "Paid providers",
+      "blocks": "optional_enrichment",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "contract_required"
@@ -205,6 +218,7 @@
     {
       "id": "paid_provider_direct_api_gap",
       "source": "Paid providers",
+      "blocks": "optional_enrichment",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
         "credential_missing",

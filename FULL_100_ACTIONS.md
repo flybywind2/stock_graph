@@ -1,12 +1,15 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T14:40:39.113826+09:00
+생성시각: 2026-05-28T14:47:05.237467+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: external_actions_required
 - remaining_action_count: 8
+- remaining_required_action_count: 6
+- remaining_optional_action_count: 2
+- free_scope_status: external_actions_required
 - free_core_status: verified
 - external_dependency_status: blocked_external_dependency
 - secret_values_recorded: False
@@ -27,7 +30,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | kind_direct_api_gap | KIND | full_100_direct_api | KIND 화면별 공식 API 또는 엑셀 다운로드 자동화 규격 확정 | KIND_API_KEY, KIND_API_URL | --kind-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --kind-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | ksd_seibro_license_review_required | SEIBro/KSD | full_100_direct_api | SEIBro/KSD 원천별 이용허락, 출처표시, 비영리/상업적 이용 제한 확인 | - | - | license_review_recorded | not_run | probe_not_run | probe_not_run | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
-| paid_provider_contract_required | Paid providers | full_100_direct_api | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결 | - | - | contract_review_recorded | - | - | probe_not_run | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
+| paid_provider_contract_required | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결 | - | - | contract_review_recorded | - | - | probe_not_run | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | paid_provider_direct_api_gap | Paid providers | optional_enrichment | FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 계약과 API key 또는 파일 레이아웃 확인 | FNGUIDE_API_KEY, DATAGUIDE_API_KEY, QUANTIWISE_API_KEY, DEEPSEARCH_API_KEY, FINORMA_API_KEY, PROVIDER_API_URL | --provider-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --provider-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 
 ## Official Sources

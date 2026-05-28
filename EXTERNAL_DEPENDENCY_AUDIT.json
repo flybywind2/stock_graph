@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:40:38.422631+09:00",
+  "generated_at": "2026-05-28T14:47:04.525789+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -267,7 +267,7 @@
       "required_action": "FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결",
       "current_fallback": "--provider-snapshots",
       "used_for": "컨센서스, 리포트, 정제 공급망/관계망",
-      "blocks": "full_100_direct_api",
+      "blocks": "optional_enrichment",
       "credential_env_keys": [],
       "credential_present": false,
       "endpoint_env_keys": [],

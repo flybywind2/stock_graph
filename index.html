@@ -481,14 +481,19 @@
       const externalGaps = Number(status.external_gap_count || 0);
       const blockedGaps = Number(status.blocked_gap_count || 0);
       const remainingActions = Number(status.remaining_action_count || 0);
+      const blockedRequired = Number(status.blocked_required_gap_count || blockedGaps || 0);
+      const blockedOptional = Number(status.blocked_optional_gap_count || 0);
+      const remainingRequired = Number(status.remaining_required_action_count || remainingActions || 0);
+      const remainingOptional = Number(status.remaining_optional_action_count || 0);
       completionStatus.innerHTML = `
         <div class="status-title">100% 진행 상태</div>
         <div class="status-grid">
           <div>무료 코어</div><div class="status-value">${escapeHtml(status.free_core_status || 'unknown')}</div>
           <div>전체 상태</div><div class="status-value">${escapeHtml(status.completion_status || 'unknown')}</div>
           <div>전략 검증</div><div class="status-value">${verified.toLocaleString()} / ${required.toLocaleString()}</div>
-          <div>외부 갭</div><div class="status-value">${externalGaps.toLocaleString()}개 · 차단 ${blockedGaps.toLocaleString()}개</div>
-          <div>남은 조치</div><div class="status-value">${remainingActions.toLocaleString()}개</div>
+          <div>외부 갭</div><div class="status-value">${externalGaps.toLocaleString()}개 · 필수 차단 ${blockedRequired.toLocaleString()}개 · 선택 ${blockedOptional.toLocaleString()}개</div>
+          <div>남은 조치</div><div class="status-value">필수 ${remainingRequired.toLocaleString()}개 · 선택 ${remainingOptional.toLocaleString()}개</div>
+          <div>무료 범위 완료</div><div class="status-value">${status.can_claim_free_scope_complete ? '가능' : '불가'}</div>
           <div>완료 주장</div><div class="status-value">${status.can_claim_full_100_complete ? '가능' : '불가'}</div>
           <div>시크릿 저장</div><div class="status-value">${status.secret_values_recorded ? '있음' : '없음'}</div>
         </div>

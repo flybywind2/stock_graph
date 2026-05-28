@@ -1,9 +1,12 @@
 {
-  "generated_at": "2026-05-28T14:40:39.113826+09:00",
+  "generated_at": "2026-05-28T14:47:05.237467+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
     "remaining_action_count": 8,
+    "remaining_required_action_count": 6,
+    "remaining_optional_action_count": 2,
+    "free_scope_status": "external_actions_required",
     "free_core_status": "verified",
     "external_dependency_status": "blocked_external_dependency",
     "secret_values_recorded": false
@@ -620,7 +623,7 @@
     {
       "id": "paid_provider_contract_required",
       "source": "Paid providers",
-      "blocks": "full_100_direct_api",
+      "blocks": "optional_enrichment",
       "required_action": "FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 등 유료 데이터 제공업체와 데이터 사용 계약 체결",
       "credential_env_keys": [],
       "endpoint_env_keys": [],

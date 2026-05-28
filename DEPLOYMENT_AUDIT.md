@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T14:40:41.352515+09:00
+생성시각: 2026-05-28T14:47:07.492234+09:00
 기준일: 20260521
 
 ## Summary
@@ -16,8 +16,8 @@
 
 | Path | Exists | Size Bytes |
 |---|---:|---:|
-| index.html | True | 94302 |
-| graph_data.js | True | 39783792 |
+| index.html | True | 94922 |
+| graph_data.js | True | 39783964 |
 | SOURCE_COVERAGE.json | True | 4908 |
 | COMPLETION_AUDIT.json | True | 8363 |
 | QUALITY_AUDIT.json | True | 2638 |
@@ -32,9 +32,9 @@
 | EXTERNAL_API_LIVE_RUNBOOK.md | True | 4080 |
 | EXTERNAL_API_READINESS.json | True | 17133 |
 | EXTERNAL_API_READINESS.md | True | 3762 |
-| FULL_100_ACTIONS.json | True | 31672 |
-| FULL_100_ACTIONS.md | True | 13246 |
-| FULL_100_GATE.json | True | 3211 |
-| FULL_100_GATE.md | True | 2097 |
-| EXTERNAL_GAP_VALIDATION.json | True | 10042 |
-| EXTERNAL_GAP_VALIDATION.md | True | 2646 |
+| FULL_100_ACTIONS.json | True | 31813 |
+| FULL_100_ACTIONS.md | True | 13370 |
+| FULL_100_GATE.json | True | 6676 |
+| FULL_100_GATE.md | True | 2647 |
+| EXTERNAL_GAP_VALIDATION.json | True | 10570 |
+| EXTERNAL_GAP_VALIDATION.md | True | 2951 |
