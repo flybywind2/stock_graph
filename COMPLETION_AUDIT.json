@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-05-28T09:06:47.228541+09:00",
+  "generated_at": "2026-05-28T09:10:16.992107+09:00",
   "source_date": "20260521",
   "summary": {
-    "requirement_count": 14,
-    "verified_count": 12,
+    "requirement_count": 15,
+    "verified_count": 13,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
       "blocked_external_dependency",
       "optional_external_dependency"
     ],
-    "free_core_requirement_count": 12,
-    "free_core_verified_count": 12,
+    "free_core_requirement_count": 13,
+    "free_core_verified_count": 13,
     "free_core_status": "verified"
   },
   "requirements": [
@@ -158,6 +158,18 @@
         "DEPLOYMENT_AUDIT.json",
         "DEPLOYMENT_AUDIT.md",
         "deployment_status=ready"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "ui_interaction_gate",
+      "requirement": "HTML 검색, 다중 선택, 범례 토글, edge limit, 2D/3D, 드래그 상호작용",
+      "status": "verified",
+      "scope": "free_core",
+      "evidence": [
+        "UI_INTERACTION_AUDIT.json",
+        "UI_INTERACTION_AUDIT.md",
+        "ui_status=pass"
       ],
       "gaps": []
     },

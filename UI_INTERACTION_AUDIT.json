@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-05-28T09:10:12.770984+09:00",
+  "summary": {
+    "status": "pass",
+    "check_count": 6,
+    "pass_count": 6,
+    "fail_count": 0
+  },
+  "checks": [
+    {
+      "id": "search_and_multi_select",
+      "status": "pass",
+      "evidence": [
+        "search input",
+        "comma/newline multi-root parsing",
+        "ctrl/meta multi-select"
+      ],
+      "missing": []
+    },
+    {
+      "id": "legend_node_edge_toggles",
+      "status": "pass",
+      "evidence": [
+        "node legend toggles",
+        "edge legend toggles"
+      ],
+      "missing": []
+    },
+    {
+      "id": "edge_render_limit",
+      "status": "pass",
+      "evidence": [
+        "rendered edge count selector",
+        "manual edge cap"
+      ],
+      "missing": []
+    },
+    {
+      "id": "two_d_three_d_toggle",
+      "status": "pass",
+      "evidence": [
+        "2D/3D toggle",
+        "camera controls"
+      ],
+      "missing": []
+    },
+    {
+      "id": "node_drag_and_pan",
+      "status": "pass",
+      "evidence": [
+        "node drag",
+        "pan/rotate pointer interactions"
+      ],
+      "missing": []
+    },
+    {
+      "id": "default_transaction_preset",
+      "status": "pass",
+      "evidence": [
+        "default transaction graph preset"
+      ],
+      "missing": []
+    }
+  ]
+}

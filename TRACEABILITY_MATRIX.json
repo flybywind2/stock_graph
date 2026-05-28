@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:06:46.848963+09:00",
+  "generated_at": "2026-05-28T09:10:16.554289+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 6,
@@ -73,6 +73,7 @@
       "evidence": [
         "QUALITY_AUDIT.json",
         "QUALITY_AUDIT.md",
+        "UI_INTERACTION_AUDIT.json",
         "DEPLOYMENT_AUDIT.json",
         "index.html",
         "graph_data.js"

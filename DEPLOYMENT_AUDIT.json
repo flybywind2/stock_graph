@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:06:46.441494+09:00",
+  "generated_at": "2026-05-28T09:10:16.147196+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -41,7 +41,7 @@
     {
       "path": "TRACEABILITY_MATRIX.json",
       "exists": true,
-      "size_bytes": 2858
+      "size_bytes": 2896
     },
     {
       "path": "API_ENDPOINTS.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 1213
+      "size_bytes": 1215
     }
   ]
 }

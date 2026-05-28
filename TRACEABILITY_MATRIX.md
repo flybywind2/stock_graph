@@ -1,6 +1,6 @@
 # Strategy Traceability Matrix
 
-생성시각: 2026-05-28T09:06:46.848963+09:00
+생성시각: 2026-05-28T09:10:16.554289+09:00
 기준일: 20260521
 
 ## Summary
@@ -19,4 +19,4 @@
 | signed_path_scorer | 2~3홉 signed path impact scoring | verified | COMPLETION_AUDIT.json, stock_graph_YYYYMMDD.json, graph_data.js |
 | source_priority_and_access | OpenDART, FSC/KRX, KRX Marketplace, KIND, SEIBro/KSD, BIGKinds, provider 접근 방식 | verified | SOURCE_COVERAGE.json, API_ENDPOINTS.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md |
 | governance_and_lineage | source_system, source_id, confidence, evidence, license/access gap 거버넌스 | verified | COMPLETION_AUDIT.json, SOURCE_COVERAGE.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md |
-| quality_and_deployment | 품질 게이트, 정적 HTML, GitHub Pages 배포 | verified | QUALITY_AUDIT.json, QUALITY_AUDIT.md, DEPLOYMENT_AUDIT.json, index.html, graph_data.js |
+| quality_and_deployment | 품질 게이트, 정적 HTML, GitHub Pages 배포 | verified | QUALITY_AUDIT.json, QUALITY_AUDIT.md, UI_INTERACTION_AUDIT.json, DEPLOYMENT_AUDIT.json, index.html, graph_data.js |

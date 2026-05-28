@@ -62,6 +62,10 @@
 
 `DEPLOYMENT_AUDIT.json`과 `DEPLOYMENT_AUDIT.md`를 함께 생성한다. GitHub Pages 저장소, 브랜치, 공개 URL, 정적 entrypoint, 필수 감사 산출물 존재 여부를 배포 준비 상태로 기록한다.
 
+## UI interaction audit
+
+`UI_INTERACTION_AUDIT.json`과 `UI_INTERACTION_AUDIT.md`를 함께 생성한다. 검색, 쉼표/줄바꿈 다중 루트, Ctrl/Meta 다중 선택, 노드/엣지 범례 토글, 렌더 엣지 수 제한, 2D/3D 전환, 노드 드래그와 pan/rotate 상호작용이 HTML에 포함되어 있는지 확인한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
