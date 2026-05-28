@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:28:12.421341+09:00",
+  "generated_at": "2026-05-28T09:31:59.241553+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -31,7 +31,7 @@
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 7392
+      "size_bytes": 7435
     },
     {
       "path": "QUALITY_AUDIT.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 1328
+      "size_bytes": 1439
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -61,7 +61,7 @@
     {
       "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
-      "size_bytes": 0
+      "size_bytes": 2371
     }
   ]
 }

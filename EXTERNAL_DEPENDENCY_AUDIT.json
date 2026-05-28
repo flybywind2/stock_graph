@@ -1,9 +1,10 @@
 {
-  "generated_at": "2026-05-28T09:28:13.541897+09:00",
+  "generated_at": "2026-05-28T09:32:00.343483+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 5,
+    "credential_ready_gap_count": 1,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -15,7 +16,11 @@
       "required_action": "BIGKinds Open API 이용 신청, 호출 제한과 응답 레이아웃 확인",
       "current_fallback": "--bigkinds-snapshots",
       "used_for": "뉴스 기사, 개체명, 키워드 기반 이벤트/증거",
-      "blocks": "full_100_direct_api"
+      "blocks": "full_100_direct_api",
+      "credential_env_keys": [
+        "BIGKINDS_API_KEY"
+      ],
+      "credential_present": false
     },
     {
       "id": "kind_direct_api_gap",
@@ -24,7 +29,11 @@
       "required_action": "KIND 화면별 공식 API 또는 엑셀 다운로드 자동화 규격 확정",
       "current_fallback": "--kind-snapshots",
       "used_for": "거래소 공시, IR자료, 기업분석보고서 이벤트/증거",
-      "blocks": "full_100_direct_api"
+      "blocks": "full_100_direct_api",
+      "credential_env_keys": [
+        "KIND_API_KEY"
+      ],
+      "credential_present": false
     },
     {
       "id": "ksd_seibro_direct_api_gap",
@@ -33,7 +42,13 @@
       "required_action": "SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인",
       "current_fallback": "--ksd-seibro-snapshots",
       "used_for": "배당/권리, 증권대차, 보호예수 해제 이벤트",
-      "blocks": "full_100_direct_api"
+      "blocks": "full_100_direct_api",
+      "credential_env_keys": [
+        "SEIBRO_API_KEY",
+        "KSD_API_KEY",
+        "DATA_GO_KR_SERVICE_KEY"
+      ],
+      "credential_present": true
     },
     {
       "id": "paid_provider_contract_required",
@@ -42,7 +57,9 @@
       "required_action": "외부 인증, 계약, 또는 레이아웃 확인 필요",
       "current_fallback": "--provider-snapshots",
       "used_for": "consensus, broker reports, curated supply chain and relation networks",
-      "blocks": "full_100_direct_api"
+      "blocks": "full_100_direct_api",
+      "credential_env_keys": [],
+      "credential_present": false
     },
     {
       "id": "paid_provider_direct_api_gap",
@@ -51,7 +68,15 @@
       "required_action": "FnGuide/DataGuide/QuantiWise/DeepSearch/Finorma 계약과 API key 또는 파일 레이아웃 확인",
       "current_fallback": "--provider-snapshots",
       "used_for": "컨센서스, 리포트, 정제 공급망/관계망",
-      "blocks": "optional_enrichment"
+      "blocks": "optional_enrichment",
+      "credential_env_keys": [
+        "FNGUIDE_API_KEY",
+        "DATAGUIDE_API_KEY",
+        "QUANTIWISE_API_KEY",
+        "DEEPSEARCH_API_KEY",
+        "FINORMA_API_KEY"
+      ],
+      "credential_present": false
     }
   ]
 }
