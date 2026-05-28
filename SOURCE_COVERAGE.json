@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:28:04.518058+09:00",
+  "generated_at": "2026-05-28T16:36:04.406636+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 12,
@@ -17,8 +17,6 @@
     "remaining_approved_import_backlogs": [],
     "remaining_external_access_gaps": [
       "bigkinds_direct_api_gap",
-      "fsc_stock_dividend_auth_or_license_review_required",
-      "fsc_stock_issue_endpoint_review_required",
       "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
       "ksd_seibro_license_review_required",
@@ -52,10 +50,7 @@
       "count": 2656,
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "KRX listed info, company basic, financial summary, stock issue, dividend",
-      "gaps": [
-        "fsc_stock_issue_endpoint_review_required",
-        "fsc_stock_dividend_auth_or_license_review_required"
-      ]
+      "gaps": []
     },
     {
       "source": "data.go.kr FTC",

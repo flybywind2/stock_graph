@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:28:13.602905+09:00",
+  "generated_at": "2026-05-28T16:36:13.263862+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 18,
@@ -70,8 +70,6 @@
       ],
       "gaps": [
         "bigkinds_direct_api_gap",
-        "fsc_stock_dividend_auth_or_license_review_required",
-        "fsc_stock_issue_endpoint_review_required",
         "kind_direct_api_gap",
         "ksd_seibro_direct_api_gap",
         "ksd_seibro_license_review_required",
@@ -229,8 +227,6 @@
       ],
       "gaps": [
         "bigkinds_direct_api_gap",
-        "fsc_stock_dividend_auth_or_license_review_required",
-        "fsc_stock_issue_endpoint_review_required",
         "kind_direct_api_gap",
         "ksd_seibro_direct_api_gap",
         "ksd_seibro_license_review_required",

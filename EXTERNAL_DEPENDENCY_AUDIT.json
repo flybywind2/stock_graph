@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-28T16:28:13.029120+09:00",
+  "generated_at": "2026-05-28T16:36:12.714127+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
-    "gap_count": 8,
-    "credential_ready_gap_count": 3,
+    "gap_count": 6,
+    "credential_ready_gap_count": 1,
     "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
     "free_core_blocked": false
@@ -50,88 +50,6 @@
       "missing_requirements": [
         "credential_missing",
         "endpoint_config_missing"
-      ]
-    },
-    {
-      "id": "fsc_stock_dividend_auth_or_license_review_required",
-      "source": "data.go.kr FSC",
-      "status": "blocked_external_dependency",
-      "required_action": "금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, Swagger operation URL 확인",
-      "current_fallback": "FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import",
-      "used_for": "배당기준일, 현금배당지급일, 주식배당 이벤트",
-      "blocks": "full_100_direct_api",
-      "credential_env_keys": [
-        "DATA_GO_KR_SERVICE_KEY"
-      ],
-      "credential_present": true,
-      "endpoint_env_keys": [
-        "FSC_STOCK_DIVIDEND_URL"
-      ],
-      "endpoint_config_present": true,
-      "row_path": "response.body.items.item",
-      "expected_fields": [
-        "crno",
-        "stckIssuCmpyNm",
-        "diviBseDt",
-        "cashDvdnPayDt",
-        "stckGenrDvdnAmt"
-      ],
-      "source_urls": [
-        "https://www.data.go.kr/data/15043284/openapi.do",
-        "https://www.data.go.kr/catalog/15043284/openapi.json"
-      ],
-      "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
-      "license_note": "공식 data.go.kr 상세 페이지 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
-      "normalizes_to": [
-        "Event",
-        "Evidence",
-        "dividend_event"
-      ],
-      "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "license_review_required"
-      ]
-    },
-    {
-      "id": "fsc_stock_issue_endpoint_review_required",
-      "source": "data.go.kr FSC",
-      "status": "blocked_external_dependency",
-      "required_action": "금융위원회_주식발행정보 Swagger의 최신 operation URL 확인 후 FSC_STOCK_ISSUE_URL에 반영",
-      "current_fallback": "DART 발행/자본변동 공시와 KRX 상장주식수",
-      "used_for": "주식발행, 보호예수 반환, 발행현황 이벤트",
-      "blocks": "full_100_direct_api",
-      "credential_env_keys": [
-        "DATA_GO_KR_SERVICE_KEY"
-      ],
-      "credential_present": true,
-      "endpoint_env_keys": [
-        "FSC_STOCK_ISSUE_URL"
-      ],
-      "endpoint_config_present": true,
-      "row_path": "response.body.items.item",
-      "expected_fields": [
-        "crno",
-        "stckIssuCmpyNm",
-        "onskTisuCnt",
-        "pfstTisuCnt"
-      ],
-      "source_urls": [
-        "https://www.data.go.kr/data/15043423/openapi.do",
-        "https://www.data.go.kr/catalog/15043423/openapi.json"
-      ],
-      "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
-      "license_note": "공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
-      "normalizes_to": [
-        "Event",
-        "Evidence",
-        "stock_issue",
-        "rights_event"
-      ],
-      "direct_connector_implemented": true,
-      "ready_for_live_fetch": false,
-      "missing_requirements": [
-        "license_review_required"
       ]
     },
     {

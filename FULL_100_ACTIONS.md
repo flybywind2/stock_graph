@@ -1,13 +1,13 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T16:28:13.603387+09:00
+생성시각: 2026-05-28T16:36:13.264212+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: external_actions_required
-- remaining_action_count: 8
-- remaining_required_action_count: 6
+- remaining_action_count: 6
+- remaining_required_action_count: 4
 - remaining_optional_action_count: 2
 - free_scope_status: external_actions_required
 - free_core_status: verified
@@ -25,8 +25,6 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source | Blocks | Required Action | Env Keys | Option | Completion Gate | Latest Probe | Probe Class | Next Fix | Fallback | Evidence |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | bigkinds_direct_api_gap | BIGKinds | full_100_direct_api | BIGKinds Open API 이용 신청, 호출 제한과 응답 레이아웃 확인 | BIGKINDS_API_KEY, BIGKINDS_API_URL | --bigkinds-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --bigkinds-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
-| fsc_stock_dividend_auth_or_license_review_required | data.go.kr FSC | full_100_direct_api | 금융위원회_주식배당정보 활용신청 승인, 일반 인증키 Decoding 값, Swagger operation URL 확인 | DATA_GO_KR_SERVICE_KEY, FSC_STOCK_DIVIDEND_URL | --fsc-stock-dividend-url | probe_ok_with_expected_fields | ok | missing_expected_fields | probe는 응답했지만 기대 필드가 없어 기준일/조회 파라미터 또는 row_path를 조정한 뒤 재실행한다. | FnGuide 공개 배당률, DART 배당 공시, SEIBro/KSD snapshot import | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
-| fsc_stock_issue_endpoint_review_required | data.go.kr FSC | full_100_direct_api | 금융위원회_주식발행정보 Swagger의 최신 operation URL 확인 후 FSC_STOCK_ISSUE_URL에 반영 | DATA_GO_KR_SERVICE_KEY, FSC_STOCK_ISSUE_URL | --fsc-stock-issue-url | probe_ok_with_expected_fields | ok | ok | none | DART 발행/자본변동 공시와 KRX 상장주식수 | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | kind_direct_api_gap | KIND | full_100_direct_api | KIND 화면별 공식 API 또는 엑셀 다운로드 자동화 규격 확정 | KIND_API_KEY, KIND_API_URL | --kind-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --kind-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | full_100_direct_api | SEIBro 오픈플랫폼 또는 KSD GW 서비스별 승인, 레이아웃, 상업적 이용 가능 여부 확인 | SEIBRO_API_KEY, KSD_API_KEY, DATA_GO_KR_SERVICE_KEY, SEIBRO_API_URL, KSD_API_URL | --ksd-seibro-api-url | probe_ok_with_expected_fields | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
 | ksd_seibro_license_review_required | SEIBro/KSD | full_100_direct_api | SEIBro/KSD 원천별 이용허락, 출처표시, 비영리/상업적 이용 제한 확인 | - | - | license_review_recorded | skipped: endpoint_config_missing | endpoint_config_missing | 공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다. | --ksd-seibro-snapshots | EXTERNAL_API_READINESS.json, SOURCE_COVERAGE.json, COMPLETION_AUDIT.json, FULL_100_ACTIONS.json |
@@ -38,8 +36,6 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | ID | Source URLs | Auth Hint | License Note |
 |---|---|---|---|
 | bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - | - |
-| fsc_stock_dividend_auth_or_license_review_required | https://www.data.go.kr/data/15043284/openapi.do, https://www.data.go.kr/catalog/15043284/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 data.go.kr 상세 페이지 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요 |
-| fsc_stock_issue_endpoint_review_required | https://www.data.go.kr/data/15043423/openapi.do, https://www.data.go.kr/catalog/15043423/openapi.json | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | 공식 catalog/openapi.json 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요 |
 | kind_direct_api_gap | https://kind.krx.co.kr/ | - | - |
 | ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | - |
 | ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - | - |
@@ -50,46 +46,25 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 
 | ID | Scheme | Key Param | Status | Rows | Error |
 |---|---|---|---|---:|---|
-| fsc_stock_dividend_auth_or_license_review_required | https | serviceKey | ok | 0 | - |
-| fsc_stock_issue_endpoint_review_required | https | serviceKey | ok | 1 | - |
+| - | - | - | - | 0 | - |
 
 ## Operation Candidates
 
 | ID | Operation | Name | Purpose | Default URL | Expected Fields |
 |---|---|---|---|---|---|
-| fsc_stock_issue_endpoint_review_required | getItemBasiInfo | 종목기본정보 조회 | 주식액면가, 발행주식수, 상장/상장폐지일자 등 종목 기본정보 | https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuInfo_V3 | crno, isinCd, stckIssuCmpyNm, stckParPrc, issuStckCnt, lstgDt |
-| fsc_stock_issue_endpoint_review_required | stock_issue_history | 주식발행내역 조회 | 주식발행일자, 발행차수, 발행사유 등 자본 이벤트 | https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuInfo_V3 | crno, stckIssuCmpyNm, stckIssuDt, isuStckCnt, stckIssuRcdNm |
-| fsc_stock_issue_endpoint_review_required | lockup_return | 의무보호예수반환정보 조회 | lockup return / 의무보호예수 반환일자와 반환주식수 | https://apis.data.go.kr/1160100/GetStocIssuInfoService_V2/getLockUpRetuInfo_V2 | crno, stckIssuCmpyNm, rtnDt, rtnStckCnt, dpsgRegDt |
-| fsc_stock_issue_endpoint_review_required | getStocIssuStat | 주식발행현황 조회 | 보통주/우선주 총발행수 | https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuStat_V3 | crno, stckIssuCmpyNm, onskTisuCnt, pfstTisuCnt |
+| - | - | - | - | - | - |
 
 ## Operation Probe Results
 
 | ID | Operation | Name | Status | Rows | Sample Keys | Error |
 |---|---|---|---|---:|---|---|
-| fsc_stock_issue_endpoint_review_required | getItemBasiInfo | 종목기본정보 조회 | ok | 1 | basDt, crno, isinCd, isinCdNm, issuStckCnt, lstgDt, scrsDcd, scrsItmsKcd, scrsItmsKcdNm, stckIssuCmpyNm, stckIssuDcnt, stckIssuDt, stckIssuRcd, stckIssuRcdNm, stckIssuSqno | - |
-| fsc_stock_issue_endpoint_review_required | stock_issue_history | 주식발행내역 조회 | ok | 1 | basDt, crno, isinCd, isinCdNm, issuStckCnt, lstgDt, scrsDcd, scrsItmsKcd, scrsItmsKcdNm, stckIssuCmpyNm, stckIssuDcnt, stckIssuDt, stckIssuRcd, stckIssuRcdNm, stckIssuSqno | - |
-| fsc_stock_issue_endpoint_review_required | lockup_return | 의무보호예수반환정보 조회 | degraded | 0 | - | HTTP Error 500: Internal Server Error |
-| fsc_stock_issue_endpoint_review_required | getStocIssuStat | 주식발행현황 조회 | ok | 1 | basDt, crno, onskTisuCnt, pfstTisuCnt, stckIssuCmpyNm | - |
+| - | - | - | - | 0 | - | - |
 
 ## Operator Steps
 
 ### bigkinds_direct_api_gap
 - BIGKINDS_API_URL에 공식 endpoint URL을 설정한다.
 - BIGKINDS_API_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
-- probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
-- SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.
-
-### fsc_stock_dividend_auth_or_license_review_required
-- FSC_STOCK_DIVIDEND_URL에 공식 endpoint URL을 설정한다.
-- DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
-- EXTERNAL_API_CONFIG의 data.go.kr FSC.license_review에 license_type, source_name, reviewed_at, intended_use를 기록한다.
-- probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
-- SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.
-
-### fsc_stock_issue_endpoint_review_required
-- FSC_STOCK_ISSUE_URL에 공식 endpoint URL을 설정한다.
-- DATA_GO_KR_SERVICE_KEY 인증키가 .env 또는 실행 환경에 있는지 확인한다.
-- EXTERNAL_API_CONFIG의 data.go.kr FSC.license_review에 license_type, source_name, reviewed_at, intended_use를 기록한다.
 - probe 실행 후 EXTERNAL_API_READINESS.json의 probe.status가 ok이고 예상 필드가 모두 포함되는지 확인한다.
 - SOURCE_COVERAGE.json과 COMPLETION_AUDIT.json을 재생성해 해당 gap이 사라졌는지 확인한다.
 
