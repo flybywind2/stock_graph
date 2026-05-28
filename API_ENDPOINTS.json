@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-05-28T16:36:04.407235+09:00",
+  "generated_at": "2026-05-28T16:45:28.949780+09:00",
   "source_date": "20260521",
   "summary": {
-    "endpoint_count": 45,
+    "endpoint_count": 50,
     "direct_api_count": 31,
     "configured_direct_api_count": 3,
     "contract_direct_api_count": 1,
+    "official_service_candidate_count": 5,
     "approved_direct_api_backlog_count": 0,
     "snapshot_import_count": 6,
     "contract_snapshot_import_count": 1,
@@ -326,6 +327,51 @@
       "auth": "SEIBRO_API_KEY/KSD_API_KEY/DATA_GO_KR_SERVICE_KEY",
       "used_for": "configured rights, lending, lockup releases",
       "option": "--ksd-seibro-api-url"
+    },
+    {
+      "id": "ksd_gw_stock_info_service",
+      "source": "한국예탁결제원_주식정보서비스_GW",
+      "mode": "official_service_candidate",
+      "url": "https://www.data.go.kr/data/15157413/openapi.do",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KSD 주식 권리, 배당, 보호예수, 증권대차 후보 서비스",
+      "status": "operation_endpoint_required"
+    },
+    {
+      "id": "ksd_gw_bond_info_service",
+      "source": "한국예탁결제원_채권정보서비스_GW",
+      "mode": "official_service_candidate",
+      "url": "https://www.data.go.kr/data/15157416/openapi.do",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KSD 채권 발행, 상환, 유통 후보 서비스",
+      "status": "operation_endpoint_required"
+    },
+    {
+      "id": "ksd_gw_financial_terms_service",
+      "source": "한국예탁결제원_금융용어조회서비스_GW",
+      "mode": "official_service_candidate",
+      "url": "https://www.data.go.kr/data/15158905/openapi.do",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KSD 용어/코드 설명 후보 서비스",
+      "status": "operation_endpoint_required"
+    },
+    {
+      "id": "ksd_gw_repo_info_service",
+      "source": "한국예탁결제원_REPO정보서비스_GW",
+      "mode": "official_service_candidate",
+      "url": "https://www.data.go.kr/data/15157427/openapi.do",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KSD REPO 시장 후보 서비스",
+      "status": "operation_endpoint_required"
+    },
+    {
+      "id": "ksd_gw_short_term_securities_service",
+      "source": "한국예탁결제원_단기금융증권정보서비스_GW",
+      "mode": "official_service_candidate",
+      "url": "https://www.data.go.kr/data/15157428/openapi.do",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "KSD 단기금융증권 후보 서비스",
+      "status": "operation_endpoint_required"
     },
     {
       "id": "provider_configured_direct_api",

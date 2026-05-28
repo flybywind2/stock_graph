@@ -1,11 +1,11 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T16:36:04.407235+09:00
+생성시각: 2026-05-28T16:45:28.949780+09:00
 기준일: 20260521
 
 ## Summary
 
-- endpoint_count: 45
+- endpoint_count: 50
 - direct_api_count: 31
 - configured_direct_api_count: 3
 - contract_direct_api_count: 1
@@ -55,6 +55,11 @@
 | kind_configured_direct_api | KIND | configured_direct_api | KIND_API_KEY | ${KIND_API_URL} | --kind-api-url |
 | bigkinds_configured_direct_api | BIGKinds | configured_direct_api | BIGKINDS_API_KEY | ${BIGKINDS_API_URL} | --bigkinds-api-url |
 | ksd_seibro_configured_direct_api | SEIBro/KSD | configured_direct_api | SEIBRO_API_KEY/KSD_API_KEY/DATA_GO_KR_SERVICE_KEY | ${SEIBRO_API_URL} or ${KSD_API_URL} | --ksd-seibro-api-url |
+| ksd_gw_stock_info_service | 한국예탁결제원_주식정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157413/openapi.do | - |
+| ksd_gw_bond_info_service | 한국예탁결제원_채권정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157416/openapi.do | - |
+| ksd_gw_financial_terms_service | 한국예탁결제원_금융용어조회서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15158905/openapi.do | - |
+| ksd_gw_repo_info_service | 한국예탁결제원_REPO정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157427/openapi.do | - |
+| ksd_gw_short_term_securities_service | 한국예탁결제원_단기금융증권정보서비스_GW | official_service_candidate | DATA_GO_KR_SERVICE_KEY | https://www.data.go.kr/data/15157428/openapi.do | - |
 | provider_configured_direct_api | Paid providers | contract_direct_api | FNGUIDE_API_KEY/DATAGUIDE_API_KEY/QUANTIWISE_API_KEY/DEEPSEARCH_API_KEY/FINORMA_API_KEY | ${PROVIDER_API_URL} | --provider-api-url |
 | kind_snapshots | KIND | snapshot_import | none | local JSON/CSV/TSV file | --kind-snapshots |
 | bigkinds_snapshots | BIGKinds | snapshot_import | none or BIGKinds Open API approval | local JSON/CSV/TSV file | --bigkinds-snapshots |

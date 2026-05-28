@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:36:13.264435+09:00",
+  "generated_at": "2026-05-28T16:45:37.966635+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -81,6 +81,7 @@
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
       "blocking_requirements": [
+        "credential_missing",
         "endpoint_config_missing"
       ],
       "close_conditions": [

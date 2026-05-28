@@ -17,7 +17,7 @@
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
-  --date 20260521 `
+  --date 20260528 `
   --kind-api-url $env:KIND_API_URL `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
@@ -34,7 +34,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
-  --date 20260521 `
+  --date 20260528 `
   --kind-api-url $env:KIND_API_URL `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
@@ -62,7 +62,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 |---|---:|---|
 | bigkinds_direct_api_gap | False | credential_missing, endpoint_config_missing |
 | kind_direct_api_gap | False | credential_missing, endpoint_config_missing |
-| ksd_seibro_direct_api_gap | False | endpoint_config_missing |
+| ksd_seibro_direct_api_gap | False | credential_missing, endpoint_config_missing |
 | ksd_seibro_license_review_required | False | license_review_required |
 | paid_provider_contract_required | False | contract_required |
 | paid_provider_direct_api_gap | False | credential_missing, endpoint_config_missing |

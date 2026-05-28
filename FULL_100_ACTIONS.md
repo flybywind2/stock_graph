@@ -1,6 +1,6 @@
 # Full 100 Actions
 
-생성시각: 2026-05-28T16:36:13.264212+09:00
+생성시각: 2026-05-28T16:45:37.966231+09:00
 기준일: 20260521
 
 ## Summary
@@ -17,7 +17,7 @@
 ## Verification Command
 
 ```powershell
-python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph
 ```
 
 ## Actions
@@ -37,8 +37,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 |---|---|---|---|
 | bigkinds_direct_api_gap | https://www.bigkinds.or.kr/ | - | - |
 | kind_direct_api_gap | https://kind.krx.co.kr/ | - | - |
-| ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/ | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | - |
-| ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/ | - | - |
+| ksd_seibro_direct_api_gap | https://seibro.or.kr/, https://www.data.go.kr/data/15157413/openapi.do, https://www.data.go.kr/data/15157416/openapi.do, https://www.data.go.kr/data/15158905/openapi.do, https://www.data.go.kr/data/15157427/openapi.do, https://www.data.go.kr/data/15157428/openapi.do | data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용 | - |
+| ksd_seibro_license_review_required | https://seibro.or.kr/, https://www.data.go.kr/data/15157413/openapi.do, https://www.data.go.kr/data/15157416/openapi.do, https://www.data.go.kr/data/15158905/openapi.do, https://www.data.go.kr/data/15157427/openapi.do, https://www.data.go.kr/data/15157428/openapi.do | - | - |
 | paid_provider_contract_required | https://www.fnguide.com/, https://www.deepsearch.com/ | - | - |
 | paid_provider_direct_api_gap | https://www.fnguide.com/, https://www.deepsearch.com/ | - | - |
 

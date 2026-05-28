@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:36:13.264212+09:00",
+  "generated_at": "2026-05-28T16:45:37.966231+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "external_actions_required",
@@ -11,7 +11,7 @@
     "external_dependency_status": "blocked_external_dependency",
     "secret_values_recorded": false
   },
-  "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+  "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
   "actions": [
     {
       "id": "bigkinds_direct_api_gap",
@@ -72,7 +72,7 @@
         "operation_results": []
       },
       "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
         "SOURCE_COVERAGE.json",
@@ -147,7 +147,7 @@
         "operation_results": []
       },
       "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
         "SOURCE_COVERAGE.json",
@@ -187,7 +187,11 @@
       ],
       "source_urls": [
         "https://seibro.or.kr/",
-        "https://www.data.go.kr/"
+        "https://www.data.go.kr/data/15157413/openapi.do",
+        "https://www.data.go.kr/data/15157416/openapi.do",
+        "https://www.data.go.kr/data/15158905/openapi.do",
+        "https://www.data.go.kr/data/15157427/openapi.do",
+        "https://www.data.go.kr/data/15157428/openapi.do"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
       "license_note": "",
@@ -203,6 +207,7 @@
       ],
       "current_fallback": "--ksd-seibro-snapshots",
       "missing_requirements": [
+        "credential_missing",
         "endpoint_config_missing"
       ],
       "completion_gate": "probe_ok_with_expected_fields",
@@ -227,7 +232,7 @@
         "operation_results": []
       },
       "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
         "SOURCE_COVERAGE.json",
@@ -259,7 +264,11 @@
       ],
       "source_urls": [
         "https://seibro.or.kr/",
-        "https://www.data.go.kr/"
+        "https://www.data.go.kr/data/15157413/openapi.do",
+        "https://www.data.go.kr/data/15157416/openapi.do",
+        "https://www.data.go.kr/data/15158905/openapi.do",
+        "https://www.data.go.kr/data/15157427/openapi.do",
+        "https://www.data.go.kr/data/15157428/openapi.do"
       ],
       "auth_key_hint": "",
       "license_note": "",
@@ -294,7 +303,7 @@
         "operation_results": []
       },
       "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
         "SOURCE_COVERAGE.json",
@@ -341,7 +350,7 @@
       "completion_gate": "contract_review_recorded",
       "latest_probe": {},
       "probe_next_fix": "probe_not_run",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
         "SOURCE_COVERAGE.json",
@@ -420,7 +429,7 @@
         "operation_results": []
       },
       "probe_next_fix": "공식 endpoint URL을 확인해 해당 *_API_URL 환경변수 또는 EXTERNAL_API_CONFIG에 설정한다.",
-      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
+      "verification_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --external-api-config $env:EXTERNAL_API_CONFIG --probe-external-apis-only --require-external-direct-apis --output-dir reports/stock_graph",
       "completion_evidence": [
         "EXTERNAL_API_READINESS.json",
         "SOURCE_COVERAGE.json",

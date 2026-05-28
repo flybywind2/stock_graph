@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:36:12.714317+09:00",
+  "generated_at": "2026-05-28T16:45:37.414869+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 5,
@@ -7,7 +7,7 @@
     "not_ready_count": 5,
     "secret_values_recorded": false
   },
-  "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260521 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --probe-external-apis --output-dir reports/stock_graph",
+  "run_command": "python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --probe-external-apis --output-dir reports/stock_graph",
   "connectors": [
     {
       "id": "bigkinds_direct_api_gap",
@@ -138,7 +138,7 @@
         "KSD_API_KEY",
         "DATA_GO_KR_SERVICE_KEY"
       ],
-      "credential_present": true,
+      "credential_present": false,
       "endpoint_env_keys": [
         "SEIBRO_API_URL",
         "KSD_API_URL"
@@ -163,6 +163,7 @@
       ],
       "direct_connector_implemented": true,
       "missing_requirements": [
+        "credential_missing",
         "endpoint_config_missing"
       ],
       "live_fetch_command_option": "--ksd-seibro-api-url",
