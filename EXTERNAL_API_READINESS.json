@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T12:56:22.161274+09:00",
+  "generated_at": "2026-05-28T13:03:54.682633+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 7,
@@ -92,7 +92,7 @@
       "missing_requirements": [
         "endpoint_config_missing"
       ],
-      "live_fetch_command_option": "",
+      "live_fetch_command_option": "--fsc-stock-dividend-url",
       "probe": {
         "status": "not_run",
         "row_count": 0,
@@ -145,7 +145,7 @@
       "missing_requirements": [
         "endpoint_config_missing"
       ],
-      "live_fetch_command_option": "",
+      "live_fetch_command_option": "--fsc-stock-issue-url",
       "probe": {
         "status": "not_run",
         "row_count": 0,

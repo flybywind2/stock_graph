@@ -21,6 +21,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
   --provider-api-url $env:PROVIDER_API_URL `
+  --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL `
+  --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL `
   --external-api-config $env:EXTERNAL_API_CONFIG `
   --probe-external-apis-only `
   --require-external-direct-apis `
@@ -36,6 +38,8 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
   --provider-api-url $env:PROVIDER_API_URL `
+  --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL `
+  --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL `
   --external-api-config $env:EXTERNAL_API_CONFIG `
   --probe-external-apis `
   --require-external-direct-apis `
