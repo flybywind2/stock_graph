@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-05-28T08:57:37.003579+09:00",
+  "generated_at": "2026-05-28T09:00:49.521181+09:00",
   "source_date": "20260521",
   "summary": {
-    "requirement_count": 12,
-    "verified_count": 10,
+    "requirement_count": 13,
+    "verified_count": 11,
     "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
       "blocked_external_dependency",
       "optional_external_dependency"
     ],
-    "free_core_requirement_count": 10,
-    "free_core_verified_count": 10,
+    "free_core_requirement_count": 11,
+    "free_core_verified_count": 11,
     "free_core_status": "verified"
   },
   "requirements": [
@@ -134,6 +134,18 @@
         "QUALITY_AUDIT.json",
         "QUALITY_AUDIT.md",
         "quality_status=pass"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "strategy_traceability",
+      "requirement": "전략 문서 요구사항과 구현 산출물 간 traceability matrix",
+      "status": "verified",
+      "scope": "free_core",
+      "evidence": [
+        "TRACEABILITY_MATRIX.json",
+        "TRACEABILITY_MATRIX.md",
+        "traceability_status=verified"
       ],
       "gaps": []
     },

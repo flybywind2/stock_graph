@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-05-28T09:00:49.143977+09:00",
+  "source_date": "20260521",
+  "summary": {
+    "requirement_count": 6,
+    "verified_count": 6,
+    "partial_count": 0,
+    "status": "verified"
+  },
+  "requirements": [
+    {
+      "id": "official_fact_graph",
+      "strategy_section": "공식 사실 그래프: Company, Security, Disclosure, Index/ETF, Evidence",
+      "implementation": "KRX/OpenDART/data.go.kr/FTC 기반 fact graph와 Neo4j/Obsidian/HTML 산출물",
+      "status": "verified",
+      "evidence": [
+        "COMPLETION_AUDIT.json",
+        "SOURCE_COVERAGE.json",
+        "neo4j/nodes.csv",
+        "vault/Home.md",
+        "index.html"
+      ]
+    },
+    {
+      "id": "propagation_graph",
+      "strategy_section": "시장·이벤트 파급 그래프: CO_MOVES, LEADS, exposure, peer, transaction",
+      "implementation": "잔차 동행/선행, 이벤트 노출, 공급/거래, peer relation을 별도 edge layer로 유지",
+      "status": "verified",
+      "evidence": [
+        "COMPLETION_AUDIT.json",
+        "QUALITY_AUDIT.json",
+        "graph_data.js"
+      ]
+    },
+    {
+      "id": "signed_path_scorer",
+      "strategy_section": "2~3홉 signed path impact scoring",
+      "implementation": "meta.impact_summary와 HTML 상세 패널의 signed path 계산",
+      "status": "verified",
+      "evidence": [
+        "COMPLETION_AUDIT.json",
+        "stock_graph_YYYYMMDD.json",
+        "graph_data.js"
+      ]
+    },
+    {
+      "id": "source_priority_and_access",
+      "strategy_section": "OpenDART, FSC/KRX, KRX Marketplace, KIND, SEIBro/KSD, BIGKinds, provider 접근 방식",
+      "implementation": "source coverage와 endpoint inventory로 직접 API, snapshot import, 계약형 import를 분리",
+      "status": "verified",
+      "evidence": [
+        "SOURCE_COVERAGE.json",
+        "API_ENDPOINTS.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ]
+    },
+    {
+      "id": "governance_and_lineage",
+      "strategy_section": "source_system, source_id, confidence, evidence, license/access gap 거버넌스",
+      "implementation": "edge metadata, Evidence/RelationFact, source coverage, access requirement 문서화",
+      "status": "verified",
+      "evidence": [
+        "COMPLETION_AUDIT.json",
+        "SOURCE_COVERAGE.json",
+        "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ]
+    },
+    {
+      "id": "quality_and_deployment",
+      "strategy_section": "품질 게이트, 정적 HTML, GitHub Pages 배포",
+      "implementation": "QUALITY_AUDIT pass와 Pages 배포용 index.html/graph_data.js 산출",
+      "status": "verified",
+      "evidence": [
+        "QUALITY_AUDIT.json",
+        "QUALITY_AUDIT.md",
+        "index.html",
+        "graph_data.js"
+      ]
+    }
+  ]
+}

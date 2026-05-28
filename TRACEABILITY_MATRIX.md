@@ -1,0 +1,22 @@
+# Strategy Traceability Matrix
+
+생성시각: 2026-05-28T09:00:49.143977+09:00
+기준일: 20260521
+
+## Summary
+
+- status: verified
+- requirement_count: 6
+- verified_count: 6
+- partial_count: 0
+
+## Matrix
+
+| ID | Strategy Section | Status | Evidence |
+|---|---|---|---|
+| official_fact_graph | 공식 사실 그래프: Company, Security, Disclosure, Index/ETF, Evidence | verified | COMPLETION_AUDIT.json, SOURCE_COVERAGE.json, neo4j/nodes.csv, vault/Home.md, index.html |
+| propagation_graph | 시장·이벤트 파급 그래프: CO_MOVES, LEADS, exposure, peer, transaction | verified | COMPLETION_AUDIT.json, QUALITY_AUDIT.json, graph_data.js |
+| signed_path_scorer | 2~3홉 signed path impact scoring | verified | COMPLETION_AUDIT.json, stock_graph_YYYYMMDD.json, graph_data.js |
+| source_priority_and_access | OpenDART, FSC/KRX, KRX Marketplace, KIND, SEIBro/KSD, BIGKinds, provider 접근 방식 | verified | SOURCE_COVERAGE.json, API_ENDPOINTS.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md |
+| governance_and_lineage | source_system, source_id, confidence, evidence, license/access gap 거버넌스 | verified | COMPLETION_AUDIT.json, SOURCE_COVERAGE.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md |
+| quality_and_deployment | 품질 게이트, 정적 HTML, GitHub Pages 배포 | verified | QUALITY_AUDIT.json, QUALITY_AUDIT.md, index.html, graph_data.js |
