@@ -1,6 +1,6 @@
 # Investment Analysis Audit
 
-생성시각: 2026-05-28T12:15:01.033809+09:00
+생성시각: 2026-05-28T12:40:22.900147+09:00
 기준일: 20260521
 
 ## Summary
@@ -8,7 +8,7 @@
 - status: pass
 - impact_root_count: 24
 - impact_max_depth: 3
-- impact_edge_count: 107874
+- impact_edge_count: 107360
 - valuation_edge_count: 5793
 - dividend_edge_count: 2613
 - investment_grade_edge_count: 2770
@@ -23,4 +23,4 @@
 | dividend_signals | pass | dividend_edge_count=2613 |
 | investment_grade | pass | investment_grade_edge_count=2770 |
 | undervaluation_screen | pass | undervaluation_signal_count=2768 |
-| relationship_universe | pass | impact_edge_count=107874 |
+| relationship_universe | pass | impact_edge_count=107360 |

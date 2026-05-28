@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-05-28T12:14:47.998311+09:00",
+  "generated_at": "2026-05-28T12:40:09.463223+09:00",
   "source_date": "20260521",
   "summary": {
     "endpoint_count": 45,
-    "direct_api_count": 26,
+    "direct_api_count": 31,
     "configured_direct_api_count": 3,
     "contract_direct_api_count": 1,
-    "approved_direct_api_backlog_count": 5,
+    "approved_direct_api_backlog_count": 0,
     "snapshot_import_count": 6,
     "contract_snapshot_import_count": 1,
     "public_page_cache_count": 3
@@ -92,7 +92,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetCorpBasicInfoService_V2/getCorpOutline_V2",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "company basic information",
-      "status": "ok: 2599 companies"
+      "status": "ok: 2636 companies"
     },
     {
       "id": "fsc_company_financial",
@@ -110,7 +110,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getItemBasiInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock issue information",
-      "status": "unknown"
+      "status": "degraded: fsc_stock_issue_1101110028591: HTTP Error 404: Not Found; fsc_stock_issue_1831462000000: HTTP Error 404: Not Found"
     },
     {
       "id": "fsc_stock_dividend",
@@ -119,52 +119,52 @@
       "url": "https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock dividend information",
-      "status": "unknown"
+      "status": "degraded: fsc_stock_dividend_1101110043870: data.go.kr authentication failed for https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo (HTTP 403); fsc_stock_dividend_1601110007032: data.go.kr authentication failed for https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo (HTTP 403)"
     },
     {
       "id": "fsc_financial_company_basic",
       "source": "data.go.kr FSC approved",
-      "mode": "approved_direct_api_backlog",
+      "mode": "direct_api",
       "url": "https://apis.data.go.kr/1160100/service/GetFnCoBasiInfoService/getFnCoOutl",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "financial company basic information",
-      "status": "approved_not_imported"
+      "status": "ok: 38 companies"
     },
     {
       "id": "fsc_bond_basic",
       "source": "data.go.kr FSC approved",
-      "mode": "approved_direct_api_backlog",
+      "mode": "direct_api",
       "url": "https://apis.data.go.kr/1160100/service/GetBondIssuInfoService/getBondBasiInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "bond basic information and issuer reference",
-      "status": "approved_not_imported"
+      "status": "ok: 0 rows"
     },
     {
       "id": "fsc_bond_issue",
       "source": "data.go.kr FSC approved",
-      "mode": "approved_direct_api_backlog",
+      "mode": "direct_api",
       "url": "https://apis.data.go.kr/1160100/service/GetBondTradInfoService/getIssuIssuItemStat",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "bond issue and issuance statistics",
-      "status": "approved_not_imported"
+      "status": "ok: 0 rows"
     },
     {
       "id": "fsc_international_dr_item",
       "source": "data.go.kr FSC approved",
-      "mode": "approved_direct_api_backlog",
+      "mode": "direct_api",
       "url": "https://apis.data.go.kr/1160100/service/GetInterSecuInfoService/getDRItemInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "international DR item and schedule reference",
-      "status": "approved_not_imported"
+      "status": "ok: 0 rows"
     },
     {
       "id": "fsc_general_commodity_price",
       "source": "data.go.kr FSC approved",
-      "mode": "approved_direct_api_backlog",
+      "mode": "direct_api",
       "url": "https://apis.data.go.kr/1160100/service/GetGeneralProductInfoService/getGoldPriceInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "gold and general commodity price reference",
-      "status": "approved_not_imported"
+      "status": "ok: 2 rows"
     },
     {
       "id": "ftc_public_ym",

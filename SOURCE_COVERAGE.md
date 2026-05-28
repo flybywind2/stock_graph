@@ -1,28 +1,28 @@
 # Source Coverage
 
-생성시각: 2026-05-28T12:14:47.997774+09:00
+생성시각: 2026-05-28T12:40:09.462687+09:00
 기준일: 20260521
 
 ## Summary
 
 - source_count: 12
-- direct_or_loaded_count: 4
+- direct_or_loaded_count: 5
 - configured_direct_api_loaded_count: 0
 - contract_direct_api_loaded_count: 0
-- approved_direct_api_backlog_count: 1
+- approved_direct_api_backlog_count: 0
 - snapshot_import_path_count: 5
 - remaining_direct_api_gaps: bigkinds_direct_api_gap, kind_direct_api_gap, ksd_seibro_direct_api_gap, paid_provider_direct_api_gap
-- remaining_approved_import_backlogs: approved_data_go_kr_import_backlog
+- remaining_approved_import_backlogs: none
 
 ## Sources
 
 | Source | Mode | Status | Count | Gaps |
 |---|---|---:|---:|---|
-| KRX Open API | direct_api | loaded | 37038 | - |
-| OpenDART | direct_api | ok: transaction_docs 14, counterparties 14 | 530 | - |
+| KRX Open API | direct_api | loaded | 33033 | - |
+| OpenDART | direct_api | ok: transaction_docs 14, counterparties 14 | 14 | - |
 | data.go.kr FSC | direct_api | ok: 2656 stocks, source_date 20260521 | 2656 | - |
 | data.go.kr FTC | direct_api | ok: 388 listed companies, public_ym 202605 | 388 | - |
-| data.go.kr FSC approved | approved_direct_api_backlog | approved_not_imported: financial_company_basic=approved_not_imported, bond_basic=approved_not_imported, bond_issue=approved_not_imported, international_dr_item=approved_not_imported, general_commodity_price=approved_not_imported | 5 | approved_data_go_kr_import_backlog |
+| data.go.kr FSC approved | direct_api | ok: financial_company_basic 38 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows | 5 | - |
 | KIND | snapshot_import | skipped | 0 | kind_direct_api_gap |
 | BIGKinds | snapshot_import | skipped | 0 | bigkinds_direct_api_gap |
 | KRX Data Marketplace | snapshot_import | skipped | 0 | - |

@@ -1,18 +1,18 @@
 # Graph Quality Audit
 
-생성시각: 2026-05-28T12:14:59.134616+09:00
+생성시각: 2026-05-28T12:40:20.963224+09:00
 기준일: 20260521
 
 ## Summary
 
 - status: pass
-- node_count: 37038
-- edge_count: 192708
+- node_count: 33033
+- edge_count: 180294
 - duplicate_node_id_count: 0
 - broken_edge_count: 0
 - relation_layer_count: 6
 - relation_layers: event, fact, market, peer, structure, transaction
-- render_payload_bytes: 43281653
+- render_payload_bytes: 39783010
 
 ## Checks
 

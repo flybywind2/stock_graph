@@ -1,15 +1,14 @@
 {
-  "generated_at": "2026-05-28T12:15:06.011245+09:00",
+  "generated_at": "2026-05-28T12:40:28.019846+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 18,
-    "verified_count": 15,
-    "partial_count": 1,
+    "verified_count": 16,
+    "partial_count": 0,
     "blocked_external_dependency_count": 1,
     "remaining_statuses": [
       "blocked_external_dependency",
-      "optional_external_dependency",
-      "partial"
+      "optional_external_dependency"
     ],
     "free_core_requirement_count": 14,
     "free_core_verified_count": 14,
@@ -83,15 +82,13 @@
     {
       "id": "approved_free_api_backlog",
       "requirement": "승인 완료된 무료 data.go.kr 보강 API의 그래프 importer 연결",
-      "status": "partial",
+      "status": "verified",
       "scope": "free_approved_backlog",
       "evidence": [
         "SOURCE_COVERAGE.json",
         "API_ENDPOINTS.json"
       ],
-      "gaps": [
-        "approved_data_go_kr_import_backlog"
-      ]
+      "gaps": []
     },
     {
       "id": "neo4j_export",
