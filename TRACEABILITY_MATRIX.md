@@ -1,6 +1,6 @@
 # Strategy Traceability Matrix
 
-생성시각: 2026-05-28T16:45:37.694234+09:00
+생성시각: 2026-05-28T16:52:50.316119+09:00
 기준일: 20260521
 
 ## Summary
@@ -10,7 +10,7 @@
 - verified_count: 5
 - partial_count: 0
 - blocked_external_dependency_count: 1
-- external_gap_count: 6
+- external_gap_count: 5
 
 ## Matrix
 

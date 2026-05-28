@@ -1,6 +1,6 @@
 # Graph Quality Audit
 
-생성시각: 2026-05-28T16:45:32.689994+09:00
+생성시각: 2026-05-28T16:52:45.495904+09:00
 기준일: 20260521
 
 ## Summary
@@ -12,7 +12,7 @@
 - broken_edge_count: 0
 - relation_layer_count: 5
 - relation_layers: event, fact, peer, structure, transaction
-- render_payload_bytes: 32450749
+- render_payload_bytes: 32450675
 
 ## Checks
 

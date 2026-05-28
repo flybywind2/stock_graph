@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:45:28.949136+09:00",
+  "generated_at": "2026-05-28T16:52:41.702937+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 12,
@@ -19,7 +19,6 @@
       "bigkinds_direct_api_gap",
       "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
-      "ksd_seibro_license_review_required",
       "paid_provider_contract_required",
       "paid_provider_direct_api_gap"
     ]
@@ -109,8 +108,7 @@
       "option": "--ksd-seibro-snapshots",
       "used_for": "rights, dividends, securities lending, lockup releases",
       "gaps": [
-        "ksd_seibro_direct_api_gap",
-        "ksd_seibro_license_review_required"
+        "ksd_seibro_direct_api_gap"
       ]
     },
     {

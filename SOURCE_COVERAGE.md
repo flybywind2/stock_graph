@@ -1,6 +1,6 @@
 # Source Coverage
 
-생성시각: 2026-05-28T16:45:28.949136+09:00
+생성시각: 2026-05-28T16:52:41.702937+09:00
 기준일: 20260521
 
 ## Summary
@@ -26,7 +26,7 @@
 | KIND | snapshot_import | skipped | 0 | kind_direct_api_gap |
 | BIGKinds | snapshot_import | skipped | 0 | bigkinds_direct_api_gap |
 | KRX Data Marketplace | snapshot_import | skipped | 0 | - |
-| SEIBro/KSD | snapshot_import | skipped | 0 | ksd_seibro_direct_api_gap, ksd_seibro_license_review_required |
+| SEIBro/KSD | snapshot_import | skipped | 0 | ksd_seibro_direct_api_gap |
 | Paid providers | contract_snapshot_import | skipped | 0 | paid_provider_contract_required, paid_provider_direct_api_gap |
 | Naver Finance | public_page_cache | ok: 2348 stocks, 6448 stock-theme links | 0 | public_page_fragility |
 | FnGuide public page | public_page_cache | ok: 2622 stocks | 2652 | public_page_fragility |

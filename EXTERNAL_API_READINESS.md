@@ -1,13 +1,13 @@
 # External API Readiness
 
-생성시각: 2026-05-28T16:45:37.414869+09:00
+생성시각: 2026-05-28T16:52:50.047342+09:00
 기준일: 20260521
 
 ## Summary
 
-- connector_count: 5
+- connector_count: 4
 - ready_for_live_fetch_count: 0
-- not_ready_count: 5
+- not_ready_count: 4
 - secret_values_recorded: False
 
 ## Run Command
@@ -23,5 +23,4 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 202
 | bigkinds_direct_api_gap | BIGKinds | False | --bigkinds-api-url | return_object.documents | article_id, title, published_at, entities, keywords | Event, Evidence, positive_exposure, negative_exposure | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | article_id, title, published_at, entities, keywords | snapshot_import | skipped |
 | kind_direct_api_gap | KIND | False | --kind-api-url | response.body.items.item | corp_name, stock_code, disclosure_id, title, published_at, report_type | Disclosure, Event, Evidence, has_event | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | corp_name, stock_code, disclosure_id, title, published_at, report_type | snapshot_import | skipped |
 | ksd_seibro_direct_api_gap | SEIBro/KSD | False | --ksd-seibro-api-url | response.body.items.item | stock_code, isin, event_type, event_date, amount, ratio | Event, Evidence, dividend_event, rights_event, lending_event, lockup_event | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | stock_code, isin, event_type, event_date, amount, ratio | snapshot_import | skipped |
-| ksd_seibro_license_review_required | SEIBro/KSD | False | - | license.review | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | DataLicense, SourceContract | False | False | license_review_required | skipped | 0 | probe_not_ok | license_type, commercial_use_allowed, attribution_required, source_name, reviewed_at | snapshot_import | skipped |
 | paid_provider_direct_api_gap | Paid providers | False | --provider-api-url | data.items | stock_code, relation_type, target_code, weight, confidence, source_id | RelationFact, Evidence, provider_relation, broker_report, consensus_metric | False | False | credential_missing, endpoint_config_missing | skipped | 0 | probe_not_ok | stock_code, relation_type, target_code, weight, confidence, source_id | contract_snapshot_import | skipped |
