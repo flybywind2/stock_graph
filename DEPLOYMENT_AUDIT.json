@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T10:02:29.957019+09:00",
+  "generated_at": "2026-05-28T10:06:19.035876+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 12,
+    "artifact_count": 13,
     "required_artifacts_present": false
   },
   "pages": {
@@ -31,7 +31,7 @@
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 7435
+      "size_bytes": 7472
     },
     {
       "path": "QUALITY_AUDIT.json",
@@ -51,7 +51,7 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 1442
+      "size_bytes": 1657
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
@@ -65,11 +65,16 @@
     },
     {
       "path": "EXTERNAL_API.env.example",
-      "exists": false,
-      "size_bytes": 0
+      "exists": true,
+      "size_bytes": 413
     },
     {
       "path": "EXTERNAL_API_ENV_TEMPLATE.md",
+      "exists": true,
+      "size_bytes": 1600
+    },
+    {
+      "path": "EXTERNAL_API_LIVE_RUNBOOK.md",
       "exists": false,
       "size_bytes": 0
     }

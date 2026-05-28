@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T10:02:31.968365+09:00",
+  "generated_at": "2026-05-28T10:06:20.924657+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 17,
@@ -209,6 +209,7 @@
         "SOURCE_COVERAGE.json",
         "EXTERNAL_DEPENDENCY_AUDIT.json",
         "EXTERNAL_API.env.example",
+        "EXTERNAL_API_LIVE_RUNBOOK.md",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
       ],
       "gaps": [
