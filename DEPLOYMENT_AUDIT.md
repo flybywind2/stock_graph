@@ -1,6 +1,6 @@
 # Pages Deployment Audit
 
-생성시각: 2026-05-28T17:45:56.381394+09:00
+생성시각: 2026-05-28T17:52:02.523907+09:00
 기준일: 20260521
 
 ## Summary
@@ -36,10 +36,10 @@
 | snapshot_templates/ksd_seibro_events.csv | True | 96 |
 | snapshot_templates/fsc_stock_issue_events.csv | True | 113 |
 | snapshot_templates/fsc_stock_dividend_events.csv | True | 121 |
-| EXTERNAL_API_READINESS.json | True | 8259 |
+| EXTERNAL_API_READINESS.json | True | 8241 |
 | EXTERNAL_API_READINESS.md | True | 2137 |
-| FULL_100_ACTIONS.json | True | 21916 |
-| FULL_100_ACTIONS.md | True | 9788 |
+| FULL_100_ACTIONS.json | True | 21898 |
+| FULL_100_ACTIONS.md | True | 9770 |
 | FULL_100_GATE.json | True | 5064 |
 | FULL_100_GATE.md | True | 1900 |
 | EXTERNAL_GAP_VALIDATION.json | True | 5235 |

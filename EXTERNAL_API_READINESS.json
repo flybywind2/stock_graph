@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:45:54.042123+09:00",
+  "generated_at": "2026-05-28T17:52:00.232915+09:00",
   "source_date": "20260521",
   "summary": {
     "connector_count": 3,
@@ -122,7 +122,7 @@
           "amount",
           "ratio"
         ],
-        "error": "HTTP Error 401: Unauthorized",
+        "error": "HTTP Error 403: Forbidden",
         "failure_class": "auth_or_approval_failed",
         "next_fix": "data.go.kr 마이페이지에서 한국예탁결제원_주식정보서비스_GW 활용신청 승인 상태와 일반 인증키 Decoding 값을 확인한다.",
         "attempts": [],
@@ -139,7 +139,7 @@
             "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "HTTP Error 401: Unauthorized"
+            "error": "HTTP Error 403: Forbidden"
           },
           {
             "operation": "getDividendRankN1",
@@ -147,7 +147,7 @@
             "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "HTTP Error 401: Unauthorized"
+            "error": "HTTP Error 403: Forbidden"
           },
           {
             "operation": "getSafeDpDutyDepoStatusN1",
@@ -155,7 +155,7 @@
             "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "HTTP Error 401: Unauthorized"
+            "error": "HTTP Error 403: Forbidden"
           },
           {
             "operation": "getSafeDpDutyDepoRgtStatusN1",
@@ -163,7 +163,7 @@
             "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "HTTP Error 401: Unauthorized"
+            "error": "HTTP Error 403: Forbidden"
           },
           {
             "operation": "getStkListInfoN1",
@@ -171,7 +171,7 @@
             "status": "degraded",
             "row_count": 0,
             "sample_keys": [],
-            "error": "HTTP Error 401: Unauthorized"
+            "error": "HTTP Error 403: Forbidden"
           }
         ]
       },
