@@ -1,6 +1,6 @@
 # Completion Audit
 
-생성시각: 2026-05-28T13:37:23.372287+09:00
+생성시각: 2026-05-28T13:43:13.715318+09:00
 기준일: 20260521
 
 ## Summary
@@ -27,7 +27,7 @@
 | html_explorer | free_core | verified | index.html, graph_data.js, legend filtering, edge render limit, 2D/3D toggle | - |
 | governance_metadata | free_core | verified | edge.metadata, SOURCE_COVERAGE.json, DATA_SOURCE_ACCESS_REQUIREMENTS.md | - |
 | graph_quality_gate | free_core | verified | QUALITY_AUDIT.json, QUALITY_AUDIT.md, quality_status=pass | - |
-| strategy_traceability | free_core | verified | TRACEABILITY_MATRIX.json, TRACEABILITY_MATRIX.md, traceability_status=verified | - |
+| strategy_traceability | free_core | verified | TRACEABILITY_MATRIX.json, TRACEABILITY_MATRIX.md, traceability_status=blocked_external_dependency | - |
 | pages_deployment_readiness | free_core | verified | DEPLOYMENT_AUDIT.json, DEPLOYMENT_AUDIT.md, deployment_status=ready | - |
 | ui_interaction_gate | free_core | verified | UI_INTERACTION_AUDIT.json, UI_INTERACTION_AUDIT.md, ui_status=pass | - |
 | data_freshness_gate | free_core | verified | DATA_FRESHNESS_AUDIT.json, DATA_FRESHNESS_AUDIT.md, freshness_status=pass | - |

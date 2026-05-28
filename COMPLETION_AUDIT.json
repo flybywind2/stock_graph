@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:37:23.372287+09:00",
+  "generated_at": "2026-05-28T13:43:13.715318+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 18,
@@ -163,7 +163,7 @@
       "evidence": [
         "TRACEABILITY_MATRIX.json",
         "TRACEABILITY_MATRIX.md",
-        "traceability_status=verified"
+        "traceability_status=blocked_external_dependency"
       ],
       "gaps": []
     },

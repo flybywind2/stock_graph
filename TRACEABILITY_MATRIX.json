@@ -1,11 +1,23 @@
 {
-  "generated_at": "2026-05-28T13:37:23.031297+09:00",
+  "generated_at": "2026-05-28T13:43:13.354208+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 6,
-    "verified_count": 6,
+    "verified_count": 5,
     "partial_count": 0,
-    "status": "verified"
+    "blocked_external_dependency_count": 1,
+    "external_gap_count": 8,
+    "remaining_external_access_gaps": [
+      "bigkinds_direct_api_gap",
+      "fsc_stock_dividend_auth_or_license_review_required",
+      "fsc_stock_issue_endpoint_review_required",
+      "kind_direct_api_gap",
+      "ksd_seibro_direct_api_gap",
+      "ksd_seibro_license_review_required",
+      "paid_provider_contract_required",
+      "paid_provider_direct_api_gap"
+    ],
+    "status": "blocked_external_dependency"
   },
   "requirements": [
     {
@@ -48,12 +60,22 @@
       "id": "source_priority_and_access",
       "strategy_section": "OpenDART, FSC/KRX, KRX Marketplace, KIND, SEIBro/KSD, BIGKinds, provider 접근 방식",
       "implementation": "source coverage와 endpoint inventory로 직접 API, snapshot import, 계약형 import를 분리",
-      "status": "verified",
+      "status": "blocked_external_dependency",
       "evidence": [
         "SOURCE_COVERAGE.json",
         "API_ENDPOINTS.json",
         "EXTERNAL_API_READINESS.json",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
+      ],
+      "remaining_external_access_gaps": [
+        "bigkinds_direct_api_gap",
+        "fsc_stock_dividend_auth_or_license_review_required",
+        "fsc_stock_issue_endpoint_review_required",
+        "kind_direct_api_gap",
+        "ksd_seibro_direct_api_gap",
+        "ksd_seibro_license_review_required",
+        "paid_provider_contract_required",
+        "paid_provider_direct_api_gap"
       ]
     },
     {
