@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:02:20.003364+09:00",
+  "generated_at": "2026-05-28T16:08:38.890918+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
@@ -50,8 +50,11 @@
       "source": "data.go.kr FSC",
       "blocks": "full_100_direct_api",
       "status": "blocked_external_dependency",
-      "blocking_requirements": [],
+      "blocking_requirements": [
+        "license_review_required"
+      ],
       "close_conditions": [
+        "license_review_recorded",
         "probe_ok_with_expected_fields",
         "endpoint_probe_configured"
       ],

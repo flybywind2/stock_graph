@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-28T16:02:19.464239+09:00",
+  "generated_at": "2026-05-28T16:08:38.341369+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "blocked_external_dependency",
     "gap_count": 8,
     "credential_ready_gap_count": 3,
-    "live_fetch_ready_gap_count": 1,
+    "live_fetch_ready_gap_count": 0,
     "full_100_blocked": true,
     "free_core_blocked": false
   },
@@ -81,15 +81,17 @@
         "https://www.data.go.kr/catalog/15043284/openapi.json"
       ],
       "auth_key_hint": "data.go.kr GW Swagger 호출은 일반 인증키 Decoding 값을 serviceKey에 사용",
-      "license_note": "공식 catalog/openapi.json 기준 이용허락범위 제한 없음",
+      "license_note": "공식 data.go.kr 상세 페이지 기준 제3자 권리 포함, 비영리, 공공누리 제2유형 출처표시+상업적 이용금지; 상업 활용은 한국예탁결제원 정보이용계약 필요",
       "normalizes_to": [
         "Event",
         "Evidence",
         "dividend_event"
       ],
       "direct_connector_implemented": true,
-      "ready_for_live_fetch": true,
-      "missing_requirements": []
+      "ready_for_live_fetch": false,
+      "missing_requirements": [
+        "license_review_required"
+      ]
     },
     {
       "id": "fsc_stock_issue_endpoint_review_required",
