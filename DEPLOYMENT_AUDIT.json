@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T11:51:56.490598+09:00",
+  "generated_at": "2026-05-28T12:00:45.403059+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -21,17 +21,17 @@
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 43281027
+      "size_bytes": 43281447
     },
     {
       "path": "SOURCE_COVERAGE.json",
       "exists": true,
-      "size_bytes": 4135
+      "size_bytes": 4676
     },
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 7773
+      "size_bytes": 8183
     },
     {
       "path": "QUALITY_AUDIT.json",
@@ -46,7 +46,7 @@
     {
       "path": "API_ENDPOINTS.json",
       "exists": true,
-      "size_bytes": 12326
+      "size_bytes": 14297
     },
     {
       "path": "DEPLOYMENT_AUDIT.json",

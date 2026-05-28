@@ -1,14 +1,15 @@
 # API Endpoint Inventory
 
-생성시각: 2026-05-28T11:51:36.437651+09:00
+생성시각: 2026-05-28T12:00:25.138556+09:00
 기준일: 20260521
 
 ## Summary
 
-- endpoint_count: 40
+- endpoint_count: 45
 - direct_api_count: 26
 - configured_direct_api_count: 3
 - contract_direct_api_count: 1
+- approved_direct_api_backlog_count: 5
 - snapshot_import_count: 6
 - contract_snapshot_import_count: 1
 - public_page_cache_count: 3
@@ -30,6 +31,11 @@
 | fsc_company_financial | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetFinaStatInfoService_V2/getSummFinaStat_V2 | - |
 | fsc_stock_issue | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetStocIssuInfoService/getItemBasiInfo | - |
 | fsc_stock_dividend | data.go.kr FSC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetStocDiviInfoService/getDiviInfo | - |
+| fsc_financial_company_basic | data.go.kr FSC approved | approved_direct_api_backlog | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetFnCoBasiInfoService/getFnCoOutl | - |
+| fsc_bond_basic | data.go.kr FSC approved | approved_direct_api_backlog | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetBondIssuInfoService/getBondBasiInfo | - |
+| fsc_bond_issue | data.go.kr FSC approved | approved_direct_api_backlog | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetBondTradInfoService/getIssuIssuItemStat | - |
+| fsc_international_dr_item | data.go.kr FSC approved | approved_direct_api_backlog | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetInterSecuInfoService/getDRItemInfo | - |
+| fsc_general_commodity_price | data.go.kr FSC approved | approved_direct_api_backlog | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1160100/service/GetGeneralProductInfoService/getGoldPriceInfo | - |
 | ftc_public_ym | data.go.kr FTC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1130000/publicYmList/publicYmListApi | - |
 | ftc_group_status | data.go.kr FTC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1130000/appnGroupSttusList/appnGroupSttusListApi | - |
 | ftc_group_member | data.go.kr FTC | direct_api | DATA_GO_KR_SERVICE_KEY | https://apis.data.go.kr/1130000/appnGroupAffiList/appnGroupAffiListApi | - |

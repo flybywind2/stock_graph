@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-05-28T11:51:36.437651+09:00",
+  "generated_at": "2026-05-28T12:00:25.138556+09:00",
   "source_date": "20260521",
   "summary": {
-    "endpoint_count": 40,
+    "endpoint_count": 45,
     "direct_api_count": 26,
     "configured_direct_api_count": 3,
     "contract_direct_api_count": 1,
+    "approved_direct_api_backlog_count": 5,
     "snapshot_import_count": 6,
     "contract_snapshot_import_count": 1,
     "public_page_cache_count": 3
@@ -119,6 +120,51 @@
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock dividend information",
       "status": "unknown"
+    },
+    {
+      "id": "fsc_financial_company_basic",
+      "source": "data.go.kr FSC approved",
+      "mode": "approved_direct_api_backlog",
+      "url": "https://apis.data.go.kr/1160100/service/GetFnCoBasiInfoService/getFnCoOutl",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "financial company basic information",
+      "status": "approved_not_imported"
+    },
+    {
+      "id": "fsc_bond_basic",
+      "source": "data.go.kr FSC approved",
+      "mode": "approved_direct_api_backlog",
+      "url": "https://apis.data.go.kr/1160100/service/GetBondIssuInfoService/getBondBasiInfo",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "bond basic information and issuer reference",
+      "status": "approved_not_imported"
+    },
+    {
+      "id": "fsc_bond_issue",
+      "source": "data.go.kr FSC approved",
+      "mode": "approved_direct_api_backlog",
+      "url": "https://apis.data.go.kr/1160100/service/GetBondTradInfoService/getIssuIssuItemStat",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "bond issue and issuance statistics",
+      "status": "approved_not_imported"
+    },
+    {
+      "id": "fsc_international_dr_item",
+      "source": "data.go.kr FSC approved",
+      "mode": "approved_direct_api_backlog",
+      "url": "https://apis.data.go.kr/1160100/service/GetInterSecuInfoService/getDRItemInfo",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "international DR item and schedule reference",
+      "status": "approved_not_imported"
+    },
+    {
+      "id": "fsc_general_commodity_price",
+      "source": "data.go.kr FSC approved",
+      "mode": "approved_direct_api_backlog",
+      "url": "https://apis.data.go.kr/1160100/service/GetGeneralProductInfoService/getGoldPriceInfo",
+      "auth": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "gold and general commodity price reference",
+      "status": "approved_not_imported"
     },
     {
       "id": "ftc_public_ym",

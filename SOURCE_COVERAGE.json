@@ -1,17 +1,21 @@
 {
-  "generated_at": "2026-05-28T11:51:36.437154+09:00",
+  "generated_at": "2026-05-28T12:00:25.138041+09:00",
   "source_date": "20260521",
   "summary": {
-    "source_count": 11,
+    "source_count": 12,
     "direct_or_loaded_count": 4,
     "configured_direct_api_loaded_count": 0,
     "contract_direct_api_loaded_count": 0,
+    "approved_direct_api_backlog_count": 1,
     "snapshot_import_path_count": 5,
     "remaining_direct_api_gaps": [
       "bigkinds_direct_api_gap",
       "kind_direct_api_gap",
       "ksd_seibro_direct_api_gap",
       "paid_provider_direct_api_gap"
+    ],
+    "remaining_approved_import_backlogs": [
+      "approved_data_go_kr_import_backlog"
     ],
     "remaining_external_access_gaps": [
       "bigkinds_direct_api_gap",
@@ -58,6 +62,17 @@
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "business groups, affiliates, activities, financial status",
       "gaps": []
+    },
+    {
+      "source": "data.go.kr FSC approved",
+      "mode": "approved_direct_api_backlog",
+      "status": "approved_not_imported",
+      "count": 5,
+      "env_key": "DATA_GO_KR_SERVICE_KEY",
+      "used_for": "financial company basic, bond basic/issue, international DR, general commodity price reference",
+      "gaps": [
+        "approved_data_go_kr_import_backlog"
+      ]
     },
     {
       "source": "KIND",
