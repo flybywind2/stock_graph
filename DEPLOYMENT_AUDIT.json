@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:25:54.637021+09:00",
+  "generated_at": "2026-05-28T15:33:43.939758+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
@@ -86,7 +86,7 @@
     {
       "path": "DATA_SOURCE_ACCESS_REQUIREMENTS.md",
       "exists": true,
-      "size_bytes": 18688
+      "size_bytes": 18968
     },
     {
       "path": "snapshot_templates/kind_events.csv",

@@ -32,6 +32,10 @@ API 승인이나 endpoint 확인 전에도 아래 템플릿에 공식 export 값
 | `snapshot_templates/fsc_stock_issue_events.csv` | `--ksd-seibro-snapshots` 또는 `--supplemental-events` | 금융위원회/예탁결제원 주식발행 이벤트 |
 | `snapshot_templates/fsc_stock_dividend_events.csv` | `--ksd-seibro-snapshots` 또는 `--supplemental-events` | 금융위원회 주식배당 이벤트 |
 
+`fsc_stock_issue_events.csv`와 `fsc_stock_dividend_events.csv`를 공식 export 값으로 채워
+`--ksd-seibro-snapshots`에 넣으면 FSC 주식발행/주식배당 direct API gap을 대체 충족한 것으로
+`SOURCE_COVERAGE.json`과 `FULL_100_GATE.json`에 반영한다.
+
 ## 주식발행정보/주식배당정보 접근 메모
 
 `금융위원회_주식발행정보`와 `금융위원회_주식배당정보`는 data.go.kr 활용신청 대상이지만 원천 권리는 한국예탁결제원/KSD 계열 여부를 분리해서 봐야 한다. 현재 공식 catalog/openapi.json 기준으로 `금융위원회_주식배당정보`는 이용허락범위 제한 없음으로 기록하고, `금융위원회_주식발행정보`는 제3자 권리 포함 및 공공누리 2유형, 즉 공공누리 제2유형(출처표시+상업적 이용금지) 조건으로 기록한다. 투자 서비스나 외부 배포 목적이면 주식발행정보는 KSD 정보이용계약 또는 이용범위 검토가 필요하다.
