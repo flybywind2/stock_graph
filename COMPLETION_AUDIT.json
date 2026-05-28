@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:21:28.698623+09:00",
+  "generated_at": "2026-05-28T09:28:14.298695+09:00",
   "source_date": "20260521",
   "summary": {
     "requirement_count": 17,
@@ -71,7 +71,10 @@
         "SOURCE_COVERAGE.md"
       ],
       "gaps": [
-        "direct_api_gap"
+        "bigkinds_direct_api_gap",
+        "kind_direct_api_gap",
+        "ksd_seibro_direct_api_gap",
+        "paid_provider_direct_api_gap"
       ]
     },
     {
@@ -204,10 +207,14 @@
       "scope": "external_direct_api",
       "evidence": [
         "SOURCE_COVERAGE.json",
+        "EXTERNAL_DEPENDENCY_AUDIT.json",
         "DATA_SOURCE_ACCESS_REQUIREMENTS.md"
       ],
       "gaps": [
-        "direct_api_gap"
+        "bigkinds_direct_api_gap",
+        "kind_direct_api_gap",
+        "ksd_seibro_direct_api_gap",
+        "paid_provider_direct_api_gap"
       ]
     },
     {

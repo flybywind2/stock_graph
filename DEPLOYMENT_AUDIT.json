@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-28T09:21:26.832681+09:00",
+  "generated_at": "2026-05-28T09:28:12.421341+09:00",
   "source_date": "20260521",
   "summary": {
     "status": "ready",
-    "artifact_count": 9,
+    "artifact_count": 10,
     "required_artifacts_present": true
   },
   "pages": {
@@ -21,17 +21,17 @@
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 43280584
+      "size_bytes": 43280738
     },
     {
       "path": "SOURCE_COVERAGE.json",
       "exists": true,
-      "size_bytes": 3593
+      "size_bytes": 3771
     },
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 6736
+      "size_bytes": 7392
     },
     {
       "path": "QUALITY_AUDIT.json",
@@ -51,10 +51,15 @@
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 1215
+      "size_bytes": 1328
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",
+      "exists": true,
+      "size_bytes": 1289
+    },
+    {
+      "path": "EXTERNAL_DEPENDENCY_AUDIT.json",
       "exists": true,
       "size_bytes": 0
     }

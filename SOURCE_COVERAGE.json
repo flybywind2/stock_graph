@@ -1,12 +1,15 @@
 {
-  "generated_at": "2026-05-28T09:21:10.727665+09:00",
+  "generated_at": "2026-05-28T09:27:56.196124+09:00",
   "source_date": "20260521",
   "summary": {
     "source_count": 11,
     "direct_or_loaded_count": 4,
     "snapshot_import_path_count": 5,
     "remaining_direct_api_gaps": [
-      "direct_api_gap"
+      "bigkinds_direct_api_gap",
+      "kind_direct_api_gap",
+      "ksd_seibro_direct_api_gap",
+      "paid_provider_direct_api_gap"
     ]
   },
   "sources": [
@@ -54,7 +57,7 @@
       "option": "--kind-snapshots",
       "used_for": "disclosure, IR, company analysis report events and evidence",
       "gaps": [
-        "direct_api_gap"
+        "kind_direct_api_gap"
       ]
     },
     {
@@ -65,7 +68,7 @@
       "option": "--bigkinds-snapshots",
       "used_for": "news articles, entities, keywords as event evidence",
       "gaps": [
-        "direct_api_gap"
+        "bigkinds_direct_api_gap"
       ]
     },
     {
@@ -85,8 +88,8 @@
       "option": "--ksd-seibro-snapshots",
       "used_for": "rights, dividends, securities lending, lockup releases",
       "gaps": [
-        "direct_api_gap",
-        "license_review_required"
+        "ksd_seibro_direct_api_gap",
+        "ksd_seibro_license_review_required"
       ]
     },
     {
@@ -97,8 +100,8 @@
       "option": "--provider-snapshots",
       "used_for": "consensus, broker reports, curated supply chain and relation networks",
       "gaps": [
-        "contract_required",
-        "direct_api_gap"
+        "paid_provider_contract_required",
+        "paid_provider_direct_api_gap"
       ]
     },
     {

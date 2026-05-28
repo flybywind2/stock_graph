@@ -74,6 +74,10 @@
 
 `INVESTMENT_ANALYSIS_AUDIT.json`과 `INVESTMENT_ANALYSIS_AUDIT.md`를 함께 생성한다. 1~3홉 signed path 영향권, 밸류에이션 bucket, 배당 bucket, 투자 관찰등급, 저평가 신호, 의미 있는 관계 universe가 투자 분석용 그래프에 포함되어 있는지 확인한다.
 
+## External dependency audit
+
+`EXTERNAL_DEPENDENCY_AUDIT.json`과 `EXTERNAL_DEPENDENCY_AUDIT.md`를 함께 생성한다. 100% direct API 자동화를 막는 KIND, BIGKinds, SEIBro/KSD, 유료 provider gap을 원천별 ID, 필요한 조치, 현재 fallback import 옵션으로 분리해 추적한다.
+
 ## 아직 직접 API 미연결
 
 | Source | 필요한 조치 | 현재 반영 방법 |
