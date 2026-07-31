@@ -17,7 +17,7 @@
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
-  --date 20260528 `
+  --date 20260731 `
   --kind-api-url $env:KIND_API_URL `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `
@@ -34,7 +34,7 @@ python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
 
 ```powershell
 python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py `
-  --date 20260528 `
+  --date 20260731 `
   --kind-api-url $env:KIND_API_URL `
   --bigkinds-api-url $env:BIGKINDS_API_URL `
   --ksd-seibro-api-url $env:SEIBRO_API_URL `

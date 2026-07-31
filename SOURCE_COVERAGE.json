@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-28T20:59:12.019482+09:00",
-  "source_date": "20260521",
+  "generated_at": "2026-07-31T19:14:33.220156+09:00",
+  "source_date": "20260730",
   "summary": {
     "source_count": 12,
     "direct_or_loaded_count": 5,
@@ -26,7 +26,7 @@
       "source": "KRX Open API",
       "mode": "direct_api",
       "status": "loaded",
-      "count": 17439,
+      "count": 160193,
       "env_key": "KRX_OPEN_API_KEY",
       "used_for": "KOSPI/KOSDAQ daily rows, security master, index, ETF",
       "gaps": []
@@ -34,8 +34,8 @@
     {
       "source": "OpenDART",
       "mode": "direct_api",
-      "status": "ok: transaction_docs 14, counterparties 14",
-      "count": 14,
+      "status": "ok: transaction_docs 29, counterparties 27",
+      "count": 28,
       "env_key": "DART_OPEN_API_KEY",
       "used_for": "corpCode, disclosures, company profile, accounts, shareholders, executives, investments",
       "gaps": []
@@ -43,8 +43,8 @@
     {
       "source": "data.go.kr FSC",
       "mode": "direct_api",
-      "status": "ok: 2656 stocks, source_date 20260521",
-      "count": 2656,
+      "status": "ok: 2650 stocks, source_date 20260730",
+      "count": 2650,
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "KRX listed info, company basic, financial summary, stock issue, dividend",
       "gaps": []
@@ -52,8 +52,8 @@
     {
       "source": "data.go.kr FTC",
       "mode": "direct_api",
-      "status": "ok: 388 listed companies, public_ym 202605",
-      "count": 388,
+      "status": "ok: 387 listed companies, public_ym 202605",
+      "count": 387,
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "business groups, affiliates, activities, financial status",
       "gaps": []
@@ -61,7 +61,7 @@
     {
       "source": "data.go.kr FSC approved",
       "mode": "direct_api",
-      "status": "ok: financial_company_basic 81 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows",
+      "status": "ok: financial_company_basic 93 companies, bond_basic 0 rows, bond_issue 0 rows, international_dr_item 0 rows, general_commodity_price 2 rows",
       "count": 5,
       "env_key": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "financial company basic, bond basic/issue, international DR, general commodity price reference",
@@ -132,8 +132,8 @@
     {
       "source": "FnGuide public page",
       "mode": "public_page_cache",
-      "status": "ok: 2622 stocks",
-      "count": 2652,
+      "status": "ok: 2604 stocks",
+      "count": 2642,
       "used_for": "sector, industry, PER/PBR/dividend public profile",
       "gaps": [
         "public_page_fragility"

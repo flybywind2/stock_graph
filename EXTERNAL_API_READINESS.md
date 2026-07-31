@@ -1,7 +1,7 @@
 # External API Readiness
 
-생성시각: 2026-05-28T20:59:20.549843+09:00
-기준일: 20260521
+생성시각: 2026-07-31T19:17:27.173999+09:00
+기준일: 20260730
 
 ## Summary
 
@@ -13,7 +13,7 @@
 ## Run Command
 
 ```powershell
-python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260528 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --probe-external-apis --output-dir reports/stock_graph
+python skills/kr-stock-obsidian-graph/scripts/build_kr_stock_graph.py --date 20260731 --kind-api-url $env:KIND_API_URL --bigkinds-api-url $env:BIGKINDS_API_URL --ksd-seibro-api-url $env:SEIBRO_API_URL --provider-api-url $env:PROVIDER_API_URL --fsc-stock-issue-url $env:FSC_STOCK_ISSUE_URL --fsc-stock-dividend-url $env:FSC_STOCK_DIVIDEND_URL --probe-external-apis --output-dir reports/stock_graph
 ```
 
 ## Connectors

@@ -1,0 +1,3 @@
+# Full graph JSON snapshots stay local: they exceed GitHub file limits and the
+# published page only needs index.html + graph_data.js.
+stock_graph_*.json

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-28T20:59:22.931315+09:00",
-  "source_date": "20260521",
+  "generated_at": "2026-07-31T19:17:32.976822+09:00",
+  "source_date": "20260730",
   "summary": {
     "status": "ready",
     "artifact_count": 32,
@@ -16,27 +16,27 @@
     {
       "path": "index.html",
       "exists": true,
-      "size_bytes": 100327
+      "size_bytes": 100105
     },
     {
       "path": "graph_data.js",
       "exists": true,
-      "size_bytes": 32450704
+      "size_bytes": 55486951
     },
     {
       "path": "SOURCE_COVERAGE.json",
       "exists": true,
-      "size_bytes": 4509
+      "size_bytes": 4510
     },
     {
       "path": "COMPLETION_AUDIT.json",
       "exists": true,
-      "size_bytes": 7934
+      "size_bytes": 7973
     },
     {
       "path": "QUALITY_AUDIT.json",
       "exists": true,
-      "size_bytes": 2445
+      "size_bytes": 2716
     },
     {
       "path": "TRACEABILITY_MATRIX.json",
@@ -46,12 +46,12 @@
     {
       "path": "API_ENDPOINTS.json",
       "exists": true,
-      "size_bytes": 22389
+      "size_bytes": 22396
     },
     {
       "path": "DEPLOYMENT_AUDIT.json",
       "exists": true,
-      "size_bytes": 3910
+      "size_bytes": 3913
     },
     {
       "path": "INVESTMENT_ANALYSIS_AUDIT.json",

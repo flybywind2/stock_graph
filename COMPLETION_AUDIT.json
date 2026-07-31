@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-28T20:59:21.103831+09:00",
-  "source_date": "20260521",
+  "generated_at": "2026-07-31T19:17:28.576903+09:00",
+  "source_date": "20260730",
   "summary": {
     "requirement_count": 18,
     "verified_count": 16,
@@ -37,9 +37,11 @@
       "evidence": [
         "business_family_peer",
         "business_peer",
+        "co_moves",
         "group_peer",
         "has_event",
         "industry_peer",
+        "leads",
         "negative_exposure",
         "positive_exposure",
         "related_stock",

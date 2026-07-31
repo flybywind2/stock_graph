@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-28T20:59:12.020189+09:00",
-  "source_date": "20260521",
+  "generated_at": "2026-07-31T19:14:33.221482+09:00",
+  "source_date": "20260730",
   "summary": {
     "endpoint_count": 65,
     "direct_api_count": 31,
@@ -86,7 +86,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetKrxListedInfoService/getItemInfo",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "KRX listed security master",
-      "status": "ok: 2656 stocks, source_date 20260521"
+      "status": "ok: 2650 stocks, source_date 20260730"
     },
     {
       "id": "fsc_company_basic",
@@ -95,7 +95,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetCorpBasicInfoService_V2/getCorpOutline_V2",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "company basic information",
-      "status": "ok: 2636 companies"
+      "status": "ok: 2395 companies"
     },
     {
       "id": "fsc_company_financial",
@@ -104,7 +104,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetFinaStatInfoService_V2/getSummFinaStat_V2",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "company financial summary",
-      "status": "ok: 2557 companies"
+      "status": "ok: 2542 companies"
     },
     {
       "id": "fsc_stock_issue",
@@ -113,7 +113,7 @@
       "url": "https://apis.data.go.kr/1160100/GetStocIssuInfoService_V3/getStocIssuStat_V3",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock issue information",
-      "status": "ok: 1 rows"
+      "status": "ok: 2930 rows"
     },
     {
       "id": "fsc_stock_dividend",
@@ -122,7 +122,7 @@
       "url": "https://apis.data.go.kr/1160100/GetStocDiviInfoService_V2/getDiviInfo_V2",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "stock dividend information",
-      "status": "ok: 0 rows"
+      "status": "ok: 52942 rows"
     },
     {
       "id": "fsc_financial_company_basic",
@@ -131,7 +131,7 @@
       "url": "https://apis.data.go.kr/1160100/service/GetFnCoBasiInfoService/getFnCoOutl",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "financial company basic information",
-      "status": "ok: 81 companies"
+      "status": "ok: 93 companies"
     },
     {
       "id": "fsc_bond_basic",
@@ -176,7 +176,7 @@
       "url": "https://apis.data.go.kr/1130000/publicYmList/publicYmListApi",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "available disclosure month",
-      "status": "ok: 388 listed companies, public_ym 202605"
+      "status": "ok: 387 listed companies, public_ym 202605"
     },
     {
       "id": "ftc_group_status",
@@ -185,7 +185,7 @@
       "url": "https://apis.data.go.kr/1130000/appnGroupSttusList/appnGroupSttusListApi",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "designated business group list",
-      "status": "ok: 388 listed companies, public_ym 202605"
+      "status": "ok: 387 listed companies, public_ym 202605"
     },
     {
       "id": "ftc_group_member",
@@ -194,7 +194,7 @@
       "url": "https://apis.data.go.kr/1130000/appnGroupAffiList/appnGroupAffiListApi",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "business group affiliates",
-      "status": "ok: 388 listed companies, public_ym 202605"
+      "status": "ok: 387 listed companies, public_ym 202605"
     },
     {
       "id": "ftc_group_company_overview",
@@ -203,7 +203,7 @@
       "url": "https://apis.data.go.kr/1130000/affiliationCompSttusList/affiliationCompSttusListApi",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "affiliate overview",
-      "status": "ok: 388 listed companies, public_ym 202605"
+      "status": "ok: 387 listed companies, public_ym 202605"
     },
     {
       "id": "ftc_group_activity",
@@ -212,7 +212,7 @@
       "url": "https://apis.data.go.kr/1130000/typeOfBusinessCompSttusList/typeOfBusinessCompSttusListApi",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "affiliate business activity",
-      "status": "ok: 388 listed companies, public_ym 202605"
+      "status": "ok: 387 listed companies, public_ym 202605"
     },
     {
       "id": "ftc_group_financial",
@@ -221,7 +221,7 @@
       "url": "https://apis.data.go.kr/1130000/financeCompSttusList/financeCompSttusListApi",
       "auth": "DATA_GO_KR_SERVICE_KEY",
       "used_for": "affiliate financial status",
-      "status": "ok: 388 listed companies, public_ym 202605"
+      "status": "ok: 387 listed companies, public_ym 202605"
     },
     {
       "id": "krx_kospi_security_master",

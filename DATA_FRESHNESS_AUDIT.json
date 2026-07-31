@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-05-28T20:59:20.549367+09:00",
-  "source_date": "20260521",
+  "generated_at": "2026-07-31T19:17:27.173274+09:00",
+  "source_date": "20260730",
   "summary": {
     "status": "pass",
-    "source_date": "20260521",
+    "source_date": "20260730",
     "generated_at_present": true,
-    "node_count": 17439,
-    "edge_count": 148249,
-    "node_temporal_count": 10373,
-    "edge_temporal_count": 111,
+    "node_count": 160193,
+    "edge_count": 311535,
+    "node_temporal_count": 16059,
+    "edge_temporal_count": 5714,
     "temporal_keys": [
       "basis_date",
       "event_date",
@@ -25,28 +25,28 @@
       "id": "source_date",
       "status": "pass",
       "evidence": [
-        "20260521"
+        "20260730"
       ]
     },
     {
       "id": "generated_at",
       "status": "pass",
       "evidence": [
-        "2026-05-28T15:37:05.381501+09:00"
+        "2026-07-31T17:43:27.403540+09:00"
       ]
     },
     {
       "id": "node_temporal_metadata",
       "status": "pass",
       "evidence": [
-        "10373"
+        "16059"
       ]
     },
     {
       "id": "edge_temporal_metadata",
       "status": "pass",
       "evidence": [
-        "111"
+        "5714"
       ]
     }
   ]

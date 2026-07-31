@@ -1,0 +1,16 @@
+{
+  "data.go.kr FSC": {
+    "license_review": {
+      "license_type": "KOGL Type 2 / third-party rights",
+      "source_name": "금융위원회_주식발행정보 / 금융위원회_주식배당정보 (via 한국예탁결제원)",
+      "source_url": "https://www.data.go.kr/data/15043423/openapi.do",
+      "commercial_use_allowed": false,
+      "attribution_required": true,
+      "third_party_contract_required_for_commercial_use": true,
+      "reviewed_at": "2026-07-31",
+      "reviewed_by": "operator",
+      "intended_use": "personal_noncommercial_research",
+      "evidence_text": "주식발행정보는 제3자 권리 포함 및 공공누리 제2유형(출처표시+상업적 이용금지). 개인 비상업 연구 목적으로만 활용하며, 외부 배포나 상업적 활용 시 한국예탁결제원 정보이용계약이 필요하다."
+    }
+  }
+}

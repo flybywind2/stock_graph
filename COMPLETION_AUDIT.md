@@ -1,7 +1,7 @@
 # Completion Audit
 
-생성시각: 2026-05-28T20:59:21.103831+09:00
-기준일: 20260521
+생성시각: 2026-07-31T19:17:28.576903+09:00
+기준일: 20260730
 
 ## Summary
 
@@ -18,7 +18,7 @@
 | ID | Scope | Status | Evidence | Gaps |
 |---|---|---|---|---|
 | fact_graph | free_core | verified | stock_graph_YYYYMMDD.json, listed_on, classified_as, identified_by, public_data_mapped_to | - |
-| propagation_graph | free_core | verified | business_family_peer, business_peer, group_peer, has_event, industry_peer, negative_exposure, positive_exposure, related_stock, theme_peer | - |
+| propagation_graph | free_core | verified | business_family_peer, business_peer, co_moves, group_peer, has_event, industry_peer, leads, negative_exposure, positive_exposure, related_stock, theme_peer | - |
 | signed_path_scoring | free_core | verified | meta.impact_summary, meta.impact_summary_policy, HTML detail panel path scoring | - |
 | source_coverage | free_core | verified | SOURCE_COVERAGE.json, SOURCE_COVERAGE.md | bigkinds_direct_api_gap, ksd_seibro_direct_api_gap, paid_provider_contract_required, paid_provider_direct_api_gap |
 | approved_free_api_backlog | free_approved_backlog | verified | SOURCE_COVERAGE.json, API_ENDPOINTS.json | - |

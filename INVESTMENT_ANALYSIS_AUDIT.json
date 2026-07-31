@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-28T20:59:17.402705+09:00",
-  "source_date": "20260521",
+  "generated_at": "2026-07-31T19:17:19.182218+09:00",
+  "source_date": "20260730",
   "summary": {
     "status": "pass",
     "impact_root_count": 24,
     "impact_max_depth": 3,
-    "impact_edge_count": 91661,
-    "valuation_edge_count": 5793,
-    "dividend_edge_count": 2613,
-    "investment_grade_edge_count": 2770,
-    "undervaluation_signal_count": 2768
+    "impact_edge_count": 99918,
+    "valuation_edge_count": 5757,
+    "dividend_edge_count": 2595,
+    "investment_grade_edge_count": 2764,
+    "undervaluation_signal_count": 2754
   },
   "checks": [
     {
@@ -24,35 +24,35 @@
       "id": "valuation_signals",
       "status": "pass",
       "evidence": [
-        "valuation_edge_count=5793"
+        "valuation_edge_count=5757"
       ]
     },
     {
       "id": "dividend_signals",
       "status": "pass",
       "evidence": [
-        "dividend_edge_count=2613"
+        "dividend_edge_count=2595"
       ]
     },
     {
       "id": "investment_grade",
       "status": "pass",
       "evidence": [
-        "investment_grade_edge_count=2770"
+        "investment_grade_edge_count=2764"
       ]
     },
     {
       "id": "undervaluation_screen",
       "status": "pass",
       "evidence": [
-        "undervaluation_signal_count=2768"
+        "undervaluation_signal_count=2754"
       ]
     },
     {
       "id": "relationship_universe",
       "status": "pass",
       "evidence": [
-        "impact_edge_count=91661"
+        "impact_edge_count=99918"
       ]
     }
   ]
